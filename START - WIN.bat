@@ -1,5 +1,8 @@
 @echo off
 setlocal
+rem Jangan mewarisi mode CLI Electron dari terminal/aplikasi pengembang.
+set "ELECTRON_RUN_AS_NODE="
+set "ELECTRON_RENDERER_URL="
 rem Naraflow - klik 2x file ini untuk membuka aplikasi di Windows.
 cd /d "%~dp0"
 title Naraflow
@@ -59,7 +62,11 @@ if not exist "node_modules\ffmpeg-static\ffmpeg.exe" (
   )
 )
 
-if not exist "out\main\index.js" (
+set "NARAFLOW_NEEDS_BUILD="
+if not exist "out\main\index.js" set "NARAFLOW_NEEDS_BUILD=1"
+if not exist "out\preload\index.js" set "NARAFLOW_NEEDS_BUILD=1"
+if not exist "out\renderer\index.html" set "NARAFLOW_NEEDS_BUILD=1"
+if defined NARAFLOW_NEEDS_BUILD (
   echo  Menyusun aplikasi...
   call npm run build
   if errorlevel 1 (
@@ -71,4 +78,10 @@ if not exist "out\main\index.js" (
 )
 
 start "" "node_modules\electron\dist\electron.exe" .
+if errorlevel 1 (
+  echo.
+  echo  Naraflow gagal dibuka. Periksa file Electron dan folder aplikasi.
+  pause
+  exit /b 1
+)
 exit /b 0

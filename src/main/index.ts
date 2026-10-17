@@ -37,6 +37,13 @@ app.setName('Naraflow')
 
 registerSchemes()
 
+function showWindow(win: BrowserWindow): void {
+  if (win.isDestroyed()) return
+  if (win.isMinimized()) win.restore()
+  win.show()
+  win.focus()
+}
+
 function createWindow(): void {
   const theme = getSettings().theme
   const dark = theme === 'dark' || (theme === 'system' && nativeTheme.shouldUseDarkColors)
@@ -59,7 +66,10 @@ function createWindow(): void {
     }
   })
 
-  win.once('ready-to-show', () => win.show())
+  win.once('ready-to-show', () => showWindow(win))
+  // A background/hidden launch must not leave an invisible single-instance lock.
+  // did-finish-load also covers startup paths where ready-to-show is delayed.
+  win.webContents.once('did-finish-load', () => showWindow(win))
   attachDevHarness(win)
 
   win.webContents.setWindowOpenHandler(({ url }) => {
@@ -83,10 +93,8 @@ if (!single) {
 } else {
   app.on('second-instance', () => {
     const w = BrowserWindow.getAllWindows()[0]
-    if (w) {
-      if (w.isMinimized()) w.restore()
-      w.focus()
-    }
+    if (w) showWindow(w)
+    else if (app.isReady()) createWindow()
   })
 
   void app.whenReady().then(() => {
@@ -102,6 +110,7 @@ if (!single) {
 
     app.on('activate', () => {
       if (BrowserWindow.getAllWindows().length === 0) createWindow()
+      else showWindow(BrowserWindow.getAllWindows()[0])
     })
   })
 
