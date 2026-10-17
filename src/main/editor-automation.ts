@@ -1,4 +1,5 @@
 import { CUTOUT_CAPTION_DEFAULTS, isCutoutReference } from '@shared/cutout-reference-profile'
+import { auditCutoutDirection } from '@shared/cutout-direction-policy'
 import { reviewProductionComposition } from './cutout-composition-review'
 import { normalizeCodexEdit, normalizeSpecialClips, validateSpecialVideo } from '@shared/special-clips'
 import { createHash, randomUUID } from 'node:crypto'
@@ -12,6 +13,7 @@ import { auditCutoutContacts, bakeCutoutFrames, composeCutoutAssets, normalizeCu
 import { resolveMasterPrompt } from '@shared/master-prompts'
 import { cutoutReferenceDirection } from '@shared/cutout-facts'
 import { prepareProductionAssets, productionContactSheets } from './cutout-auto-production'
+import { cutoutAssetState } from './cutout-assets'
 import type { TaskCtx } from './jobs'
 import { cutoutAssetIds, CUTOUT_LIMITS } from '@shared/cutout-timeline'
 import { validateSoundEffectAssets } from '@shared/sfx'
@@ -197,7 +199,7 @@ const SYSTEM = `Anda editor Naraflow. Keluarkan hanya rencana JSON sesuai skema.
 Tujuan: explainer kolase fotografis vertikal dengan reaksi komedi mengikuti tindakan narasi. Pertahankan naskah, tokoh, kostum, identitas, aset, urutan adegan dan timing rekaman. Jangan mengklaim fakta terverifikasi atau hasil identik referensi.
 Gunakan satu aksi utama per shot, gerak masuk/keluar singkat, rotasi/scale kecil, push-in pada reaksi. Latar dan subjek punya kedalaman berbeda. Root x/y relatif frame; anak x/y offset relatif frame dari pivot induk. Layer urut belakang ke depan. Pivot relatif gambar, width relatif lebar frame. depth 0 terkunci layar, 1 normal, 2 depan. FK hanya jika aset potongan bagian tubuh tersedia. Pergantian pose hanya dengan ID gambar pose yang tersedia. Easing berada pada keyframe tujuan. Waktu keyframe/pose lokal klip (ms), SFX absolut proyek (ms), overlay detik proyek. Waktu tidak boleh melewati durasi.
 Mask layer tersedia: rect, ellipse, polygon; x/y/width/height dan points relatif sumber, feather relatif sisi pendek gambar 0..0.25, invert membuat lubang. Pertahankan kontur wajah, gunakan mask hanya untuk crop/occlusion yang diminta. IK tersedia untuk dua bagian tubuh terpisah dengan lower.parentId=upperId. endX/endY adalah offset ujung pada koordinat lokal tulang bawah relatif frame; targetX/Y adalah posisi di scene sebelum kamera. Pilih bend ±1 dan target keyframes; jangan membuat rig pada foto badan utuh. Jangan mengarang panjang tulang yang belum terlihat; pertahankan rig yang sudah disetel pengguna.
-Jangan membuat assetId baru atau berpura-pura memisahkan foto utuh menjadi PNG transparan. Bila aset tidak mencukupi, tulis kebutuhan background tanpa tokoh, potongan karakter, pose dan SFX pada summary; pengguna dapat membuatnya di panel Generate aset terpisah. Gunakan gambar utuh sebagai satu layer lebar yang cukup menutup frame; jangan mengulangnya sebagai bagian tubuh. Gambar terlampir berurutan sesuai previewAssets. Jangan menebak isi aset yang tak dilihat dari UUID.
+Jangan membuat assetId baru atau berpura-pura memisahkan foto utuh menjadi PNG transparan. Bila aset tidak mencukupi, tulis kebutuhan background tanpa tokoh, potongan karakter, pose dan SFX pada summary; pengguna dapat membuatnya di panel Generate aset terpisah. Untuk preset umum, gambar utuh dapat menjadi satu layer. Jika arahan Cutout mewajibkan aset terpisah, foto utuh saja belum memenuhi produksi; laporkan kebutuhan dan jangan mengklaim sudah dipisah. jangan mengulangnya sebagai bagian tubuh. Gambar terlampir berurutan sesuai previewAssets. Jangan menebak isi aset yang tak dilihat dari UUID.
 Caption bawah putih, sorotan hijau, label tahun kuning bila relevan; caption bukan bagian gambar. Gunakan hanya SFX impor yang relevan, volume lebih rendah dari narasi. Jangan mengganti musik/overlay/SFX lama tanpa instruksi; array sfx/overlays menggantikan keseluruhan array, jadi pertahankan entri lain. Anatomi medis semi realistis tanpa mata/mulut kartun pada organ kecuali sengaja diminta pengguna.
 Hanya sertakan klip yang benar-benar diubah. Pada klip yang disertakan, cutout:null menghapus komposisi; salin komposisi lama bila hanya transisi/durasi berubah. transition/durationMs null berarti tidak berubah. Durasi timeline dapat berupa pecahan milidetik karena sinkronisasi frame rekaman; jangan membulatkan durasi klip agar cocok dengan timestamp rencana yang bulat. Pertahankan durationMs:null bila tidak diminta mengubah durasi; khusus narasi tersinkron, selalu durationMs:null. editor null atau field editor null berarti tidak berubah. Jika tak ada edit yang layak, clips:[] dan editor:null dengan alasan jujur dalam summary. Jangan mengekspor atau membuat media baru.`
 
@@ -249,6 +251,20 @@ export function startCodexAutoEdit(input: AutoEditInput): Job {
       signal.throwIfAborted()
       const plan = normalizeEditorEditPlan(raw, true)
       if (input.clipId && (plan.clips.some(c => c.clipId !== input.clipId) || (plan.editor && Object.keys(plan.editor).length))) throw new Error('Codex mengusulkan edit di luar adegan terpilih; tidak diterapkan. Gunakan mode seluruh proyek untuk caption/SFX global.')
+      if (isCutoutReference(context.project)) {
+        const bundle = getBundle(input.projectId)
+        for (const patch of plan.clips) {
+          const clip = bundle.clips.find(c => c.id === patch.clipId)
+          if (!clip) throw new Error('Rencana merujuk klip di luar proyek ini.')
+          const scene = Object.hasOwn(patch, 'cutout') ? patch.cutout : clip.cutout
+          const assetState = cutoutAssetState(clip.id)
+          const director = !assetState.stale && (patch.durationMs === undefined || patch.durationMs === clip.durationMs) ? assetState.plan?.director : undefined
+          const findings = scene?.enabled ? auditCutoutDirection(scene, bundle.assets, patch.durationMs ?? clip.durationMs, director) : { problems: ['Komposisi Cutout aktif belum tersedia.'], missingAssets: ['Background tanpa tokoh dan pose/properti terpisah, atau klip khusus untuk aksi kontinu.'] }
+          if (findings.problems.length || findings.missingAssets.length) throw new Error(('Arahan Cutout belum terpenuhi: ' + clip.title + '\n' + [...findings.problems, ...findings.missingAssets].join('\n') + '\n' + plan.summary + '\nSusun kebutuhan di Cutout atau aktifkan generate aset. Edit belum diterapkan.').slice(0,4000))
+          patch.transition = 'cut'
+        }
+        if (!input.clipId && plan.clips.length) plan.editor = { ...plan.editor, ...CUTOUT_CAPTION_DEFAULTS }
+      }
       progress(.85, 'Memeriksa aset, rig, dan revisi proyek…')
       await ensureEditorsReady(input.projectId,signal)
       validateEditingPlan(input.projectId, context.revision, plan)
@@ -277,7 +293,7 @@ async function produceAndEdit(input:AutoEditInput,options:CutoutProductionOption
   const regular=clips.filter(c=>!special.has(c.id))
   if(regular.length&&!options.enabled&&input.specialClips?.enabled)throw new Error('Beberapa klip cukup memakai Cutout. Aktifkan generate aset atau pilih satu klip dengan mode wajah/aksi kontinu.')
   const plans=regular.length?await prepareProductionAssets(input,options,regular,ctx,guard):new Map()
-  const changes:EditorEditPlan['clips']=[...special].map(([clipId,cutout])=>({clipId,cutout})),summaries:string[]=[],folder=mkdtempSync(join(tmpdir(),'naraflow-production-edit-'))
+  const changes:EditorEditPlan['clips']=[...special].map(([clipId,cutout])=>({clipId,cutout,...(isCutoutReference(initial.project)?{transition:'cut' as const}:{})})),summaries:string[]=[],folder=mkdtempSync(join(tmpdir(),'naraflow-production-edit-'))
   let editor:EditorEditPlan['editor']
   try {
     for(let i=0;i<regular.length;i++){
@@ -290,9 +306,11 @@ async function produceAndEdit(input:AutoEditInput,options:CutoutProductionOption
       const full=getEditingContext(input.projectId),{schema:_schema,...context}=full
       const prompt=JSON.stringify({instruction:input.instruction,scope:{clipId:clip.id,rule:!input.clipId&&i===0?'Komposisi hanya klip ini; pengaturan editor global boleh disesuaikan sesuai arahan, pertahankan array overlay/SFX yang ada.':'Hanya klip ini; editor harus null.'},motion:options.motion,fps:options.fps,
         previewAssets:previews.previewAssets,detailAssets:previews.detailAssets,contactSheet:'Halaman previewAssets: 8 kolom × 4 baris; row/column 1-based. Setiap sel SATU aset terpisah. detailAssets memetakan gambar tambahan resolusi tinggi ke aset bagian tubuh/properti (nomor image 1-based). Jangan menyalin layout lembar ini menjadi frame video.',assetPlan:plan,seedComposition:seed,
+        narrativeTimeline:full.clips.map(c=>({id:c.id,title:c.title,narration:c.narration,startMs:c.startMs,durationMs:c.durationMs,words:c.words})),
+        openingClip:clip.id===initial.clips[0]?.id,globalEditing:!input.clipId&&i===0,
         context:{...context,assets:context.assets.filter(a=>ids.includes(a.id)||!a.clipId||a.clipId===clip.id),clips:full.clips.filter(c=>c.id===clip.id)}})
       if(prompt.length>800000)throw new Error('Konteks komposisi terlalu besar. Kurangi aset/kompleksitas atau pisahkan klip.')
-      const raw=cached??await generateCodexJson<unknown>({codex:input.codex,system:SYSTEM+'\n\n'+cutoutReferenceDirection(b.project.styleId)+`\nMODE PRODUKSI: ikuti assetPlan.director bila ada: shot/rentang narasi, fokus, aksi, kamera, pose, occlusion dan kontak. Pilih wide/detail/reaksi sesuai shot, jangan semua layer bergerak bersamaan. Gunakan maskKeyframes untuk reveal/occlusion yang berubah; mask koordinat relatif aset, interpolasi linear atau hold; perubahan jenis/jumlah titik/invert berlaku diskret pada key. Pantulan adalah aset ilustrasi terpisah, bukan simulasi optik otomatis. Kebutuhan specialAssets yang belum tersedia harus disebut pada summary, jangan diklaim dibuat. Semua aset seed tersedia sebagai file, tetapi isi, pemisahan komponen, identitas dan registrasinya belum terbukti benar. Periksa piksel; jangan anggap prompt sudah dipatuhi. Susun dan kembalikan komposisi aktif klip ini; jangan sekadar melaporkan aset kurang. Gunakan setiap aset seed sebagai base/pose, kelompokkan varian dengan layerKey yang sama. Pastikan background memenuhi frame dan properti tidak menggandakan yang sudah ada di pose. Lihat SEMUA sel pada contact sheets dan gunakan ID sesuai koordinat.\nTentukan pose, panjang/pivot dan kontak dari piksel aset yang terlihat; jangan menganggap gambar tubuh utuh bisa ditekuk sebagai dua tulang. Untuk anggota tubuh terpisah, buat parenting dan IK yang sah. targetLayerId pada IK mengikat targetX/Y sebagai koordinat sumber target (0–1; .5,.5 tengah), mengikuti gerak/rotasi/scale/camera target setiap frame. Target tidak boleh tulang sendiri/turunannya atau dependensi melingkar. Gunakan weight/keyframe untuk lepas/pasang kontak. Gerak harus memperlihatkan aksi yang dinarasikan dan mempertahankan tangan pada pegangan, kaki pada pedal/tanah sesuai kebutuhan, sepanjang jangkauan rig. Jangan mengklaim presisi anatomi yang belum diperiksa.\nKeluarkan keyframe utama yang bermakna. Mode frames akan disampel lokal menjadi keyframe 30/60 fps; TIDAK perlu menulis ribuan keyframe JSON. Pose gambar berubah mengikuti timestamp paket, bukan setiap frame tanpa alasan. Preservasi identitas dan kontak lebih penting dari gerakan berlebihan.`,prompt,schema:CODEX_EDIT_PLAN_SCHEMA,images:previews.images,signal:ctx.signal},'visual')
+      const raw=cached??await generateCodexJson<unknown>({codex:input.codex,system:SYSTEM+'\n\n'+cutoutReferenceDirection(b.project.styleId)+`\nMODE PRODUKSI: narrativeTimeline menyediakan narasi, offset proyek dan timing kata semua klip. openingClip menandai hook proyek, bukan setiap klip. Jika globalEditing true, susun teks judul editor sejak 0 detik untuk hook 3 detik, label tahun/nama 2–3 detik pada kata kunci, serta SFX yang tersedia di seluruh timeline; jika tidak, editor harus null. Label harus sesuai isi narasi, tidak mengarang fakta. Musik hanya memakai aset/proyek yang tersedia, volume di bawah narasi. Laporkan audio/pose/klip khusus yang belum ada dalam summary. Ikuti assetPlan.director bila ada: shot/rentang narasi, fokus, aksi, kamera, pose, occlusion dan kontak. Pilih wide/detail/reaksi sesuai shot, jangan semua layer bergerak bersamaan. Gunakan maskKeyframes untuk reveal/occlusion yang berubah; mask koordinat relatif aset, interpolasi linear atau hold; perubahan jenis/jumlah titik/invert berlaku diskret pada key. Pantulan adalah aset ilustrasi terpisah, bukan simulasi optik otomatis. Kebutuhan specialAssets yang belum tersedia harus disebut pada summary, jangan diklaim dibuat. Semua aset seed tersedia sebagai file, tetapi isi, pemisahan komponen, identitas dan registrasinya belum terbukti benar. Periksa piksel; jangan anggap prompt sudah dipatuhi. Susun dan kembalikan komposisi aktif klip ini; jangan sekadar melaporkan aset kurang. Gunakan setiap aset seed sebagai base/pose, kelompokkan varian dengan layerKey yang sama. Pastikan background memenuhi frame dan properti tidak menggandakan yang sudah ada di pose. Lihat SEMUA sel pada contact sheets dan gunakan ID sesuai koordinat.\nTentukan pose, panjang/pivot dan kontak dari piksel aset yang terlihat; jangan menganggap gambar tubuh utuh bisa ditekuk sebagai dua tulang. Untuk anggota tubuh terpisah, buat parenting dan IK yang sah. targetLayerId pada IK mengikat targetX/Y sebagai koordinat sumber target (0–1; .5,.5 tengah), mengikuti gerak/rotasi/scale/camera target setiap frame. Target tidak boleh tulang sendiri/turunannya atau dependensi melingkar. Gunakan weight/keyframe untuk lepas/pasang kontak. Gerak harus memperlihatkan aksi yang dinarasikan dan mempertahankan tangan pada pegangan, kaki pada pedal/tanah sesuai kebutuhan, sepanjang jangkauan rig. Jangan mengklaim presisi anatomi yang belum diperiksa.\nKeluarkan keyframe utama yang bermakna. Mode frames akan disampel lokal menjadi keyframe 30/60 fps; TIDAK perlu menulis ribuan keyframe JSON. Pose gambar berubah mengikuti timestamp paket, bukan setiap frame tanpa alasan. Preservasi identitas dan kontak lebih penting dari gerakan berlebihan.`,prompt,schema:CODEX_EDIT_PLAN_SCHEMA,images:previews.images,signal:ctx.signal},'visual')
       ctx.signal.throwIfAborted();let edited=normalizeEditorEditPlan(raw,!cached)
       if(edited.clips.length!==1||edited.clips[0].clipId!==clip.id||!edited.clips[0].cutout?.enabled||((input.clipId||i>0)&&edited.editor&&Object.keys(edited.editor).length))throw new Error('Rencana komposisi tidak sesuai cakupan. Aset selesai tersimpan; ulangi edit atau tinjau di Cutout.')
       let patch=edited.clips[0];const used=new Set(cutoutAssetIds(patch.cutout))
@@ -319,6 +337,7 @@ async function produceAndEdit(input:AutoEditInput,options:CutoutProductionOption
         summaries.push(clip.title+': sampel frame komposisi ditinjau; bukan pemeriksaan seluruh frame.')
       }
       if(cached)ctx.progress(.71+.23*i/regular.length,`Memakai komposisi tersimpan: ${clip.title}`)
+      if(isCutoutReference(b.project))patch.transition='cut'
       if(options.motion==='frames')patch.cutout=bakeCutoutFrames(patch.cutout!,patch.durationMs??clip.durationMs,options.fps)
       const contact=auditCutoutContacts(patch.cutout!,patch.durationMs??clip.durationMs,options.fps,b.assets,b.project.aspectRatio)
       if(contact.samples||contact.missing)summaries.push(`Kontak ${clip.title}: ${contact.samples} sampel, selisih maksimum ${contact.maxErrorPx}px pada lebar 720px, ${contact.missing} target/tulang tidak terlihat.${contact.maxErrorPx>2?' Tinjau pivot/jangkauan sebelum ekspor.':''}`)
@@ -326,7 +345,7 @@ async function produceAndEdit(input:AutoEditInput,options:CutoutProductionOption
       changes.push(patch);summaries.push(`${clip.title}: ${edited.summary}`);if(edited.editor)editor=edited.editor
     }
     for(const [id,scene] of special)summaries.push(`${initial.clips.find(c=>c.id===id)!.title}: klip khusus · ${scene.specialVideo!.action}; sumber video dibisukan, durasi mengikuti narasi.`)
-    if(!input.clipId&&isCutoutReference(initial.project))editor={...CUTOUT_CAPTION_DEFAULTS,...editor}
+    if(!input.clipId&&isCutoutReference(initial.project))editor={...editor,...CUTOUT_CAPTION_DEFAULTS}
     await guard();const revision=getEditingContext(input.projectId).revision
     const final:EditorEditPlan={summary:`Produksi aset dan komposisi selesai. Tinjau alpha, identitas, kontak dan pose.\n${summaries.join('\n')}`.slice(0,4000),clips:changes,...(editor?{editor}:{})}
     ctx.progress(.97,'Memeriksa rig, kontak, pose dan menyimpan komposisi…')

@@ -1,4 +1,5 @@
 import { cutoutCoverage, isCutoutReference } from '@shared/cutout-reference-profile'
+import { CUTOUT_AUTO_EDIT_INSTRUCTION, CUTOUT_FACT_PRODUCTION_RULES } from '@shared/cutout-direction-spec'
 import { DEFAULT_SPECIAL_CLIPS, normalizeCodexEdit, type SpecialClipOptions } from '@shared/special-clips'
 import type { ModelOption, CodexEditOptions } from '@shared/types'
 import { useEffect, useRef, useState } from 'react'
@@ -16,7 +17,7 @@ const DEFAULT_INSTRUCTION = 'Sutradarai mengikuti pola video referensi: framing 
 export function AutoEditPanel({ clip }: { clip: Clip | null }) {
   const { project, clips, jobs, savedAt, saveState } = useProject()
   const [scope, setScope] = useState<'clip' | 'project'>(() => project && isCutoutReference(project) ? 'project' : 'clip')
-  const [instruction, setInstruction] = useState(DEFAULT_INSTRUCTION)
+  const [instruction, setInstruction] = useState(() => project && isCutoutReference(project) ? CUTOUT_AUTO_EDIT_INSTRUCTION : DEFAULT_INSTRUCTION)
   const [production,setProduction]=useState<CutoutProductionOptions>({...DEFAULT_CUTOUT_PRODUCTION,enabled:project?.styleId==='cutout-facts'})
   const [codex,setCodex]=useState<CodexEditOptions>(()=>{try{return normalizeCodexEdit(JSON.parse(localStorage.getItem('naraflow:auto-edit-codex')||'{}'))??{}}catch{return {}}})
   const [models,setModels]=useState<ModelOption[]>([])
@@ -127,6 +128,7 @@ export function AutoEditPanel({ clip }: { clip: Clip | null }) {
         </div>
       </details>}
     </section>
+    {isCutoutReference(project) && <details className="rounded-xl border border-line p-3 text-xs" data-cutout-direction><summary className="cursor-pointer font-semibold">Arahan Cutout · Fakta &amp; Komedi v4</summary><p className="mt-2 whitespace-pre-wrap leading-relaxed text-muted">{CUTOUT_FACT_PRODUCTION_RULES}</p><p className="mt-3 leading-relaxed text-muted">Pemeriksaan struktur dan sampel frame membantu menilai hasil. Kesesuaian era, identitas, kontak sepanjang gerak, dan humor tetap perlu ditinjau. Aset atau klip khusus yang kurang ditampilkan pada hasil proses.</p></details>}
     <label className="flex flex-col gap-1.5 text-[13px]">Arahan untuk Codex<textarea aria-label="Arahan edit otomatis" className={cx(inputCls, 'min-h-36 resize-y text-[13px] leading-relaxed')} value={instruction} maxLength={6000} disabled={busy || running} onChange={e => setInstruction(e.target.value)} /></label>
     <p className="text-xs leading-relaxed text-muted">{production.enabled?'Aset baru dibuat sebagai layer/pose terpisah sesuai narasi. Foto utuh tidak otomatis menjadi rig. Komposisi diterapkan setelah semua tahap selesai; jika gagal atau dibatalkan, aset yang selesai tetap tersedia.':'Gunakan aset tokoh, properti, pose dan SFX yang sudah tersedia. Gambar utuh perlu aset terpisah untuk gerak per objek.'}</p>
     <Button size="sm" variant="primary" icon={<Sparkles className="size-4" />} loading={busy} disabled={running || !status?.codexReady || !instruction.trim() || (scope === 'clip' && !clip)} onClick={() => void run()}>{specialClips.enabled?'Produksi klip khusus & edit otomatis':production.enabled?'Generate aset & edit otomatis':'Edit otomatis dengan Codex'}</Button>

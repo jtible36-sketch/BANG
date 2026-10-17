@@ -97,7 +97,7 @@ Generasi dapat memakai kuota atau kredit layanan. Batas jumlah aset dan kredit d
 
 Preset ini ditujukan untuk explainer kolase fotografis: lokasi realistis, karakter dan properti yang jelas, aksi mengikuti narasi, lalu reaksi atau ironi yang relevan.
 
-Preset bawaan baru menggunakan **v3**. Protokol narasi juga diterapkan saat preset bawaan lama dijalankan, tanpa menimpa master kustom. Bagian naskah mengikuti pikiran yang utuh; shot visual dan pergantian pose direncanakan kemudian mengikuti timing suara. Bagian naskah tidak harus menjadi satu kalimat tujuh kata atau satu shot berdurasi tetap.
+Preset bawaan baru menggunakan **v4**. Protokol narasi juga diterapkan saat preset bawaan lama dijalankan, tanpa menimpa master kustom. Bagian naskah mengikuti pikiran yang utuh; shot visual dan pergantian pose direncanakan kemudian mengikuti timing suara. Bagian naskah tidak harus menjadi satu kalimat tujuh kata atau satu shot berdurasi tetap.
 
 ### Produksi yang disarankan
 
@@ -138,6 +138,10 @@ Panel **Produksi → Edit otomatis** menyediakan dua cakupan:
 - **Klip terpilih:** mengatur komposisi klip tersebut; klip lain dan pengaturan editor global tidak ikut diperbaiki.
 
 Aktifkan **Generate aset yang dibutuhkan dan susun Cutout** jika proses juga perlu membuat aset. Matikan opsi itu untuk bekerja dengan aset yang sudah tersedia. Tentukan provider, format, model/effort penyutradaraan, dan batas produksi sebelum menjalankan.
+
+Arahan **v4** memakai hook visual dalam 3 detik pertama, shot sekitar 2–4 detik mengikuti kata rekaman, hard cut, komposisi fotografis hangat, pose kontekstual, maksimal dua layer bergerak, dan kamera tanpa shake. Semua teks penting tetap dibuat di editor. Panel Edit otomatis menampilkan arahan lengkap.
+
+Pemeriksaan otomatis menolak komposisi foto tunggal, mendeteksi gerak efektif layer serta pegas pada rig, dan menerapkan hard cut serta caption karaoke putih-hijau. Aset atau klip khusus yang kurang dilaporkan. Penilaian era, pose, kontak, amplitudo reaksi, dan kesesuaian narasi masih memerlukan tinjauan visual; bukan semua aturan artistik dapat dibuktikan dari keyframe. Klip khusus memenuhi frame sebagai pengecualian untuk aksi kontinu.
 
 Produksi Cutout pada preset referensi mengambil sampel frame hasil renderer untuk tinjauan visual. Kesalahan tata letak dapat mendapat satu percobaan koreksi. Bila aset atau pose belum mendukung aksi, hasil tidak otomatis dianggap benar hanya karena alpha dan keyframe valid. Sampel frame tetap bukan pemeriksaan seluruh frame atau jaminan kemiripan referensi.
 

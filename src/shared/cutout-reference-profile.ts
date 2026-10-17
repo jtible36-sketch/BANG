@@ -1,4 +1,5 @@
 import type { MasterPromptContext } from './master-prompts'
+import { CUTOUT_FACT_PRODUCTION_RULES } from './cutout-direction-spec'
 
 /** This is a narration section, not a quota of visual shots or generated PNGs. */
 export function isCutoutReference(context: MasterPromptContext): boolean {
@@ -19,8 +20,10 @@ export const CUTOUT_NARRATIVE_PROTOCOL = [
 
 export function cutoutRuntimeStage(context: MasterPromptContext, stage: string): string {
   if (!isCutoutReference(context)) return ''
-  if (stage === 'script') return CUTOUT_NARRATIVE_PROTOCOL
-  if (stage === 'voice') return 'Read the narration as one connected conversational story, not a new announcer introduction at every section. Vary emphasis on the actual action and punchline. Use actual audio alignment for animation; do not automatically retake audio or clone a reference voice.'
+  const current = 'CURRENT CUTOUT V4 DIRECTION: these rules supersede older built-in directing defaults. Apply only to the requested stage; image tasks produce one requested asset, not captions or animation. A narration section may contain several 2–4 second visual shots. Preserve actual voice timing and do not force equal sentence lengths.\n' + CUTOUT_FACT_PRODUCTION_RULES
+  if (stage === 'script') return CUTOUT_NARRATIVE_PROTOCOL + '\n\n' + current
+  if (stage === 'visual' || stage === 'video') return current
+  if (stage === 'voice') return 'Read the narration as one connected conversational story, not a new announcer introduction at every section. Vary emphasis on the actual action and punchline. Use actual audio alignment for animation; do not automatically retake audio or clone a reference voice.\n\n' + current
   return ''
 }
 

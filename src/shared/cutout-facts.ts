@@ -1,3 +1,5 @@
+import { CUTOUT_FACT_PRODUCTION_RULES } from './cutout-direction-spec'
+export { CUTOUT_FACT_PRODUCTION_RULES } from './cutout-direction-spec'
 /** Photographic explainer direction derived from the reviewed short-video references. */
 export const CUTOUT_FACT_STYLE_ID = 'cutout-facts'
 export const CUTOUT_FACT_NAME = 'Cutout · Fakta & Komedi'
@@ -5,7 +7,7 @@ export const CUTOUT_FACT_NAME = 'Cutout · Fakta & Komedi'
 export const CUTOUT_FACT_STYLE = [
   'Full-color photographic cutout explainer, a realistic environment filling the frame with clearly separated far background, midground, character, functional props and an occluding foreground when relevant. Photographic people and real material textures, clean masks, coherent perspective, matched light and grounded contact shadows; readable 2.5D depth without a paper scrapbook border.',
   'Each scene depicts a specific action and a context-appropriate reaction from the narration. Preserve the approved reference identity, costume and body proportions while changing pose, gaze and facial expression. Use an expressive medium or full shot with space for a purposeful close-up. Props explain the mechanism rather than decorate the image.',
-  'Choose location-specific colors: natural blue sky and golden fields for an outdoor story, muted olive and gray for historical conflict, earth and brick for inventions, or clean clinical blue and pink anatomical diagrams for medical technology. These are contextual options, not a mandatory palette for every scene.',
+  'Use a warm cinematic grade and dramatic coherent lighting without obscuring mechanism/medical detail. Choose location-specific colors: natural blue sky and golden fields for an outdoor story, muted olive and gray for historical conflict, earth and brick for inventions, or clean clinical blue and pink anatomical diagrams for medical technology. These are contextual options, not a mandatory palette for every scene.',
   'Human anatomy and faces remain photographic; medical cutaways are recognizable semi-realistic explanatory diagrams without cartoon eyes or mouths. Generated reconstructions are illustrations, never authentic archival or medical evidence. No automatic sepia, halftone newsprint, torn paper edges, plastic 3D faces, stick figures or title-card slideshow. No text, letters, captions, labels, watermark or logo baked into the generated image.'
 ].join('\n')
 
@@ -24,7 +26,9 @@ export const CUTOUT_FACT_DIRECTION = [
   'Gerak: satu aksi utama per shot; objek masuk/keluar, berpindah, sedikit berputar/membesar. Ganti pose pada perubahan kata kerja, arah pandang, keadaan atau emosi; sediakan pose awal, aksi, dan reaksi yang dibutuhkan, dengan humor relevan dari situasi. Jangan mengganti pose netral dengan zoom/bobbing berulang. Background dan foreground tidak selalu bergerak serempak; gunakan depth/parallax hanya jika layer terpisah tersedia. Jangan membuat semua layer terus bergerak.',
   'Kontak dan occlusion: tentukan tangan memegang apa, kaki menapak di mana, bagian tubuh yang tertutup, serta kapan kontak lepas/pasang. Letakkan foreground di depan dan gunakan mask bila ada occlusion; mask dapat diberi keyframe posisi/ukuran/titik/feather (linear/hold), tetapi tidak otomatis melacak bentuk. IK dua tulang hanya untuk anggota tubuh yang sudah dipisah, panjang/pivot yang disetel, dan target yang diperiksa. Ikat target pada properti bergerak bila perlu. Foto utuh tidak otomatis menjadi rig. Pose swap yang koheren lebih baik daripada memaksakan tekukan anggota tubuh dari satu gambar.',
   'Medis: gunakan anatomi semi realistis seperti referensi, tanpa mata/mulut pada organ kecuali sengaja diminta pengguna. Diagram harus jelas dan isi diperiksa; jangan mengklaim sudah diverifikasi bila belum. Ilustrasi rekonstruksi bukan dokumentasi peristiwa asli. Untuk aksi rumit, tulisan tangan, organ terdeformasi atau footage presenter, siapkan klip/aset khusus. Generator video: satu aksi utama per shot. Jangan menyimulasikan tulisan tangan, deformasi organ atau ucapan kontinu hanya dengan memutar gambar datar.',
-  'Sebelum menyusun komposisi, petakan rentang narasi, lokasi, aksi, fokus, pose awal/akhir, reaksi, properti, bagian tertutup, framing dan cue SFX dalam field yang diizinkan skema. Gunakan hanya aset dan kemampuan yang tersedia; laporkan kebutuhan klip/pose khusus yang belum ada pada ringkasan, jangan mengklaim sudah dibuat. Caption/label tetap di editor. Periksa identitas, alpha, kontak tangan/kaki, keterbacaan diagram dan reaksi dengan VO sebelum ekspor.'
+  'Sebelum menyusun komposisi, petakan rentang narasi, lokasi, aksi, fokus, pose awal/akhir, reaksi, properti, bagian tertutup, framing dan cue SFX dalam field yang diizinkan skema. Gunakan hanya aset dan kemampuan yang tersedia; laporkan kebutuhan klip/pose khusus yang belum ada pada ringkasan, jangan mengklaim sudah dibuat. Caption/label tetap di editor. Periksa identitas, alpha, kontak tangan/kaki, keterbacaan diagram dan reaksi dengan VO sebelum ekspor.',
+  'CURRENT V4 OVERRIDE: apply these latest directing rules when earlier reference recipes differ. Visual shots are distinct from longer narration sections; preserve recorded timing. Internal hard cuts require hold keys for camera/pose/state at shot boundaries, never an interpolated drift between framings. For fractional audio duration, shot JSON ends at floor(durationMs); the final state holds over the sub-millisecond remainder without changing the recording. A dedicated full-frame special clip is the explicit exception to PNG layering; do not add dummy transparent layers to pretend it is a rig. Each required generated item still needs visible review before adoption.',
+  CUTOUT_FACT_PRODUCTION_RULES
 ].join('\n\n')
 
 export function cutoutReferenceDirection(styleId: string): string {
@@ -58,22 +62,4 @@ export const CUTOUT_FACT_STAGES = {
 }
 
 /** Original production direction, preserved separately from the adapted stage prompts. */
-export const CUTOUT_FACT_SOURCE = `ARAH PRODUKSI — EXPLAINER KOLASE FOTOGRAFIS VERTIKAL
-
-Gunakan identitas dan cerita proyek. Jadikan referensi sebagai bahasa visual dan ritme; susun adegan baru sesuai narasi. Tidak ada jaminan hasil identik.
-
-Format 9:16; komposisi foto realistis berwarna; caption putih dengan sorotan hijau dan tepi gelap dekat bawah. Label nama/fakta putih-hitam, tahun kuning bertepi kontras. Semua teks penting dibuat di editor, bukan dibakar generator gambar.
-
-Naskah: hook konkret, konteks singkat, sebab-akibat, hasil, lalu reaksi/ironi yang relevan. Sekitar 2,6–3,2 kata/detik sebagai titik awal; durasi mengikuti rekaman aktual. Verifikasi fakta sebelum menerbitkan cerita baru.
-
-Setiap shot harus mencatat: rentang narasi, lokasi, satu aksi utama, objek fokus, pose awal/akhir, reaksi, properti, bagian yang tertutup, kamera, caption/label dan cue SFX. Timestamp gerak mengikuti timing narasi aktual; jangan menebak dari jumlah kata saja.
-
-Aset terpisah: background tanpa tokoh; karakter dengan pose yang diperlukan; properti; bagian tubuh hanya bila memakai rig; foreground. Gunakan PNG/WebP dengan alpha nyata untuk objek. Foto utuh tidak otomatis dipecah menjadi semua layer; rencana aset bukan bukti bahwa aset sudah tersedia.
-
-Gerak: satu aksi utama per shot; objek masuk/keluar, berpindah, sedikit berputar/membesar; ganti pose pada perubahan kata kerja/emosi. Kamera mendekat singkat untuk reaksi; beri framing lebar untuk orientasi ruang. Background dan foreground tidak selalu bergerak serempak. Gunakan mask bila ada occlusion. IK dua tulang untuk anggota tubuh yang telah dipisah dan pivot yang disetel; jangan mengharapkan auto-rig dari satu foto.
-
-Medis: anatomi semi realistis seperti referensi, tanpa mata/mulut pada organ kecuali sengaja diminta. Diagram harus jelas dan isi diperiksa. Ilustrasi rekonstruksi tidak disebut dokumentasi asli. Untuk aksi rumit, tulisan tangan, organ terdeformasi atau footage presenter, siapkan klip/aset khusus; generator video satu aksi per shot.
-
-Urutan Naraflow: selesaikan naskah dan suara → sinkronkan timing → Cutout: Susun kebutuhan dari narasi → generate aset per item/antrean → tinjau alpha, identitas dan pose → tambah sebagai layer/pose → atur keyframe/mask/IK → Edit otomatis lingkup proyek memakai aset tersedia → tinjau reaksi, caption dan SFX → ekspor 5–10 detik uji → perbaiki → ekspor final. Tahap-tahap ini belum menjadi satu tombol referensi-ke-video.
-
-Audio video impor dibisukan pada jalur ekspor visual yang diaudit. Bila suara aslinya dibutuhkan, siapkan rekaman sebagai track audio terpisah. Narasi TTS bukan klon otomatis suara referensi. Musik di bawah narasi; SFX sesuai aksi dan memakai aset audio yang tersedia.`
+export const CUTOUT_FACT_SOURCE = CUTOUT_FACT_PRODUCTION_RULES

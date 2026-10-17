@@ -66,12 +66,19 @@ export function bakeCutoutFrames(scene: CutoutScene, durationMs: number, fps: 30
   const count=Math.ceil(durationMs*fps/1000)
   if(count>CUTOUT_LIMITS.keys)throw new Error(`Klip terlalu panjang untuk keyframe ${fps} fps. Pisahkan klip atau pilih keyframe utama.`)
   const times=Array.from({length:count},(_,i)=>Math.round(i*1000/fps)),result=structuredClone(scene)
+  // A destination hold key is a discontinuity, not a curve to interpolate over.
+  // Retain its exact timestamp (including off-grid shot cuts) and held intervals.
+  const track=(keys:{timeMs:number;easing:string}[])=>{
+    const at=[...new Set([...times,...keys.filter(k=>k.timeMs<=durationMs).map(k=>k.timeMs)])].filter(t=>t<=durationMs).sort((a,b)=>a-b)
+    if(at.length>CUTOUT_LIMITS.keys)throw new Error('Klip terlalu padat untuk menyimpan batas hold dan keyframe. Pisahkan klip atau pilih keyframe utama.')
+    return at.map(timeMs=>({timeMs,easing:keys.find(k=>k.timeMs>=timeMs)?.easing==='hold'?'hold' as const:'linear' as const}))
+  }
   for(const layer of result.layers)if(layer.keyframes.length){
     const source=scene.layers.find(l=>l.id===layer.id)!
-    layer.keyframes=times.map((timeMs,i)=>({id:`frame-${i}`,timeMs,transform:cutoutTransformAt(source,timeMs),easing:'linear'}))
+    layer.keyframes=track(source.keyframes).map(({timeMs,easing},i)=>({id:`frame-${i}`,timeMs,transform:cutoutTransformAt(source,timeMs),easing}))
   }
-  if(scene.camera.keyframes.length)result.camera.keyframes=times.map((timeMs,i)=>({id:`camera-${i}`,timeMs,...cutoutCameraAt(scene.camera,timeMs),easing:'linear'}))
-  result.ik=result.ik?.map((chain,index)=>chain.keyframes.length?{...chain,keyframes:times.map((timeMs,i)=>({id:`ik-${i}`,timeMs,...cutoutIkAt(scene.ik![index],timeMs),easing:'linear'}))}:chain)
+  if(scene.camera.keyframes.length)result.camera.keyframes=track(scene.camera.keyframes).map(({timeMs,easing},i)=>({id:`camera-${i}`,timeMs,...cutoutCameraAt(scene.camera,timeMs),easing}))
+  result.ik=result.ik?.map((chain,index)=>chain.keyframes.length?{...chain,keyframes:track(chain.keyframes).map(({timeMs,easing},i)=>({id:`ik-${i}`,timeMs,...cutoutIkAt(scene.ik![index],timeMs),easing}))}:chain)
   return normalizeCutoutScene(result)!
 }
 
