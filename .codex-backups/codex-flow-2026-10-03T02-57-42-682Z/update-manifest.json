@@ -1,0 +1,647 @@
+{
+  "sourceRoot": "C:\\Users\\deathscythe hell\\Documents\\ChatGPT\\bang story\\app",
+  "targetRoot": "E:\\BANG",
+  "backupName": "codex-flow-2026-10-03T02-57-42-682Z",
+  "changes": [
+    {
+      "relativePath": "README.md",
+      "originalHash": "570751c9dd136968915ef7613e3895a8ff8bdbdc6c82476f1ff27ed3042177e0",
+      "sourceHash": "e7fc7e14df80000dc4203b17f507989a720094354261f46f4a7d973b7d3e2b9c"
+    },
+    {
+      "relativePath": "electron-builder.yml",
+      "originalHash": "91438ef600c591016fbc8548b577e07d5bb4cea1f41991368141a94507de41bc",
+      "sourceHash": "df59434d5ce979a68c31a77a1467bf040a99496e7a390d489c65e41fa276ff58"
+    },
+    {
+      "relativePath": "src\\main\\codex-generation.ts",
+      "originalHash": "c80505555909939f5ede661002beb3e7d3dff7569a78d7f3d0349ddc7a8f7cc7",
+      "sourceHash": "b8e67bead40f38475e8f8b3a5143a0bbe48194218c1c3962309ed1bfe591f01b"
+    },
+    {
+      "relativePath": "src\\main\\health-library.ts",
+      "originalHash": null,
+      "sourceHash": "86ad45e22f3d0c0151dc6ab49a931314f19174a1fab9ebec41732d2e1792d803"
+    },
+    {
+      "relativePath": "src\\main\\ipc.ts",
+      "originalHash": "9f6af34e78cc408e00a22bf084bf63277373346d9d126ea9ad6030c074707fca",
+      "sourceHash": "9ec2479a265efc1e3dc9c33b4ea7942384bf6cefadc80817e1bf86404f19b602"
+    },
+    {
+      "relativePath": "src\\main\\media-import.ts",
+      "originalHash": "220ca03c8be0b3deaa545e95f075af3187c731d90894283cbe4d7c42c4293f1a",
+      "sourceHash": "a85725bf8c338f999a7585c56aa371ddd9af66802c2a7b2bf8cd7c293b55b811"
+    },
+    {
+      "relativePath": "src\\main\\protocol.ts",
+      "originalHash": "f2182d923ff55d293d8327a8158e0413ec53eacc2b212df7d0a049f24bc1cda8",
+      "sourceHash": "a64f8d5463072fe9bf0e13209462ab42bf3dfcd7fbba90232eb75d520bca3c41"
+    },
+    {
+      "relativePath": "src\\main\\story.ts",
+      "originalHash": "ffa6c89f4fb7f6d7b37783f37eedd56d6848aa9f38e0107aa94d0856c3456dcb",
+      "sourceHash": "92f4b2d9215dd5b036d65e108a42c775af645267fd614956078695992dd155a5"
+    },
+    {
+      "relativePath": "src\\preload\\index.ts",
+      "originalHash": "dacb014ba766705c18b6712cad45c939eefb4d6b5e6e77075b2d1ddbb8b90e55",
+      "sourceHash": "d1a782b8444a3381f9e62b77b7009b587aae7950723c0e1090d0993d73367905"
+    },
+    {
+      "relativePath": "src\\renderer\\src\\pages\\project\\CharacterModal.tsx",
+      "originalHash": "ba72de84dfa0ffe7911e85df605d4d0e6f687f780f7330a838b95e290a216dbb",
+      "sourceHash": "26ac9dc5ebca58e069c8b3d5c8c7d1a2b95e4e87e1d9efcc9caabc011d7bb4e0"
+    },
+    {
+      "relativePath": "src\\renderer\\src\\pages\\project\\HealthCharacterLibrary.tsx",
+      "originalHash": null,
+      "sourceHash": "d67040a62436fe1df860925324b9dc8c25fe2a9a12f7ce854df41aa0740d8012"
+    },
+    {
+      "relativePath": "src\\renderer\\src\\pages\\project\\IdeaStep.tsx",
+      "originalHash": "b50e2ae8d6ceba61236657925700a7fb55f1782e51aeb52dec510de5a997a42f",
+      "sourceHash": "a5e64f02c42178f1ab43dedd36e19065d8b06f812f777f312138e02e4ff3814a"
+    },
+    {
+      "relativePath": "src\\shared\\api.ts",
+      "originalHash": "16608d4e5e519b3d6d606f5a04cd450acc284c686fc7b24947ae9ceb1f66556a",
+      "sourceHash": "939d9f0bb8abe453a999c287308d1af0cfd722478f8183ba8adc996a02491da8"
+    },
+    {
+      "relativePath": "src\\shared\\external-prompts.ts",
+      "originalHash": "3c46196deb2b122dc8278dcf8123018848fce299247567c06a8fb88bbaf70d33",
+      "sourceHash": "f8f0010752c47d86573c94dfc336fe00d31891d3dde7efafd57a6012ce8f39f9"
+    },
+    {
+      "relativePath": "src\\shared\\health-library.ts",
+      "originalHash": null,
+      "sourceHash": "c0566ce077f2be6bf007b15d3f26fc5941f7b923cae224c2ff1fd0feb39fb8ba"
+    },
+    {
+      "relativePath": "src\\shared\\skill-styles.ts",
+      "originalHash": "9591a476847307cb7716a10b74646c408ba027ecbdc5ec185af52e4667e76872",
+      "sourceHash": "7474080aea295f54341292c7bba9089b49b0f9e8c1a3308c3aa43c06b13cea25"
+    },
+    {
+      "relativePath": "src\\shared\\skills.ts",
+      "originalHash": "1ed6aa7f7df0414d2259bb65ca88b838b79b10d6498b9d9cd6836b1c33c32e15",
+      "sourceHash": "258dc38bdcb1ea77e3590aca75967b6b5d341636b1763ea387b6e7a397971b82"
+    },
+    {
+      "relativePath": "out\\main\\index.js",
+      "originalHash": "35c56ba909852d98128620add941ea06390843794f55bd138c3c3e25bd34f297",
+      "sourceHash": "876e47d5f2ca6cebac6cc6229ca8563dc51c5f604259b7611d1f6296a0d24d86"
+    },
+    {
+      "relativePath": "out\\preload\\index.js",
+      "originalHash": "667562c3f001206fa62eec5e48dc55cf7e5ef0f0436ff5dc3f102f7176fa162e",
+      "sourceHash": "7a9c9c438445403907cee9b7f502000cf2f8e4d3938849ab7548c32d6e25b3ff"
+    },
+    {
+      "relativePath": "out\\renderer\\assets\\index-Cn04edUK.css",
+      "originalHash": null,
+      "sourceHash": "34632d3cf3d86ac1be4879dfbfa6586e4bf956338199ef37b0d84c1048ce23cd"
+    },
+    {
+      "relativePath": "out\\renderer\\assets\\index-J1FOMCxh.js",
+      "originalHash": null,
+      "sourceHash": "f4ad2b4fbef3117cda391178f845a892b45645428ecf05c36435ea864530c65e"
+    },
+    {
+      "relativePath": "out\\renderer\\index.html",
+      "originalHash": "7b0fc02845db9143dbd73e2d1af5ea2a0aad937f066d0aea965e9816452a91cd",
+      "sourceHash": "669e6eaae2fb26cc67f43a989dd3f021b81ba588a737d4aaf7bb97fd6c44a92d"
+    },
+    {
+      "relativePath": "resources\\health-characters\\catalog.json",
+      "originalHash": null,
+      "sourceHash": "d931c604377433f4d70e3834968ea851fee5e924c2aa32097014d12cc080f5fc"
+    },
+    {
+      "relativePath": "resources\\health-characters\\jaringan-sel\\37-eritrosit.png",
+      "originalHash": null,
+      "sourceHash": "0cc3bd5e720d41d2472d3b3ce72efec3acaa39440c3c40e543fb66b09a7f165a"
+    },
+    {
+      "relativePath": "resources\\health-characters\\jaringan-sel\\38-trombosit.png",
+      "originalHash": null,
+      "sourceHash": "386671f0c170bf720fa09771cdb55933659ec38b1c633935f892228fb436e040"
+    },
+    {
+      "relativePath": "resources\\health-characters\\jaringan-sel\\39-neutrofil.png",
+      "originalHash": null,
+      "sourceHash": "644731c9ec60a28494963c74e14928fec851244a5482e2a137fb6414346a3390"
+    },
+    {
+      "relativePath": "resources\\health-characters\\jaringan-sel\\40-eosinofil.png",
+      "originalHash": null,
+      "sourceHash": "ae13dd0b7b9bae5f89dd54a21b94804a4c7c7171b89ebfa5e6914ff395a4cadb"
+    },
+    {
+      "relativePath": "resources\\health-characters\\jaringan-sel\\41-basofil.png",
+      "originalHash": null,
+      "sourceHash": "d714eb67eaa5cbeaf2222eb83bffd11b51a8239a8ca4354cbb15d8b38873c2b0"
+    },
+    {
+      "relativePath": "resources\\health-characters\\jaringan-sel\\42-monosit.png",
+      "originalHash": null,
+      "sourceHash": "bdae85a872ea34be3925d7fc387fc1712150ed69bbe2c30645b0d1d37cbbca90"
+    },
+    {
+      "relativePath": "resources\\health-characters\\jaringan-sel\\43-limfosit-b.png",
+      "originalHash": null,
+      "sourceHash": "4034eedd09056fe70df62b1f3c81360019016dcf904b94459173d7bf10d6d2c8"
+    },
+    {
+      "relativePath": "resources\\health-characters\\jaringan-sel\\44-limfosit-t.png",
+      "originalHash": null,
+      "sourceHash": "92e5ff275e01a57b1dc3472cfd0f0edc6535dd0642c578f07eccb65e23f2256b"
+    },
+    {
+      "relativePath": "resources\\health-characters\\jaringan-sel\\45-sel-nk.png",
+      "originalHash": null,
+      "sourceHash": "defb1c4b60c55eae71318bfa3cd60b140275accd01935c0ec590a7e8dc9445c6"
+    },
+    {
+      "relativePath": "resources\\health-characters\\jaringan-sel\\46-makrofag.png",
+      "originalHash": null,
+      "sourceHash": "b6075f68dbe49277af22c28bf806eeee2a5d59f2029e597548012c33b23f32b2"
+    },
+    {
+      "relativePath": "resources\\health-characters\\jaringan-sel\\47-sel-dendritik.png",
+      "originalHash": null,
+      "sourceHash": "158cc5e68d8294d415989080a608cb220c82a287ca3a574a958cfac1e672e2b7"
+    },
+    {
+      "relativePath": "resources\\health-characters\\jaringan-sel\\48-sel-mast.png",
+      "originalHash": null,
+      "sourceHash": "478742b49dca9a4457aaad504a06daf6bca42609d1157126e9a9e534d640caaa"
+    },
+    {
+      "relativePath": "resources\\health-characters\\jaringan-sel\\49-sel-plasma.png",
+      "originalHash": null,
+      "sourceHash": "fd5972cfc6a118fdedf47413da0c871f4cdce813c6af110a929db2a0975d8960"
+    },
+    {
+      "relativePath": "resources\\health-characters\\jaringan-sel\\50-sel-punca-darah.png",
+      "originalHash": null,
+      "sourceHash": "81009692c45fa4e343aff947ab1d66e2d257c2c2a50f36e7643d45b58baadcf6"
+    },
+    {
+      "relativePath": "resources\\health-characters\\jaringan-sel\\51-epitel-pipih.png",
+      "originalHash": null,
+      "sourceHash": "681a09a047eaffa628efb4c8a8f511ba3b979d0a79fcf56da09fc68fcf4dfccf"
+    },
+    {
+      "relativePath": "resources\\health-characters\\jaringan-sel\\52-epitel-bersilia.png",
+      "originalHash": null,
+      "sourceHash": "79db2f377c387cd1f8ea080a16a35007a2d4e33f620d3b6b9879adc9feba26b3"
+    },
+    {
+      "relativePath": "resources\\health-characters\\jaringan-sel\\53-ikat-longgar.png",
+      "originalHash": null,
+      "sourceHash": "601ee7c70b9c3f85de26c57344b792704a5fef8a004c02907d03b431eaea7c34"
+    },
+    {
+      "relativePath": "resources\\health-characters\\jaringan-sel\\54-ikat-padat.png",
+      "originalHash": null,
+      "sourceHash": "0f4dd1911e085b60c1060adaebbd76feb6ae9207272f64ca4b33d5f4e2cf8f2c"
+    },
+    {
+      "relativePath": "resources\\health-characters\\jaringan-sel\\55-jaringan-adiposa.png",
+      "originalHash": null,
+      "sourceHash": "99c7c19f03ecf08fc0a8aa9f8d58002ad6a08b1f6cbe60737389cb3f8757deb6"
+    },
+    {
+      "relativePath": "resources\\health-characters\\jaringan-sel\\56-tulang-rawan-hialin.png",
+      "originalHash": null,
+      "sourceHash": "facacf3cff1272a9812812fcfb14b1b549f511d8a10176836860d4c70c288ccd"
+    },
+    {
+      "relativePath": "resources\\health-characters\\jaringan-sel\\57-tulang-kompak.png",
+      "originalHash": null,
+      "sourceHash": "80a1671dca5375fe8b4ff7592192ea7f03c0b4cd5f280778e13dcdbec16801fe"
+    },
+    {
+      "relativePath": "resources\\health-characters\\jaringan-sel\\58-jaringan-otot-rangka.png",
+      "originalHash": null,
+      "sourceHash": "d4d4b985bf6049aad356eb93065073258bc98b768b9088439b2ab69e1c47caa9"
+    },
+    {
+      "relativePath": "resources\\health-characters\\jaringan-sel\\59-jaringan-otot-polos.png",
+      "originalHash": null,
+      "sourceHash": "6ee9f5739e8b6ecc5de62e8b2209ea90525fc4afea49786f973fa8640c963f6d"
+    },
+    {
+      "relativePath": "resources\\health-characters\\jaringan-sel\\60-jaringan-otot-jantung.png",
+      "originalHash": null,
+      "sourceHash": "a22ff9d664a798708abf80777a8bbb484767b945f63430cac1c20e8b641b1874"
+    },
+    {
+      "relativePath": "resources\\health-characters\\jaringan-sel\\61-jaringan-saraf.png",
+      "originalHash": null,
+      "sourceHash": "6ce70529b17c2ee4ddbb9501481d7f65ba4ca5fb9875ae24ef982b9912463773"
+    },
+    {
+      "relativePath": "resources\\health-characters\\jaringan-sel\\62-sumsum-tulang-merah.png",
+      "originalHash": null,
+      "sourceHash": "6f51ce8f6425bd7b8ed1c51d7cadef17ea4a2948653e3f35d7ad7a6c220b80ef"
+    },
+    {
+      "relativePath": "resources\\health-characters\\jaringan-sel\\63-neuron.png",
+      "originalHash": null,
+      "sourceHash": "e22bf18f0ab2d4b8373c65b39172ceda2d2628b1844892f5a5cc9ab068704a03"
+    },
+    {
+      "relativePath": "resources\\health-characters\\jaringan-sel\\64-astrosit.png",
+      "originalHash": null,
+      "sourceHash": "01a0d2aceb42f33468331e081bf10db191a5268973999090dce348903f72097f"
+    },
+    {
+      "relativePath": "resources\\health-characters\\jaringan-sel\\65-mikroglia.png",
+      "originalHash": null,
+      "sourceHash": "05b021ef0785936b3d68b1cb520a78a5c87e28d4ccab8e68b803d2093d2babc9"
+    },
+    {
+      "relativePath": "resources\\health-characters\\jaringan-sel\\66-oligodendrosit.png",
+      "originalHash": null,
+      "sourceHash": "fc803a1ca79cfd7c9b6eb11b302450212c9b8d59c8d4f2de175ca39859dc10bd"
+    },
+    {
+      "relativePath": "resources\\health-characters\\jaringan-sel\\67-sel-schwann.png",
+      "originalHash": null,
+      "sourceHash": "ece3fd93baedfaff0d7f0161e8c018d516ad7f4c1514267be5ae9dcaef23c0e4"
+    },
+    {
+      "relativePath": "resources\\health-characters\\jaringan-sel\\68-fibroblas.png",
+      "originalHash": null,
+      "sourceHash": "48044808e1f0cc9a70e4111d6df0e58baa9333eb1dc3da8a90bf593b57224648"
+    },
+    {
+      "relativePath": "resources\\health-characters\\jaringan-sel\\69-adiposit.png",
+      "originalHash": null,
+      "sourceHash": "a3f1fc06b792b14cba26698be0ca36228fdfc5b286549149e89484467bcc79e6"
+    },
+    {
+      "relativePath": "resources\\health-characters\\jaringan-sel\\70-osteoblas.png",
+      "originalHash": null,
+      "sourceHash": "53a34cb4e278d94789033fe3cf557df1d6eaa591d169386cb45773ecfa405eee"
+    },
+    {
+      "relativePath": "resources\\health-characters\\jaringan-sel\\71-osteoklas.png",
+      "originalHash": null,
+      "sourceHash": "76eaa00ff22460a4c0f3388635a5fb5fa588639d86f42a52bcb8732bf94be0c2"
+    },
+    {
+      "relativePath": "resources\\health-characters\\jaringan-sel\\72-kondrosit.png",
+      "originalHash": null,
+      "sourceHash": "7ddafec535620590b171f85f40a2ae3b82254a42404425f7bfd29d0714c0450a"
+    },
+    {
+      "relativePath": "resources\\health-characters\\jaringan-sel\\73-sel-endotel.png",
+      "originalHash": null,
+      "sourceHash": "715f59a743a3b6f3b1a3ce7703624dbcdda63ba05d21080082b80acba40803e5"
+    },
+    {
+      "relativePath": "resources\\health-characters\\jaringan-sel\\74-hepatosit.png",
+      "originalHash": null,
+      "sourceHash": "6e4400c1529bdbc9775db8718c0cdf4ebf93d4c07a5dcc3ab7a73018cf3d69a8"
+    },
+    {
+      "relativePath": "resources\\health-characters\\jaringan-sel\\75-sel-beta-pankreas.png",
+      "originalHash": null,
+      "sourceHash": "d6b235731402530da1d748ab946f527fc79400bb8fbeba04aa4eab021d36f8cb"
+    },
+    {
+      "relativePath": "resources\\health-characters\\jaringan-sel\\76-podosit.png",
+      "originalHash": null,
+      "sourceHash": "5d7e9ad5f4b425613ca198108718f4d95ab323f73f6f0d6fd26dd5d0281f223b"
+    },
+    {
+      "relativePath": "resources\\health-characters\\organ-tambahan\\100-vesikula-seminalis.png",
+      "originalHash": null,
+      "sourceHash": "37adda596e43a38c9b06e222fc155a4778d631d0ee6cbc69b5eeaf4b849ac085"
+    },
+    {
+      "relativePath": "resources\\health-characters\\organ-tambahan\\77-kelenjar-pineal.png",
+      "originalHash": null,
+      "sourceHash": "b5f9a9a07cf7e852fdc10d586e0bbe71edcd82481a6512b7eafe72efb4d84fa5"
+    },
+    {
+      "relativePath": "resources\\health-characters\\organ-tambahan\\78-kelenjar-paratiroid.png",
+      "originalHash": null,
+      "sourceHash": "1541c81ba319b43935e7203abf0961c1152ef32ecc47cf551de4c7f38e4206c4"
+    },
+    {
+      "relativePath": "resources\\health-characters\\organ-tambahan\\79-kelenjar-lakrimal.png",
+      "originalHash": null,
+      "sourceHash": "4385c2ec2912b8b5be0ea350c8633a9be44b83de1d4e720b3db42f374f2be33a"
+    },
+    {
+      "relativePath": "resources\\health-characters\\organ-tambahan\\80-tonsil-palatina.png",
+      "originalHash": null,
+      "sourceHash": "30e6d6eb5b82785e0c1714ca616c4978c1b310724915ce27f53617651540b5c6"
+    },
+    {
+      "relativePath": "resources\\health-characters\\organ-tambahan\\81-kelenjar-mamae.png",
+      "originalHash": null,
+      "sourceHash": "771efc4d50844eacb1b1b3d0239a904a93e804cfe3b97c893bd94c39be0817e9"
+    },
+    {
+      "relativePath": "resources\\health-characters\\organ-tambahan\\82-faring.png",
+      "originalHash": null,
+      "sourceHash": "72f84e3aa0b9e08fa05608e2f9546582f44f0f8fdecf8f56960e330faa17ee7a"
+    },
+    {
+      "relativePath": "resources\\health-characters\\organ-tambahan\\83-epiglotis.png",
+      "originalHash": null,
+      "sourceHash": "6a80a518c12ad6f96f4b80b5214f24bba8c1aafa9d92c91611c1c104e2882dac"
+    },
+    {
+      "relativePath": "resources\\health-characters\\organ-tambahan\\84-bronkus.png",
+      "originalHash": null,
+      "sourceHash": "19dff7fad32ee58a82f7a4c6996909abe0802f7fef9d99df9676434e53afec0c"
+    },
+    {
+      "relativePath": "resources\\health-characters\\organ-tambahan\\85-alveolus.png",
+      "originalHash": null,
+      "sourceHash": "445fd5409294e5d9f296cba33d5a349408b54dd734115863e4a7bd2d00ede2d3"
+    },
+    {
+      "relativePath": "resources\\health-characters\\organ-tambahan\\86-kelenjar-getah-bening.png",
+      "originalHash": null,
+      "sourceHash": "0e32a43a43a71a29f6aee97eef336e2141c9d832dc001df8c22c96239c5c2f0b"
+    },
+    {
+      "relativePath": "resources\\health-characters\\organ-tambahan\\87-pembuluh-limfa.png",
+      "originalHash": null,
+      "sourceHash": "36679bafd6fec43d11655fec4e831d0da2d0a5751b8dffee2e2902be9c5114cf"
+    },
+    {
+      "relativePath": "resources\\health-characters\\organ-tambahan\\88-aorta.png",
+      "originalHash": null,
+      "sourceHash": "00400fcef3838bbdd9d6679a51931324eb9602507241bce73a2c7982e075c074"
+    },
+    {
+      "relativePath": "resources\\health-characters\\organ-tambahan\\89-arteri.png",
+      "originalHash": null,
+      "sourceHash": "534ed0707b1a29a5d5a6be49d607a57e088d806129701b513478bf7915724fa5"
+    },
+    {
+      "relativePath": "resources\\health-characters\\organ-tambahan\\90-vena.png",
+      "originalHash": null,
+      "sourceHash": "349516e489219a49cf0d398ba7c39d403eb1ab6009e38f4fd5ef939089b5a006"
+    },
+    {
+      "relativePath": "resources\\health-characters\\organ-tambahan\\91-kapiler-darah.png",
+      "originalHash": null,
+      "sourceHash": "bb1e5fa343316abbe1983999d37595ec9e88183ff5c039f477ecdbbbb82424c5"
+    },
+    {
+      "relativePath": "resources\\health-characters\\organ-tambahan\\92-ureter.png",
+      "originalHash": null,
+      "sourceHash": "b7d6377038f75f65755f75dd8af14f9d2dd4c091fd3fb846afae163168aa1484"
+    },
+    {
+      "relativePath": "resources\\health-characters\\organ-tambahan\\93-uretra.png",
+      "originalHash": null,
+      "sourceHash": "fd6479880665afb93ef9c2aa5425b1f61a74de1885d89c62204b5cf696dfa7fe"
+    },
+    {
+      "relativePath": "resources\\health-characters\\organ-tambahan\\94-tuba-fallopi.png",
+      "originalHash": null,
+      "sourceHash": "becd88457558dc0f28b4b4189469cda2f87dc2c7c5ff60006e9ffb46c92f48f1"
+    },
+    {
+      "relativePath": "resources\\health-characters\\organ-tambahan\\95-serviks.png",
+      "originalHash": null,
+      "sourceHash": "8025658ff3f3abd279a06d9c4dd487d10cab2fa709d0b2ec706358a2e6cd8123"
+    },
+    {
+      "relativePath": "resources\\health-characters\\organ-tambahan\\96-vagina.png",
+      "originalHash": null,
+      "sourceHash": "890cc9754e7b26206dec48e506a32aa0aba83ddfbc5766379d5f2067b285f7a4"
+    },
+    {
+      "relativePath": "resources\\health-characters\\organ-tambahan\\97-plasenta.png",
+      "originalHash": null,
+      "sourceHash": "f1b8cf96972feb68c7b1dcedb6a3c6cfd92eeb187f38aa37aab20e216b23e922"
+    },
+    {
+      "relativePath": "resources\\health-characters\\organ-tambahan\\98-epididimis.png",
+      "originalHash": null,
+      "sourceHash": "bbb1ba544e75e8918a16e52f4b03e389d29d62c01dbc75b5abc37f0ebc8da3e9"
+    },
+    {
+      "relativePath": "resources\\health-characters\\organ-tambahan\\99-vas-deferens.png",
+      "originalHash": null,
+      "sourceHash": "384feeff96ebc98f513db67c33331d44bf1788dbd453f0ead937dd4c3b12d17e"
+    },
+    {
+      "relativePath": "resources\\health-characters\\organ-terpisah\\01-otak.png",
+      "originalHash": null,
+      "sourceHash": "7f6528d7c67bc8356bf5e503b14752420b920b4cbcc3a244c51097dac589234b"
+    },
+    {
+      "relativePath": "resources\\health-characters\\organ-terpisah\\02-jantung.png",
+      "originalHash": null,
+      "sourceHash": "9c1eb979cc60bcbcca6a84d92d3c614d33ee160aee0d0f812344cd2fd35ae164"
+    },
+    {
+      "relativePath": "resources\\health-characters\\organ-terpisah\\03-paru-paru.png",
+      "originalHash": null,
+      "sourceHash": "5174a169ab362e0c4db4a7de247524cb0d2daa955fafa3c39e72b1904ff201c6"
+    },
+    {
+      "relativePath": "resources\\health-characters\\organ-terpisah\\04-hati.png",
+      "originalHash": null,
+      "sourceHash": "027919fd10a7b50201e211079010f3a38c1c58686aeb7690d598d489d793a9ba"
+    },
+    {
+      "relativePath": "resources\\health-characters\\organ-terpisah\\05-lambung.png",
+      "originalHash": null,
+      "sourceHash": "89dc697ef6a9525045479561bb97c4cbc91e3bda59ffd954534547d890bbd7a3"
+    },
+    {
+      "relativePath": "resources\\health-characters\\organ-terpisah\\06-ginjal.png",
+      "originalHash": null,
+      "sourceHash": "4161f8e1a0f4eb7abd0fe99e1813b45561aeb2556899b296f40556bf729aa931"
+    },
+    {
+      "relativePath": "resources\\health-characters\\organ-terpisah\\07-usus-halus.png",
+      "originalHash": null,
+      "sourceHash": "1bcb1542e20c8c3573bb72e345ef046a8a70b11e111931349b1349e3113e73b5"
+    },
+    {
+      "relativePath": "resources\\health-characters\\organ-terpisah\\08-usus-besar.png",
+      "originalHash": null,
+      "sourceHash": "8f8f8072003416e792122e0f33ac7bf259835adcbe9cb77f8d6c1d53d8690f19"
+    },
+    {
+      "relativePath": "resources\\health-characters\\organ-terpisah\\09-pankreas.png",
+      "originalHash": null,
+      "sourceHash": "f8768fcc00f95810fc5564d573ea79562534d1aaba0201e9e7440679f447f4ba"
+    },
+    {
+      "relativePath": "resources\\health-characters\\organ-terpisah\\10-kantung-empedu.png",
+      "originalHash": null,
+      "sourceHash": "24999f338e55062fce1f35ad5e7cba41013bd59d5bde7f8512aa63e77567c1a4"
+    },
+    {
+      "relativePath": "resources\\health-characters\\organ-terpisah\\11-kerongkongan.png",
+      "originalHash": null,
+      "sourceHash": "51e501dfe800d09b408fe27026dec2e355f3be5f99aaf4372340dba685ab20a8"
+    },
+    {
+      "relativePath": "resources\\health-characters\\organ-terpisah\\12-limpa.png",
+      "originalHash": null,
+      "sourceHash": "206fd902964263dac01c4b8c34725257015695aed49a03b7b5ad9a22567d86c8"
+    },
+    {
+      "relativePath": "resources\\health-characters\\organ-terpisah\\13-kandung-kemih.png",
+      "originalHash": null,
+      "sourceHash": "e0f05c8b464ec6862e4f242128c0faf18c857a70c87c441a9ec50882747183a2"
+    },
+    {
+      "relativePath": "resources\\health-characters\\organ-terpisah\\14-trakea.png",
+      "originalHash": null,
+      "sourceHash": "3b829e0440b38aa13ed2009ef79fd1413f98dc67477c987b777b9b5908c0b07c"
+    },
+    {
+      "relativePath": "resources\\health-characters\\organ-terpisah\\15-laring.png",
+      "originalHash": null,
+      "sourceHash": "c9e7103828d5e596f5faab82187aac7a4ea413f3766e53abe49c26599b1806f1"
+    },
+    {
+      "relativePath": "resources\\health-characters\\organ-terpisah\\16-tiroid.png",
+      "originalHash": null,
+      "sourceHash": "b75e858910cd8f90b58b1ba7cc4a6901b4ade369da581e012180b7e37edb1fa9"
+    },
+    {
+      "relativePath": "resources\\health-characters\\organ-terpisah\\17-hipofisis.png",
+      "originalHash": null,
+      "sourceHash": "b503fe8c366609eb73ebd67aa087546e71c7c46a80b8f9ab57ad59f45d435a67"
+    },
+    {
+      "relativePath": "resources\\health-characters\\organ-terpisah\\18-adrenal.png",
+      "originalHash": null,
+      "sourceHash": "110505371940cf5b82c74be77d3149c7055656068b89e46ad92b84696e9df380"
+    },
+    {
+      "relativePath": "resources\\health-characters\\organ-terpisah\\19-timus.png",
+      "originalHash": null,
+      "sourceHash": "53422d191f8a8206503c0ed22715d3349693fa9dad9a2223d346a5fbca44c3f6"
+    },
+    {
+      "relativePath": "resources\\health-characters\\organ-terpisah\\20-mata.png",
+      "originalHash": null,
+      "sourceHash": "3bd1b63c2955dbf7a1b1c296e8ce250e804090f32c614b484eebc3a8bf82930f"
+    },
+    {
+      "relativePath": "resources\\health-characters\\organ-terpisah\\21-telinga.png",
+      "originalHash": null,
+      "sourceHash": "138594bfb708df138f5b2a50ec280769c3555ac8dfff98456a7d7703b80d3a10"
+    },
+    {
+      "relativePath": "resources\\health-characters\\organ-terpisah\\22-hidung.png",
+      "originalHash": null,
+      "sourceHash": "da2d6ed5ee9a7233562e7562630b0b7191291ab5108471e5cfa2ea004825bf42"
+    },
+    {
+      "relativePath": "resources\\health-characters\\organ-terpisah\\23-lidah.png",
+      "originalHash": null,
+      "sourceHash": "e5d3d5e50606909bb1032853a1286400c5d10607091aab4c6ac0341fbbe35a19"
+    },
+    {
+      "relativePath": "resources\\health-characters\\organ-terpisah\\24-kelenjar-ludah.png",
+      "originalHash": null,
+      "sourceHash": "c95d9e5550219a1730f63e62278e5e69778b6646f709b079db2b09089f94e158"
+    },
+    {
+      "relativePath": "resources\\health-characters\\organ-terpisah\\25-kulit.png",
+      "originalHash": null,
+      "sourceHash": "28e1b92532739f3e1844da00778e2224f785f0907a0c814a370e38242f182b83"
+    },
+    {
+      "relativePath": "resources\\health-characters\\organ-terpisah\\26-gigi.png",
+      "originalHash": null,
+      "sourceHash": "58b0dc9e5f1f40150c9f3b6d7a5dab11f769c0e7099d4f8eaabba5377403d0b1"
+    },
+    {
+      "relativePath": "resources\\health-characters\\organ-terpisah\\27-tulang.png",
+      "originalHash": null,
+      "sourceHash": "dbbbbeeaf8ea8d2b44fc8f494918035e9ee98addbc59be0e66d1b9a56b6c1bd9"
+    },
+    {
+      "relativePath": "resources\\health-characters\\organ-terpisah\\28-otot.png",
+      "originalHash": null,
+      "sourceHash": "30b9f4251818ff0d7bca7804a141f326555cd5c4b5ab690a4f461a2a5f612c8a"
+    },
+    {
+      "relativePath": "resources\\health-characters\\organ-terpisah\\29-sumsum-tulang-belakang.png",
+      "originalHash": null,
+      "sourceHash": "d35d2b77bbfe98338259ebf21289e22f6a64dd70686666b8d5a6e807b64d08b5"
+    },
+    {
+      "relativePath": "resources\\health-characters\\organ-terpisah\\30-rahim.png",
+      "originalHash": null,
+      "sourceHash": "d92d2820ec499004f31b65dd6c5ed50a16f5cc0f43b34264ad0e3777d2960445"
+    },
+    {
+      "relativePath": "resources\\health-characters\\organ-terpisah\\31-ovarium.png",
+      "originalHash": null,
+      "sourceHash": "281a78b9831b2ca013ac0f08b9dc377c4d90e3f569d01b38598464694c5c2c30"
+    },
+    {
+      "relativePath": "resources\\health-characters\\organ-terpisah\\32-testis.png",
+      "originalHash": null,
+      "sourceHash": "ae489b790ba4130349596ef79e3940d807c10ada6e9e045d72aab5dda1a0f62a"
+    },
+    {
+      "relativePath": "resources\\health-characters\\organ-terpisah\\33-prostat.png",
+      "originalHash": null,
+      "sourceHash": "196383de1998dd12cd3df3686231749a4ee4f2aed3fa444c0a80cad67b2e3a97"
+    },
+    {
+      "relativePath": "resources\\health-characters\\organ-terpisah\\34-apendiks.png",
+      "originalHash": null,
+      "sourceHash": "e554589f2c68ad0dc60bcbfa2db860fc27ac6bf5e0d60bdc9b94ebb5ccf19f72"
+    },
+    {
+      "relativePath": "resources\\health-characters\\organ-terpisah\\35-rektum.png",
+      "originalHash": null,
+      "sourceHash": "440b6fa02b79f260b4d1b76da83b1266c72d5d48b5274e5a0fb06afa1234f194"
+    },
+    {
+      "relativePath": "resources\\health-characters\\organ-terpisah\\36-diafragma.png",
+      "originalHash": null,
+      "sourceHash": "a3b8695f032a28a0911318c4a6cd6305168128305c81ece522c65231b46fbd15"
+    },
+    {
+      "relativePath": "resources\\health-characters\\README.txt",
+      "originalHash": null,
+      "sourceHash": "64f49ad5b1af9bfff1957f1bdf6957fc7bf7d87872d78fb9020598b0a5d40f36"
+    },
+    {
+      "relativePath": "resources\\health-characters\\sheets\\01-master-8-organ.png",
+      "originalHash": null,
+      "sourceHash": "1bc4b121e962dbcc8de0f0141b405c464ad951bcab3c9bd5b824237a02a96a6c"
+    },
+    {
+      "relativePath": "resources\\health-characters\\sheets\\02-ekspresi-otak-jantung-lambung-usus.png",
+      "originalHash": null,
+      "sourceHash": "4a61864ad2be8e27e4e5e3ca80449761bd0e74c1e20d6e8cce3bf266603b1951"
+    },
+    {
+      "relativePath": "resources\\health-characters\\sheets\\03-ekspresi-paru-hati-ginjal-mata.png",
+      "originalHash": null,
+      "sourceHash": "8dc932b4bf7cf034e9b43c01e51d69def156bf138636dc66ec4db524d58cca0a"
+    },
+    {
+      "relativePath": "resources\\health-characters\\sheets\\04-gestur-lengan-hitam.png",
+      "originalHash": null,
+      "sourceHash": "e8faf3e9891f556ae1575d475331be2434632a1ea3046683db085a80c275e297"
+    }
+  ]
+}

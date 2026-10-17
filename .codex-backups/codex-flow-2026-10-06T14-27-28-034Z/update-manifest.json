@@ -1,0 +1,207 @@
+{
+  "sourceRoot": "C:\\Users\\deathscythe hell\\Documents\\ChatGPT\\bang story\\app",
+  "targetRoot": "E:\\BANG",
+  "backupName": "codex-flow-2026-10-06T14-27-28-034Z",
+  "changes": [
+    {
+      "relativePath": "README.md",
+      "originalHash": "553932f4090e7a8acc558364a3cb406d49302bf0fdc3fc7df2c7bffcb1948968",
+      "sourceHash": "146cd974996151a972d38edd865fb8a6eccca4e637114c790dd0403a10086ce9"
+    },
+    {
+      "relativePath": "src\\main\\codex-generation.ts",
+      "originalHash": "b8e67bead40f38475e8f8b3a5143a0bbe48194218c1c3962309ed1bfe591f01b",
+      "sourceHash": "40f58c23fb38500408f68efe59fd4dba82f4b6de02b09c4ad0edde39819313b7"
+    },
+    {
+      "relativePath": "src\\main\\db\\index.ts",
+      "originalHash": "d2e515f1eefa0a7c7649ff25605a31cc37ed37d12f56f768080358f82ceb1fc7",
+      "sourceHash": "deea0908c402930f1c257a92b1035793983d0895c0aeb6a95659c730f518dfbd"
+    },
+    {
+      "relativePath": "src\\main\\generation.ts",
+      "originalHash": "f1235fc48807fea6e139ac95f3e01681e64a6415feca5e4ac652254e90fb1a43",
+      "sourceHash": "d50c8885ca149b648720e36460a4ce77b1007e6a9392c37d069165036ef042ce"
+    },
+    {
+      "relativePath": "src\\main\\ipc.ts",
+      "originalHash": "ae54fefe8d4aa01292dbdab1abfc75a90fe8b663673fa5634aef8c19bb936420",
+      "sourceHash": "f5a894bd13cb1aad72175daa351d520b192beffaa2683708da10245c07822835"
+    },
+    {
+      "relativePath": "src\\main\\master-prompts.ts",
+      "originalHash": null,
+      "sourceHash": "4bed7556df8910f12f080acd90c6967355f573c29bb50b9dbaaa98ca8b7f31c9"
+    },
+    {
+      "relativePath": "src\\main\\narration.ts",
+      "originalHash": "064106c115c4258dfaa167d9912640181385274b24df677c014b4451f4255baa",
+      "sourceHash": "ce851867f4a101813f878663901d75c42ba4f20c5b2252973c3395062ddd2128"
+    },
+    {
+      "relativePath": "src\\main\\prompt-export.ts",
+      "originalHash": "1ab74f05effb6244b9d4fd7162796a242b48ef46328f3ad6fcd88e4e5fac5692",
+      "sourceHash": "c0932fc6602917aadbfe1d7ff62c1958af5924a89eb2f5b635ce1af1dec35676"
+    },
+    {
+      "relativePath": "src\\main\\repo.ts",
+      "originalHash": "6bf4da477429acd1c7e16ee08f23c7e360920d1dbeae71e41d8e59f079db6e44",
+      "sourceHash": "cd6466f52a680814937c93690b6b8b2ea99f366c7c588b734376224e7ef63d55"
+    },
+    {
+      "relativePath": "src\\main\\research.ts",
+      "originalHash": "0bd8d9b4a03c9b7ec769c0c64c5bcce1fbbb60b1935c62e2b0cca40f831484d5",
+      "sourceHash": "7312e53114dc97056a6a5c36b75d94bc21756ede0ffe1db6c1f03fa6343f2255"
+    },
+    {
+      "relativePath": "src\\main\\services\\gemini.ts",
+      "originalHash": "6a2648dc142f59908a333de0893057ff0c76cb4b5caec64070d7ff5c4806f447",
+      "sourceHash": "3afde081943dcf4a1a940f3cb05e96c92e78ddfe8db4cf1de6dbb9db011815b4"
+    },
+    {
+      "relativePath": "src\\main\\story.ts",
+      "originalHash": "f71cde52d95e9f88c6f06d8b43450de200489083beb7b503e27d9068fef73dc8",
+      "sourceHash": "d838af7082ed764a2315f36207c6c16f43ccc21bae1185d7ff58af1d8b0d4afc"
+    },
+    {
+      "relativePath": "src\\preload\\index.ts",
+      "originalHash": "2f71ee7a43f25c95584ba84932a64be1d96d08f36da20fda366d25751f105177",
+      "sourceHash": "bcbdb4732eca5016719ae5c108884bcab76f856af8899bec0564a92b05c70864"
+    },
+    {
+      "relativePath": "src\\renderer\\src\\App.tsx",
+      "originalHash": "10f8e34be08a222a6d6859e91dd7b4a64f95476f2c942e8e7e84e590b5607994",
+      "sourceHash": "a66c04c91bcc40cda609967fc0c34562df0d2b631d02e7f290828ca4ddb47779"
+    },
+    {
+      "relativePath": "src\\renderer\\src\\components\\MasterPromptPicker.tsx",
+      "originalHash": null,
+      "sourceHash": "4a07d78c0c94da88c1c780f839c93ff078bb211808d96544e223993ca565359a"
+    },
+    {
+      "relativePath": "src\\renderer\\src\\components\\StudioNav.tsx",
+      "originalHash": null,
+      "sourceHash": "ec753b45272639303b36f829938acbc252635ef8a68fb69503e922bf650dd36b"
+    },
+    {
+      "relativePath": "src\\renderer\\src\\components\\VoxWorkflowGuide.tsx",
+      "originalHash": "ce676129f1fbfacf7343eeb55aa7f18ce470ecfdcfcdef9fde4692747400cd72",
+      "sourceHash": "ada4427a9780123d1c8af0e8cc770ecbd8804ff53cba566fccb1b6f93d651c31"
+    },
+    {
+      "relativePath": "src\\renderer\\src\\pages\\Home.tsx",
+      "originalHash": "431ef82800ab3d0867cb5b722c14a10d99b974a60695dcde99e7f9717b0827ae",
+      "sourceHash": "5f5866ded34e574eca6f6a75f6974c709898d4205bc88f8be848088cf5beacca"
+    },
+    {
+      "relativePath": "src\\renderer\\src\\pages\\MasterPrompts.tsx",
+      "originalHash": null,
+      "sourceHash": "109319a2557a1c9484c77c8cef3a07ec9b4640014f5adc287fd400bd4c983946"
+    },
+    {
+      "relativePath": "src\\renderer\\src\\pages\\project\\editor\\Inspector.tsx",
+      "originalHash": "5d2df60586cb683b443e7ae704f9fc30e6cb31ad9ae4eb98b30babf3e0b1efd2",
+      "sourceHash": "36a73fac5f07f01825a650002921ba9b8ab87013bbb7a9a8648479e10ee7bdf5"
+    },
+    {
+      "relativePath": "src\\renderer\\src\\pages\\project\\editor\\TransitionButton.tsx",
+      "originalHash": "99fa06469e00445683caade5ecbc8232b1f58798805d10676d10dc8cb044ffe6",
+      "sourceHash": "afac3cd552dd3457ed5f467212f5ce5d2c8560bed32439f834b487fabde8bfb5"
+    },
+    {
+      "relativePath": "src\\renderer\\src\\pages\\project\\IdeaStep.tsx",
+      "originalHash": "4d5f56dd39698c24efdac1555823c61fe0ad366b69b772dcaf60992c0838a7b1",
+      "sourceHash": "e2eb3e4ae4fe40e5a03f3955321afc11683ba6d816d6cc70b24b154496d249d9"
+    },
+    {
+      "relativePath": "src\\renderer\\src\\pages\\project\\ProjectHeader.tsx",
+      "originalHash": "a0b8bef9ef228de12da4456929234ed1fed6642dcb617d6eed84a8e05e7d2588",
+      "sourceHash": "c4accba88e461d17b0167f368bf63599241379d3789adea23081f5f976f4c418"
+    },
+    {
+      "relativePath": "src\\renderer\\src\\pages\\project\\ProjectPage.tsx",
+      "originalHash": "f51dbab245675e8723b6690b0e86cdfb24a3d86d29213eb0d7c61e5b4f668550",
+      "sourceHash": "77ef2f73db51d6fbc20bb346f4f414ec54fa0040b5d3e8b805d08986085c387c"
+    },
+    {
+      "relativePath": "src\\renderer\\src\\pages\\project\\ScriptStep.tsx",
+      "originalHash": "385dfe8c02259aee52e2f8ec485627759c3a4de127e2b47cb14d92f473763041",
+      "sourceHash": "da3430bf18b48fa48cf13e94e6255a467bf4dff6d138c3b8881eb3b7c51d6e5e"
+    },
+    {
+      "relativePath": "src\\renderer\\src\\pages\\project\\StoryboardStep.tsx",
+      "originalHash": "fcaad19615c8092018539bf998d1a2fad669e472c320cf22e870a11380bd28ed",
+      "sourceHash": "2174d2bd81d5126f4d3e8d4936c7236b26b8832e28f47066169d2dfa22918bd1"
+    },
+    {
+      "relativePath": "src\\renderer\\src\\pages\\project\\WorkflowPanel.tsx",
+      "originalHash": null,
+      "sourceHash": "2233217b1d9b64d6dea385b5c60f87e595cc47727da7034ac89aa53c0f5e9589"
+    },
+    {
+      "relativePath": "src\\renderer\\src\\pages\\TopicResearch.tsx",
+      "originalHash": "ee7933cc2b021fa9b0b9650c96fbb93c6e7db68d439f8d4418fcc10f1df1e4ea",
+      "sourceHash": "111a0f0e6b11074826fe9c14c2c8abdce631b4b8d06a17c4ad787293f372baa2"
+    },
+    {
+      "relativePath": "src\\renderer\\src\\store\\app.ts",
+      "originalHash": "4b8710d18bb066359d4d401a6ae1665da3da42b23c4b0fbe69700de29ad413b1",
+      "sourceHash": "f2cb122ef0677fc4b44bb6681a929e6161724641d91d9a025b7d987d6a6197f2"
+    },
+    {
+      "relativePath": "src\\renderer\\src\\store\\project.ts",
+      "originalHash": "80a1f62c93c1fd65a50aa864b954420f3ba6b58ea7c3281708992ce98a06ef1f",
+      "sourceHash": "bdb5bc76b4201a3e90009f120ce8c0654dea2caa8eeb9f1e84c71fde9cf8eefa"
+    },
+    {
+      "relativePath": "src\\shared\\api.ts",
+      "originalHash": "742847fc1a4c1f6564fbcce4704380ea5942887e7cef9e09ed2f562335990e71",
+      "sourceHash": "d9afc8740f9f8afffd7520e3e00b1dacaf2f705eece473f42c2b2b35a44b82f5"
+    },
+    {
+      "relativePath": "src\\shared\\external-prompts.ts",
+      "originalHash": "684881d3578821e95d83ab3fc713615832dea82ac547387aa2c538207b65c540",
+      "sourceHash": "7b1578336a320be3dd5bfaac0114bc12b3b3900412e594885ca94c8eae2a13d5"
+    },
+    {
+      "relativePath": "src\\shared\\master-prompts.ts",
+      "originalHash": null,
+      "sourceHash": "e29f93e554e9d21b96b1a99f75a85867d6a0ed937d9df294b533fd11f5f81222"
+    },
+    {
+      "relativePath": "src\\shared\\research.ts",
+      "originalHash": "e79a06efe25a999ab2cffeecf3dbcf62da9b61a7c0ba1a4017f66e819ac93185",
+      "sourceHash": "2010e90983f55cda9a7638276996c205dfbed4d1ef954332f9660411eb3377d6"
+    },
+    {
+      "relativePath": "src\\shared\\types.ts",
+      "originalHash": "3f46d1e9a1e52c51704c779b3f93f60042f1f05269aa8616df1934155ee1ce5c",
+      "sourceHash": "786d9a318e6ada2c0a34c32e7efdd1b6505ee591d0955a6eaa5d7b8037b8b235"
+    },
+    {
+      "relativePath": "out\\main\\index.js",
+      "originalHash": "0b2b6c9b639889f14dd29038685aefc391505899eac05523f055292e1a7999fd",
+      "sourceHash": "4fa6fe8ed6c58de14386ef6addbcd8ddf237e62ed593ac5a1a9119a2bd70a1be"
+    },
+    {
+      "relativePath": "out\\preload\\index.js",
+      "originalHash": "fbe8790464c51f06ece902b81b87f0e3f5fb24dc0b40ec46d77fe7bb59d37a04",
+      "sourceHash": "e9c311b8b89333e445e8b6965ae999a0f7ba93637e09e5f1478a68f98fc5816a"
+    },
+    {
+      "relativePath": "out\\renderer\\assets\\index--A5_i2w8.css",
+      "originalHash": null,
+      "sourceHash": "b3655681e8f5edcca5261295b9e5db26d820f7ab0ab4b5d595456690e0048bba"
+    },
+    {
+      "relativePath": "out\\renderer\\assets\\index-CXkZR-x4.js",
+      "originalHash": null,
+      "sourceHash": "a54c92f7886f999132d873d26598637070857952dc3aac8d99f2f093cfcd60cd"
+    },
+    {
+      "relativePath": "out\\renderer\\index.html",
+      "originalHash": "5d7e38be53e0c5791974d6675b3725b23dda0ad95851ef075f7e12b25123f6d5",
+      "sourceHash": "71eefb66c07d7ca8ed779b281b0420c22e3c28336d95f1bc4397b0233257b82e"
+    }
+  ]
+}

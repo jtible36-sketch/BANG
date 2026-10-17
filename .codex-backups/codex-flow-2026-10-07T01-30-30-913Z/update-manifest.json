@@ -1,0 +1,132 @@
+{
+  "sourceRoot": "C:\\Users\\deathscythe hell\\Documents\\ChatGPT\\bang story\\app",
+  "targetRoot": "E:\\BANG",
+  "backupName": "codex-flow-2026-10-07T01-30-30-913Z",
+  "changes": [
+    {
+      "relativePath": "README.md",
+      "originalHash": "49803d60715159eeab474a9df1eee6e049f8a677dd586d4a08ed688bec38fdf4",
+      "sourceHash": "9cd38f72730e533725072460a47156e9ab555746e33e574831550fd1ed5d901d"
+    },
+    {
+      "relativePath": "electron-builder.yml",
+      "originalHash": "df59434d5ce979a68c31a77a1467bf040a99496e7a390d489c65e41fa276ff58",
+      "sourceHash": "136a7d7a0f22dd3e87b5bce12a6808616723ad30e7061aaea4985d1d0a28882c"
+    },
+    {
+      "relativePath": "package.json",
+      "originalHash": "ee136423c628b6f761d92e744ffb85f3e787a25adb08c436707b031d257b1ef3",
+      "sourceHash": "da4b65587fc28da2a376b7bc90c730a6ab71a74e3fdfb01053757df2168005dd"
+    },
+    {
+      "relativePath": "START - WIN.bat",
+      "originalHash": "0071ad360a7b35f648cbba22cb436a56c324fad22fa8830f5f5569b1e1620628",
+      "sourceHash": "00735d6612e04e7856a54c4b51035d050c05ee671e19b8649d213f8300fb844c"
+    },
+    {
+      "relativePath": "src\\main\\devharness.ts",
+      "originalHash": "2400645f1a868fac8eb068dc6c8f960bd2d95b57515bee1f912c3f42c72f8f00",
+      "sourceHash": "12d012f24b9422a364aac2c48c9ddb06bc62f9bbc777c53cc87c133bf3c9ccdc"
+    },
+    {
+      "relativePath": "src\\main\\index.ts",
+      "originalHash": "8df0aa02dfaebda7ae640f3ae206b0a068428abfe45f74b9d05606d1790a8575",
+      "sourceHash": "a087543955fc4ba2bed188264ce17749714d4a06b22394388f0d596720d09aca"
+    },
+    {
+      "relativePath": "src\\main\\media-import.ts",
+      "originalHash": "a85725bf8c338f999a7585c56aa371ddd9af66802c2a7b2bf8cd7c293b55b811",
+      "sourceHash": "235f2862b40831a1f98f092daa2de1f33c425d1f5fca04c9912b109d6fef18ca"
+    },
+    {
+      "relativePath": "src\\main\\prompt-export.ts",
+      "originalHash": "c0932fc6602917aadbfe1d7ff62c1958af5924a89eb2f5b635ce1af1dec35676",
+      "sourceHash": "070200d3c1462aa1e6a7c5fbcb596ebccda0367a7dfef685c04c0a5ef5a9b5e5"
+    },
+    {
+      "relativePath": "src\\main\\providers\\codex.ts",
+      "originalHash": "ff3ecc7192e5674c1669d16a862822f0924a5bf3625f0f35bba4580a9fc1a9c5",
+      "sourceHash": "10f6f4173867b4abe146867ab38b9c28d2f9770a0367c7b0674f0460e482f30a"
+    },
+    {
+      "relativePath": "src\\main\\services\\llm.ts",
+      "originalHash": "0e1305847b482c322c2a9b47128c80301891919cd8a271fd41afacf29ee67e56",
+      "sourceHash": "0ecf8da23396e44fc2b98515048d458585b3614a1589bdacd8e23113de171e64"
+    },
+    {
+      "relativePath": "src\\renderer\\index.html",
+      "originalHash": "b64cdc8fa541cf1b7a22baaebe585d1c29778e9d96c371001bfd68c7a0386d74",
+      "sourceHash": "6064965eb7ee69f16d816064fd744cd5969d9145169a14f4c3e0151ec5b597ad"
+    },
+    {
+      "relativePath": "src\\renderer\\src\\components\\CodexConnectionControl.tsx",
+      "originalHash": "0f2a3a36eb500bd14bd0bcbc7c6b1b5cf046db7f161604ef4537535123a9fbc5",
+      "sourceHash": "852e996ac02d93690832b3bb35031a9c298c4f67cfa74c7e503eadd9ff138f02"
+    },
+    {
+      "relativePath": "src\\renderer\\src\\components\\Logo.tsx",
+      "originalHash": "8d9babbd89ba05ed38c53c2fc6d136119fcc8c36c6b0ff78d0b8f719cfab93fc",
+      "sourceHash": "ae6a860cf932e55d05b732e17b4cb4ee425e07c0c097f9a1c74b6e20886caddf"
+    },
+    {
+      "relativePath": "src\\renderer\\src\\pages\\Home.tsx",
+      "originalHash": "0aed210c465f496babc5240348be971473b79352a508765d1b9a0b2b555248f9",
+      "sourceHash": "7047eff3e8c67abc71f17075f0f6fe7b181a21df9d53cee7297ecb3a5a810455"
+    },
+    {
+      "relativePath": "src\\renderer\\src\\pages\\MasterPrompts.tsx",
+      "originalHash": "109319a2557a1c9484c77c8cef3a07ec9b4640014f5adc287fd400bd4c983946",
+      "sourceHash": "5c29d7b5cf09396b85ff6e41786189703167cfeb654a448e25c815bfd39240ec"
+    },
+    {
+      "relativePath": "src\\renderer\\src\\pages\\Settings.tsx",
+      "originalHash": "093fbeeeb625d620796605babdea3bbb890c385bcfb98d470f50fe8c09d746d3",
+      "sourceHash": "89f528e0880591d88349bedc33fe41c238dd748014664e9e59a1bf3ddf3900a2"
+    },
+    {
+      "relativePath": "src\\renderer\\src\\pages\\TopicResearch.tsx",
+      "originalHash": "a7f82988f78d8f173c2bb9e284b5a3a5d0909cc19828860e136946523ca8ef22",
+      "sourceHash": "d3156dfb377bea8e39e63123b98fed5f009c34838babc37647f07dd493601390"
+    },
+    {
+      "relativePath": "src\\shared\\external-prompts.ts",
+      "originalHash": "ee59fb7425c357248682bfbae89b6b97ed0108b834f31cbc08f7ccd2d6f05ac0",
+      "sourceHash": "a13337c850e15bcf881b855027abbc8210f0fb0b747aa6fc2156e3b7b61ea113"
+    },
+    {
+      "relativePath": "out\\main\\index.js",
+      "originalHash": "b8170c052af2cd5b19b30ba82ad3e059536d8e7943d5f5e866417dc5afcaa2ee",
+      "sourceHash": "ce7a0059b23c75209c7c83ee3d9b63266dd7e119eec52f966946828610e36722"
+    },
+    {
+      "relativePath": "out\\renderer\\assets\\index-0UbQ5Lfk.css",
+      "originalHash": null,
+      "sourceHash": "ea0876bd137eb4a9307c4fcc8eb982489821c86a39682410386c2d46a9a26bcc"
+    },
+    {
+      "relativePath": "out\\renderer\\assets\\index-CjZACTko.js",
+      "originalHash": null,
+      "sourceHash": "dc3425485e488c6cb95eac2f787d495d3731b78b7c40acd26aae111059dc922d"
+    },
+    {
+      "relativePath": "out\\renderer\\index.html",
+      "originalHash": "51a4ee18526ec4f74a878e758ed2d319bdd3a1d9dfea168aa41ef586179f0738",
+      "sourceHash": "cddc73f240a15ad5baacd9e3054f7942c4dc18bd1758679989af9628125ca839"
+    },
+    {
+      "relativePath": "resources\\branding\\naraflow.ico",
+      "originalHash": null,
+      "sourceHash": "b4d94f1c2fe664cdb1a0e04487ac2c8a7723fdac3a233fc2cdcb3aa07ae4661b"
+    },
+    {
+      "relativePath": "resources\\branding\\naraflow.png",
+      "originalHash": null,
+      "sourceHash": "88e9ff0f598cdc4a069d3271c594503a374014bc52ee6d6e11702c01e5292872"
+    },
+    {
+      "relativePath": "resources\\branding\\naraflow.svg",
+      "originalHash": null,
+      "sourceHash": "421cdad559654077a24fbc5cd3ef468c524eec9dbaca487de686dda09209a458"
+    }
+  ]
+}

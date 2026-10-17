@@ -1,0 +1,157 @@
+{
+  "sourceRoot": "C:\\Users\\deathscythe hell\\Documents\\ChatGPT\\bang story\\app",
+  "targetRoot": "E:\\BANG",
+  "backupName": "codex-flow-2026-10-15T03-27-16-630Z",
+  "changes": [
+    {
+      "relativePath": "README.md",
+      "originalHash": "d51ca3b041e4b6d13051708c4f6f93e5be9fa8941eee04bc272088caf66f7553",
+      "sourceHash": "24d58609f527cdfe2b3a907abb4ca04f573d78ee815205573519f127653127c1"
+    },
+    {
+      "relativePath": "src\\main\\ipc.ts",
+      "originalHash": "b7b995034a6e1b482aba4528a112106407d24b4e3ccc8d29632255f56414c70d",
+      "sourceHash": "8d366390bdf851d3aab4efcfb4a3f4fb2a2dd475f5bd0ca1bbe8ee6080cff666"
+    },
+    {
+      "relativePath": "src\\main\\media-import.ts",
+      "originalHash": "a521037ba46b99792f2e785c3a4d82d555a7c719410e39292507cde632487376",
+      "sourceHash": "e1d724fc5eb33551a932dc6b4fe82df9c5481d07cf69128f4d2fb4310bf243cf"
+    },
+    {
+      "relativePath": "src\\main\\repo.ts",
+      "originalHash": "a775b2bf8d5edf6a5e4328cb69aae72c6b10fcbadb70dd0eb67de724a4ec3bb9",
+      "sourceHash": "8f30d47a4a77d04537eb5ad11aeee88e5c9246768ab4eb429d66d74fea66aa88"
+    },
+    {
+      "relativePath": "src\\main\\research.ts",
+      "originalHash": "ba582d3c980651060b2ce913d2966d66f5f8f3140e598e3f2d975e6cbd58ff2b",
+      "sourceHash": "ec0cb84560833c451a046abc3ea41ecbd12fdc1e998bfd63dcf606d5c2e34015"
+    },
+    {
+      "relativePath": "src\\main\\story.ts",
+      "originalHash": "6d61c7250305b8cd342ac292936d27b21d12f83385e71885ca123b052fa1a78c",
+      "sourceHash": "be1a20cb4372c09ca4961cdbe0ce8b295bc6dcab67a96ad918b01e51346dc506"
+    },
+    {
+      "relativePath": "src\\preload\\index.ts",
+      "originalHash": "087a82163916357135676b4e186c7ea11eb0c202cb6eb1f1018cef1a6311de64",
+      "sourceHash": "bf9e8c9d0077c796eea54b126080e9164f4a6c980a19cad4f2b1e851c4b40537"
+    },
+    {
+      "relativePath": "src\\renderer\\src\\components\\ArtRecipePreview.tsx",
+      "originalHash": null,
+      "sourceHash": "8287575034b5d720cbc02bc7bdcc876d8315a99aae98b4ddecc5799409f9d1fc"
+    },
+    {
+      "relativePath": "src\\renderer\\src\\components\\ProductionStyleStudio.tsx",
+      "originalHash": null,
+      "sourceHash": "ff9c5dcec46f9f75d197c2cbb8d5dcaa64860f476312bcdcd0c8cb783996d244"
+    },
+    {
+      "relativePath": "src\\renderer\\src\\components\\StyleArt.tsx",
+      "originalHash": "ba4eab048932798df6ae0bbee55ebf7ee2d919fe59895ef9f7924463be076c0c",
+      "sourceHash": "c6c2cd14cadc495439dd2acde24905ca7766c1c6df15ee9bcaddc1172953f380"
+    },
+    {
+      "relativePath": "src\\renderer\\src\\pages\\Home.tsx",
+      "originalHash": "7047eff3e8c67abc71f17075f0f6fe7b181a21df9d53cee7297ecb3a5a810455",
+      "sourceHash": "1bfd08df7e65255801e3c0774bbf652f16315ec865ef7341682cc396a6b7ef19"
+    },
+    {
+      "relativePath": "src\\renderer\\src\\pages\\project\\CharacterModal.tsx",
+      "originalHash": "bccc71f0d59c671771235e5f0fd7fad26581ae7728bc2a14ecbcb4b643531633",
+      "sourceHash": "8cdfe22c1a8c5c5e33ce74ecc2ffdbb1f75ac6f8d74146fd8cf44b27fe491c1a"
+    },
+    {
+      "relativePath": "src\\renderer\\src\\pages\\project\\IdeaStep.tsx",
+      "originalHash": "84ac5608420897e5bdb1b83eef71d2dedf1faf0b843380a8077242d0fd0ad57f",
+      "sourceHash": "f6c0f5de28d52c750f84239cdce90419da2050c67ffb94f29e334e7010c67ec9"
+    },
+    {
+      "relativePath": "src\\renderer\\src\\pages\\TopicResearch.tsx",
+      "originalHash": "b915c78cb8c692df4af26e865b3f21d20f8bd31ff012a75c05845977df918a1c",
+      "sourceHash": "783dfbe5ada78eb078b4bab14c1f3ee6b517a75c8fc751659f4afcc891c72414"
+    },
+    {
+      "relativePath": "src\\shared\\api.ts",
+      "originalHash": "97006abf7d4a7d33292abe0e7237c72431566f32891c6f7bc8ce46e6d892a290",
+      "sourceHash": "42c5b9638a3e047f091672a3f1e9043a5ea98f64826c5b4edac687339cf5fb1b"
+    },
+    {
+      "relativePath": "src\\shared\\bang-gallery.ts",
+      "originalHash": null,
+      "sourceHash": "61ff04f8570b5f94ca747a61fe5e9192c8fb2160612274a4d247004852991148"
+    },
+    {
+      "relativePath": "src\\shared\\external-prompts.ts",
+      "originalHash": "8b0e176d9f5d1840b740a298be756b150f4c2a3702111416946a9e9c4699973a",
+      "sourceHash": "4a9d804ae8df7c4843fd89d7fecf724983d6b1422201a16f81bae4c0f21083a3"
+    },
+    {
+      "relativePath": "src\\shared\\huashu-catalog.ts",
+      "originalHash": null,
+      "sourceHash": "794fa98aa5148d746a5bfc20c78572e512fa9bcb9f7ce2c151a9fdcc329fe4fd"
+    },
+    {
+      "relativePath": "src\\shared\\huashu-motion.ts",
+      "originalHash": "a1ad5c4211a8e8ff1c3053a191bc4fa205b11273ce330e84639cde86bb3f6e88",
+      "sourceHash": "f2eb2dc96c30bc9fab912afbc00141a5c63fd508142f0c91b6035fc80b213525"
+    },
+    {
+      "relativePath": "src\\shared\\master-prompts.ts",
+      "originalHash": "598eeec41c8e1db3949924e130c956067b4289f4abb1bd3689ce932cfcb79c5e",
+      "sourceHash": "7c3a52da08f9fd81f9f062f52e923907a03e80e709362dc3cd99449e09a433b8"
+    },
+    {
+      "relativePath": "src\\shared\\niches.ts",
+      "originalHash": "3d5c297750c9ea3452ad18aecd138ef029b5343c8757045134ac8413df8a819e",
+      "sourceHash": "3635d347046d3d484c068d7a046a00d999f505e9a360957e0e9d9206fc14d5f0"
+    },
+    {
+      "relativePath": "src\\shared\\skills.ts",
+      "originalHash": "d2417ff0ec766fcb998b0c8842b64d471ce3b656d62b5630963293e7301ab680",
+      "sourceHash": "2e86a1536d8fd88541ed505943d2d3980d84de07aa4d0f2cf1ffb0e41c9e7da7"
+    },
+    {
+      "relativePath": "src\\shared\\styles.ts",
+      "originalHash": "d1321463c5fcc5e5c0aff725217e8f3eda67193453d11ec2cca3a01a671582e6",
+      "sourceHash": "1a6f155fdbdc26c01f5343afc51e557e62b84301e529697b3f4f73f5a726a2eb"
+    },
+    {
+      "relativePath": "out\\main\\index.js",
+      "originalHash": "f0264ba193e79c11e9d99190bc74d24acfc47d59aef1a509967ea04b380e31fb",
+      "sourceHash": "de4c45c4e14ae2b07fbdabc78b4ddf3e96b9e56e1d469d9cddc92df6599c09e1"
+    },
+    {
+      "relativePath": "out\\preload\\index.js",
+      "originalHash": "54d006218d1b42d9b734603abed6d7df21cdc65ea293909bc6b18667898a98d2",
+      "sourceHash": "88018d5fa6732784ae677a393d2409de1639a84d0728248c483854f51673b7a6"
+    },
+    {
+      "relativePath": "out\\renderer\\assets\\index-CbTsYWar.css",
+      "originalHash": null,
+      "sourceHash": "c0581a0d305a8ff300ef9087bb9beaec6931028fccd147c40980a1f8db256d9b"
+    },
+    {
+      "relativePath": "out\\renderer\\assets\\index-CV4mwKhr.js",
+      "originalHash": null,
+      "sourceHash": "18c99eeebd0ca00202eac091a93339af820659b03650b0d305a3f406096d13e4"
+    },
+    {
+      "relativePath": "out\\renderer\\index.html",
+      "originalHash": "0e14b3dbd9899bd6315160a00fdd62bd2c31b1aab135aa3c9a00f34e4c7df8c3",
+      "sourceHash": "2a578415d05734f855d7dd7ee3d65a8ff5881be45233abe86f17ac8e40fc3c0e"
+    },
+    {
+      "relativePath": "resources\\huashu-art-motion\\NOTICE.md",
+      "originalHash": "f714817dd8539154002cc4830f71c9a925fc9696c9b1ded0c830ff83dd4228f3",
+      "sourceHash": "548cf67f5b27d4a031dd8251a0c63dce471e09948fae13c3d42494bc4f846a1f"
+    },
+    {
+      "relativePath": "resources\\huashu-art-motion\\UPSTREAM.json",
+      "originalHash": "cdb38b01cf9e4f9514f9d2f9da85ecf868b4b2b40f3c9941d3c60f0371de3aa3",
+      "sourceHash": "8527fcc8d6f1f2c57fe076f3de19b2f219148c2d1a4973e41e8f6bab56bb55a1"
+    }
+  ]
+}

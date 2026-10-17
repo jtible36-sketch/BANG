@@ -1,0 +1,121 @@
+# Bang Story
+
+_by Bang Tutorial_
+
+Aplikasi desktop Windows untuk mengubah ide cerita jadi video YouTube: AI menyusun klip dan naskah, gambar dibuat di chat Codex dan video dibuat di Google Flow, Gemini atau ElevenLabs membuat suara narator, lalu semuanya dirangkai di editor timeline dan diekspor jadi MP4. Higgsfield tersedia sebagai alur API opsional.
+
+## Gambar Codex dan video Flow tanpa API Higgsfield
+
+Alur bawaan di **Pengaturan → Gambar dan video** adalah **Codex + Flow**. Bang Story menyiapkan prompt dan menerima file hasil generate; proses generate dilakukan di chat Codex dan situs Flow masing-masing.
+
+1. Susun naskah dan visual adegan seperti biasa. Penyusun cerita dan TTS tetap memakai penyedia yang Anda pilih.
+2. Di Storyboard, pilih adegan lalu **Salin prompt Codex**. Tempel di chat Codex untuk generate satu gambar. Prompt mencakup adegan, pemeran, gaya visual, rasio, dan saran nama file. Untuk banyak adegan, gunakan tombol salin prompt gambar yang belum tersedia.
+3. Simpan hasil gambar dari Codex, lalu **Impor gambar** ke adegan tersebut. PNG, JPEG, dan WebP didukung. Hasil impor disalin ke penyimpanan proyek; file sumber boleh dipindahkan setelahnya. Gambar lama tetap tersedia sebagai versi sebelumnya.
+4. Kolom **Prompt video untuk Flow** selalu tampil pada adegan terpilih, termasuk ketika masih menggunakan gerak kamera. Edit arah gerak, lalu salin prompt Flow. Prompt salinan mencakup rasio, kesinambungan gambar, dan arahan tanpa narasi/musik.
+5. **Simpan gambar** untuk mendapatkan file frame awal, lalu buka [Google Flow](https://flow.google.com/). Unggah gambar sebagai frame awal dan tempel prompt. Pilih durasi yang tersedia di Flow.
+6. Unduh video hasil Flow dan **Impor video Flow** ke adegan. Video aktif di pratinjau dan editor. Durasi klip tetap mengikuti narasi; jika video lebih pendek, frame terakhir ditahan sampai klip selesai.
+
+Lembar karakter juga punya prompt siap salin dan tombol impor pada dialog pemeran. Simpan lembar karakter dan lampirkan ke chat Codex saat membuat adegan untuk membantu menjaga identitas pemeran.
+
+Alur ini tidak meminta kunci Higgsfield atau kunci OpenAI. Akses generate gambar pada akun Codex serta akses/kredit Flow mengikuti akun masing-masing. Untuk memakai kembali generate langsung lewat API Higgsfield, pilih alur **Higgsfield API** di Pengaturan.
+
+## Cara membuka
+
+Syarat: [Node.js](https://nodejs.org) versi LTS sudah terpasang, dan ada koneksi internet saat pertama kali dibuka.
+
+- **Windows:** klik 2x `START - WIN.bat`.
+- **macOS:** klik 2x `START - MAC.command`. Kalau muncul pesan tidak punya izin, buka Terminal di folder ini dan jalankan `chmod +x 'START - MAC.command'` sekali. Kalau macOS memblokirnya, klik kanan file itu › Open.
+
+Saat pertama kali dibuka, START memasang semua kebutuhan (`npm install`) dan mengunduh Electron. Ini butuh beberapa menit. Setelah itu aplikasi langsung terbuka setiap kali START diklik. Kalau folder ini dipindah ke OS lain, START otomatis memasang ulang kebutuhannya.
+
+Setelah membuka, pilih alur gambar/video di **Pengaturan**. Codex + Flow tidak memerlukan kunci API gambar/video. Atur penyusun cerita (misalnya Gemini atau endpoint lokal) serta penyedia suara narator. Kunci Higgsfield hanya diperlukan jika memilih alur Higgsfield API.
+
+Catatan macOS: fitur caption akurat (Whisper lokal) baru tersedia untuk Windows. Fitur lainnya tetap berjalan.
+
+Kalau kode di `src` diubah, hapus folder `out` (atau jalankan `npm run build`) supaya START menyusun ulang aplikasinya.
+
+## Alur
+
+1. **Ide cerita**: tulis sinopsis, pilih durasi, bahasa, format (16:9 atau 9:16), suara narator, gaya visual (2D, 3D, atau realistis), serta model gambar dan model video Higgsfield untuk proyek ini. AI penyusun cerita (Gemini, OpenRouter, Groq, atau endpoint custom) lalu menulis naskah.
+2. **Naskah**: baca dulu alurnya: berapa adegan, apa yang terjadi di tiap adegan, dan narasi (VO) masing-masing. Adegan bisa diubah, ditambah, dihapus, dan diurutkan ulang. Narasi boleh memuat tag ekspresi suara seperti `<short pause>`, `<long pause>`, `<chuckles>`, atau `<sigh>`. Setelah itu AI membuat visual dari naskah final: prompt gambar, pemeran, gerak kamera dan kekuatannya, transisi, serta arahan gerak untuk video AI. Kalau naskah diubah lagi, hanya adegan yang berubah yang disusun ulang visualnya.
+3. **Storyboard**: setiap adegan punya gambar (impor hasil Codex atau Higgsfield opsional), suara narasi (TTS), dan gerak: gerak kamera gratis atau video AI (impor hasil Flow atau Higgsfield opsional). Prompt Flow bisa diedit dan disalin dari setiap adegan. Suara narasi dibuat dalam satu rekaman utuh lalu dipotong otomatis per adegan, supaya suara dan intonasinya konsisten. Pratinjau gerak kamera berputar otomatis dan tetap terlihat saat panel digulir.
+4. **Editor**: pratinjau langsung dengan gerak kamera, transisi, caption karaoke, musik latar, serta overlay logo, watermark, atau teks yang bisa digeser langsung di pratinjau. Lalu ekspor MP4 dengan FFmpeg.
+
+## Durasi dan suara
+
+Panjang tiap klip mengikuti panjang suara narasinya. Sebelum suara dibuat, durasinya diperkirakan dari jumlah kata (sekitar 2,6 kata per detik, tag ekspresi tidak dihitung). Video AI meminta durasi terpendek yang menutup panjang klip; kalau model tidak bisa sepanjang itu, frame terakhir ditahan sampai klip selesai.
+
+Narasi utuh dibuat per bagian sampai sekitar 4 menit (Gemini) atau 2.400 karakter (ElevenLabs, dengan konteks teks sebelum dan sesudahnya). Untuk Gemini, antar-adegan disisipi `<long pause>`, lalu jeda itu dideteksi dengan FFmpeg dan dicocokkan ke posisi tiap adegan. Untuk ElevenLabs, batas adegan diambil dari waktu tiap kata yang dikirim API-nya. Potongan-potongannya diputar berurutan persis seperti rekaman utuh.
+
+## Caption akurat (Whisper lokal)
+
+Gemini TTS tidak mengirim waktu per kata. Kalau model **Whisper Small** sudah diunduh (Pengaturan › Caption akurat, 488 MB, disimpan di `%APPDATA%\Bang Story\models\whisper` dan dicek SHA-256-nya), aplikasi menjalankan `whisper-cli` (whisper.cpp, ikut terpasang di `resources/whisper`) di komputer ini untuk mencari kapan tiap kata diucapkan. Kata-kata naskah lalu dicocokkan ke hasil dengar Whisper, jadi ejaan caption tetap mengikuti naskah sedangkan waktunya mengikuti suara asli. Ini berjalan otomatis setelah narasi Gemini dibuat, dan titik potong antar-adegan ikut memakai posisi kata. Klip lama bisa disinkronkan dari tab Caption di Editor. Unduhan bisa dibatalkan dan dilanjutkan; di mode dev, `STUDIO_WHISPER_URL` bisa mengarahkannya ke salinan lokal.
+
+Proyek tersimpan otomatis (juga lewat tombol Simpan atau Ctrl+S) di SQLite, di folder `%APPDATA%\Bang Story`. Data dari nama lama (`%APPDATA%\Studio Cerita`) dipindahkan otomatis saat aplikasi pertama kali dibuka.
+
+## Kunci API
+
+Pengguna memasukkan kuncinya sendiri di **Pengaturan › Layanan AI dan kunci**. Setiap bagian (penyusun cerita, suara narator) punya satu dropdown penyedia, dan hanya konfigurasi penyedia yang dipilih yang tampil dan dipakai. Kunci dienkripsi dengan Windows DPAPI (`safeStorage`).
+
+| Layanan | Dipakai untuk | Wajib |
+|---|---|---|
+| Higgsfield (satu API key dari tombol **Copy API key** di console, format `KEY_ID:KEY_SECRET`) | Gambar, lembar karakter, video AI langsung dari aplikasi | Hanya untuk alur Higgsfield API |
+| Codex + Google Flow | Generate di layanan masing-masing, lalu impor file ke Bang Story | Tidak perlu kunci API gambar/video di Bang Story |
+| Penyusun cerita, pilih satu: Google Gemini, OpenRouter, Groq, atau endpoint custom (OpenAI-compatible) | Menyusun klip, naskah, dan pemeran | Ya, salah satu |
+| Google Gemini | Suara narator Gemini TTS | Kalau memakai Gemini TTS |
+| ElevenLabs | TTS dengan waktu kata presisi | Opsional |
+
+Setelah kunci penyusun cerita disimpan, daftar modelnya diambil langsung dari penyedia (ratusan model untuk OpenRouter) dan dipilih lewat dropdown yang bisa dicari. Daftar disimpan di cache 24 jam dan bisa dimuat ulang kapan saja. Endpoint custom menerima server apa pun yang kompatibel dengan OpenAI API, misalnya Ollama (`http://localhost:11434/v1`), LM Studio, vLLM, DeepSeek, atau xAI Grok (`https://api.x.ai/v1`).
+
+## Model Higgsfield
+
+Semua model Higgsfield yang bisa membuat gambar dari teks (14 model) dan menganimasikan gambar klip (34 model) tersedia. Modelnya dipilih per proyek di bagian **Model AI** pada langkah Ide cerita, lengkap dengan pencarian, filter, dan perkiraan kredit dari endpoint `estimate`. Pilihan terakhir jadi bawaan proyek berikutnya.
+
+API Higgsfield tidak punya daftar harga. Biaya tiap model diambil dari endpoint `estimate` (gratis, tidak memakai kredit) untuk akun pengguna, ditampilkan di tiap baris dropdown (kredit dan US$) dan bisa diurutkan dari yang termurah. Hasilnya disimpan sehari dan dihapus saat kunci Higgsfield diganti.
+
+Daftarnya ada di `src/shared/higgsfield-catalog.json`, disusun dari dokumentasi API (docs.higgsfield.ai) beserta skema input tiap model. `src/shared/higgsfield.ts` membentuk isi request dari skema itu: rasio frame, resolusi 2K untuk gambar dan 1080p untuk video (atau yang terdekat), durasi yang menutup panjang klip, lembar karakter sebagai referensi bila model menerimanya, serta audio bawaan model dimatikan. Model yang butuh video masukan (edit video, motion control) atau hanya teks-ke-video tidak dimasukkan karena tidak bisa menganimasikan gambar klip.
+
+Untuk output JSON, aplikasi mencoba `json_schema` dulu, lalu `json_object`, lalu teks biasa dengan parser yang toleran (tag `<think>` dan code fence dibuang). Jadi model yang tidak mendukung structured output tetap bisa dipakai.
+
+## Menjalankan
+
+Butuh Node.js 22 atau lebih baru.
+
+```bash
+npm install
+npm run dev
+```
+
+## Membuat installer .exe
+
+```bash
+npm run dist
+```
+
+Hasilnya ada di `dist/BangStory-Setup-<versi>.exe`. Untuk folder siap jalan tanpa installer: `npx electron-builder --win --dir`.
+
+## Struktur
+
+```
+src/
+  main/        proses utama (backend lokal)
+    db/          skema SQLite + migrasi
+    services/    higgsfield, llm (Gemini/OpenRouter/Groq/custom), gemini, elevenlabs, audio
+    generation.ts  job gambar, lembar karakter, video, TTS
+    exporter.ts    render MP4 dengan FFmpeg (zoompan, xfade, caption ASS, mix audio)
+    jobs.ts        antrean dengan batas proses bersamaan
+  preload/     jembatan aman window.api
+  shared/      tipe, preset gaya visual, gerak kamera, caption, katalog model
+  renderer/    tampilan React + Tailwind
+resources/fonts  15 font caption (Google Fonts, lisensi di resources/licenses/fonts), dipakai pratinjau dan FFmpeg
+```
+
+`shared/motion.ts` dan `shared/captions.ts` dipakai oleh pratinjau di editor dan oleh ekspor FFmpeg, jadi hasil MP4 sama dengan yang terlihat di editor.
+
+## Catatan
+
+- Seedream tidak tersedia di API Higgsfield, jadi model gambar bawaannya GPT Image 2.5 Sunburst dan model video bawaannya Kling 3.0 Standard.
+- API Higgsfield tidak punya endpoint saldo. Aplikasi menampilkan perkiraan biaya dari endpoint `estimate`.
+- Tanpa model Whisper, waktu caption untuk suara Gemini diperkirakan dari panjang kata. ElevenLabs selalu memberi waktu yang presisi.
+- Harness uji khusus mode dev ada di `src/main/devharness.ts` (variabel `STUDIO_CAPTURE_PLAN`, `STUDIO_USER_DATA`, `STUDIO_LOG`) dan tidak aktif di aplikasi terpasang. Di mode dev, `STUDIO_HF_BASE` bisa mengarahkan panggilan Higgsfield ke server tiruan lokal supaya tampilan bisa diuji tanpa memakai kredit.
+- Lisensi: FFmpeg (GPL), whisper.cpp (MIT), Poppins (OFL), dan LobeHub Icons (MIT, untuk logo penyedia) ikut terpasang di folder `resources`. Model Whisper Small (MIT) diunduh terpisah. Logo penyedia adalah merek milik pemiliknya masing-masing.

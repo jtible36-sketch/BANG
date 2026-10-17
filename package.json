@@ -1,0 +1,51 @@
+{
+  "name": "bang-story",
+  "productName": "Naraflow",
+  "version": "0.1.0",
+  "description": "Ubah ide cerita jadi video YouTube: klip, naskah, suara, dan timeline dalam satu aplikasi desktop.",
+  "main": "./out/main/index.js",
+  "author": "Bang Tutorial",
+  "private": true,
+  "scripts": {
+    "dev": "electron-vite dev",
+    "build": "node scripts/build-naraflow-mcp.cjs && electron-vite build",
+    "preview": "electron-vite preview",
+    "typecheck:node": "tsc --noEmit -p tsconfig.node.json",
+    "typecheck:web": "tsc --noEmit -p tsconfig.web.json",
+    "typecheck": "npm run typecheck:node && npm run typecheck:web",
+    "dist": "npm run build && electron-builder --win --x64",
+    "test:cutout": "node scripts/test-cutout.cjs",
+    "test:mcp": "node scripts/test-naraflow-mcp.cjs",
+    "test:editor-automation": "node scripts/test-editor-automation.cjs",
+    "test:sfx": "node scripts/test-sfx.cjs",
+    "test:cutout-advanced": "node scripts/test-cutout-advanced.cjs",
+    "test:cutout-assets": "node scripts/test-cutout-assets.cjs",
+    "test:cutout-production": "node scripts/test-cutout-production.cjs"
+  },
+  "dependencies": {
+    "@google/genai": "^2.24.0",
+    "better-sqlite3": "^13.0.3",
+    "ffmpeg-static": "^5.3.0"
+  },
+  "devDependencies": {
+    "@fontsource-variable/bricolage-grotesque": "^5.3.0",
+    "@fontsource-variable/jetbrains-mono": "^5.3.0",
+    "@fontsource-variable/plus-jakarta-sans": "^5.3.0",
+    "@tailwindcss/vite": "^4.3.3",
+    "@types/better-sqlite3": "^7.6.13",
+    "@types/node": "^24.9.0",
+    "@types/react": "^19.1.0",
+    "@types/react-dom": "^19.1.0",
+    "@vitejs/plugin-react": "^5.2.0",
+    "electron": "^44.5.1",
+    "electron-builder": "^26.15.3",
+    "electron-vite": "^5.0.0",
+    "lucide-react": "^1.49.0",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
+    "tailwindcss": "^4.3.3",
+    "typescript": "~5.9.3",
+    "vite": "^7.3.6",
+    "zustand": "^5.0.15"
+  }
+}

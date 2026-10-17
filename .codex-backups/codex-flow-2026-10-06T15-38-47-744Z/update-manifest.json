@@ -1,0 +1,137 @@
+{
+  "sourceRoot": "C:\\Users\\deathscythe hell\\Documents\\ChatGPT\\bang story\\app",
+  "targetRoot": "E:\\BANG",
+  "backupName": "codex-flow-2026-10-06T15-38-47-744Z",
+  "changes": [
+    {
+      "relativePath": "README.md",
+      "originalHash": "146cd974996151a972d38edd865fb8a6eccca4e637114c790dd0403a10086ce9",
+      "sourceHash": "9ea0fcb26e00bd8d98091dee4e5297200a6635986f88699518c76abeb5f64d95"
+    },
+    {
+      "relativePath": "src\\main\\codex-connections.ts",
+      "originalHash": null,
+      "sourceHash": "da97e151a46d53653c06f06f4a0288a79cfdecd6e7249f0ff4f4e1cde09c877f"
+    },
+    {
+      "relativePath": "src\\main\\codex-generation.ts",
+      "originalHash": "40f58c23fb38500408f68efe59fd4dba82f4b6de02b09c4ad0edde39819313b7",
+      "sourceHash": "affa0ffeb36182c5c9c8d3d0b8e087dde6d071ca5c56692ff8f7c8ac5d7b58a6"
+    },
+    {
+      "relativePath": "src\\main\\codex-text.ts",
+      "originalHash": null,
+      "sourceHash": "3b91acb80674fe567aa156689967df90ba105f1bc831c5ede2d4b2feda27f559"
+    },
+    {
+      "relativePath": "src\\main\\codex-video.ts",
+      "originalHash": null,
+      "sourceHash": "b1fbee26300fcd24a9055503c62a58c566164c8a591e5386f90325a992673b7b"
+    },
+    {
+      "relativePath": "src\\main\\ipc.ts",
+      "originalHash": "f5a894bd13cb1aad72175daa351d520b192beffaa2683708da10245c07822835",
+      "sourceHash": "6b2c9379f7866eb84c45d0dd9052586510bff062ca4030a725a010b5f3d1b688"
+    },
+    {
+      "relativePath": "src\\main\\providers\\codex.ts",
+      "originalHash": "8bc189a9ffe4886c0be85d6d5b5fe0fbec441f75ee2926f77939c8d2233143b6",
+      "sourceHash": "2ed6cd5c0279256c5f375e0df7121018ed814856b52a1ac19a844f9d1e6e0df7"
+    },
+    {
+      "relativePath": "src\\main\\research.ts",
+      "originalHash": "7312e53114dc97056a6a5c36b75d94bc21756ede0ffe1db6c1f03fa6343f2255",
+      "sourceHash": "c81b78db4c1ec3e354d201cde72658e542bb8f463491edf7aeb822bcd094e70e"
+    },
+    {
+      "relativePath": "src\\main\\services\\gemini.ts",
+      "originalHash": "3afde081943dcf4a1a940f3cb05e96c92e78ddfe8db4cf1de6dbb9db011815b4",
+      "sourceHash": "3e906a88440a39cd6b0cc4cb148c58861dc6db96a97d5e3c586312fde2731a35"
+    },
+    {
+      "relativePath": "src\\main\\services\\llm.ts",
+      "originalHash": "25193065c25f7dc6da756ca9527eb73b4e2b6cdc424aee4bb33dc1df6841fbde",
+      "sourceHash": "0a62bd3f63379fdb37d208cc00301c963aa8b0297c4683d900d283e9c3049f48"
+    },
+    {
+      "relativePath": "src\\main\\settings.ts",
+      "originalHash": "a0b3a4c0c3569076bea47b7ca0ccadfdc67ff2420b177ce526cb3d2e58b02c9a",
+      "sourceHash": "92477240b18fc97e907fcdc370b5b6d87ff628d21a0f2dd07a6d8118305ba07b"
+    },
+    {
+      "relativePath": "src\\main\\story-requests.ts",
+      "originalHash": null,
+      "sourceHash": "ca614e1252995b9b5a6f6f23d3333810bf266ca48eb9dc672386c9915afe9906"
+    },
+    {
+      "relativePath": "src\\main\\story.ts",
+      "originalHash": "d838af7082ed764a2315f36207c6c16f43ccc21bae1185d7ff58af1d8b0d4afc",
+      "sourceHash": "7be4e0d84683d88a122b4c898ee25c61c4ed6ceeb584a393e9928afa06fe20e5"
+    },
+    {
+      "relativePath": "src\\preload\\index.ts",
+      "originalHash": "bcbdb4732eca5016719ae5c108884bcab76f856af8899bec0564a92b05c70864",
+      "sourceHash": "9223876d35c420aa0dfa79a5de3caef4dc6a642730aeeb5b33e329ae2e798c83"
+    },
+    {
+      "relativePath": "src\\renderer\\src\\components\\CodexConnectionControl.tsx",
+      "originalHash": null,
+      "sourceHash": "45208a5fafb3cadeaded4f8cf8145696dfc9ac4bcd7e14ac4ecdd6b49c161044"
+    },
+    {
+      "relativePath": "src\\renderer\\src\\pages\\Home.tsx",
+      "originalHash": "5f5866ded34e574eca6f6a75f6974c709898d4205bc88f8be848088cf5beacca",
+      "sourceHash": "0aed210c465f496babc5240348be971473b79352a508765d1b9a0b2b555248f9"
+    },
+    {
+      "relativePath": "src\\renderer\\src\\pages\\project\\CharacterModal.tsx",
+      "originalHash": "26ac9dc5ebca58e069c8b3d5c8c7d1a2b95e4e87e1d9efcc9caabc011d7bb4e0",
+      "sourceHash": "57224de89f21e6ffc0a4d19e28b7e989073c2678370a5e0492684629f4b9f031"
+    },
+    {
+      "relativePath": "src\\renderer\\src\\pages\\project\\IdeaStep.tsx",
+      "originalHash": "e2eb3e4ae4fe40e5a03f3955321afc11683ba6d816d6cc70b24b154496d249d9",
+      "sourceHash": "92cf9528c3ddb15a591feb6562689f9a6cb039f1abe80f37928c646399f55f71"
+    },
+    {
+      "relativePath": "src\\renderer\\src\\pages\\project\\StoryboardStep.tsx",
+      "originalHash": "2174d2bd81d5126f4d3e8d4936c7236b26b8832e28f47066169d2dfa22918bd1",
+      "sourceHash": "dfb9848fdd3d4ae925450be15dc84090ef594ca4a09b40f6f2f6f12acc0c7822"
+    },
+    {
+      "relativePath": "src\\renderer\\src\\pages\\Settings.tsx",
+      "originalHash": "822d9391248cbac8673afbe7f4d92b2b2eb66e5faf3a3b7f157be092899c4653",
+      "sourceHash": "758944339aba2bee66cfe009f1642844fb58517f33d3e5b9603d65e916f89ab7"
+    },
+    {
+      "relativePath": "src\\shared\\api.ts",
+      "originalHash": "d9afc8740f9f8afffd7520e3e00b1dacaf2f705eece473f42c2b2b35a44b82f5",
+      "sourceHash": "38f8c0dd37dfbad082c67c7e65f2bdba30bc7749b2faca2c0299b76194f30a36"
+    },
+    {
+      "relativePath": "src\\shared\\types.ts",
+      "originalHash": "786d9a318e6ada2c0a34c32e7efdd1b6505ee591d0955a6eaa5d7b8037b8b235",
+      "sourceHash": "b06571641205dca4ea544cc2fe76e888c1094e58c286c1c1aa00958cff335d12"
+    },
+    {
+      "relativePath": "out\\main\\index.js",
+      "originalHash": "4fa6fe8ed6c58de14386ef6addbcd8ddf237e62ed593ac5a1a9119a2bd70a1be",
+      "sourceHash": "95ab9170bcc8bc98b42ce71a04cf3ecd236d7debbd1f29a449fc6472aa65cd26"
+    },
+    {
+      "relativePath": "out\\preload\\index.js",
+      "originalHash": "e9c311b8b89333e445e8b6965ae999a0f7ba93637e09e5f1478a68f98fc5816a",
+      "sourceHash": "b5b214137610e179b94b7299bd7e2bf98d37fb3fe317f8f22c785cd893b26deb"
+    },
+    {
+      "relativePath": "out\\renderer\\assets\\index-CpMN5h94.js",
+      "originalHash": null,
+      "sourceHash": "1a8e7f650ff3911fb8deb5d8f05dca1d4db2b0d30301f652c8d1b383b93d3381"
+    },
+    {
+      "relativePath": "out\\renderer\\index.html",
+      "originalHash": "71eefb66c07d7ca8ed779b281b0420c22e3c28336d95f1bc4397b0233257b82e",
+      "sourceHash": "32f5ed7f57c8702924080f8fc44ca37f3be8705d27a2641bec6db87930e467ec"
+    }
+  ]
+}

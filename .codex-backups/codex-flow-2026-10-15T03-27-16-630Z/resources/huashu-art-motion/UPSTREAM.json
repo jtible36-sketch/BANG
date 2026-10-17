@@ -1,0 +1,352 @@
+{
+  "schemaVersion": 1,
+  "repository": "https://github.com/alchaincyf/huashu-art-motion",
+  "commit": "2571ee0a9a0467c4d99e935ea9e0fadda19210b0",
+  "version": "1.1.0",
+  "license": "MIT",
+  "integration": "prompt-guidance-only",
+  "upstreamCodeExecuted": false,
+  "bundledMedia": false,
+  "fileCount": 67,
+  "files": [
+    {
+      "path": "LICENSE",
+      "bytes": 1107,
+      "sha256": "fd164d60e753fd14343e54d03b0c104a292546761bc5866e371de4a02035659c"
+    },
+    {
+      "path": "SKILL.md",
+      "bytes": 22141,
+      "sha256": "85a62d29f303b43a6bde214df7712804df92a2d37c7e4f37c9546229fd81f11d"
+    },
+    {
+      "path": "references/01-拆解.md",
+      "bytes": 4747,
+      "sha256": "1325629d957d22fa8274ac5003ee18479017f265bec35e99eb8d064f11cce6da"
+    },
+    {
+      "path": "references/02-机制.md",
+      "bytes": 5128,
+      "sha256": "2ff0aa03e52b0013eb2ae6239dbd98b8ff9ec7ce0d5f1489a3c3b99c0d08ffa6"
+    },
+    {
+      "path": "references/03-一帧先行四条路线.md",
+      "bytes": 4710,
+      "sha256": "4c618ee8695d4c9d34f58cf7b779b53cc1910f12326f2a667d0b32f8fd96d73d"
+    },
+    {
+      "path": "references/04-纯代码绘制.md",
+      "bytes": 11394,
+      "sha256": "bf4c3efce966b85a19f0edefd18e60a5ddb7d4bdb1823234f041970098501e9d"
+    },
+    {
+      "path": "references/05-节奏与配乐.md",
+      "bytes": 1514,
+      "sha256": "943da404c573cad11ac33417134ee011ae86508bd49946e03ca9731ed3e163c7"
+    },
+    {
+      "path": "references/06-口播驱动的艺术短片.md",
+      "bytes": 2817,
+      "sha256": "54724258efbdfc12a8228ddd06c2258e6ae59fc0a5d0b0fcc3a63fe2bf8ef638"
+    },
+    {
+      "path": "references/07-正面经验.md",
+      "bytes": 21878,
+      "sha256": "920285d6fbcbf525e555a002ddd4fc55c6cf2c7dbd78d16451df9d9386e7a732"
+    },
+    {
+      "path": "references/08-风格作者规范.md",
+      "bytes": 5356,
+      "sha256": "b52abb3a639329d1762ac52e928e8c9b7604dfb1007320590e6a449512e9b9f3"
+    },
+    {
+      "path": "references/09-视频动画语法.md",
+      "bytes": 55145,
+      "sha256": "adbecc1eaa429eaa22c25bdde81bd256b6cd302a7d0c53806a1bc41d80bae09f"
+    },
+    {
+      "path": "references/10-角色.md",
+      "bytes": 3853,
+      "sha256": "0c36647e32705b41eec0b1574a18419bfc4f6f32f3071842c42235aba2a7eb08"
+    },
+    {
+      "path": "references/11-长卷穿越片.md",
+      "bytes": 4293,
+      "sha256": "27202053fa3cda597e08d3bb8dbfc9ee18eff28ef9f70d13f61e86cd1ebf9aca"
+    },
+    {
+      "path": "references/12-口播整片与经验回流.md",
+      "bytes": 2249,
+      "sha256": "c4c0c3f085b235c9dda10e6351973d6a286c064ded29ba67de7ae88ab011dd5e"
+    },
+    {
+      "path": "references/capabilities.md",
+      "bytes": 7437,
+      "sha256": "e17a36373ca7ed26b9e87ca13b27226236de68999c219e0f31e542e4cfefbbea"
+    },
+    {
+      "path": "references/compatibility.md",
+      "bytes": 3045,
+      "sha256": "109b1298cabe79c4a6a508231c112bab09e55b7aebbf0ac4c8363567277be718"
+    },
+    {
+      "path": "references/images.md",
+      "bytes": 5885,
+      "sha256": "01cfeef0f81752c2b841a121c9e409e0388804cf1f04cefd1a574f4891feed19"
+    },
+    {
+      "path": "references/动画语法/t1_3b1b.md",
+      "bytes": 14260,
+      "sha256": "bb7da79142ffce470f016aeb83a86d841905920fdb0692fb6d87e81f0ddcdda9"
+    },
+    {
+      "path": "references/动画语法/t2_keynote_ui.md",
+      "bytes": 14941,
+      "sha256": "a3e4e20223dc324eb4fbf497ab21bdd8ee1b92dca64c8a55f106cd62bf9dcfd8"
+    },
+    {
+      "path": "references/动画语法/t3_finance_chart.md",
+      "bytes": 13650,
+      "sha256": "23751030489feb590a6793aa8dc299e4cbb2d036e02b28150aa1aa7f797daf75"
+    },
+    {
+      "path": "references/动画语法/y1_kurzgesagt.md",
+      "bytes": 17764,
+      "sha256": "32db61b5c9c28ea7215b1836b4750b9f86e168a5f68e0d4589317f02fdf3a014"
+    },
+    {
+      "path": "references/动画语法/y2_vox.md",
+      "bytes": 16903,
+      "sha256": "dc65d795c6dbd050f3f90d65fb43fef177a6be591fb35ac06e344756c25c30c7"
+    },
+    {
+      "path": "references/动画语法/y3_whiteboard.md",
+      "bytes": 15476,
+      "sha256": "1b2ea3d474085ce71e19fd2e5d651e6ee9f0a6163720a2f79d212252421c1437"
+    },
+    {
+      "path": "references/动画语法/y4_storytime.md",
+      "bytes": 18537,
+      "sha256": "ffc3ec97e66fd73521db6d6ff8b95ad4a4be9450fe12f83a7f0140e9fbad14f1"
+    },
+    {
+      "path": "references/动画语法/y5_kinetic_type.md",
+      "bytes": 17323,
+      "sha256": "104d924a45f475927dff218ee45c248f7b276b5c4b39ebb9e289974b5096444c"
+    },
+    {
+      "path": "references/动画语法/y6_presenter_explainer.md",
+      "bytes": 1923,
+      "sha256": "66456865967ae2b266679b8a4d3ebbe5a13a4569a1e4a5348ccf879eb79d3508"
+    },
+    {
+      "path": "references/色板.md",
+      "bytes": 3460,
+      "sha256": "1dd7a5bdc476b396b06695caf52e30860e7ee8e7f224568a2e368ffaf373a7e0"
+    },
+    {
+      "path": "references/角色精细度.md",
+      "bytes": 4659,
+      "sha256": "4f2439c7ed49bfbb0bb642470ba922ff83fe4a6e5f58694426c9ce267275301c"
+    },
+    {
+      "path": "references/镜头表模板.md",
+      "bytes": 9610,
+      "sha256": "6f836bc62d27881ca2781a61ac9864b7c63c137f5ccbd63810a3e577a25c1e9b"
+    },
+    {
+      "path": "references/镜头语言.md",
+      "bytes": 10656,
+      "sha256": "fd16a09b521db51d001efc69f766e240cb1a332b9b101d2ea2beed91e95f43d0"
+    },
+    {
+      "path": "references/风格配方/01_cave.md",
+      "bytes": 7171,
+      "sha256": "f3a5a84f21cb8c2ee1126037d6054c5eaacff7eb91590927b20adf8c105a313b"
+    },
+    {
+      "path": "references/风格配方/02_egypt.md",
+      "bytes": 9016,
+      "sha256": "f765e10edf22e60182350d49680c78d0e2240530dae78ef24120fe0ddb233e2a"
+    },
+    {
+      "path": "references/风格配方/03_greek.md",
+      "bytes": 8983,
+      "sha256": "c00e9d742e2b3bec1820a58876d6e8e771a76a821d4a6d14c568bd6f6da6d0bc"
+    },
+    {
+      "path": "references/风格配方/04_roman.md",
+      "bytes": 12433,
+      "sha256": "0478c7581da67805eca43d395a9fc5773fb46a9ce4a83a9d8328b2c8a10fb144"
+    },
+    {
+      "path": "references/风格配方/05_gothic.md",
+      "bytes": 4243,
+      "sha256": "75a61a1639ddb7712445ae2c81ceed0bb32298e0314571eaf3a06ac7a21a7adf"
+    },
+    {
+      "path": "references/风格配方/06_renaissance.md",
+      "bytes": 4185,
+      "sha256": "2c628f96e9b850b06ac959c561a7db7fac7ee87095dcd8ff96c15d2163ed6281"
+    },
+    {
+      "path": "references/风格配方/08_impressionism.md",
+      "bytes": 4244,
+      "sha256": "6403fe80b8cb45c1f621b32e8ea0aee2940b7d83ba2b3b6fe8d3e37e92b97292"
+    },
+    {
+      "path": "references/风格配方/09_postimp.md",
+      "bytes": 1524,
+      "sha256": "9c9642253506519d4b60304b72e1a5a9de14fad17f3219dc0a9ea51e30386749"
+    },
+    {
+      "path": "references/风格配方/10_nouveau.md",
+      "bytes": 5134,
+      "sha256": "c8180110e1948de2bf5f5253b03a4c335386952141cfae6b8cea5610d4243116"
+    },
+    {
+      "path": "references/风格配方/11_cubism.md",
+      "bytes": 5435,
+      "sha256": "9ec38d5d349a1f4e86c7f5db9d0021e172e7285f287e48b38d71b09f2eb0e98c"
+    },
+    {
+      "path": "references/风格配方/12_bauhaus.md",
+      "bytes": 4465,
+      "sha256": "d6710220ba593f140ab3618cb029af9c024f9623082eea5fdd8b86e98ec231e7"
+    },
+    {
+      "path": "references/风格配方/13_pop.md",
+      "bytes": 4322,
+      "sha256": "456286596d1ee8ee58ec547275f77808fef8d284c4c81962e54913f62661a499"
+    },
+    {
+      "path": "references/风格配方/14_8bit.md",
+      "bytes": 2858,
+      "sha256": "4dee286d185c032435abaa93d344bb943fff70be8c10179ba33b22aeeb4356d2"
+    },
+    {
+      "path": "references/风格配方/15_raytrace.md",
+      "bytes": 3238,
+      "sha256": "b3477570eca3cb14101f7a3d13d8240a7c836fe5af692440bb30bfbef1f2467c"
+    },
+    {
+      "path": "references/风格配方/16_2026.md",
+      "bytes": 5863,
+      "sha256": "0934c1a3a88fab4720f3430215c6e395d10b4487983003e5b6e1276e035c219c"
+    },
+    {
+      "path": "references/风格配方/17_ink.md",
+      "bytes": 4492,
+      "sha256": "5ccd214815f0054e80abbf9f195dfe281a544fb56b51a1d10afcfbdc2f48a0f0"
+    },
+    {
+      "path": "references/风格配方/18_klimt.md",
+      "bytes": 2882,
+      "sha256": "282d16813194c50ef26101ed8ac9a7a8eb897a4da5bf007f260d90134bd4b094"
+    },
+    {
+      "path": "references/风格配方/19_munch.md",
+      "bytes": 2880,
+      "sha256": "1c09a88d65b2cd64034ec5a1947ff76a61e29930f405bbc510350d8b7d1e3997"
+    },
+    {
+      "path": "references/风格配方/20_dunhuang.md",
+      "bytes": 3121,
+      "sha256": "529a66f4e5b974c022da9e284bcc66d3f311f7c6c8eacb368f3f902031016b23"
+    },
+    {
+      "path": "references/风格配方/21_kusama.md",
+      "bytes": 2300,
+      "sha256": "099badbeb820f162b1008edd270b19f96cc13bdfbdc9f790d36997ea6db213ff"
+    },
+    {
+      "path": "references/风格配方/22_constructivism.md",
+      "bytes": 3994,
+      "sha256": "54b2d53f0e2e153991cf0ebf81dbaab8de9a9e0a54bea5ca84e34e6b8b8a869b"
+    },
+    {
+      "path": "references/风格配方/23_dali.md",
+      "bytes": 3508,
+      "sha256": "8e4b2161e511d56c6917b57b50f67a06baae8c5136734797fa28c7c999ea7081"
+    },
+    {
+      "path": "references/风格配方/24_hopper.md",
+      "bytes": 2895,
+      "sha256": "c4d27f38bc068f21e1c9242befafaf93d4ef8840d494d0c11a3869b63cec184d"
+    },
+    {
+      "path": "references/风格配方/25_ghibli.md",
+      "bytes": 3686,
+      "sha256": "fea2b1211fd36b2b036bc6850158975dd46f124eee893d5e9e8342554cb55735"
+    },
+    {
+      "path": "references/风格配方/26_vaporwave.md",
+      "bytes": 3167,
+      "sha256": "7c1faf208d1b9e009cf3aba69264398d79f1fc297dd296b839a58426322a90a1"
+    },
+    {
+      "path": "references/风格配方/27_kirby.md",
+      "bytes": 3426,
+      "sha256": "a0c2624b1d012a13460fd05f49be66d2bcfb07a6507b029e00d7d813b1496be9"
+    },
+    {
+      "path": "references/风格配方/28_monet.md",
+      "bytes": 2876,
+      "sha256": "cfef9c56a784c7b97004b372146dc0e988fbde515cabe1326d7a427f11de67df"
+    },
+    {
+      "path": "references/风格配方/29_seurat.md",
+      "bytes": 2994,
+      "sha256": "5a313ee5c0058ae1f044045810375a15ad6ab0f785592de4c0f1a6e584e45904"
+    },
+    {
+      "path": "references/风格配方/30_matisse.md",
+      "bytes": 2535,
+      "sha256": "66a52e478e3efe1b65c32e06fba6ab5f23c64f2310eddd3c1e9066478da7e6f8"
+    },
+    {
+      "path": "references/风格配方/31_haring.md",
+      "bytes": 2016,
+      "sha256": "d5f67b79b05585dcf673f733112ba42d96351bf182580e8d54c736ee1abb882e"
+    },
+    {
+      "path": "references/风格配方/32_rembrandt.md",
+      "bytes": 2929,
+      "sha256": "db3dafff17fa45931b30c4c6c686d763875f68785279d818c08d5dacd3884467"
+    },
+    {
+      "path": "references/风格配方/33_rubberhose.md",
+      "bytes": 2514,
+      "sha256": "43caf717e51b30acf967f8d0d7ea48a2ac2101686ca13573964a4ee06127975f"
+    },
+    {
+      "path": "references/风格配方/34_shadowpuppet.md",
+      "bytes": 3173,
+      "sha256": "5fc320f69ab623b6a8d06a0697e17c8202d6139a3056bedd6711b5fb58d747a4"
+    },
+    {
+      "path": "references/风格配方/35_shinkai.md",
+      "bytes": 3379,
+      "sha256": "2da6807639b3e65d8acd66e89ff8f20329c595cd4371c88f07218895a2dc6c3e"
+    },
+    {
+      "path": "references/风格配方/36_picasso_blue.md",
+      "bytes": 2764,
+      "sha256": "82f4e817ad9066e5ba7e2c5111fdd25ea3ca7dc85d5b4b34f4fcf9d37a0969e6"
+    },
+    {
+      "path": "references/风格配方/37_rick_morty.md",
+      "bytes": 4520,
+      "sha256": "95482ca874027a612d9094f211bb339f098cf7a4bb1346478eb1f5c8a8603d3c"
+    },
+    {
+      "path": "references/风格配方/INDEX.md",
+      "bytes": 9838,
+      "sha256": "8c3bb32a8eaebdd62128d74ce4e5e8616b1bf8c18b2cf1ceda25b08e3556aa96"
+    }
+  ],
+  "adapterNotice": {
+    "path": "NOTICE.md",
+    "sha256": "f714817dd8539154002cc4830f71c9a925fc9696c9b1ded0c830ff83dd4228f3"
+  }
+}

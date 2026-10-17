@@ -1,0 +1,82 @@
+{
+  "sourceRoot": "C:\\Users\\deathscythe hell\\Documents\\ChatGPT\\bang story\\app",
+  "targetRoot": "E:\\BANG",
+  "backupName": "codex-flow-2026-10-08T12-57-36-621Z",
+  "changes": [
+    {
+      "relativePath": "README.md",
+      "originalHash": "00c6ffe0a7ee188f0bd070591cf81d6dc55b0a7048e29367e5c148f34790d17f",
+      "sourceHash": "1c68ae4472ed0d40e27f237d0553fea7aa6bbdcbf99c805d0b8b8e6f25b09a89"
+    },
+    {
+      "relativePath": "src\\main\\codex-text.ts",
+      "originalHash": "90c05338533df79dd3ba6288249f02f8013accac3dbfb8030f48436672361633",
+      "sourceHash": "8d63db68348b517836899d7afb6da9bff2dfa8ec42cbebf72b68f8d359d59712"
+    },
+    {
+      "relativePath": "src\\main\\ipc.ts",
+      "originalHash": "b1f3a2de1c5d4c2c1a557a56a5bd8472e26751c51fc3f85b9059e67d5f1abe2f",
+      "sourceHash": "05c0e52dfe74f64aa2d02cafa7378376fed60603ca9ba6169dd89a58de6db36a"
+    },
+    {
+      "relativePath": "src\\main\\map-story.ts",
+      "originalHash": "cce3a7f88c5886b9c4377b2ac01e7a626c0fe13e09d52e573467cc5354acd91a",
+      "sourceHash": "e62bf566d100bf3ad9e994c7bf89826808308d113155cd8f64d491f533b2b4ff"
+    },
+    {
+      "relativePath": "src\\main\\providers\\codex.ts",
+      "originalHash": "10f6f4173867b4abe146867ab38b9c28d2f9770a0367c7b0674f0460e482f30a",
+      "sourceHash": "63bcc4ec4ad7daf9293aeaed56b02a81cda0ba3244f16e892e1c4a33fc14ec8f"
+    },
+    {
+      "relativePath": "src\\main\\services\\llm.ts",
+      "originalHash": "0ecf8da23396e44fc2b98515048d458585b3614a1589bdacd8e23113de171e64",
+      "sourceHash": "b998873ae0dc96b33cbba82a4f65e5963b32b908986e32146a5a0bd95f8c09c2"
+    },
+    {
+      "relativePath": "src\\main\\settings.ts",
+      "originalHash": "950aa30a51d40e8864778b8c22b0880017197e91cd240a0675082e1c4790c00b",
+      "sourceHash": "e57f066327f3080883f917207791c9269d93d0239f614d9e75f612215ea59e1e"
+    },
+    {
+      "relativePath": "src\\main\\story-requests.ts",
+      "originalHash": "c294bcd519b7739c0cdc8899560c87c95c9343a2cabcfca73b584ef5099da8cd",
+      "sourceHash": "ff6ede30ecdf0a687c5aa517e3fd9343eeee283608378643547a10705e163a06"
+    },
+    {
+      "relativePath": "src\\main\\story.ts",
+      "originalHash": "f72c47951bcdd2ab8120c92c6ff998b8ef06a0f78ac4527debae954801701d4c",
+      "sourceHash": "3227ce6e57076bc6fa5800046a832299c5100e02f7253999a462e796dec8cf27"
+    },
+    {
+      "relativePath": "src\\renderer\\src\\pages\\project\\ScriptStep.tsx",
+      "originalHash": "7db962f1c1bba9c003a6f61929abd8857583d0fe081493a93809e1cc74738779",
+      "sourceHash": "38bd503bb7e0eccce02ea0efe44e2d57bc5a5a83919ba6f5001848b1bd27591b"
+    },
+    {
+      "relativePath": "src\\renderer\\src\\pages\\Settings.tsx",
+      "originalHash": "eb6249ea3316ae2a3f6f905bc30a53e8b59b4d93c97dbd1593f2e7671dffb1ac",
+      "sourceHash": "5fac7cf1cf55a9a302ba67d408aac6312408862a02f252ea6f77f1ff9dec7893"
+    },
+    {
+      "relativePath": "src\\shared\\types.ts",
+      "originalHash": "b73a953aaf3b580e62e625f380f003d5b68daf8f4e28b752b7e7664e4c5e4f4d",
+      "sourceHash": "ab4ab847c29a1ddf472c453b801d0f60673eb4ae758ffe6f23225e8dcdf16829"
+    },
+    {
+      "relativePath": "out\\main\\index.js",
+      "originalHash": "d6dc025102d486fa9babaafd3539c4d5c5603d37f93ee2380185b9864292c11c",
+      "sourceHash": "3f1b0b7eda1a54ae37c2fe44256e9c072cbce74da42884baf4081188b1b4dee7"
+    },
+    {
+      "relativePath": "out\\renderer\\assets\\index-Crtt3Vwm.js",
+      "originalHash": null,
+      "sourceHash": "da5a4c24e67df024966525c83afc1e89fa56a87a97c26b250b280e4f62776eb8"
+    },
+    {
+      "relativePath": "out\\renderer\\index.html",
+      "originalHash": "76a726bb424e50e26f3f7670698e54003ac27fef75bff688fd3585e245149f23",
+      "sourceHash": "042d406b787e1ba143b2bb7a579efc8b6f72f0150a21eede5a8a5143a26eccc3"
+    }
+  ]
+}

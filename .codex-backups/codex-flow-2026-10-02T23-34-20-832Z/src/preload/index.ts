@@ -1,0 +1,98 @@
+import { contextBridge, ipcRenderer, type IpcRendererEvent } from 'electron'
+import { EVENTS, type StudioApi } from '../shared/api'
+
+const call =
+  <T>(channel: string) =>
+  (...args: unknown[]): Promise<T> =>
+    ipcRenderer.invoke(channel, ...args)
+
+const listen =
+  <T>(channel: string) =>
+  (cb: (payload: T) => void): (() => void) => {
+    const handler = (_e: IpcRendererEvent, payload: T): void => cb(payload)
+    ipcRenderer.on(channel, handler)
+    return () => ipcRenderer.removeListener(channel, handler)
+  }
+
+const api: StudioApi = {
+  projects: {
+    list: call('projects:list'),
+    create: call('projects:create'),
+    get: call('projects:get'),
+    save: call('projects:save'),
+    remove: call('projects:remove'),
+    duplicate: call('projects:duplicate')
+  },
+  story: {
+    script: call('story:script'),
+    visuals: call('story:visuals'),
+    musicPrompt: call('story:musicPrompt')
+  },
+  generate: {
+    clipImage: call('generate:clipImage'),
+    clipVideo: call('generate:clipVideo'),
+    clipTts: call('generate:clipTts'),
+    characterSheet: call('generate:characterSheet'),
+    missingImages: call('generate:missingImages'),
+    missingVideos: call('generate:missingVideos'),
+    missingTts: call('generate:missingTts'),
+    narration: call('generate:narration'),
+    syncCaptions: call('generate:syncCaptions'),
+    cancel: call('generate:cancel'),
+    estimate: call('generate:estimate')
+  },
+  codex: {
+    status: call('codex:status'),
+    generateClipImage: call('codex:generateClipImage'),
+    generateCharacterSheet: call('codex:generateCharacterSheet')
+  },
+  assets: {
+    setActive: call('assets:setActive'),
+    pickClipImage: call('assets:pickClipImage'),
+    pickClipVideo: call('assets:pickClipVideo'),
+    pickCharacterSheet: call('assets:pickCharacterSheet'),
+    exportImage: call('assets:exportImage'),
+    pickMusic: call('assets:pickMusic'),
+    pickImage: call('assets:pickImage')
+  },
+  settings: {
+    get: call('settings:get'),
+    set: call('settings:set'),
+    keys: call('settings:keys'),
+    setKey: call('settings:setKey'),
+    setCustom: call('settings:setCustom'),
+    clearKey: call('settings:clearKey'),
+    revealKey: call('settings:revealKey'),
+    testKey: call('settings:testKey'),
+    voices: call('settings:voices')
+  },
+  models: {
+    list: call('models:list')
+  },
+  exporter: {
+    start: call('export:start'),
+    defaultFolder: call('export:defaultFolder'),
+    pickFolder: call('export:pickFolder'),
+    reveal: call('export:reveal')
+  },
+  app: {
+    openExternal: call('app:openExternal'),
+    copyText: call('app:copyText')
+  },
+  whisper: {
+    status: call('whisper:status'),
+    download: call('whisper:download'),
+    cancel: call('whisper:cancel'),
+    remove: call('whisper:remove'),
+    openFolder: call('whisper:openFolder')
+  },
+  on: {
+    whisper: listen(EVENTS.whisper),
+    job: listen(EVENTS.job),
+    clip: listen(EVENTS.clip),
+    character: listen(EVENTS.character),
+    asset: listen(EVENTS.asset)
+  }
+}
+
+contextBridge.exposeInMainWorld('api', api)

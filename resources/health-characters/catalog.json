@@ -1,0 +1,1586 @@
+[
+  {
+    "id": "character-1",
+    "name": "Otak",
+    "description": "Bentuk hemisfer pink dengan lipatan; memakai identitas master.",
+    "group": "Organ & struktur tubuh",
+    "tags": [
+      "Saraf",
+      "organ"
+    ],
+    "kind": "master",
+    "path": "organ-terpisah/01-otak.png",
+    "width": 1254,
+    "height": 1254,
+    "sha256": "7f6528d7c67bc8356bf5e503b14752420b920b4cbcc3a244c51097dac589234b"
+  },
+  {
+    "id": "character-2",
+    "name": "Jantung",
+    "description": "Jantung anatomis merah dengan pembuluh di atas.",
+    "group": "Organ & struktur tubuh",
+    "tags": [
+      "Sirkulasi",
+      "organ"
+    ],
+    "kind": "master",
+    "path": "organ-terpisah/02-jantung.png",
+    "width": 1254,
+    "height": 1254,
+    "sha256": "9c1eb979cc60bcbcca6a84d92d3c614d33ee160aee0d0f812344cd2fd35ae164"
+  },
+  {
+    "id": "character-3",
+    "name": "Paru-paru",
+    "description": "Sepasang paru-paru dan trakea sebagai satu unit karakter; detail lobus disederhanakan.",
+    "group": "Organ & struktur tubuh",
+    "tags": [
+      "Pernapasan",
+      "organ berpasangan"
+    ],
+    "kind": "master",
+    "path": "organ-terpisah/03-paru-paru.png",
+    "width": 1254,
+    "height": 1254,
+    "sha256": "5174a169ab362e0c4db4a7de247524cb0d2daa955fafa3c39e72b1904ff201c6"
+  },
+  {
+    "id": "character-4",
+    "name": "Hati",
+    "description": "Hati tersendiri; kantung empedu tersedia sebagai karakter terpisah.",
+    "group": "Organ & struktur tubuh",
+    "tags": [
+      "Pencernaan",
+      "organ"
+    ],
+    "kind": "master",
+    "path": "organ-terpisah/04-hati.png",
+    "width": 1254,
+    "height": 1254,
+    "sha256": "027919fd10a7b50201e211079010f3a38c1c58686aeb7690d598d489d793a9ba"
+  },
+  {
+    "id": "character-5",
+    "name": "Lambung",
+    "description": "Kantong berbentuk J dengan saluran masuk dan keluar.",
+    "group": "Organ & struktur tubuh",
+    "tags": [
+      "Pencernaan",
+      "organ"
+    ],
+    "kind": "master",
+    "path": "organ-terpisah/05-lambung.png",
+    "width": 1254,
+    "height": 1254,
+    "sha256": "89dc697ef6a9525045479561bb97c4cbc91e3bda59ffd954534547d890bbd7a3"
+  },
+  {
+    "id": "character-6",
+    "name": "Ginjal",
+    "description": "Dua ginjal dan saluran kecil sebagai satu unit karakter.",
+    "group": "Organ & struktur tubuh",
+    "tags": [
+      "Kemih",
+      "organ berpasangan"
+    ],
+    "kind": "master",
+    "path": "organ-terpisah/06-ginjal.png",
+    "width": 1254,
+    "height": 1254,
+    "sha256": "4161f8e1a0f4eb7abd0fe99e1813b45561aeb2556899b296f40556bf729aa931"
+  },
+  {
+    "id": "character-7",
+    "name": "Usus halus",
+    "description": "Lilitan usus halus tersendiri, terpisah dari kolon.",
+    "group": "Organ & struktur tubuh",
+    "tags": [
+      "Pencernaan",
+      "organ"
+    ],
+    "kind": "master",
+    "path": "organ-terpisah/07-usus-halus.png",
+    "width": 1254,
+    "height": 1254,
+    "sha256": "1bcb1542e20c8c3573bb72e345ef046a8a70b11e111931349b1349e3113e73b5"
+  },
+  {
+    "id": "character-8",
+    "name": "Usus besar",
+    "description": "Bingkai kolon sebagai karakter tersendiri.",
+    "group": "Organ & struktur tubuh",
+    "tags": [
+      "Pencernaan",
+      "organ"
+    ],
+    "kind": "master",
+    "path": "organ-terpisah/08-usus-besar.png",
+    "width": 1254,
+    "height": 1254,
+    "sha256": "8f8f8072003416e792122e0f33ac7bf259835adcbe9cb77f8d6c1d53d8690f19"
+  },
+  {
+    "id": "character-9",
+    "name": "Pankreas",
+    "description": "Organ memanjang kuning dengan bentuk berlobus.",
+    "group": "Organ & struktur tubuh",
+    "tags": [
+      "Pencernaan",
+      "organ"
+    ],
+    "kind": "master",
+    "path": "organ-terpisah/09-pankreas.png",
+    "width": 1254,
+    "height": 1254,
+    "sha256": "f8768fcc00f95810fc5564d573ea79562534d1aaba0201e9e7440679f447f4ba"
+  },
+  {
+    "id": "character-10",
+    "name": "Kantung empedu",
+    "description": "Kantung hijau berbentuk pir dengan saluran pendek.",
+    "group": "Organ & struktur tubuh",
+    "tags": [
+      "Pencernaan",
+      "organ"
+    ],
+    "kind": "master",
+    "path": "organ-terpisah/10-kantung-empedu.png",
+    "width": 1254,
+    "height": 1254,
+    "sha256": "24999f338e55062fce1f35ad5e7cba41013bd59d5bde7f8512aa63e77567c1a4"
+  },
+  {
+    "id": "character-11",
+    "name": "Kerongkongan",
+    "description": "Tabung esofagus tersendiri.",
+    "group": "Organ & struktur tubuh",
+    "tags": [
+      "Pencernaan",
+      "organ"
+    ],
+    "kind": "master",
+    "path": "organ-terpisah/11-kerongkongan.png",
+    "width": 1254,
+    "height": 1254,
+    "sha256": "51e501dfe800d09b408fe27026dec2e355f3be5f99aaf4372340dba685ab20a8"
+  },
+  {
+    "id": "character-12",
+    "name": "Limpa",
+    "description": "Limpa merah keunguan dengan siluet oval/wedge.",
+    "group": "Organ & struktur tubuh",
+    "tags": [
+      "Imun & limfatik",
+      "organ"
+    ],
+    "kind": "master",
+    "path": "organ-terpisah/12-limpa.png",
+    "width": 1254,
+    "height": 1254,
+    "sha256": "206fd902964263dac01c4b8c34725257015695aed49a03b7b5ad9a22567d86c8"
+  },
+  {
+    "id": "character-13",
+    "name": "Kandung kemih",
+    "description": "Reservoir pink dengan inlet ureter dan outlet uretra.",
+    "group": "Organ & struktur tubuh",
+    "tags": [
+      "Kemih",
+      "organ"
+    ],
+    "kind": "master",
+    "path": "organ-terpisah/13-kandung-kemih.png",
+    "width": 1254,
+    "height": 1254,
+    "sha256": "e0f05c8b464ec6862e4f242128c0faf18c857a70c87c441a9ec50882747183a2"
+  },
+  {
+    "id": "character-14",
+    "name": "Trakea",
+    "description": "Tabung dengan cincin yang bercabang menuju bronkus.",
+    "group": "Organ & struktur tubuh",
+    "tags": [
+      "Pernapasan",
+      "organ"
+    ],
+    "kind": "master",
+    "path": "organ-terpisah/14-trakea.png",
+    "width": 1254,
+    "height": 1254,
+    "sha256": "3b829e0440b38aa13ed2009ef79fd1413f98dc67477c987b777b9b5908c0b07c"
+  },
+  {
+    "id": "character-15",
+    "name": "Laring",
+    "description": "Bentuk kartilago laring yang disederhanakan.",
+    "group": "Organ & struktur tubuh",
+    "tags": [
+      "Pernapasan",
+      "organ"
+    ],
+    "kind": "master",
+    "path": "organ-terpisah/15-laring.png",
+    "width": 1254,
+    "height": 1254,
+    "sha256": "c9e7103828d5e596f5faab82187aac7a4ea413f3766e53abe49c26599b1806f1"
+  },
+  {
+    "id": "character-16",
+    "name": "Tiroid",
+    "description": "Kelenjar dengan dua lobus seperti kupu-kupu.",
+    "group": "Organ & struktur tubuh",
+    "tags": [
+      "Hormon",
+      "kelenjar"
+    ],
+    "kind": "master",
+    "path": "organ-terpisah/16-tiroid.png",
+    "width": 1254,
+    "height": 1254,
+    "sha256": "b75e858910cd8f90b58b1ba7cc4a6901b4ade369da581e012180b7e37edb1fa9"
+  },
+  {
+    "id": "character-17",
+    "name": "Hipofisis",
+    "description": "Kelenjar kecil berlobus dan bertangkai.",
+    "group": "Organ & struktur tubuh",
+    "tags": [
+      "Hormon",
+      "kelenjar"
+    ],
+    "kind": "master",
+    "path": "organ-terpisah/17-hipofisis.png",
+    "width": 1254,
+    "height": 1254,
+    "sha256": "b503fe8c366609eb73ebd67aa087546e71c7c46a80b8f9ab57ad59f45d435a67"
+  },
+  {
+    "id": "character-18",
+    "name": "Adrenal",
+    "description": "Satu kelenjar adrenal sebagai karakter sendiri.",
+    "group": "Organ & struktur tubuh",
+    "tags": [
+      "Hormon",
+      "kelenjar"
+    ],
+    "kind": "master",
+    "path": "organ-terpisah/18-adrenal.png",
+    "width": 1254,
+    "height": 1254,
+    "sha256": "110505371940cf5b82c74be77d3149c7055656068b89e46ad92b84696e9df380"
+  },
+  {
+    "id": "character-19",
+    "name": "Timus",
+    "description": "Dua lobus kecil dengan tekstur lobulasi sederhana.",
+    "group": "Organ & struktur tubuh",
+    "tags": [
+      "Imun & limfatik",
+      "organ"
+    ],
+    "kind": "master",
+    "path": "organ-terpisah/19-timus.png",
+    "width": 1254,
+    "height": 1254,
+    "sha256": "53422d191f8a8206503c0ed22715d3349693fa9dad9a2223d346a5fbca44c3f6"
+  },
+  {
+    "id": "character-20",
+    "name": "Mata",
+    "description": "Sepasang bola mata sebagai satu karakter, mengikuti master.",
+    "group": "Organ & struktur tubuh",
+    "tags": [
+      "Indra",
+      "organ berpasangan"
+    ],
+    "kind": "master",
+    "path": "organ-terpisah/20-mata.png",
+    "width": 1254,
+    "height": 1254,
+    "sha256": "3bd1b63c2955dbf7a1b1c296e8ce250e804090f32c614b484eebc3a8bf82930f"
+  },
+  {
+    "id": "character-21",
+    "name": "Telinga",
+    "description": "Daun telinga luar dengan lipatan yang terbaca.",
+    "group": "Organ & struktur tubuh",
+    "tags": [
+      "Indra",
+      "bagian organ"
+    ],
+    "kind": "master",
+    "path": "organ-terpisah/21-telinga.png",
+    "width": 1254,
+    "height": 1254,
+    "sha256": "138594bfb708df138f5b2a50ec280769c3555ac8dfff98456a7d7703b80d3a10"
+  },
+  {
+    "id": "character-22",
+    "name": "Hidung",
+    "description": "Hidung depan dengan dua lubang hidung yang jelas.",
+    "group": "Organ & struktur tubuh",
+    "tags": [
+      "Indra",
+      "organ"
+    ],
+    "kind": "master",
+    "path": "organ-terpisah/22-hidung.png",
+    "width": 1254,
+    "height": 1254,
+    "sha256": "da2d6ed5ee9a7233562e7562630b0b7191291ab5108471e5cfa2ea004825bf42"
+  },
+  {
+    "id": "character-23",
+    "name": "Lidah",
+    "description": "Lidah merah muda dengan alur tengah sederhana.",
+    "group": "Organ & struktur tubuh",
+    "tags": [
+      "Indra",
+      "organ"
+    ],
+    "kind": "master",
+    "path": "organ-terpisah/23-lidah.png",
+    "width": 1254,
+    "height": 1254,
+    "sha256": "e5d3d5e50606909bb1032853a1286400c5d10607091aab4c6ac0341fbbe35a19"
+  },
+  {
+    "id": "character-24",
+    "name": "Kelenjar ludah",
+    "description": "Satu kelenjar berlobus dengan saluran pendek.",
+    "group": "Organ & struktur tubuh",
+    "tags": [
+      "Pencernaan",
+      "kelenjar"
+    ],
+    "kind": "master",
+    "path": "organ-terpisah/24-kelenjar-ludah.png",
+    "width": 1254,
+    "height": 1254,
+    "sha256": "c95d9e5550219a1730f63e62278e5e69778b6646f709b079db2b09089f94e158"
+  },
+  {
+    "id": "character-25",
+    "name": "Kulit",
+    "description": "Karakter potongan lapisan kulit, bukan keseluruhan permukaan tubuh.",
+    "group": "Organ & struktur tubuh",
+    "tags": [
+      "Kulit",
+      "organ"
+    ],
+    "kind": "master",
+    "path": "organ-terpisah/25-kulit.png",
+    "width": 1254,
+    "height": 1254,
+    "sha256": "28e1b92532739f3e1844da00778e2224f785f0907a0c814a370e38242f182b83"
+  },
+  {
+    "id": "character-26",
+    "name": "Gigi",
+    "description": "Satu gigi geraham dengan crown dan dua akar.",
+    "group": "Organ & struktur tubuh",
+    "tags": [
+      "Pencernaan",
+      "organ pendukung"
+    ],
+    "kind": "master",
+    "path": "organ-terpisah/26-gigi.png",
+    "width": 1254,
+    "height": 1254,
+    "sha256": "58b0dc9e5f1f40150c9f3b6d7a5dab11f769c0e7099d4f8eaabba5377403d0b1"
+  },
+  {
+    "id": "character-27",
+    "name": "Tulang",
+    "description": "Satu tulang paha dengan kepala, batang, dan kondilus.",
+    "group": "Organ & struktur tubuh",
+    "tags": [
+      "Otot & rangka",
+      "organ pendukung"
+    ],
+    "kind": "master",
+    "path": "organ-terpisah/27-tulang.png",
+    "width": 1254,
+    "height": 1254,
+    "sha256": "dbbbbeeaf8ea8d2b44fc8f494918035e9ee98addbc59be0e66d1b9a56b6c1bd9"
+  },
+  {
+    "id": "character-28",
+    "name": "Otot",
+    "description": "Bundel otot rangka fusiform dengan tendon di dua ujung.",
+    "group": "Organ & struktur tubuh",
+    "tags": [
+      "Otot & rangka",
+      "jaringan/organ pendukung"
+    ],
+    "kind": "master",
+    "path": "organ-terpisah/28-otot.png",
+    "width": 1254,
+    "height": 1254,
+    "sha256": "30b9f4251818ff0d7bca7804a141f326555cd5c4b5ab690a4f461a2a5f612c8a"
+  },
+  {
+    "id": "character-29",
+    "name": "Sumsum tulang belakang",
+    "description": "Spinal cord dengan cabang saraf; bukan tulang belakang.",
+    "group": "Organ & struktur tubuh",
+    "tags": [
+      "Saraf",
+      "organ"
+    ],
+    "kind": "master",
+    "path": "organ-terpisah/29-sumsum-tulang-belakang.png",
+    "width": 1254,
+    "height": 1254,
+    "sha256": "d35d2b77bbfe98338259ebf21289e22f6a64dd70686666b8d5a6e807b64d08b5"
+  },
+  {
+    "id": "character-30",
+    "name": "Rahim",
+    "description": "Rahim dan saluran tuba dalam siluet sederhana.",
+    "group": "Organ & struktur tubuh",
+    "tags": [
+      "Reproduksi",
+      "organ"
+    ],
+    "kind": "master",
+    "path": "organ-terpisah/30-rahim.png",
+    "width": 1254,
+    "height": 1254,
+    "sha256": "d92d2820ec499004f31b65dd6c5ed50a16f5cc0f43b34264ad0e3777d2960445"
+  },
+  {
+    "id": "character-31",
+    "name": "Ovarium",
+    "description": "Satu ovarium dengan detail folikel sederhana.",
+    "group": "Organ & struktur tubuh",
+    "tags": [
+      "Reproduksi",
+      "organ"
+    ],
+    "kind": "master",
+    "path": "organ-terpisah/31-ovarium.png",
+    "width": 1254,
+    "height": 1254,
+    "sha256": "281a78b9831b2ca013ac0f08b9dc377c4d90e3f569d01b38598464694c5c2c30"
+  },
+  {
+    "id": "character-32",
+    "name": "Testis",
+    "description": "Satu testis dengan epididimis dan saluran pendek.",
+    "group": "Organ & struktur tubuh",
+    "tags": [
+      "Reproduksi",
+      "organ"
+    ],
+    "kind": "master",
+    "path": "organ-terpisah/32-testis.png",
+    "width": 1254,
+    "height": 1254,
+    "sha256": "ae489b790ba4130349596ef79e3940d807c10ada6e9e045d72aab5dda1a0f62a"
+  },
+  {
+    "id": "character-33",
+    "name": "Prostat",
+    "description": "Kelenjar prostat tersendiri dengan detail saluran kecil.",
+    "group": "Organ & struktur tubuh",
+    "tags": [
+      "Reproduksi",
+      "kelenjar"
+    ],
+    "kind": "master",
+    "path": "organ-terpisah/33-prostat.png",
+    "width": 1254,
+    "height": 1254,
+    "sha256": "196383de1998dd12cd3df3686231749a4ee4f2aed3fa444c0a80cad67b2e3a97"
+  },
+  {
+    "id": "character-34",
+    "name": "Apendiks",
+    "description": "Apendiks vermiformis kecil sebagai tokoh tersendiri.",
+    "group": "Organ & struktur tubuh",
+    "tags": [
+      "Pencernaan",
+      "bagian organ"
+    ],
+    "kind": "master",
+    "path": "organ-terpisah/34-apendiks.png",
+    "width": 1254,
+    "height": 1254,
+    "sha256": "e554589f2c68ad0dc60bcbfa2db860fc27ac6bf5e0d60bdc9b94ebb5ccf19f72"
+  },
+  {
+    "id": "character-35",
+    "name": "Rektum",
+    "description": "Bagian akhir saluran pencernaan sebagai karakter sendiri.",
+    "group": "Organ & struktur tubuh",
+    "tags": [
+      "Pencernaan",
+      "bagian organ"
+    ],
+    "kind": "master",
+    "path": "organ-terpisah/35-rektum.png",
+    "width": 1254,
+    "height": 1254,
+    "sha256": "440b6fa02b79f260b4d1b76da83b1266c72d5d48b5274e5a0fb06afa1234f194"
+  },
+  {
+    "id": "character-36",
+    "name": "Diafragma",
+    "description": "Lembaran otot berbentuk kubah dengan tendon tengah.",
+    "group": "Organ & struktur tubuh",
+    "tags": [
+      "Pernapasan",
+      "otot/organ pendukung"
+    ],
+    "kind": "master",
+    "path": "organ-terpisah/36-diafragma.png",
+    "width": 1254,
+    "height": 1254,
+    "sha256": "a3b8695f032a28a0911318c4a6cd6305168128305c81ece522c65231b46fbd15"
+  },
+  {
+    "id": "character-37",
+    "name": "Eritrosit",
+    "description": "Cakram merah bikonkaf; eritrosit dewasa manusia tanpa inti.",
+    "group": "Sel darah & imun",
+    "tags": [
+      "Darah & imun",
+      "sel darah"
+    ],
+    "kind": "master",
+    "path": "jaringan-sel/37-eritrosit.png",
+    "width": 1254,
+    "height": 1254,
+    "sha256": "0cc3bd5e720d41d2472d3b3ce72efec3acaa39440c3c40e543fb66b09a7f165a"
+  },
+  {
+    "id": "character-38",
+    "name": "Trombosit",
+    "description": "Fragmen sel kecil dengan granula; bukan sel berinti.",
+    "group": "Sel darah & imun",
+    "tags": [
+      "Darah & imun",
+      "fragmen sel"
+    ],
+    "kind": "master",
+    "path": "jaringan-sel/38-trombosit.png",
+    "width": 1254,
+    "height": 1254,
+    "sha256": "386671f0c170bf720fa09771cdb55933659ec38b1c633935f892228fb436e040"
+  },
+  {
+    "id": "character-39",
+    "name": "Neutrofil",
+    "description": "Inti bersegmen 3–5 lobus dengan granula pucat yang sederhana.",
+    "group": "Sel darah & imun",
+    "tags": [
+      "Darah & imun",
+      "sel darah putih"
+    ],
+    "kind": "master",
+    "path": "jaringan-sel/39-neutrofil.png",
+    "width": 1254,
+    "height": 1254,
+    "sha256": "644731c9ec60a28494963c74e14928fec851244a5482e2a137fb6414346a3390"
+  },
+  {
+    "id": "character-40",
+    "name": "Eosinofil",
+    "description": "Inti dua lobus dan granula merah-jingga.",
+    "group": "Sel darah & imun",
+    "tags": [
+      "Darah & imun",
+      "sel darah putih"
+    ],
+    "kind": "master",
+    "path": "jaringan-sel/40-eosinofil.png",
+    "width": 1254,
+    "height": 1254,
+    "sha256": "ae13dd0b7b9bae5f89dd54a21b94804a4c7c7171b89ebfa5e6914ff395a4cadb"
+  },
+  {
+    "id": "character-41",
+    "name": "Basofil",
+    "description": "Granula ungu-biru kasar, menutupi sebagian inti.",
+    "group": "Sel darah & imun",
+    "tags": [
+      "Darah & imun",
+      "sel darah putih"
+    ],
+    "kind": "master",
+    "path": "jaringan-sel/41-basofil.png",
+    "width": 1254,
+    "height": 1254,
+    "sha256": "d714eb67eaa5cbeaf2222eb83bffd11b51a8239a8ca4354cbb15d8b38873c2b0"
+  },
+  {
+    "id": "character-42",
+    "name": "Monosit",
+    "description": "Sel dengan inti berbentuk ginjal atau tapal kuda.",
+    "group": "Sel darah & imun",
+    "tags": [
+      "Darah & imun",
+      "sel darah putih"
+    ],
+    "kind": "master",
+    "path": "jaringan-sel/42-monosit.png",
+    "width": 1254,
+    "height": 1254,
+    "sha256": "bdae85a872ea34be3925d7fc387fc1712150ed69bbe2c30645b0d1d37cbbca90"
+  },
+  {
+    "id": "character-43",
+    "name": "Limfosit B",
+    "description": "Bentuk limfosit sederhana; warna biru menjadi kode karakter.",
+    "group": "Sel darah & imun",
+    "tags": [
+      "Darah & imun",
+      "sel imun"
+    ],
+    "kind": "master",
+    "path": "jaringan-sel/43-limfosit-b.png",
+    "width": 1254,
+    "height": 1254,
+    "sha256": "4034eedd09056fe70df62b1f3c81360019016dcf904b94459173d7bf10d6d2c8"
+  },
+  {
+    "id": "character-44",
+    "name": "Limfosit T",
+    "description": "Bentuk limfosit sederhana; warna teal menjadi kode karakter.",
+    "group": "Sel darah & imun",
+    "tags": [
+      "Darah & imun",
+      "sel imun"
+    ],
+    "kind": "master",
+    "path": "jaringan-sel/44-limfosit-t.png",
+    "width": 1254,
+    "height": 1254,
+    "sha256": "92e5ff275e01a57b1dc3472cfd0f0edc6535dd0642c578f07eccb65e23f2256b"
+  },
+  {
+    "id": "character-45",
+    "name": "Sel NK",
+    "description": "Limfosit granular besar; identitas ungu dengan sedikit granula.",
+    "group": "Sel darah & imun",
+    "tags": [
+      "Darah & imun",
+      "sel imun"
+    ],
+    "kind": "master",
+    "path": "jaringan-sel/45-sel-nk.png",
+    "width": 1254,
+    "height": 1254,
+    "sha256": "defb1c4b60c55eae71318bfa3cd60b140275accd01935c0ec590a7e8dc9445c6"
+  },
+  {
+    "id": "character-46",
+    "name": "Makrofag",
+    "description": "Siluet ameboid dengan tonjolan pendek, inti dan vesikel sederhana.",
+    "group": "Sel darah & imun",
+    "tags": [
+      "Darah & imun",
+      "sel imun jaringan"
+    ],
+    "kind": "master",
+    "path": "jaringan-sel/46-makrofag.png",
+    "width": 1254,
+    "height": 1254,
+    "sha256": "b6075f68dbe49277af22c28bf806eeee2a5d59f2029e597548012c33b23f32b2"
+  },
+  {
+    "id": "character-47",
+    "name": "Sel dendritik",
+    "description": "Sel bercabang dengan tonjolan dendritik; bukan neuron.",
+    "group": "Sel darah & imun",
+    "tags": [
+      "Darah & imun",
+      "sel imun"
+    ],
+    "kind": "master",
+    "path": "jaringan-sel/47-sel-dendritik.png",
+    "width": 1254,
+    "height": 1254,
+    "sha256": "158cc5e68d8294d415989080a608cb220c82a287ca3a574a958cfac1e672e2b7"
+  },
+  {
+    "id": "character-48",
+    "name": "Sel mast",
+    "description": "Sel jaringan dengan granula banyak dan inti bulat.",
+    "group": "Sel darah & imun",
+    "tags": [
+      "Darah & imun",
+      "sel imun jaringan"
+    ],
+    "kind": "master",
+    "path": "jaringan-sel/48-sel-mast.png",
+    "width": 1254,
+    "height": 1254,
+    "sha256": "478742b49dca9a4457aaad504a06daf6bca42609d1157126e9a9e534d640caaa"
+  },
+  {
+    "id": "character-49",
+    "name": "Sel plasma",
+    "description": "Sel penghasil antibodi dengan inti eksentrik dan halo perinuklear.",
+    "group": "Sel darah & imun",
+    "tags": [
+      "Darah & imun",
+      "sel imun"
+    ],
+    "kind": "master",
+    "path": "jaringan-sel/49-sel-plasma.png",
+    "width": 1254,
+    "height": 1254,
+    "sha256": "fd5972cfc6a118fdedf47413da0c871f4cdce813c6af110a929db2a0975d8960"
+  },
+  {
+    "id": "character-50",
+    "name": "Sel punca darah",
+    "description": "Representasi generik sel punca hematopoietik; identitas visual bersifat ilustratif.",
+    "group": "Sel darah & imun",
+    "tags": [
+      "Darah & imun",
+      "sel punca hematopoietik"
+    ],
+    "kind": "master",
+    "path": "jaringan-sel/50-sel-punca-darah.png",
+    "width": 1254,
+    "height": 1254,
+    "sha256": "81009692c45fa4e343aff947ab1d66e2d257c2c2a50f36e7643d45b58baadcf6"
+  },
+  {
+    "id": "character-51",
+    "name": "Epitel pipih",
+    "description": "Potongan lapisan epitel pipih sederhana dengan membran basal.",
+    "group": "Jaringan",
+    "tags": [
+      "Kulit",
+      "jaringan epitel"
+    ],
+    "kind": "master",
+    "path": "jaringan-sel/51-epitel-pipih.png",
+    "width": 1254,
+    "height": 1254,
+    "sha256": "681a09a047eaffa628efb4c8a8f511ba3b979d0a79fcf56da09fc68fcf4dfccf"
+  },
+  {
+    "id": "character-52",
+    "name": "Epitel bersilia",
+    "description": "Lapisan epitel silindris bersilia; silia berada di permukaan atas.",
+    "group": "Jaringan",
+    "tags": [
+      "Pernapasan",
+      "jaringan epitel"
+    ],
+    "kind": "master",
+    "path": "jaringan-sel/52-epitel-bersilia.png",
+    "width": 1254,
+    "height": 1254,
+    "sha256": "79db2f377c387cd1f8ea080a16a35007a2d4e33f620d3b6b9879adc9feba26b3"
+  },
+  {
+    "id": "character-53",
+    "name": "Jaringan ikat longgar",
+    "description": "Serat kolagen dan elastin longgar dengan sel yang tersebar.",
+    "group": "Jaringan",
+    "tags": [
+      "Jaringan penunjang",
+      "jaringan ikat"
+    ],
+    "kind": "master",
+    "path": "jaringan-sel/53-ikat-longgar.png",
+    "width": 1254,
+    "height": 1254,
+    "sha256": "601ee7c70b9c3f85de26c57344b792704a5fef8a004c02907d03b431eaea7c34"
+  },
+  {
+    "id": "character-54",
+    "name": "Jaringan ikat padat",
+    "description": "Berkas kolagen sejajar sebagai contoh jaringan tendon.",
+    "group": "Jaringan",
+    "tags": [
+      "Otot & rangka",
+      "jaringan ikat"
+    ],
+    "kind": "master",
+    "path": "jaringan-sel/54-ikat-padat.png",
+    "width": 1254,
+    "height": 1254,
+    "sha256": "0f4dd1911e085b60c1060adaebbd76feb6ae9207272f64ca4b33d5f4e2cf8f2c"
+  },
+  {
+    "id": "character-55",
+    "name": "Jaringan adiposa",
+    "description": "Sekelompok adiposit sebagai satu karakter jaringan.",
+    "group": "Jaringan",
+    "tags": [
+      "Jaringan penunjang",
+      "jaringan ikat lemak"
+    ],
+    "kind": "master",
+    "path": "jaringan-sel/55-jaringan-adiposa.png",
+    "width": 1254,
+    "height": 1254,
+    "sha256": "99c7c19f03ecf08fc0a8aa9f8d58002ad6a08b1f6cbe60737389cb3f8757deb6"
+  },
+  {
+    "id": "character-56",
+    "name": "Tulang rawan hialin",
+    "description": "Matriks halus kebiruan dengan sel dalam lakuna.",
+    "group": "Jaringan",
+    "tags": [
+      "Otot & rangka",
+      "jaringan tulang rawan"
+    ],
+    "kind": "master",
+    "path": "jaringan-sel/56-tulang-rawan-hialin.png",
+    "width": 1254,
+    "height": 1254,
+    "sha256": "facacf3cff1272a9812812fcfb14b1b549f511d8a10176836860d4c70c288ccd"
+  },
+  {
+    "id": "character-57",
+    "name": "Tulang kompak",
+    "description": "Potongan osteon berlapis konsentris, bukan siluet tulang utuh.",
+    "group": "Jaringan",
+    "tags": [
+      "Otot & rangka",
+      "jaringan tulang"
+    ],
+    "kind": "master",
+    "path": "jaringan-sel/57-tulang-kompak.png",
+    "width": 1254,
+    "height": 1254,
+    "sha256": "80a1671dca5375fe8b4ff7592192ea7f03c0b4cd5f280778e13dcdbec16801fe"
+  },
+  {
+    "id": "character-58",
+    "name": "Jaringan otot rangka",
+    "description": "Serat panjang sejajar dengan garis lurik dan inti tepi.",
+    "group": "Jaringan",
+    "tags": [
+      "Otot & rangka",
+      "jaringan otot"
+    ],
+    "kind": "master",
+    "path": "jaringan-sel/58-jaringan-otot-rangka.png",
+    "width": 1254,
+    "height": 1254,
+    "sha256": "d4d4b985bf6049aad356eb93065073258bc98b768b9088439b2ab69e1c47caa9"
+  },
+  {
+    "id": "character-59",
+    "name": "Jaringan otot polos",
+    "description": "Sel berbentuk gelendong dengan inti tengah, tanpa lurik.",
+    "group": "Jaringan",
+    "tags": [
+      "Otot & rangka",
+      "jaringan otot"
+    ],
+    "kind": "master",
+    "path": "jaringan-sel/59-jaringan-otot-polos.png",
+    "width": 1254,
+    "height": 1254,
+    "sha256": "6ee9f5739e8b6ecc5de62e8b2209ea90525fc4afea49786f973fa8640c963f6d"
+  },
+  {
+    "id": "character-60",
+    "name": "Jaringan otot jantung",
+    "description": "Serat bercabang dengan lurik dan diskus interkalaris sederhana.",
+    "group": "Jaringan",
+    "tags": [
+      "Sirkulasi",
+      "jaringan otot"
+    ],
+    "kind": "master",
+    "path": "jaringan-sel/60-jaringan-otot-jantung.png",
+    "width": 1254,
+    "height": 1254,
+    "sha256": "a22ff9d664a798708abf80777a8bbb484767b945f63430cac1c20e8b641b1874"
+  },
+  {
+    "id": "character-61",
+    "name": "Jaringan saraf",
+    "description": "Potongan jaringan berisi jaringan cabang saraf dan glia sederhana.",
+    "group": "Jaringan",
+    "tags": [
+      "Saraf",
+      "jaringan saraf"
+    ],
+    "kind": "master",
+    "path": "jaringan-sel/61-jaringan-saraf.png",
+    "width": 1254,
+    "height": 1254,
+    "sha256": "6ce70529b17c2ee4ddbb9501481d7f65ba4ca5fb9875ae24ef982b9912463773"
+  },
+  {
+    "id": "character-62",
+    "name": "Sumsum tulang merah",
+    "description": "Potongan jaringan sumsum merah; berbeda dari sumsum tulang belakang.",
+    "group": "Jaringan",
+    "tags": [
+      "Darah & imun",
+      "jaringan pembentuk darah"
+    ],
+    "kind": "master",
+    "path": "jaringan-sel/62-sumsum-tulang-merah.png",
+    "width": 1254,
+    "height": 1254,
+    "sha256": "6f51ce8f6425bd7b8ed1c51d7cadef17ea4a2948653e3f35d7ad7a6c220b80ef"
+  },
+  {
+    "id": "character-63",
+    "name": "Neuron",
+    "description": "Badan sel bercabang, satu akson panjang, dan ujung akson.",
+    "group": "Sel khusus",
+    "tags": [
+      "Saraf",
+      "sel saraf"
+    ],
+    "kind": "master",
+    "path": "jaringan-sel/63-neuron.png",
+    "width": 1254,
+    "height": 1254,
+    "sha256": "e22bf18f0ab2d4b8373c65b39172ceda2d2628b1844892f5a5cc9ab068704a03"
+  },
+  {
+    "id": "character-64",
+    "name": "Astrosit",
+    "description": "Sel glia berbentuk bintang dengan banyak cabang pendek.",
+    "group": "Sel khusus",
+    "tags": [
+      "Saraf",
+      "sel glia"
+    ],
+    "kind": "master",
+    "path": "jaringan-sel/64-astrosit.png",
+    "width": 1254,
+    "height": 1254,
+    "sha256": "01a0d2aceb42f33468331e081bf10db191a5268973999090dce348903f72097f"
+  },
+  {
+    "id": "character-65",
+    "name": "Mikroglia",
+    "description": "Badan sel kecil dengan cabang halus bercabang banyak.",
+    "group": "Sel khusus",
+    "tags": [
+      "Saraf",
+      "sel glia imun"
+    ],
+    "kind": "master",
+    "path": "jaringan-sel/65-mikroglia.png",
+    "width": 1254,
+    "height": 1254,
+    "sha256": "05b021ef0785936b3d68b1cb520a78a5c87e28d4ccab8e68b803d2093d2babc9"
+  },
+  {
+    "id": "character-66",
+    "name": "Oligodendrosit",
+    "description": "Badan glia dengan beberapa proses menuju beberapa segmen mielin.",
+    "group": "Sel khusus",
+    "tags": [
+      "Saraf",
+      "sel glia"
+    ],
+    "kind": "master",
+    "path": "jaringan-sel/66-oligodendrosit.png",
+    "width": 1254,
+    "height": 1254,
+    "sha256": "fc803a1ca79cfd7c9b6eb11b302450212c9b8d59c8d4f2de175ca39859dc10bd"
+  },
+  {
+    "id": "character-67",
+    "name": "Sel Schwann",
+    "description": "Satu sel membungkus satu segmen akson pada saraf perifer.",
+    "group": "Sel khusus",
+    "tags": [
+      "Saraf",
+      "sel glia perifer"
+    ],
+    "kind": "master",
+    "path": "jaringan-sel/67-sel-schwann.png",
+    "width": 1254,
+    "height": 1254,
+    "sha256": "ece3fd93baedfaff0d7f0161e8c018d516ad7f4c1514267be5ae9dcaef23c0e4"
+  },
+  {
+    "id": "character-68",
+    "name": "Fibroblas",
+    "description": "Sel gelendong dengan inti lonjong dan beberapa tonjolan pendek.",
+    "group": "Sel khusus",
+    "tags": [
+      "Jaringan penunjang",
+      "sel jaringan ikat"
+    ],
+    "kind": "master",
+    "path": "jaringan-sel/68-fibroblas.png",
+    "width": 1254,
+    "height": 1254,
+    "sha256": "48044808e1f0cc9a70e4111d6df0e58baa9333eb1dc3da8a90bf593b57224648"
+  },
+  {
+    "id": "character-69",
+    "name": "Adiposit",
+    "description": "Satu adiposit dengan tetes lipid besar dan inti terdesak ke tepi.",
+    "group": "Sel khusus",
+    "tags": [
+      "Jaringan penunjang",
+      "sel lemak"
+    ],
+    "kind": "master",
+    "path": "jaringan-sel/69-adiposit.png",
+    "width": 1254,
+    "height": 1254,
+    "sha256": "a3f1fc06b792b14cba26698be0ca36228fdfc5b286549149e89484467bcc79e6"
+  },
+  {
+    "id": "character-70",
+    "name": "Osteoblas",
+    "description": "Sel kuboid dengan inti eksentrik; bentuk ilustratif.",
+    "group": "Sel khusus",
+    "tags": [
+      "Otot & rangka",
+      "sel pembentuk tulang"
+    ],
+    "kind": "master",
+    "path": "jaringan-sel/70-osteoblas.png",
+    "width": 1254,
+    "height": 1254,
+    "sha256": "53a34cb4e278d94789033fe3cf557df1d6eaa591d169386cb45773ecfa405eee"
+  },
+  {
+    "id": "character-71",
+    "name": "Osteoklas",
+    "description": "Sel besar berinti banyak dengan permukaan berlipat di satu sisi.",
+    "group": "Sel khusus",
+    "tags": [
+      "Otot & rangka",
+      "sel perombak tulang"
+    ],
+    "kind": "master",
+    "path": "jaringan-sel/71-osteoklas.png",
+    "width": 1254,
+    "height": 1254,
+    "sha256": "76eaa00ff22460a4c0f3388635a5fb5fa588639d86f42a52bcb8732bf94be0c2"
+  },
+  {
+    "id": "character-72",
+    "name": "Kondrosit",
+    "description": "Satu sel tulang rawan dalam lakuna sederhana.",
+    "group": "Sel khusus",
+    "tags": [
+      "Otot & rangka",
+      "sel tulang rawan"
+    ],
+    "kind": "master",
+    "path": "jaringan-sel/72-kondrosit.png",
+    "width": 1254,
+    "height": 1254,
+    "sha256": "7ddafec535620590b171f85f40a2ae3b82254a42404425f7bfd29d0714c0450a"
+  },
+  {
+    "id": "character-73",
+    "name": "Sel endotel",
+    "description": "Sel pipih memanjang dengan inti lonjong.",
+    "group": "Sel khusus",
+    "tags": [
+      "Sirkulasi",
+      "sel pelapis pembuluh"
+    ],
+    "kind": "master",
+    "path": "jaringan-sel/73-sel-endotel.png",
+    "width": 1254,
+    "height": 1254,
+    "sha256": "715f59a743a3b6f3b1a3ce7703624dbcdda63ba05d21080082b80acba40803e5"
+  },
+  {
+    "id": "character-74",
+    "name": "Hepatosit",
+    "description": "Sel poligonal dengan inti dan detail sitoplasma sederhana.",
+    "group": "Sel khusus",
+    "tags": [
+      "Pencernaan",
+      "sel hati"
+    ],
+    "kind": "master",
+    "path": "jaringan-sel/74-hepatosit.png",
+    "width": 1254,
+    "height": 1254,
+    "sha256": "6e4400c1529bdbc9775db8718c0cdf4ebf93d4c07a5dcc3ab7a73018cf3d69a8"
+  },
+  {
+    "id": "character-75",
+    "name": "Sel beta pankreas",
+    "description": "Sel beta dengan granula sekretorik sederhana; warna sebagai kode visual.",
+    "group": "Sel khusus",
+    "tags": [
+      "Hormon",
+      "sel endokrin"
+    ],
+    "kind": "master",
+    "path": "jaringan-sel/75-sel-beta-pankreas.png",
+    "width": 1254,
+    "height": 1254,
+    "sha256": "d6b235731402530da1d748ab946f527fc79400bb8fbeba04aa4eab021d36f8cb"
+  },
+  {
+    "id": "character-76",
+    "name": "Podosit",
+    "description": "Badan sel dengan proses utama dan ujung seperti kaki kecil.",
+    "group": "Sel khusus",
+    "tags": [
+      "Kemih",
+      "sel penyaring ginjal"
+    ],
+    "kind": "master",
+    "path": "jaringan-sel/76-podosit.png",
+    "width": 1254,
+    "height": 1254,
+    "sha256": "5d7e9ad5f4b425613ca198108718f4d95ab323f73f6f0d6fd26dd5d0281f223b"
+  },
+  {
+    "id": "character-77",
+    "name": "Kelenjar pineal",
+    "description": "Kelenjar kecil berbentuk kerucut; ditampilkan terpisah dari otak.",
+    "group": "Organ & struktur tubuh",
+    "tags": [
+      "Hormon",
+      "kelenjar endokrin"
+    ],
+    "kind": "master",
+    "path": "organ-tambahan/77-kelenjar-pineal.png",
+    "width": 1254,
+    "height": 1254,
+    "sha256": "b5f9a9a07cf7e852fdc10d586e0bbe71edcd82481a6512b7eafe72efb4d84fa5"
+  },
+  {
+    "id": "character-78",
+    "name": "Kelenjar paratiroid",
+    "description": "Satu kelenjar paratiroid representatif; bentuk terpisah dari tiroid.",
+    "group": "Organ & struktur tubuh",
+    "tags": [
+      "Hormon",
+      "kelenjar endokrin"
+    ],
+    "kind": "master",
+    "path": "organ-tambahan/78-kelenjar-paratiroid.png",
+    "width": 1254,
+    "height": 1254,
+    "sha256": "1541c81ba319b43935e7203abf0961c1152ef32ecc47cf551de4c7f38e4206c4"
+  },
+  {
+    "id": "character-79",
+    "name": "Kelenjar lakrimal",
+    "description": "Kelenjar air mata dengan bentuk berlobus dan saluran kecil.",
+    "group": "Organ & struktur tubuh",
+    "tags": [
+      "Indra",
+      "kelenjar air mata"
+    ],
+    "kind": "master",
+    "path": "organ-tambahan/79-kelenjar-lakrimal.png",
+    "width": 1254,
+    "height": 1254,
+    "sha256": "4385c2ec2912b8b5be0ea350c8633a9be44b83de1d4e720b3db42f374f2be33a"
+  },
+  {
+    "id": "character-80",
+    "name": "Tonsil palatina",
+    "description": "Satu tonsil palatina dengan permukaan berlekuk sebagai acuan tokoh.",
+    "group": "Organ & struktur tubuh",
+    "tags": [
+      "Imun & limfatik",
+      "organ limfoid"
+    ],
+    "kind": "master",
+    "path": "organ-tambahan/80-tonsil-palatina.png",
+    "width": 1254,
+    "height": 1254,
+    "sha256": "30e6d6eb5b82785e0c1714ca616c4978c1b310724915ce27f53617651540b5c6"
+  },
+  {
+    "id": "character-81",
+    "name": "Kelenjar mamae",
+    "description": "Unit kelenjar payudara dengan lobulus dan saluran yang disederhanakan.",
+    "group": "Organ & struktur tubuh",
+    "tags": [
+      "Reproduksi",
+      "kelenjar payudara"
+    ],
+    "kind": "master",
+    "path": "organ-tambahan/81-kelenjar-mamae.png",
+    "width": 1254,
+    "height": 1254,
+    "sha256": "771efc4d50844eacb1b1b3d0239a904a93e804cfe3b97c893bd94c39be0817e9"
+  },
+  {
+    "id": "character-82",
+    "name": "Faring",
+    "description": "Saluran berotot di belakang rongga hidung dan mulut; bentuk skematis.",
+    "group": "Organ & struktur tubuh",
+    "tags": [
+      "Pencernaan",
+      "saluran bersama pencernaan/pernapasan"
+    ],
+    "kind": "master",
+    "path": "organ-tambahan/82-faring.png",
+    "width": 1254,
+    "height": 1254,
+    "sha256": "72f84e3aa0b9e08fa05608e2f9546582f44f0f8fdecf8f56960e330faa17ee7a"
+  },
+  {
+    "id": "character-83",
+    "name": "Epiglotis",
+    "description": "Katup berbentuk daun di pintu masuk laring.",
+    "group": "Organ & struktur tubuh",
+    "tags": [
+      "Pernapasan",
+      "struktur tulang rawan"
+    ],
+    "kind": "master",
+    "path": "organ-tambahan/83-epiglotis.png",
+    "width": 1254,
+    "height": 1254,
+    "sha256": "6a80a518c12ad6f96f4b80b5214f24bba8c1aafa9d92c91611c1c104e2882dac"
+  },
+  {
+    "id": "character-84",
+    "name": "Bronkus",
+    "description": "Cabang utama saluran napas dengan beberapa percabangan kecil.",
+    "group": "Organ & struktur tubuh",
+    "tags": [
+      "Pernapasan",
+      "saluran pernapasan"
+    ],
+    "kind": "master",
+    "path": "organ-tambahan/84-bronkus.png",
+    "width": 1254,
+    "height": 1254,
+    "sha256": "19dff7fad32ee58a82f7a4c6996909abe0802f7fef9d99df9676434e53afec0c"
+  },
+  {
+    "id": "character-85",
+    "name": "Alveolus",
+    "description": "Satu kantung udara paru dengan kapiler sekitar; bentuk ilustratif.",
+    "group": "Organ & struktur tubuh",
+    "tags": [
+      "Pernapasan",
+      "kantung udara paru"
+    ],
+    "kind": "master",
+    "path": "organ-tambahan/85-alveolus.png",
+    "width": 1254,
+    "height": 1254,
+    "sha256": "445fd5409294e5d9f296cba33d5a349408b54dd734115863e4a7bd2d00ede2d3"
+  },
+  {
+    "id": "character-86",
+    "name": "Kelenjar getah bening",
+    "description": "Satu nodus limfa dengan kapsul, hilum dan saluran kecil.",
+    "group": "Organ & struktur tubuh",
+    "tags": [
+      "Imun & limfatik",
+      "organ limfoid"
+    ],
+    "kind": "master",
+    "path": "organ-tambahan/86-kelenjar-getah-bening.png",
+    "width": 1254,
+    "height": 1254,
+    "sha256": "0e32a43a43a71a29f6aee97eef336e2141c9d832dc001df8c22c96239c5c2f0b"
+  },
+  {
+    "id": "character-87",
+    "name": "Pembuluh limfa",
+    "description": "Segmen pembuluh limfa dengan katup yang disederhanakan.",
+    "group": "Organ & struktur tubuh",
+    "tags": [
+      "Imun & limfatik",
+      "struktur pembuluh limfa"
+    ],
+    "kind": "master",
+    "path": "organ-tambahan/87-pembuluh-limfa.png",
+    "width": 1254,
+    "height": 1254,
+    "sha256": "36679bafd6fec43d11655fec4e831d0da2d0a5751b8dffee2e2902be9c5114cf"
+  },
+  {
+    "id": "character-88",
+    "name": "Aorta",
+    "description": "Lengkung aorta dan tiga cabang atas disederhanakan.",
+    "group": "Organ & struktur tubuh",
+    "tags": [
+      "Sirkulasi",
+      "arteri utama"
+    ],
+    "kind": "master",
+    "path": "organ-tambahan/88-aorta.png",
+    "width": 1254,
+    "height": 1254,
+    "sha256": "00400fcef3838bbdd9d6679a51931324eb9602507241bce73a2c7982e075c074"
+  },
+  {
+    "id": "character-89",
+    "name": "Arteri",
+    "description": "Segmen arteri dengan dinding tebal dan lumen; warna ilustratif.",
+    "group": "Organ & struktur tubuh",
+    "tags": [
+      "Sirkulasi",
+      "pembuluh darah"
+    ],
+    "kind": "master",
+    "path": "organ-tambahan/89-arteri.png",
+    "width": 1254,
+    "height": 1254,
+    "sha256": "534ed0707b1a29a5d5a6be49d607a57e088d806129701b513478bf7915724fa5"
+  },
+  {
+    "id": "character-90",
+    "name": "Vena",
+    "description": "Segmen vena dengan dinding lebih tipis, lumen lebar dan katup.",
+    "group": "Organ & struktur tubuh",
+    "tags": [
+      "Sirkulasi",
+      "pembuluh darah"
+    ],
+    "kind": "master",
+    "path": "organ-tambahan/90-vena.png",
+    "width": 1254,
+    "height": 1254,
+    "sha256": "349516e489219a49cf0d398ba7c39d403eb1ab6009e38f4fd5ef939089b5a006"
+  },
+  {
+    "id": "character-91",
+    "name": "Kapiler darah",
+    "description": "Pembuluh kecil berdinding tipis; warna merah/biru sebagai kode ilustrasi.",
+    "group": "Organ & struktur tubuh",
+    "tags": [
+      "Sirkulasi",
+      "pembuluh darah mikro"
+    ],
+    "kind": "master",
+    "path": "organ-tambahan/91-kapiler-darah.png",
+    "width": 1254,
+    "height": 1254,
+    "sha256": "bb1e5fa343316abbe1983999d37595ec9e88183ff5c039f477ecdbbbb82424c5"
+  },
+  {
+    "id": "character-92",
+    "name": "Ureter",
+    "description": "Saluran dari ginjal ke kandung kemih; satu ureter sebagai tokoh.",
+    "group": "Organ & struktur tubuh",
+    "tags": [
+      "Kemih",
+      "saluran kemih"
+    ],
+    "kind": "master",
+    "path": "organ-tambahan/92-ureter.png",
+    "width": 1254,
+    "height": 1254,
+    "sha256": "b7d6377038f75f65755f75dd8af14f9d2dd4c091fd3fb846afae163168aa1484"
+  },
+  {
+    "id": "character-93",
+    "name": "Uretra",
+    "description": "Saluran keluar dari kandung kemih; bentuk skematis umum.",
+    "group": "Organ & struktur tubuh",
+    "tags": [
+      "Kemih",
+      "saluran kemih"
+    ],
+    "kind": "master",
+    "path": "organ-tambahan/93-uretra.png",
+    "width": 1254,
+    "height": 1254,
+    "sha256": "fd6479880665afb93ef9c2aa5425b1f61a74de1885d89c62204b5cf696dfa7fe"
+  },
+  {
+    "id": "character-94",
+    "name": "Tuba fallopi",
+    "description": "Satu tuba dengan ujung berjumbai; ovarium dan rahim tidak disertakan.",
+    "group": "Organ & struktur tubuh",
+    "tags": [
+      "Reproduksi",
+      "saluran reproduksi"
+    ],
+    "kind": "master",
+    "path": "organ-tambahan/94-tuba-fallopi.png",
+    "width": 1254,
+    "height": 1254,
+    "sha256": "becd88457558dc0f28b4b4189469cda2f87dc2c7c5ff60006e9ffb46c92f48f1"
+  },
+  {
+    "id": "character-95",
+    "name": "Serviks",
+    "description": "Leher rahim sebagai unit karakter terpisah dengan kanal sederhana.",
+    "group": "Organ & struktur tubuh",
+    "tags": [
+      "Reproduksi",
+      "bagian rahim"
+    ],
+    "kind": "master",
+    "path": "organ-tambahan/95-serviks.png",
+    "width": 1254,
+    "height": 1254,
+    "sha256": "8025658ff3f3abd279a06d9c4dd487d10cab2fa709d0b2ec706358a2e6cd8123"
+  },
+  {
+    "id": "character-96",
+    "name": "Vagina",
+    "description": "Kanal berotot dengan lipatan mukosa; bentuk skematis.",
+    "group": "Organ & struktur tubuh",
+    "tags": [
+      "Reproduksi",
+      "organ saluran reproduksi"
+    ],
+    "kind": "master",
+    "path": "organ-tambahan/96-vagina.png",
+    "width": 1254,
+    "height": 1254,
+    "sha256": "890cc9754e7b26206dec48e506a32aa0aba83ddfbc5766379d5f2067b285f7a4"
+  },
+  {
+    "id": "character-97",
+    "name": "Plasenta",
+    "description": "Organ kehamilan berbentuk cakram dengan pembuluh dan pangkal tali pusat.",
+    "group": "Organ & struktur tubuh",
+    "tags": [
+      "Reproduksi",
+      "organ kehamilan"
+    ],
+    "kind": "master",
+    "path": "organ-tambahan/97-plasenta.png",
+    "width": 1254,
+    "height": 1254,
+    "sha256": "f1b8cf96972feb68c7b1dcedb6a3c6cfd92eeb187f38aa37aab20e216b23e922"
+  },
+  {
+    "id": "character-98",
+    "name": "Epididimis",
+    "description": "Saluran berkelok dengan bagian kepala, badan dan ekor.",
+    "group": "Organ & struktur tubuh",
+    "tags": [
+      "Reproduksi",
+      "saluran reproduksi"
+    ],
+    "kind": "master",
+    "path": "organ-tambahan/98-epididimis.png",
+    "width": 1254,
+    "height": 1254,
+    "sha256": "bbb1ba544e75e8918a16e52f4b03e389d29d62c01dbc75b5abc37f0ebc8da3e9"
+  },
+  {
+    "id": "character-99",
+    "name": "Vas deferens",
+    "description": "Saluran berotot sebagai tokoh terpisah dari epididimis.",
+    "group": "Organ & struktur tubuh",
+    "tags": [
+      "Reproduksi",
+      "saluran reproduksi"
+    ],
+    "kind": "master",
+    "path": "organ-tambahan/99-vas-deferens.png",
+    "width": 1254,
+    "height": 1254,
+    "sha256": "384feeff96ebc98f513db67c33331d44bf1788dbd453f0ead937dd4c3b12d17e"
+  },
+  {
+    "id": "character-100",
+    "name": "Vesikula seminalis",
+    "description": "Satu vesikula seminalis dengan permukaan berlobus dan saluran pendek.",
+    "group": "Organ & struktur tubuh",
+    "tags": [
+      "Reproduksi",
+      "kelenjar aksesori"
+    ],
+    "kind": "master",
+    "path": "organ-tambahan/100-vesikula-seminalis.png",
+    "width": 1254,
+    "height": 1254,
+    "sha256": "37adda596e43a38c9b06e222fc155a4778d631d0ee6cbc69b5eeaf4b849ac085"
+  },
+  {
+    "id": "sheet-1",
+    "name": "Master 8 organ",
+    "description": "Bank desain awal delapan organ. Usus gabungan pada sheet berbeda dari master usus halus dan usus besar individual.",
+    "group": "Lembar ekspresi dan gestur",
+    "tags": [
+      "Ekspresi",
+      "Gestur"
+    ],
+    "kind": "sheet",
+    "members": [
+      "Otak",
+      "Jantung",
+      "Paru-paru",
+      "Hati",
+      "Lambung",
+      "Ginjal",
+      "Usus gabungan",
+      "Mata"
+    ],
+    "path": "sheets/01-master-8-organ.png",
+    "sha256": "1bc4b121e962dbcc8de0f0141b405c464ad951bcab3c9bd5b824237a02a96a6c"
+  },
+  {
+    "id": "sheet-2",
+    "name": "Ekspresi otak, jantung, lambung, usus",
+    "description": "Bank enam ekspresi per tokoh: penasaran, menjelaskan, kesal, terkejut, lelah, dan humor. Master individual tetap menjadi acuan anatomi.",
+    "group": "Lembar ekspresi dan gestur",
+    "tags": [
+      "Ekspresi",
+      "Gestur"
+    ],
+    "kind": "sheet",
+    "members": [
+      "Otak",
+      "Jantung",
+      "Lambung",
+      "Usus gabungan"
+    ],
+    "path": "sheets/02-ekspresi-otak-jantung-lambung-usus.png",
+    "sha256": "4a61864ad2be8e27e4e5e3ca80449761bd0e74c1e20d6e8cce3bf266603b1951"
+  },
+  {
+    "id": "sheet-3",
+    "name": "Ekspresi paru, hati, ginjal, mata",
+    "description": "Bank enam ekspresi per tokoh. Organ berpasangan tetap satu unit karakter dengan satu wajah.",
+    "group": "Lembar ekspresi dan gestur",
+    "tags": [
+      "Ekspresi",
+      "Gestur"
+    ],
+    "kind": "sheet",
+    "members": [
+      "Paru-paru",
+      "Hati",
+      "Ginjal",
+      "Mata"
+    ],
+    "path": "sheets/03-ekspresi-paru-hati-ginjal-mata.png",
+    "sha256": "8dc932b4bf7cf034e9b43c01e51d69def156bf138636dc66ec4db524d58cca0a"
+  },
+  {
+    "id": "sheet-4",
+    "name": "Gestur lengan hitam",
+    "description": "Bank gestur bersedekap dan shrug/menjelaskan. Gunakan lengan hanya saat aksi membutuhkan gestur.",
+    "group": "Lembar ekspresi dan gestur",
+    "tags": [
+      "Ekspresi",
+      "Gestur"
+    ],
+    "kind": "sheet",
+    "members": [
+      "Otak",
+      "Jantung",
+      "Paru-paru",
+      "Hati",
+      "Lambung",
+      "Ginjal",
+      "Usus gabungan",
+      "Mata"
+    ],
+    "path": "sheets/04-gestur-lengan-hitam.png",
+    "sha256": "e8faf3e9891f556ae1575d475331be2434632a1ea3046683db085a80c275e297"
+  }
+]

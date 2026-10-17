@@ -1,0 +1,167 @@
+{
+  "sourceRoot": "C:\\Users\\deathscythe hell\\Documents\\ChatGPT\\bang story\\app",
+  "targetRoot": "E:\\BANG",
+  "backupName": "codex-flow-2026-10-07T19-48-04-719Z",
+  "changes": [
+    {
+      "relativePath": "README.md",
+      "originalHash": "a22e494b4c3a3699db10b8b5ae6dcffd59c5c2536050800628b83079b4d5fb84",
+      "sourceHash": "3b3815a330b74b993431248f4a5ca0ed82ce003840bbfd16d89c472975788ea1"
+    },
+    {
+      "relativePath": "src\\main\\db\\index.ts",
+      "originalHash": "deea0908c402930f1c257a92b1035793983d0895c0aeb6a95659c730f518dfbd",
+      "sourceHash": "bc9970d950665984ae9dd7daf9cc3fa18bb74238c0fc4b68d017342b9c3a8992"
+    },
+    {
+      "relativePath": "src\\main\\generation.ts",
+      "originalHash": "2de39c3202619ef10523363e5f304238b614b0108c5e1c265a6868937bd3c8b1",
+      "sourceHash": "88210b9838b0bd7de621eca02bcf2eb16f17f2300655f3f6044399098149983c"
+    },
+    {
+      "relativePath": "src\\main\\ipc.ts",
+      "originalHash": "4e0ddb260728a916a88a7fcd96f0c80fff83040d16db2df1464b821c1546f362",
+      "sourceHash": "e87c207a5b35fa381a3e40e66562b8c3435191b08947bcec2100481adb6c113e"
+    },
+    {
+      "relativePath": "src\\main\\repo.ts",
+      "originalHash": "b55b2254bac206962c8430f9146579ff6970f9d2cf77036ed3bfd8d1d8e7ec4c",
+      "sourceHash": "4eaea6f3e034f390ac45c4fc0a9566f01f3c8144e816e9283283a376041d1e29"
+    },
+    {
+      "relativePath": "src\\main\\research.ts",
+      "originalHash": "c081fb46a14125cc48ec3035f0ff8a1805debdf44a501ab6a2287e439a25bc3b",
+      "sourceHash": "e1ec36775e38abb41b3a9f2cd8decf6f38ef0ef9937650dc0b09fa7e4cb66d92"
+    },
+    {
+      "relativePath": "src\\main\\story-requests.ts",
+      "originalHash": "ca614e1252995b9b5a6f6f23d3333810bf266ca48eb9dc672386c9915afe9906",
+      "sourceHash": "c294bcd519b7739c0cdc8899560c87c95c9343a2cabcfca73b584ef5099da8cd"
+    },
+    {
+      "relativePath": "src\\main\\story.ts",
+      "originalHash": "7b7efe4f0edc8ceaf732225a864bbc17c3d0492edf67d78eb592539019b04db2",
+      "sourceHash": "3033a5f40c48a62825ac4f066c76826bfaff44cba8de107c63729334239eae21"
+    },
+    {
+      "relativePath": "src\\preload\\index.ts",
+      "originalHash": "a664debf8f646995cf5781f16a7ad6253ae659d38eac84cabbaa98154ef06b9e",
+      "sourceHash": "0b55d2a47e119c83d243b1ee3cb13b63eb5fe2fe7a53eabd8b2a76430a50266d"
+    },
+    {
+      "relativePath": "src\\renderer\\src\\components\\DurationPicker.tsx",
+      "originalHash": "e8e7a8315990770f38d7ed1999a3aa8b8f848d0582b4f931b394b1feca5786cb",
+      "sourceHash": "b5f8c72fc8c74bf7b5edb8e9bc14707b284eb4502fda44bdc54bdf7234dfaa44"
+    },
+    {
+      "relativePath": "src\\renderer\\src\\components\\MasterPromptPicker.tsx",
+      "originalHash": "4a07d78c0c94da88c1c780f839c93ff078bb211808d96544e223993ca565359a",
+      "sourceHash": "1b0fa196a656fc175e92757f3264fd3ae82d98f55ff87732d898d1caf665e4f3"
+    },
+    {
+      "relativePath": "src\\renderer\\src\\components\\NichePicker.tsx",
+      "originalHash": null,
+      "sourceHash": "4ae28b479adc569467cec5ab48a3826980ec0e2d60bf31a8d862cf8a2bf00f9b"
+    },
+    {
+      "relativePath": "src\\renderer\\src\\components\\StoryIdeasButton.tsx",
+      "originalHash": "741c4675fe657d9e94839eb8234b829b7886bc4a190dbd8f0fb88662e8adfabc",
+      "sourceHash": "fc77bdf839eb8fcba1d47f11cae08c2a3a83bde2a007b58d5d1ce41ac0cb5756"
+    },
+    {
+      "relativePath": "src\\renderer\\src\\pages\\MasterPrompts.tsx",
+      "originalHash": "5c29d7b5cf09396b85ff6e41786189703167cfeb654a448e25c815bfd39240ec",
+      "sourceHash": "8bd3d26552b1303cfba0c5317dc9682df10ef9c075dc5aa65d62ce3c16187baf"
+    },
+    {
+      "relativePath": "src\\renderer\\src\\pages\\project\\IdeaStep.tsx",
+      "originalHash": "ec6f158eaf13b064f1ef873222ebe52b004b053fcc65de9c523b166cc3773e08",
+      "sourceHash": "20969f671221b70a175102888590a644e5215e016175f71985decdd19a7b38ed"
+    },
+    {
+      "relativePath": "src\\renderer\\src\\pages\\TopicResearch.tsx",
+      "originalHash": "d3156dfb377bea8e39e63123b98fed5f009c34838babc37647f07dd493601390",
+      "sourceHash": "7ca8e73d219422b2a3cd24497bf0efea62b600158b46bffec53a2ce6ddc59aab"
+    },
+    {
+      "relativePath": "src\\renderer\\src\\store\\app.ts",
+      "originalHash": "f2cb122ef0677fc4b44bb6681a929e6161724641d91d9a025b7d987d6a6197f2",
+      "sourceHash": "bca03744ff8b51a4cdf8f2957d9463ed7d07ab254332b674ddeffa3187b40cda"
+    },
+    {
+      "relativePath": "src\\renderer\\src\\store\\project.ts",
+      "originalHash": "bdb5bc76b4201a3e90009f120ce8c0654dea2caa8eeb9f1e84c71fde9cf8eefa",
+      "sourceHash": "78d8ab46576c8d8ca953d608f4d6701be1765dd3c14937be9683e44008c92f9d"
+    },
+    {
+      "relativePath": "src\\shared\\api.ts",
+      "originalHash": "7a0ec82c0fa9320dd5131aa724f94234e563ee4bb59d8185990121d1b57311c9",
+      "sourceHash": "3d97115013b7dbaf675a4138502305d1e860383def467d310ca02a6958215038"
+    },
+    {
+      "relativePath": "src\\shared\\external-prompts.ts",
+      "originalHash": "a13337c850e15bcf881b855027abbc8210f0fb0b747aa6fc2156e3b7b61ea113",
+      "sourceHash": "dfe2a4d3ebf6ecba6e25c63f8eaa5a6ebf6d5e7f732093b4e7b14b5f09506e5d"
+    },
+    {
+      "relativePath": "src\\shared\\master-prompts.ts",
+      "originalHash": "e29f93e554e9d21b96b1a99f75a85867d6a0ed937d9df294b533fd11f5f81222",
+      "sourceHash": "00d9fe17c5d655c7efc294bc99ffa2e958bf48cf28567b3f2c83031762bba7f5"
+    },
+    {
+      "relativePath": "src\\shared\\niches.ts",
+      "originalHash": null,
+      "sourceHash": "ef5eda3d2203f03a536d128421a7b64bed5fa4f2a1a08a5a9bb1ce33720adb80"
+    },
+    {
+      "relativePath": "src\\shared\\research.ts",
+      "originalHash": "d4488b86d0a7358988006833854878ae28f14fa8a2bd79c7c8ff3e638f3427f8",
+      "sourceHash": "810f52720ddb9ae6bf90d042041d76e59db2f191381d6266432479eafc99e422"
+    },
+    {
+      "relativePath": "src\\shared\\stickman-source.ts",
+      "originalHash": null,
+      "sourceHash": "32a529d9d1e8983125dc72d48c9ba682c67136fbf3772fb17ffc57a0af5b2bf4"
+    },
+    {
+      "relativePath": "src\\shared\\stickman.ts",
+      "originalHash": null,
+      "sourceHash": "14746eaa13001b9c5212919ddbb783410744ca97d536c1b4ff87fa1adbd7a07c"
+    },
+    {
+      "relativePath": "src\\shared\\types.ts",
+      "originalHash": "10daed30488e14e5e8b9cec8ef28d6c40e3a6e273347178532bf0ca9202d81e6",
+      "sourceHash": "b73a953aaf3b580e62e625f380f003d5b68daf8f4e28b752b7e7664e4c5e4f4d"
+    },
+    {
+      "relativePath": "out\\main\\index.js",
+      "originalHash": "756d547144a73b77dd85be718394916d204b772a2b02b3e8313cea692c32ae21",
+      "sourceHash": "93cc2aa4bf70acd4e50011a198ece14d8cfa19a83b721b9c7ba2de9053b67981"
+    },
+    {
+      "relativePath": "out\\preload\\index.js",
+      "originalHash": "6a15db02d24873e1c63336d48f015fb5d0ed44c5b9898759597dc16a7cbb4e5d",
+      "sourceHash": "255d7c97034cbb19a08a0702211d6f2e1aa1e08e37211717befc1ba9a5139751"
+    },
+    {
+      "relativePath": "out\\renderer\\assets\\index-DXmmBCYI.css",
+      "originalHash": null,
+      "sourceHash": "ecc385705c2bcda3b275096f0c3614d4292b5da16be80def321f2320c2d9daef"
+    },
+    {
+      "relativePath": "out\\renderer\\assets\\index-WeHQa2uJ.js",
+      "originalHash": null,
+      "sourceHash": "52cbf9e499950fa4c5d9f05ac5d3e69fbd2fbd8e328fd67b1b0ea099d63b3333"
+    },
+    {
+      "relativePath": "out\\renderer\\index.html",
+      "originalHash": "3c186e6b474247f2913a724915e870d228e1cf6d92703c471b7c07bb7efbe8f4",
+      "sourceHash": "3685bf83ddf9eabe15b3e37d19c5d61f417a44b9b881311d2341d896ae6be79f"
+    },
+    {
+      "relativePath": "references\\Ultimate Stickman Animation Content Master Prompt.md",
+      "originalHash": null,
+      "sourceHash": "3ddbb5353bbf06d6b04d678da8b8a5681c79c2196f5612cb9a1ce894e3b10b8a"
+    }
+  ]
+}

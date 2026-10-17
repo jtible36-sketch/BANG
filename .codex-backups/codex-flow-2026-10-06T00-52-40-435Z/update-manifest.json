@@ -1,0 +1,42 @@
+{
+  "sourceRoot": "C:\\Users\\deathscythe hell\\Documents\\ChatGPT\\bang story\\app",
+  "targetRoot": "E:\\BANG",
+  "backupName": "codex-flow-2026-10-06T00-52-40-435Z",
+  "changes": [
+    {
+      "relativePath": "src\\main\\story.ts",
+      "originalHash": "1a385a499742444736bdfb269b36141c9521e4ee01bde91f219300f0ba6db5bc",
+      "sourceHash": "f71cde52d95e9f88c6f06d8b43450de200489083beb7b503e27d9068fef73dc8"
+    },
+    {
+      "relativePath": "src\\renderer\\src\\pages\\project\\IdeaStep.tsx",
+      "originalHash": "a5e64f02c42178f1ab43dedd36e19065d8b06f812f777f312138e02e4ff3814a",
+      "sourceHash": "4d5f56dd39698c24efdac1555823c61fe0ad366b69b772dcaf60992c0838a7b1"
+    },
+    {
+      "relativePath": "src\\renderer\\src\\pages\\project\\ScriptStep.tsx",
+      "originalHash": "b4b0f000b1d5363bf411db3fdbd799d3e7e337f96cffeaf4d15c96b9c90fee99",
+      "sourceHash": "385dfe8c02259aee52e2f8ec485627759c3a4de127e2b47cb14d92f473763041"
+    },
+    {
+      "relativePath": "out\\main\\index.js",
+      "originalHash": "4aa2b09eeedd7ee40e31e092d2eda1b915a4f22411e3d2cd3304f1f29be45e72",
+      "sourceHash": "0b2b6c9b639889f14dd29038685aefc391505899eac05523f055292e1a7999fd"
+    },
+    {
+      "relativePath": "out\\renderer\\assets\\index-bgrdPHvm.css",
+      "originalHash": null,
+      "sourceHash": "59cb8d102fe47b0453062ef5bb29d3f0cbc65040183c20794b55f93dfade9e71"
+    },
+    {
+      "relativePath": "out\\renderer\\assets\\index-sPO1RqjH.js",
+      "originalHash": null,
+      "sourceHash": "b84859959605cf438240773e70dd37cff611fdf09183a25adb237595c88f8f7a"
+    },
+    {
+      "relativePath": "out\\renderer\\index.html",
+      "originalHash": "525fd1f7c4b368795f29d1f305d2f3333a3b76ec7a27bf7d5a5cab3e3d359fa8",
+      "sourceHash": "5d7e38be53e0c5791974d6675b3725b23dda0ad95851ef075f7e12b25123f6d5"
+    }
+  ]
+}

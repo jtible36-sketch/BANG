@@ -1,0 +1,9 @@
+{
+  "name": "naraflow-flow-runtime",
+  "private": true,
+  "type": "module",
+  "upstream": "https://github.com/GTAI-1/flow-mcp",
+  "dependencies": {
+    "playwright-core": "1.63.0"
+  }
+}

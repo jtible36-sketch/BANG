@@ -1,0 +1,19 @@
+{
+  "upstream": "https://github.com/GTAI-1/flow-mcp",
+  "commit": "03da4b2bcdb46f6550720edceea8530517631ee6",
+  "declaredLicense": "ISC",
+  "bundled": [
+    "Flow core/HTTP server",
+    "zod",
+    "playwright-core"
+  ],
+  "sdkExcluded": true,
+  "patches": [
+    "Private profile identity/port ownership",
+    "Chrome session receipt",
+    "HTTP method allowlist",
+    "Bounded output directories",
+    "Persistent queue and pre-submit receipt",
+    "Managed Naraflow entry and lifecycle"
+  ]
+}

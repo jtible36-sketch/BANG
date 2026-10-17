@@ -1,0 +1,757 @@
+{
+  "sourceRoot": "C:\\Users\\deathscythe hell\\Documents\\ChatGPT\\bang story\\app",
+  "targetRoot": "E:\\BANG",
+  "backupName": "codex-flow-2026-10-14T07-42-50-172Z",
+  "changes": [
+    {
+      "relativePath": "README.md",
+      "originalHash": "a13b965ee697fd85c19c7e45bdca9ec126fac526efce609c58b52bda6c5f8069",
+      "sourceHash": "f7dab614e710c5eea8e9f1e810fb77580a38fbc2b5625f7c3c9e410b639d31f8"
+    },
+    {
+      "relativePath": "electron-builder.yml",
+      "originalHash": "136a7d7a0f22dd3e87b5bce12a6808616723ad30e7061aaea4985d1d0a28882c",
+      "sourceHash": "5be6fdde20df518b4e88bdac8916931f4e000315f17b0b5657812d44f80706a7"
+    },
+    {
+      "relativePath": "src\\main\\flow-generation.ts",
+      "originalHash": "68e49e0ce019c90fb64bc2439b6026158e3f0005410101e5fa9ea0f9fcfdd0f3",
+      "sourceHash": "92ce73b5f478be90c4420062fd27b79f2967dfee0b069355a653c01d9b73c1cb"
+    },
+    {
+      "relativePath": "src\\main\\flow-runtime.ts",
+      "originalHash": null,
+      "sourceHash": "3c3e60fec12d73e9fc173b380a2a515059bc8463897f6178d243d474e100b5fa"
+    },
+    {
+      "relativePath": "src\\main\\index.ts",
+      "originalHash": "a087543955fc4ba2bed188264ce17749714d4a06b22394388f0d596720d09aca",
+      "sourceHash": "83635d6aa59da96f1306b2c200608b51a528c9ca6e7f735204e4b75a3cf6ba67"
+    },
+    {
+      "relativePath": "src\\main\\providers\\flow-mcp.ts",
+      "originalHash": "64f8a77769123b70f2f97ba2a0ef0dc78dbb020e1b4cf41fa600a373c2b9bd19",
+      "sourceHash": "926c0c6a2b49c0727e3ea376109089592901e6e4dab61c20afc7f36ef4c2dff2"
+    },
+    {
+      "relativePath": "src\\main\\settings.ts",
+      "originalHash": "d878b3d04a83784bb7cd857ebd08496bf9562e6a854a28f833f679b18ad38f83",
+      "sourceHash": "8eee15f23f25917430c576db30c52df33d73a6cf39b028f97d3a62b94bf6b088"
+    },
+    {
+      "relativePath": "src\\renderer\\src\\components\\FlowConnectionPanel.tsx",
+      "originalHash": "59e781f5702f70df9e59b94e77183695824c51fe4acd5a77467d22c9e165011a",
+      "sourceHash": "c766b46d3b7e10d516b58726d60a89d3f497c768539983bbd570c0165069e7c0"
+    },
+    {
+      "relativePath": "src\\shared\\types.ts",
+      "originalHash": "28733f779ce19e0fb98941e404dcf606661e8578b3e95771a05b8a4ae6abe6f6",
+      "sourceHash": "eee1a1c804f5bee146974b57019628b13a51379d0697372cec2ff85df86025f3"
+    },
+    {
+      "relativePath": "out\\main\\index.js",
+      "originalHash": "e79e333934429f226b4047309e0734d28f9b46c792abfcbfac2ab4f83899ba45",
+      "sourceHash": "0505cb5c110a28df58c89ec09ee03416cf0c2dcde6bed0bdbd6fe98536140cea"
+    },
+    {
+      "relativePath": "out\\renderer\\assets\\index-T98_QJOv.js",
+      "originalHash": null,
+      "sourceHash": "9be7b61a27dc5a47b2d171301347be78cca0ef55d40a30b610b7e7b59baaeb4b"
+    },
+    {
+      "relativePath": "out\\renderer\\index.html",
+      "originalHash": "da6f51cdbd21c3a5fc623784fddb8d2b94f416d2d8521c4269f00487c0a01a34",
+      "sourceHash": "24960950d5559cc3d50c8604bd33ada54d821180f3925a41af9e95aa7e697fb3"
+    },
+    {
+      "relativePath": "resources\\flow-runtime\\dist\\runtime.mjs",
+      "originalHash": null,
+      "sourceHash": "471acdb8fcb8cbe09516f0dd67593ac1a2dbbb581e4f711fd94470373a9dbcea"
+    },
+    {
+      "relativePath": "resources\\flow-runtime\\node_modules\\playwright-core\\bin\\install_media_pack.ps1",
+      "originalHash": null,
+      "sourceHash": "bc20f049badf021e3a53bdb4156603caa5ef482c9a9a251f927605e676a44171"
+    },
+    {
+      "relativePath": "resources\\flow-runtime\\node_modules\\playwright-core\\bin\\install_webkit_wsl.ps1",
+      "originalHash": null,
+      "sourceHash": "bc61beda37a808eef27d39ce684baa792f6d17737a25a432b1a84d3b591ab815"
+    },
+    {
+      "relativePath": "resources\\flow-runtime\\node_modules\\playwright-core\\bin\\reinstall_chrome_beta_linux.sh",
+      "originalHash": null,
+      "sourceHash": "dc8c22b9dde76583cece2857575b88094299615f3136a3c598149710c45dee3a"
+    },
+    {
+      "relativePath": "resources\\flow-runtime\\node_modules\\playwright-core\\bin\\reinstall_chrome_beta_mac.sh",
+      "originalHash": null,
+      "sourceHash": "a92eaeb4ebcf5633a4e9c981481e14c80764fc81b6fcbc0565398e50ff319433"
+    },
+    {
+      "relativePath": "resources\\flow-runtime\\node_modules\\playwright-core\\bin\\reinstall_chrome_beta_win.ps1",
+      "originalHash": null,
+      "sourceHash": "b6d9e44742feafb98d5edc56fa20042949973cf30d141a1c5b4fb384096967c5"
+    },
+    {
+      "relativePath": "resources\\flow-runtime\\node_modules\\playwright-core\\bin\\reinstall_chrome_stable_linux.sh",
+      "originalHash": null,
+      "sourceHash": "dc72ab3567a4ce43bd8353d4ecf41f1d9c03e870169367cd3ed9043aabf67dd1"
+    },
+    {
+      "relativePath": "resources\\flow-runtime\\node_modules\\playwright-core\\bin\\reinstall_chrome_stable_mac.sh",
+      "originalHash": null,
+      "sourceHash": "bb43a96c192a6cc81524ade0264686fff7809c019a89f7db0a9849635879c3be"
+    },
+    {
+      "relativePath": "resources\\flow-runtime\\node_modules\\playwright-core\\bin\\reinstall_chrome_stable_win.ps1",
+      "originalHash": null,
+      "sourceHash": "3d96c4e2f4ebbb3fad44cf3ba58d9cf90af1c9fb3073e3b27d45a74cf005515b"
+    },
+    {
+      "relativePath": "resources\\flow-runtime\\node_modules\\playwright-core\\bin\\reinstall_msedge_beta_linux.sh",
+      "originalHash": null,
+      "sourceHash": "10b26f35dbc2000b94edf1172d803a29c5873a4eb8d523afbc687997b642767e"
+    },
+    {
+      "relativePath": "resources\\flow-runtime\\node_modules\\playwright-core\\bin\\reinstall_msedge_beta_mac.sh",
+      "originalHash": null,
+      "sourceHash": "0036d738bc90d686100d81f328ba0003bf07863f5500b792c8da391d149750fa"
+    },
+    {
+      "relativePath": "resources\\flow-runtime\\node_modules\\playwright-core\\bin\\reinstall_msedge_beta_win.ps1",
+      "originalHash": null,
+      "sourceHash": "b173c378a59f0cc38033cee702de1f44f09276c9b2270d1a650ebe66ee312433"
+    },
+    {
+      "relativePath": "resources\\flow-runtime\\node_modules\\playwright-core\\bin\\reinstall_msedge_dev_linux.sh",
+      "originalHash": null,
+      "sourceHash": "00e4947e7a4f8339c6db09c87976d808583c07f9179e4aa7694d88614b82fe95"
+    },
+    {
+      "relativePath": "resources\\flow-runtime\\node_modules\\playwright-core\\bin\\reinstall_msedge_dev_mac.sh",
+      "originalHash": null,
+      "sourceHash": "6f899e3b311f742c24ca37ff9e32298e8290514ffc14bf588cc51556a29da4c0"
+    },
+    {
+      "relativePath": "resources\\flow-runtime\\node_modules\\playwright-core\\bin\\reinstall_msedge_dev_win.ps1",
+      "originalHash": null,
+      "sourceHash": "46f7f98c81cb0abe687d7f4a5afea9b897a38d2a6dd6f6662fbd847f7a22bd51"
+    },
+    {
+      "relativePath": "resources\\flow-runtime\\node_modules\\playwright-core\\bin\\reinstall_msedge_stable_linux.sh",
+      "originalHash": null,
+      "sourceHash": "ec0a31a5f09c565e108473a1850895a4458ab00c713ac1de3aa2001912e4668f"
+    },
+    {
+      "relativePath": "resources\\flow-runtime\\node_modules\\playwright-core\\bin\\reinstall_msedge_stable_mac.sh",
+      "originalHash": null,
+      "sourceHash": "3af1e893527ff2257aa2dbc3b259a053b92f45c3eadb13e38eba46e87902655d"
+    },
+    {
+      "relativePath": "resources\\flow-runtime\\node_modules\\playwright-core\\bin\\reinstall_msedge_stable_win.ps1",
+      "originalHash": null,
+      "sourceHash": "40bb5fcbfcebbbe2ce43c6e736e7c5deefc5be03b6e9c6914423c06ec1f591be"
+    },
+    {
+      "relativePath": "resources\\flow-runtime\\node_modules\\playwright-core\\browsers.json",
+      "originalHash": null,
+      "sourceHash": "545d52f8382c391e605562c330e9c1c534a16045898203037a49bb8bd769a946"
+    },
+    {
+      "relativePath": "resources\\flow-runtime\\node_modules\\playwright-core\\cli.js",
+      "originalHash": null,
+      "sourceHash": "f1c4075aef116c766092250d7f37b3249a7cee6465d953207fc38c8f6145becd"
+    },
+    {
+      "relativePath": "resources\\flow-runtime\\node_modules\\playwright-core\\index.d.ts",
+      "originalHash": null,
+      "sourceHash": "7a8ec10b0834eb7183e4bfcd929838ac77583828e343211bb73676d1e47f6f01"
+    },
+    {
+      "relativePath": "resources\\flow-runtime\\node_modules\\playwright-core\\index.js",
+      "originalHash": null,
+      "sourceHash": "a58fb2cec4293e7dcf73c58a179898a4f3986666451a19da4e731fa3af63265b"
+    },
+    {
+      "relativePath": "resources\\flow-runtime\\node_modules\\playwright-core\\index.mjs",
+      "originalHash": null,
+      "sourceHash": "3d36e2132d3c8b62397d23f0bb4177336aaee503203ae2a2c90fbeb5bf3317dd"
+    },
+    {
+      "relativePath": "resources\\flow-runtime\\node_modules\\playwright-core\\lib\\bootstrap.js",
+      "originalHash": null,
+      "sourceHash": "4637f4dbfef9cfc01baeb5f5d2cb63fa0901522c96915ea2227290558d27123e"
+    },
+    {
+      "relativePath": "resources\\flow-runtime\\node_modules\\playwright-core\\lib\\coreBundle.js",
+      "originalHash": null,
+      "sourceHash": "549070af3acabb3efcc4f55bfe6210f9f7c2fcf633cf7eaa59bfe60719969171"
+    },
+    {
+      "relativePath": "resources\\flow-runtime\\node_modules\\playwright-core\\lib\\entry\\cliDaemon.js",
+      "originalHash": null,
+      "sourceHash": "062f256fb29a7bf91793a014b9c3f1f9cf2dc6b12e40a8a2ebba88a630ae16a0"
+    },
+    {
+      "relativePath": "resources\\flow-runtime\\node_modules\\playwright-core\\lib\\entry\\dashboardApp.js",
+      "originalHash": null,
+      "sourceHash": "209962c6eaeef11629f226d6a2ab33ec7a2480754242b6e19590a9e6eb71d126"
+    },
+    {
+      "relativePath": "resources\\flow-runtime\\node_modules\\playwright-core\\lib\\entry\\mcp.js",
+      "originalHash": null,
+      "sourceHash": "cc87dc0020cb41caebbf04f50e42bc7835b033a6d80e9c3f0a3d0b3dbdf341c7"
+    },
+    {
+      "relativePath": "resources\\flow-runtime\\node_modules\\playwright-core\\lib\\entry\\oopBrowserDownload.js",
+      "originalHash": null,
+      "sourceHash": "87567cdbd67dd2f50bb232d47d3784701ece7c81e39c0287bb7d1b466b68cf06"
+    },
+    {
+      "relativePath": "resources\\flow-runtime\\node_modules\\playwright-core\\lib\\package.js",
+      "originalHash": null,
+      "sourceHash": "9f938e1d44a0dd231b1660ca62f7dae964859b79cbdc370b8542c5d375ca3c05"
+    },
+    {
+      "relativePath": "resources\\flow-runtime\\node_modules\\playwright-core\\lib\\server\\chromium\\appIcon.png",
+      "originalHash": null,
+      "sourceHash": "6ba994f05c5cf18e22d9b6bef9898fbdec6ad4d4d77f5187d0609cb42d72d01e"
+    },
+    {
+      "relativePath": "resources\\flow-runtime\\node_modules\\playwright-core\\lib\\server\\electron\\loader.js",
+      "originalHash": null,
+      "sourceHash": "699fb5564539da34ed72f49e9821af28f9fc06940adb639cac55dc9c477cfe7c"
+    },
+    {
+      "relativePath": "resources\\flow-runtime\\node_modules\\playwright-core\\lib\\serverRegistry.js",
+      "originalHash": null,
+      "sourceHash": "38025f08f335705b099b9f188bf45b5908a56a722825fe895b1e90f56d5595b6"
+    },
+    {
+      "relativePath": "resources\\flow-runtime\\node_modules\\playwright-core\\lib\\serverRegistry.js.LICENSE",
+      "originalHash": null,
+      "sourceHash": "3098a6efcbc11752cbdf6075fa65480f5470f78c8d981fab9c0796dc9a41cefe"
+    },
+    {
+      "relativePath": "resources\\flow-runtime\\node_modules\\playwright-core\\lib\\tools\\cli-client\\channelSessions.js",
+      "originalHash": null,
+      "sourceHash": "6b9c613e87340f48ad7182addd7495a8ff3fbe55feb1bbd0ce04f59f1552e126"
+    },
+    {
+      "relativePath": "resources\\flow-runtime\\node_modules\\playwright-core\\lib\\tools\\cli-client\\cli.js",
+      "originalHash": null,
+      "sourceHash": "dfde8e9dfde30c4b3914eb25ba1c5a8524ec64651d866171d75cd7b41a827180"
+    },
+    {
+      "relativePath": "resources\\flow-runtime\\node_modules\\playwright-core\\lib\\tools\\cli-client\\help.json",
+      "originalHash": null,
+      "sourceHash": "e78d7a22d059196e838d1f076b563eae185b851e3e36063fa4ae77a8dc1415b1"
+    },
+    {
+      "relativePath": "resources\\flow-runtime\\node_modules\\playwright-core\\lib\\tools\\cli-client\\minimist.js",
+      "originalHash": null,
+      "sourceHash": "9430489ebc06fd02231dccfe844516f743e812a9ac4fe8e6748a67718738851c"
+    },
+    {
+      "relativePath": "resources\\flow-runtime\\node_modules\\playwright-core\\lib\\tools\\cli-client\\output.js",
+      "originalHash": null,
+      "sourceHash": "b4c3ebab965e73d621971cd3c76b60c22cf460a0921f14c5c6c51e46e06f02d2"
+    },
+    {
+      "relativePath": "resources\\flow-runtime\\node_modules\\playwright-core\\lib\\tools\\cli-client\\program.js",
+      "originalHash": null,
+      "sourceHash": "55a9a10132c680ecdec25b5000afb12035745ac9e75dd9cc0ef3e5d5e08d7f3e"
+    },
+    {
+      "relativePath": "resources\\flow-runtime\\node_modules\\playwright-core\\lib\\tools\\cli-client\\registry.js",
+      "originalHash": null,
+      "sourceHash": "4976cd5b2b3a25572cc1a4b5f055a756dacd4cc1b19d48987ee3253428e759b8"
+    },
+    {
+      "relativePath": "resources\\flow-runtime\\node_modules\\playwright-core\\lib\\tools\\cli-client\\session.js",
+      "originalHash": null,
+      "sourceHash": "a71e03ba6dc99d6d9cca4577d534daa6d0c20c32e50065311823f41caba29b46"
+    },
+    {
+      "relativePath": "resources\\flow-runtime\\node_modules\\playwright-core\\lib\\tools\\dashboard\\appIcon.png",
+      "originalHash": null,
+      "sourceHash": "38037bcf18c7f9b950da2e1a2d8800d38fb27637ccda293d38368a3704b67f18"
+    },
+    {
+      "relativePath": "resources\\flow-runtime\\node_modules\\playwright-core\\lib\\tools\\skills\\playwright-cli\\references\\element-attributes.md",
+      "originalHash": null,
+      "sourceHash": "bf19aa4671e0a50a0fefa9c790f39124e803060eefe395042b723c29fcb7faa2"
+    },
+    {
+      "relativePath": "resources\\flow-runtime\\node_modules\\playwright-core\\lib\\tools\\skills\\playwright-cli\\references\\playwright-tests.md",
+      "originalHash": null,
+      "sourceHash": "c5b0719fef2cfdff50bd744051b2f9afc119775db4b48e9b2882c1cf3886797c"
+    },
+    {
+      "relativePath": "resources\\flow-runtime\\node_modules\\playwright-core\\lib\\tools\\skills\\playwright-cli\\references\\request-mocking.md",
+      "originalHash": null,
+      "sourceHash": "54e801c9663fc2b6d68ceb058cb1c360724c2499f42acc7852a68e83e5b5f37c"
+    },
+    {
+      "relativePath": "resources\\flow-runtime\\node_modules\\playwright-core\\lib\\tools\\skills\\playwright-cli\\references\\running-code.md",
+      "originalHash": null,
+      "sourceHash": "d95c539a5990b71d02d8bdf1d9414df16191eb6cff95b0063820518b7a13dcb2"
+    },
+    {
+      "relativePath": "resources\\flow-runtime\\node_modules\\playwright-core\\lib\\tools\\skills\\playwright-cli\\references\\session-management.md",
+      "originalHash": null,
+      "sourceHash": "cd3e261b8763bf952f1e371b876cb78d054379afec85482f9250633e1b7e6c44"
+    },
+    {
+      "relativePath": "resources\\flow-runtime\\node_modules\\playwright-core\\lib\\tools\\skills\\playwright-cli\\references\\storage-state.md",
+      "originalHash": null,
+      "sourceHash": "9ac47f9ae4a1aedcd2077f8ac9ab1ba6bee1962cb83ff51adcd36fb6d83b5ec6"
+    },
+    {
+      "relativePath": "resources\\flow-runtime\\node_modules\\playwright-core\\lib\\tools\\skills\\playwright-cli\\references\\test-generation.md",
+      "originalHash": null,
+      "sourceHash": "12f54cfa718d9e559bad918120a4ca4f11c933167713d1b9c5f99872eddaf749"
+    },
+    {
+      "relativePath": "resources\\flow-runtime\\node_modules\\playwright-core\\lib\\tools\\skills\\playwright-cli\\references\\tracing.md",
+      "originalHash": null,
+      "sourceHash": "ef73e71bee792e341df9cd4f60529c929ade48b538ac76e033f4f20843e8dbda"
+    },
+    {
+      "relativePath": "resources\\flow-runtime\\node_modules\\playwright-core\\lib\\tools\\skills\\playwright-cli\\references\\video-recording.md",
+      "originalHash": null,
+      "sourceHash": "8555ab5400df0d90e66318aacc0a8a4418fbf872e7463824d55d5c41615abd83"
+    },
+    {
+      "relativePath": "resources\\flow-runtime\\node_modules\\playwright-core\\lib\\tools\\skills\\playwright-cli\\SKILL.md",
+      "originalHash": null,
+      "sourceHash": "1a609c93bff3eea9ab99fed93c0334c851fdc39fb6ac5335551bfb87c171d57c"
+    },
+    {
+      "relativePath": "resources\\flow-runtime\\node_modules\\playwright-core\\lib\\tools\\skills\\playwright-component-testing\\references\\gallery-spec.md",
+      "originalHash": null,
+      "sourceHash": "0ca25dde6112eb379f56eb618585b64dc2dfd13c2f7f956ac7eabbd76a68912b"
+    },
+    {
+      "relativePath": "resources\\flow-runtime\\node_modules\\playwright-core\\lib\\tools\\skills\\playwright-component-testing\\references\\migration.md",
+      "originalHash": null,
+      "sourceHash": "bc3a336f7970bb7455fa5a38f937e45b35fb0c18d6c3b9f37916a4ff757b7acc"
+    },
+    {
+      "relativePath": "resources\\flow-runtime\\node_modules\\playwright-core\\lib\\tools\\skills\\playwright-component-testing\\references\\react.md",
+      "originalHash": null,
+      "sourceHash": "54af9cc1cdb6d4ccdb8e811c0abb29b960d5c9304f4df7d1dcf9b8df3f973102"
+    },
+    {
+      "relativePath": "resources\\flow-runtime\\node_modules\\playwright-core\\lib\\tools\\skills\\playwright-component-testing\\references\\typing.md",
+      "originalHash": null,
+      "sourceHash": "c511025b5c9b02d7f49034a5613c8b478193bf60c90ea6dddb3faf9c6985c82b"
+    },
+    {
+      "relativePath": "resources\\flow-runtime\\node_modules\\playwright-core\\lib\\tools\\skills\\playwright-component-testing\\references\\vue.md",
+      "originalHash": null,
+      "sourceHash": "d1b129f126c700702a3c00ad8eb6c86898bc941c29a656c1191eb7230650bf8b"
+    },
+    {
+      "relativePath": "resources\\flow-runtime\\node_modules\\playwright-core\\lib\\tools\\skills\\playwright-component-testing\\SKILL.md",
+      "originalHash": null,
+      "sourceHash": "60f57b31767d562c30cc5332081418c2945f4d9c998efa6e09191333654dd429"
+    },
+    {
+      "relativePath": "resources\\flow-runtime\\node_modules\\playwright-core\\lib\\tools\\skills\\playwright-trace\\SKILL.md",
+      "originalHash": null,
+      "sourceHash": "4124dd790915bb76108377121d1e6ca93a5544c90485c090fa5655235efe22aa"
+    },
+    {
+      "relativePath": "resources\\flow-runtime\\node_modules\\playwright-core\\lib\\tools\\utils\\extension.js",
+      "originalHash": null,
+      "sourceHash": "404ae19e57a7c7c5ed3e6ecf9df26a3fcf95867250732f954823078ccb879e63"
+    },
+    {
+      "relativePath": "resources\\flow-runtime\\node_modules\\playwright-core\\lib\\tools\\utils\\socketConnection.js",
+      "originalHash": null,
+      "sourceHash": "973c2bea70a1f1445f4673f99e9fa351e50a2ec9fd93d7381b2c41bb4de764dd"
+    },
+    {
+      "relativePath": "resources\\flow-runtime\\node_modules\\playwright-core\\lib\\utilsBundle.js",
+      "originalHash": null,
+      "sourceHash": "2d1ccc01d21b7d54ca99a6305991d7fb6e072ea4e725d7fec5eb6184188c52c9"
+    },
+    {
+      "relativePath": "resources\\flow-runtime\\node_modules\\playwright-core\\lib\\utilsBundle.js.LICENSE",
+      "originalHash": null,
+      "sourceHash": "2495f30be29620d54b58339821eda0ebabdfb6ee9b09455f7285a06fd46fb9f3"
+    },
+    {
+      "relativePath": "resources\\flow-runtime\\node_modules\\playwright-core\\lib\\vite\\dashboard\\assets\\codeMirrorModule--QdMvsKi.css",
+      "originalHash": null,
+      "sourceHash": "20be824a82832b62cc04642d31da3c609fd280b23f1cdcb1e622c4f40aac5ab8"
+    },
+    {
+      "relativePath": "resources\\flow-runtime\\node_modules\\playwright-core\\lib\\vite\\dashboard\\assets\\codeMirrorModule-CQ8RZGBm.js",
+      "originalHash": null,
+      "sourceHash": "56b9c6a50c09dfac28eea5ec3e76c8ae85a26009b20ebac9928959cf3c3312bb"
+    },
+    {
+      "relativePath": "resources\\flow-runtime\\node_modules\\playwright-core\\lib\\vite\\dashboard\\assets\\codicon-DCmgc-ay.ttf",
+      "originalHash": null,
+      "sourceHash": "0f1d5219934e96e83b8db162d60b4d8c09b5de1e7d38031cbafe4a3c0f2889c9"
+    },
+    {
+      "relativePath": "resources\\flow-runtime\\node_modules\\playwright-core\\lib\\vite\\dashboard\\assets\\firefox-1bWoP6pv.svg",
+      "originalHash": null,
+      "sourceHash": "3f3742d1e78c0db6c2d3531250f70c30675ee5310de32fa89befaf738c54efd0"
+    },
+    {
+      "relativePath": "resources\\flow-runtime\\node_modules\\playwright-core\\lib\\vite\\dashboard\\assets\\firefox-beta-k3eOH_eK.svg",
+      "originalHash": null,
+      "sourceHash": "7eab5ffdc25903ba33a7202f7fffa1999f119c7be45a39e9e703c118904f917a"
+    },
+    {
+      "relativePath": "resources\\flow-runtime\\node_modules\\playwright-core\\lib\\vite\\dashboard\\assets\\firefox-nightly-Cp5nfeDT.svg",
+      "originalHash": null,
+      "sourceHash": "f311c074b0fa999fcd6b73441301fb54ee87a48ff3bf05f318647928110476da"
+    },
+    {
+      "relativePath": "resources\\flow-runtime\\node_modules\\playwright-core\\lib\\vite\\dashboard\\assets\\index-AwgwcYie.css",
+      "originalHash": null,
+      "sourceHash": "82d06f291a7d0860e1b1e1803ab6f2e49c637541779a37168652e10b062b67f9"
+    },
+    {
+      "relativePath": "resources\\flow-runtime\\node_modules\\playwright-core\\lib\\vite\\dashboard\\assets\\index-hRvO4yU2.js",
+      "originalHash": null,
+      "sourceHash": "3a05ed0b026442a1459952df25b9a836d4fa1a917838cf6f9357daefc0e42285"
+    },
+    {
+      "relativePath": "resources\\flow-runtime\\node_modules\\playwright-core\\lib\\vite\\dashboard\\assets\\safari-na3_-uQk.svg",
+      "originalHash": null,
+      "sourceHash": "80fd72ca5eb8545f1981277b31f4f92951d469d4efebd078e4086b676fe517dc"
+    },
+    {
+      "relativePath": "resources\\flow-runtime\\node_modules\\playwright-core\\lib\\vite\\dashboard\\index.html",
+      "originalHash": null,
+      "sourceHash": "202903aad66040604bc1a0c85615dda4bfc7e6f4a4674e60d9eda4d44f6faea7"
+    },
+    {
+      "relativePath": "resources\\flow-runtime\\node_modules\\playwright-core\\lib\\vite\\dashboard\\playwright-logo.svg",
+      "originalHash": null,
+      "sourceHash": "511524a1c145819303a18fb71870a4307c3e740f9e9722f7686a2b42b0995b6c"
+    },
+    {
+      "relativePath": "resources\\flow-runtime\\node_modules\\playwright-core\\lib\\vite\\htmlReport\\index.html",
+      "originalHash": null,
+      "sourceHash": "ce7c098020a0eb9ce10edd416245ea6da50dfeaab18dfd0a2176979d22643be6"
+    },
+    {
+      "relativePath": "resources\\flow-runtime\\node_modules\\playwright-core\\lib\\vite\\htmlReport\\report.css",
+      "originalHash": null,
+      "sourceHash": "d98a244bf950333ade383b109e97d396f970f650b20f2e5ef5ecc2740205dff7"
+    },
+    {
+      "relativePath": "resources\\flow-runtime\\node_modules\\playwright-core\\lib\\vite\\htmlReport\\report.js",
+      "originalHash": null,
+      "sourceHash": "3db0c0291241102b14b62af4b80d84dd8169a281bb2ff360c986b9d7da57c339"
+    },
+    {
+      "relativePath": "resources\\flow-runtime\\node_modules\\playwright-core\\lib\\vite\\recorder\\assets\\codeMirrorModule--QdMvsKi.css",
+      "originalHash": null,
+      "sourceHash": "20be824a82832b62cc04642d31da3c609fd280b23f1cdcb1e622c4f40aac5ab8"
+    },
+    {
+      "relativePath": "resources\\flow-runtime\\node_modules\\playwright-core\\lib\\vite\\recorder\\assets\\codeMirrorModule-CVQWJZAA.js",
+      "originalHash": null,
+      "sourceHash": "45f900fd93bf33545e6915308a964c49ce342c2e175a54aaef0898f05b25fcf5"
+    },
+    {
+      "relativePath": "resources\\flow-runtime\\node_modules\\playwright-core\\lib\\vite\\recorder\\assets\\codicon-DCmgc-ay.ttf",
+      "originalHash": null,
+      "sourceHash": "0f1d5219934e96e83b8db162d60b4d8c09b5de1e7d38031cbafe4a3c0f2889c9"
+    },
+    {
+      "relativePath": "resources\\flow-runtime\\node_modules\\playwright-core\\lib\\vite\\recorder\\assets\\index-BZpYJZ-P.css",
+      "originalHash": null,
+      "sourceHash": "cc24563b96f286614b88f74da413e9984de263227971c4cdfabe1f73be095514"
+    },
+    {
+      "relativePath": "resources\\flow-runtime\\node_modules\\playwright-core\\lib\\vite\\recorder\\assets\\index-hrlLqLtq.js",
+      "originalHash": null,
+      "sourceHash": "f7f3dfd9113b0119821adf1f3fc873fa5dddba8b2c278014e0fb0ecc1b3f492b"
+    },
+    {
+      "relativePath": "resources\\flow-runtime\\node_modules\\playwright-core\\lib\\vite\\recorder\\index.html",
+      "originalHash": null,
+      "sourceHash": "5783e9b7e2cc78dd8a1a409d84b44b2431bf60f8f54b8be36c6e433c6a1086ed"
+    },
+    {
+      "relativePath": "resources\\flow-runtime\\node_modules\\playwright-core\\lib\\vite\\recorder\\playwright-logo.svg",
+      "originalHash": null,
+      "sourceHash": "6b0a4367bdeab10995bc239278f04c68c10e48adbec15e799e01909a0d66dcb9"
+    },
+    {
+      "relativePath": "resources\\flow-runtime\\node_modules\\playwright-core\\lib\\vite\\traceViewer\\assets\\codeMirrorModule-BbkfBe3n.js",
+      "originalHash": null,
+      "sourceHash": "274b964242426bf4e1c662a84f6345d8a99f67821caa508fb12c52e2d1dfd48c"
+    },
+    {
+      "relativePath": "resources\\flow-runtime\\node_modules\\playwright-core\\lib\\vite\\traceViewer\\assets\\defaultSettingsView-Ds6CBOo0.js",
+      "originalHash": null,
+      "sourceHash": "0b48f13034cfa075338cc0839f212297d22cadab9219d9699d161d2b18c79019"
+    },
+    {
+      "relativePath": "resources\\flow-runtime\\node_modules\\playwright-core\\lib\\vite\\traceViewer\\assets\\urlMatch-L3liM589.js",
+      "originalHash": null,
+      "sourceHash": "1bc6321e32d11c31a452bc75896f0b344e6153321854d9f1658818be7f845c16"
+    },
+    {
+      "relativePath": "resources\\flow-runtime\\node_modules\\playwright-core\\lib\\vite\\traceViewer\\assets\\xtermModule-DywYcAf8.js",
+      "originalHash": null,
+      "sourceHash": "2546783e4f74a432bbccd88a6763cf78ac4e951686262cdf85b54d5a26ca3995"
+    },
+    {
+      "relativePath": "resources\\flow-runtime\\node_modules\\playwright-core\\lib\\vite\\traceViewer\\codeMirrorModule.-QdMvsKi.css",
+      "originalHash": null,
+      "sourceHash": "20be824a82832b62cc04642d31da3c609fd280b23f1cdcb1e622c4f40aac5ab8"
+    },
+    {
+      "relativePath": "resources\\flow-runtime\\node_modules\\playwright-core\\lib\\vite\\traceViewer\\codicon.DCmgc-ay.ttf",
+      "originalHash": null,
+      "sourceHash": "0f1d5219934e96e83b8db162d60b4d8c09b5de1e7d38031cbafe4a3c0f2889c9"
+    },
+    {
+      "relativePath": "resources\\flow-runtime\\node_modules\\playwright-core\\lib\\vite\\traceViewer\\defaultSettingsView.Bqk9acqE.css",
+      "originalHash": null,
+      "sourceHash": "cd1d3c277d4962246ed92d7d42734c5ffed6bac5c499232693f9c8331b71801f"
+    },
+    {
+      "relativePath": "resources\\flow-runtime\\node_modules\\playwright-core\\lib\\vite\\traceViewer\\index.B4cLoZK3.js",
+      "originalHash": null,
+      "sourceHash": "7b96efd541639738a8d46e4b6ba9780ffaf57a5c104db66764e0cec46d9f64e8"
+    },
+    {
+      "relativePath": "resources\\flow-runtime\\node_modules\\playwright-core\\lib\\vite\\traceViewer\\index.B_TqY17P.css",
+      "originalHash": null,
+      "sourceHash": "08a212fcacae1866f44f065654afcc4c7d03409c68c74b3315c5bda17a0ca003"
+    },
+    {
+      "relativePath": "resources\\flow-runtime\\node_modules\\playwright-core\\lib\\vite\\traceViewer\\index.html",
+      "originalHash": null,
+      "sourceHash": "139ac80123fb450cfc0631296e9f01463313ca2fec961b3a247ec6c9528447a2"
+    },
+    {
+      "relativePath": "resources\\flow-runtime\\node_modules\\playwright-core\\lib\\vite\\traceViewer\\manifest.webmanifest",
+      "originalHash": null,
+      "sourceHash": "d8540500603a32a39fe7e5a0375dc0f9ebafd11118e06a846db7efc608223ab9"
+    },
+    {
+      "relativePath": "resources\\flow-runtime\\node_modules\\playwright-core\\lib\\vite\\traceViewer\\playwright-logo.svg",
+      "originalHash": null,
+      "sourceHash": "6b0a4367bdeab10995bc239278f04c68c10e48adbec15e799e01909a0d66dcb9"
+    },
+    {
+      "relativePath": "resources\\flow-runtime\\node_modules\\playwright-core\\lib\\vite\\traceViewer\\snapshot.B_Jk1wbt.js",
+      "originalHash": null,
+      "sourceHash": "d4d09e05451d107d8e1a6bbd041405fe518b9fd2833890e4ebaaad83b7f554f5"
+    },
+    {
+      "relativePath": "resources\\flow-runtime\\node_modules\\playwright-core\\lib\\vite\\traceViewer\\snapshot.html",
+      "originalHash": null,
+      "sourceHash": "c608c8899c95c5a74d3f556e20146c3d852b9df85ae2854c659a7cc773c9b727"
+    },
+    {
+      "relativePath": "resources\\flow-runtime\\node_modules\\playwright-core\\lib\\vite\\traceViewer\\sw.bundle.js",
+      "originalHash": null,
+      "sourceHash": "37b230329280e28e32b03df20738d2ed3bfd0ea45b408a69213158bb8400adb3"
+    },
+    {
+      "relativePath": "resources\\flow-runtime\\node_modules\\playwright-core\\lib\\vite\\traceViewer\\uiMode.CU5KtEkS.js",
+      "originalHash": null,
+      "sourceHash": "0c0dc5e0c822c27e60420a5c1659683fda89398f1561e43608f9d829eafdc197"
+    },
+    {
+      "relativePath": "resources\\flow-runtime\\node_modules\\playwright-core\\lib\\vite\\traceViewer\\uiMode.CyMfwkXJ.css",
+      "originalHash": null,
+      "sourceHash": "fb403cf0b07007bc1d771e29737f7408924da300e2fab8b289a3ef2e8fc08d7b"
+    },
+    {
+      "relativePath": "resources\\flow-runtime\\node_modules\\playwright-core\\lib\\vite\\traceViewer\\uiMode.html",
+      "originalHash": null,
+      "sourceHash": "c6e92923ea7f2b617db3a2128ac8889c6c1461a77764651588e0111b729c3a3d"
+    },
+    {
+      "relativePath": "resources\\flow-runtime\\node_modules\\playwright-core\\lib\\vite\\traceViewer\\xtermModule.kHJ-D0s7.css",
+      "originalHash": null,
+      "sourceHash": "0dd60056134e6a2994a86b59a1e9789b9f04e92924da109aef8c923acaf08ce5"
+    },
+    {
+      "relativePath": "resources\\flow-runtime\\node_modules\\playwright-core\\lib\\webp_codec.LICENSE",
+      "originalHash": null,
+      "sourceHash": "995c7ee35aceb7666829b7a501ca89c0864e12b493c1174b155774ab1e03d831"
+    },
+    {
+      "relativePath": "resources\\flow-runtime\\node_modules\\playwright-core\\lib\\webp_codec.wasm",
+      "originalHash": null,
+      "sourceHash": "164cd9583a3e4d081f767d3b41ff0a730443dc7535fcc5caff83561463384b79"
+    },
+    {
+      "relativePath": "resources\\flow-runtime\\node_modules\\playwright-core\\lib\\xdg-open",
+      "originalHash": null,
+      "sourceHash": "7d759d54f0d4ce1beeb34ee62c587985b5042374e8de237b0dcb8cd47aa698cf"
+    },
+    {
+      "relativePath": "resources\\flow-runtime\\node_modules\\playwright-core\\LICENSE",
+      "originalHash": null,
+      "sourceHash": "45873d00a0dd243596deb4aa23b2493b3d1f0671921bf2538ea431d7380220eb"
+    },
+    {
+      "relativePath": "resources\\flow-runtime\\node_modules\\playwright-core\\NOTICE",
+      "originalHash": null,
+      "sourceHash": "6d602191187b35b9b01d2cffa01c8469c2c8d9de8a96f1bf868e0f264f51c81d"
+    },
+    {
+      "relativePath": "resources\\flow-runtime\\node_modules\\playwright-core\\package.json",
+      "originalHash": null,
+      "sourceHash": "f061c58427e47e843e26d201f0a57076c734e57c734ecbbd87d4a23b7a20db9b"
+    },
+    {
+      "relativePath": "resources\\flow-runtime\\node_modules\\playwright-core\\README.md",
+      "originalHash": null,
+      "sourceHash": "d16ff7f8e38fa1fc954f695ad551cdc118d9c9bdd5f3d83203901f4c317d7d7e"
+    },
+    {
+      "relativePath": "resources\\flow-runtime\\node_modules\\playwright-core\\ThirdPartyNotices.txt",
+      "originalHash": null,
+      "sourceHash": "a549d329bad8806fe279f0ecae0fc0270dec7e7c2dc8ec10f90e394f7c32b144"
+    },
+    {
+      "relativePath": "resources\\flow-runtime\\node_modules\\playwright-core\\types\\protocol.d.ts",
+      "originalHash": null,
+      "sourceHash": "0410ed82a9ac63269dc1471ed249b280e2d461249a3a331e71cdb54cdf10db33"
+    },
+    {
+      "relativePath": "resources\\flow-runtime\\node_modules\\playwright-core\\types\\structs.d.ts",
+      "originalHash": null,
+      "sourceHash": "c9b9179b7291c8562eb0fb781219ddbdcf36149ebd7bd355e5b4a553d6b60b81"
+    },
+    {
+      "relativePath": "resources\\flow-runtime\\node_modules\\playwright-core\\types\\types.d.ts",
+      "originalHash": null,
+      "sourceHash": "2806f6d7810fba0306066d500cd716a6d1128d90af2c3cf71723e3ea0a8904c4"
+    },
+    {
+      "relativePath": "resources\\flow-runtime\\NOTICE.txt",
+      "originalHash": null,
+      "sourceHash": "512ae08cd858d2d719b1e7d31a9c7c867040c4d5847b58c8f96e0d14aa6d3477"
+    },
+    {
+      "relativePath": "resources\\flow-runtime\\package.json",
+      "originalHash": null,
+      "sourceHash": "659b9a48f0596aaa35a5b844bfe2cc01a6de1532959ea45b85c2eea9e98596d6"
+    },
+    {
+      "relativePath": "resources\\flow-runtime\\source\\naraflow-entry.ts",
+      "originalHash": null,
+      "sourceHash": "7eb7be78cf4a0feac3265e023bdec61584d78c5adb6848b94e559f7086aa5890"
+    },
+    {
+      "relativePath": "resources\\flow-runtime\\source\\package-lock.json",
+      "originalHash": null,
+      "sourceHash": "6447ec48060b247db5d5d9ecc97fb2f03a1faa2a292e4830cf18919ab511def4"
+    },
+    {
+      "relativePath": "resources\\flow-runtime\\source\\package.json",
+      "originalHash": null,
+      "sourceHash": "283cdd270bce09ae3231c0782dfe6b9f7141a1ee64b8258e3612ed12ce442651"
+    },
+    {
+      "relativePath": "resources\\flow-runtime\\source\\README.md",
+      "originalHash": null,
+      "sourceHash": "f08995bc65e519b19b9ff1ea3e61e6edbbd5a3203420f8c09a66855315c20a2c"
+    },
+    {
+      "relativePath": "resources\\flow-runtime\\source\\src\\assemble.ts",
+      "originalHash": null,
+      "sourceHash": "0d4fe448e455df8b511e67a67329bab690228577772da9fb1808d3c5a82a7687"
+    },
+    {
+      "relativePath": "resources\\flow-runtime\\source\\src\\chain.ts",
+      "originalHash": null,
+      "sourceHash": "dc626e1cb2d7a3114ef3019748756d19e7b415c6e5737e04c1af30fb8b4c2013"
+    },
+    {
+      "relativePath": "resources\\flow-runtime\\source\\src\\chrome.ts",
+      "originalHash": null,
+      "sourceHash": "ba038f0ebd5d3e2d0b85a413b681748104228860b47612397a55dfde505d88e9"
+    },
+    {
+      "relativePath": "resources\\flow-runtime\\source\\src\\core.ts",
+      "originalHash": null,
+      "sourceHash": "96ced406e703c3868cf71f9ce87525a7989df28ae665bafec37650c826bbe2fc"
+    },
+    {
+      "relativePath": "resources\\flow-runtime\\source\\src\\flow.ts",
+      "originalHash": null,
+      "sourceHash": "ec02095afc423331b40bf4d92e15f204db07817c29a1c837d9f3a7574cf2e8cf"
+    },
+    {
+      "relativePath": "resources\\flow-runtime\\source\\src\\gemini.ts",
+      "originalHash": null,
+      "sourceHash": "def136121cf847597c4f8790863e34285a54199d6ff56faec50de88fbbc6df1e"
+    },
+    {
+      "relativePath": "resources\\flow-runtime\\source\\src\\index.ts",
+      "originalHash": null,
+      "sourceHash": "2e964df69d2e11a1df78f2ede7a10d7d08766b33a77b47b6f83653ca2a7b214c"
+    },
+    {
+      "relativePath": "resources\\flow-runtime\\source\\src\\login.ts",
+      "originalHash": null,
+      "sourceHash": "5c7f33c702ce1d5a5d0c656baf06570fb8933d23f0595014e7ede330392e6f88"
+    },
+    {
+      "relativePath": "resources\\flow-runtime\\source\\src\\platform.ts",
+      "originalHash": null,
+      "sourceHash": "c29f12147abf53d215f3f662a84229e447b6e35e11a55d8b4060ce96b65552ec"
+    },
+    {
+      "relativePath": "resources\\flow-runtime\\source\\src\\playbook.ts",
+      "originalHash": null,
+      "sourceHash": "947ef67878805026126f7b4a80e55a1089fa1b459f0aa52cfda59f91e7f44e50"
+    },
+    {
+      "relativePath": "resources\\flow-runtime\\source\\src\\queue.ts",
+      "originalHash": null,
+      "sourceHash": "8cebc81620c0ca8cd124b3b14ebfd69e1708c5511db54b57d23013c4fe8080f3"
+    },
+    {
+      "relativePath": "resources\\flow-runtime\\source\\src\\remote.ts",
+      "originalHash": null,
+      "sourceHash": "b048fce910c3290c5cf95321c53c6d31a1742d1d1cddd48c59ca4a5ec612a316"
+    },
+    {
+      "relativePath": "resources\\flow-runtime\\source\\src\\server.ts",
+      "originalHash": null,
+      "sourceHash": "af7fe350f24df776ef859b91d039bfdf4100b0e33479e18b85cb21e5427c1fd8"
+    },
+    {
+      "relativePath": "resources\\flow-runtime\\source\\src\\studio.ts",
+      "originalHash": null,
+      "sourceHash": "ef7cd6013c5962c63569a2a223ecff1d93b8ea6172497a406ff03a562b26d78d"
+    },
+    {
+      "relativePath": "resources\\flow-runtime\\source\\src\\techniques.ts",
+      "originalHash": null,
+      "sourceHash": "806a37a932116672e0bcd0c94518d420634224d62465eb62d0c63ac63ddccbd3"
+    },
+    {
+      "relativePath": "resources\\flow-runtime\\studio\\index.html",
+      "originalHash": null,
+      "sourceHash": "c0febf757e4c9c091244c3fccf2d57c0bb1563a65f40fa7f5a1ee2037d04f4b7"
+    },
+    {
+      "relativePath": "resources\\flow-runtime\\UPSTREAM.json",
+      "originalHash": null,
+      "sourceHash": "00b46d36af303993387c1068d628f6af6c335571325cfba4f7d795402d25a081"
+    }
+  ]
+}

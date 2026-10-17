@@ -1,0 +1,67 @@
+{
+  "sourceRoot": "C:\\Users\\deathscythe hell\\Documents\\ChatGPT\\bang story\\app",
+  "targetRoot": "E:\\BANG",
+  "backupName": "codex-flow-2026-10-14T14-31-36-148Z",
+  "changes": [
+    {
+      "relativePath": "README.md",
+      "originalHash": "bca42da891f27b61a8c53f721b440b42ee172835c1e9454cf30ec0b200ddd9b3",
+      "sourceHash": "d51ca3b041e4b6d13051708c4f6f93e5be9fa8941eee04bc272088caf66f7553"
+    },
+    {
+      "relativePath": "src\\renderer\\src\\components\\MasterPromptPicker.tsx",
+      "originalHash": "4d208bce5e677284c857eb923c8f97060a39048519cc5d7bcf48937037df4f4c",
+      "sourceHash": "93f3d8a5a16404e80dc0c2be92b353d520906e806b6cbf6f812c79cc8b84af6d"
+    },
+    {
+      "relativePath": "src\\renderer\\src\\components\\StylePresetArt.tsx",
+      "originalHash": "82d322217596feb056534d2611314f642d6099f2b7fab5b7e4f4cb9f8f7333a1",
+      "sourceHash": "605be32a2f69c6d5d3e63a3f491101003b8b8687773ca91b84632150bc09f5e6"
+    },
+    {
+      "relativePath": "src\\shared\\huashu-motion.ts",
+      "originalHash": "b5c4ce8c4caeef0d08e7652ebba02bd133e75637378fb607ab4503e8e0db5c5a",
+      "sourceHash": "a1ad5c4211a8e8ff1c3053a191bc4fa205b11273ce330e84639cde86bb3f6e88"
+    },
+    {
+      "relativePath": "src\\shared\\niches.ts",
+      "originalHash": "d308694de06a49450d7412f1951275f8ca15e91b7c6f060002e8aed887117ee3",
+      "sourceHash": "3d5c297750c9ea3452ad18aecd138ef029b5343c8757045134ac8413df8a819e"
+    },
+    {
+      "relativePath": "src\\shared\\skills.ts",
+      "originalHash": "fc7d4ac170dd4e220266e9a13fff5a494c7e8a671ab9decece483bbf29694573",
+      "sourceHash": "d2417ff0ec766fcb998b0c8842b64d471ce3b656d62b5630963293e7301ab680"
+    },
+    {
+      "relativePath": "src\\shared\\styles.ts",
+      "originalHash": "196e165e60177f6e137faebcd7ca05c9e7c4e331efa134f710dd372dab4a9eb0",
+      "sourceHash": "d1321463c5fcc5e5c0aff725217e8f3eda67193453d11ec2cca3a01a671582e6"
+    },
+    {
+      "relativePath": "out\\main\\index.js",
+      "originalHash": "916117008501ed471ed6557d271f31178c5b600b908304b83420d30c0c2fca36",
+      "sourceHash": "f0264ba193e79c11e9d99190bc74d24acfc47d59aef1a509967ea04b380e31fb"
+    },
+    {
+      "relativePath": "out\\renderer\\assets\\index-C3sP65yo.js",
+      "originalHash": null,
+      "sourceHash": "18af0ae4698a6921ceac6fe781a80d85e14eba6334d4d1647bc92da8836255bb"
+    },
+    {
+      "relativePath": "out\\renderer\\index.html",
+      "originalHash": "8c29c34c6b155fefa51060fa1dd5ac2c776282114d6d25266f93db5932e5138a",
+      "sourceHash": "0e14b3dbd9899bd6315160a00fdd62bd2c31b1aab135aa3c9a00f34e4c7df8c3"
+    },
+    {
+      "relativePath": "resources\\huashu-art-motion\\NOTICE.md",
+      "originalHash": "2913f45bd7bb27958d4e8d34ebd381f261e33a8775443982365cd6646ee59626",
+      "sourceHash": "f714817dd8539154002cc4830f71c9a925fc9696c9b1ded0c830ff83dd4228f3"
+    },
+    {
+      "relativePath": "resources\\huashu-art-motion\\UPSTREAM.json",
+      "originalHash": "816313fdb15498cd0b03fd79909633cbe5e734072bc60da5230f9ea51314f035",
+      "sourceHash": "cdb38b01cf9e4f9514f9d2f9da85ecf868b4b2b40f3c9941d3c60f0371de3aa3"
+    }
+  ]
+}

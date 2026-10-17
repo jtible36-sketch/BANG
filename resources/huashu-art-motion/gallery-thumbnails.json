@@ -1,0 +1,615 @@
+{
+  "sourceFile": "huashu.jpg",
+  "sourceSha256": "99512979c3ffd709ace498647cca95b4a31e45ebe435c0ce77f9522470f93f7e",
+  "sourceSize": [
+    2936,
+    1940
+  ],
+  "purpose": "User-supplied gallery examples only; not character references or generation prompt inputs.",
+  "cropPolicy": "Crop artwork bounds only; exclude external headings and gutters, retain all pixels inside each artwork. Lossless WebP, no resampling.",
+  "panels": [
+    {
+      "styleId": "huashu-01-cave",
+      "recipeId": "01_cave",
+      "name": "Lukisan gua",
+      "row": 1,
+      "column": 1,
+      "crop": [
+        8,
+        102,
+        488,
+        372
+      ],
+      "file": "src/renderer/src/assets/styles/huashu-01-cave.webp",
+      "width": 480,
+      "height": 270,
+      "sha256": "a8c48eb9bb1d30fb6311fdf8c66bc7f1196586a1fa9f522d8dcb7becf267ec6d"
+    },
+    {
+      "styleId": "huashu-02-egypt",
+      "recipeId": "02_egypt",
+      "name": "Mural Mesir kuno",
+      "row": 1,
+      "column": 2,
+      "crop": [
+        496,
+        102,
+        976,
+        372
+      ],
+      "file": "src/renderer/src/assets/styles/huashu-02-egypt.webp",
+      "width": 480,
+      "height": 270,
+      "sha256": "4b2d8eb3ebef772d84d1391138f7dbed1bb76e2de8a44a198ccf25b46fcb9fcb"
+    },
+    {
+      "styleId": "huashu-03-greek",
+      "recipeId": "03_greek",
+      "name": "Keramik Yunani hitam",
+      "row": 1,
+      "column": 3,
+      "crop": [
+        984,
+        102,
+        1464,
+        372
+      ],
+      "file": "src/renderer/src/assets/styles/huashu-03-greek.webp",
+      "width": 480,
+      "height": 270,
+      "sha256": "89089f8fbe200ed31d6103b95744c290e0f92b51734d6e04cebb0fc6880e7449"
+    },
+    {
+      "styleId": "huashu-04-roman",
+      "recipeId": "04_roman",
+      "name": "Mosaik Pompeii",
+      "row": 1,
+      "column": 4,
+      "crop": [
+        1472,
+        102,
+        1952,
+        372
+      ],
+      "file": "src/renderer/src/assets/styles/huashu-04-roman.webp",
+      "width": 480,
+      "height": 270,
+      "sha256": "5f658e55ab00c838db1c00f7f296d717686c778b4f55bd854291a4af1cbd31dd"
+    },
+    {
+      "styleId": "huashu-20-dunhuang",
+      "recipeId": "20_dunhuang",
+      "name": "Mural Dunhuang",
+      "row": 1,
+      "column": 5,
+      "crop": [
+        1960,
+        102,
+        2440,
+        372
+      ],
+      "file": "src/renderer/src/assets/styles/huashu-20-dunhuang.webp",
+      "width": 480,
+      "height": 270,
+      "sha256": "a05bd30446cd22ac63157b9d884d49e45816e2a71b4014f147e94cb0e3bc6c9c"
+    },
+    {
+      "styleId": "huashu-34-shadowpuppet",
+      "recipeId": "34_shadowpuppet",
+      "name": "Teater wayang kulit Tiongkok",
+      "row": 1,
+      "column": 6,
+      "crop": [
+        2448,
+        102,
+        2928,
+        372
+      ],
+      "file": "src/renderer/src/assets/styles/huashu-34-shadowpuppet.webp",
+      "width": 480,
+      "height": 270,
+      "sha256": "2a602983a53234eff6106828f31654710befc4feb61575160bc2405ca13604ef"
+    },
+    {
+      "styleId": "huashu-05-gothic",
+      "recipeId": "05_gothic",
+      "name": "Manuskrip Gotik",
+      "row": 2,
+      "column": 1,
+      "crop": [
+        8,
+        414,
+        488,
+        684
+      ],
+      "file": "src/renderer/src/assets/styles/huashu-05-gothic.webp",
+      "width": 480,
+      "height": 270,
+      "sha256": "1b5dfd98246c2e9f2cefcd19646220a402760ddd31f1ab3ef826e6dc575e1a7a"
+    },
+    {
+      "styleId": "huashu-06-renaissance",
+      "recipeId": "06_renaissance",
+      "name": "Sfumato Renaisans",
+      "row": 2,
+      "column": 2,
+      "crop": [
+        496,
+        414,
+        976,
+        684
+      ],
+      "file": "src/renderer/src/assets/styles/huashu-06-renaissance.webp",
+      "width": 480,
+      "height": 270,
+      "sha256": "a298d8ce9dd80f57b0b00adb04a4038ae5daa3c0b4d4c4713db6cd4d89e04bbe"
+    },
+    {
+      "styleId": "huashu-32-rembrandt",
+      "recipeId": "32_rembrandt",
+      "name": "Chiaroscuro Rembrandt",
+      "row": 2,
+      "column": 3,
+      "crop": [
+        984,
+        414,
+        1464,
+        684
+      ],
+      "file": "src/renderer/src/assets/styles/huashu-32-rembrandt.webp",
+      "width": 480,
+      "height": 270,
+      "sha256": "d2ba001e83b265300891721f8c49636274f02faf15210e9d513aa4e2d35d0528"
+    },
+    {
+      "styleId": "huashu-17-ink",
+      "recipeId": "17_ink",
+      "name": "Tinta Tiongkok",
+      "row": 2,
+      "column": 4,
+      "crop": [
+        1472,
+        414,
+        1952,
+        684
+      ],
+      "file": "src/renderer/src/assets/styles/huashu-17-ink.webp",
+      "width": 480,
+      "height": 270,
+      "sha256": "a0c24328e5edad0ba569d5d1810e2bbd78e96ee25956873f926e44062f9a4d24"
+    },
+    {
+      "styleId": "huashu-08-impressionism",
+      "recipeId": "08_impressionism",
+      "name": "Impresionisme pastel",
+      "row": 2,
+      "column": 5,
+      "crop": [
+        1960,
+        414,
+        2440,
+        684
+      ],
+      "file": "src/renderer/src/assets/styles/huashu-08-impressionism.webp",
+      "width": 480,
+      "height": 270,
+      "sha256": "378b1480f042479ec1eb519e17a388a634b48b8f7a71d7063ab66c3f8ddc724a"
+    },
+    {
+      "styleId": "huashu-29-seurat",
+      "recipeId": "29_seurat",
+      "name": "Pointilisme Seurat",
+      "row": 2,
+      "column": 6,
+      "crop": [
+        2448,
+        414,
+        2928,
+        684
+      ],
+      "file": "src/renderer/src/assets/styles/huashu-29-seurat.webp",
+      "width": 480,
+      "height": 270,
+      "sha256": "a972fee29cd26acb629070d0c43dd088374b6d5917d36fecc684138af5f2749b"
+    },
+    {
+      "styleId": "huashu-09-postimp",
+      "recipeId": "09_postimp",
+      "name": "Sapuan ekspresif Van Gogh",
+      "row": 3,
+      "column": 1,
+      "crop": [
+        8,
+        726,
+        488,
+        996
+      ],
+      "file": "src/renderer/src/assets/styles/huashu-09-postimp.webp",
+      "width": 480,
+      "height": 270,
+      "sha256": "2786af4fa901a5321505515fb3bc025f42f01f04cb4595941654ca286fcbb806"
+    },
+    {
+      "styleId": "huashu-19-munch",
+      "recipeId": "19_munch",
+      "name": "Ekspresionisme bergelombang",
+      "row": 3,
+      "column": 2,
+      "crop": [
+        496,
+        726,
+        976,
+        996
+      ],
+      "file": "src/renderer/src/assets/styles/huashu-19-munch.webp",
+      "width": 480,
+      "height": 270,
+      "sha256": "5ebd8e4dc12b9745c0d752b6597d3ee9b5143ded039e8dab97e1600fff72d8d4"
+    },
+    {
+      "styleId": "huashu-10-nouveau",
+      "recipeId": "10_nouveau",
+      "name": "Art Nouveau",
+      "row": 3,
+      "column": 3,
+      "crop": [
+        984,
+        726,
+        1464,
+        996
+      ],
+      "file": "src/renderer/src/assets/styles/huashu-10-nouveau.webp",
+      "width": 480,
+      "height": 270,
+      "sha256": "83c7175974c47d25967337d26b14bd7d57e71334e06bd9a47c39966ced580fcf"
+    },
+    {
+      "styleId": "huashu-28-monet",
+      "recipeId": "28_monet",
+      "name": "Lanskap air Monet",
+      "row": 3,
+      "column": 4,
+      "crop": [
+        1472,
+        726,
+        1952,
+        996
+      ],
+      "file": "src/renderer/src/assets/styles/huashu-28-monet.webp",
+      "width": 480,
+      "height": 270,
+      "sha256": "92efd32a9f079a1bf7a9c2e356b46ad430d8a3c84dc3d183b10a45a822f50e11"
+    },
+    {
+      "styleId": "huashu-36-picasso-blue",
+      "recipeId": "36_picasso_blue",
+      "name": "Lukisan periode biru",
+      "row": 3,
+      "column": 5,
+      "crop": [
+        1960,
+        726,
+        2440,
+        996
+      ],
+      "file": "src/renderer/src/assets/styles/huashu-36-picasso-blue.webp",
+      "width": 480,
+      "height": 270,
+      "sha256": "64114fcdaff0243cdf1a2b8a1bb8b7f65885f43d12329a7d161493538629ffa0"
+    },
+    {
+      "styleId": "huashu-18-klimt",
+      "recipeId": "18_klimt",
+      "name": "Emas dekoratif Klimt",
+      "row": 3,
+      "column": 6,
+      "crop": [
+        2448,
+        726,
+        2928,
+        996
+      ],
+      "file": "src/renderer/src/assets/styles/huashu-18-klimt.webp",
+      "width": 480,
+      "height": 270,
+      "sha256": "44b783839d63000148f3b042cd88f881d3adb09bb51e726070c2aac5e948efa5"
+    },
+    {
+      "styleId": "huashu-11-cubism",
+      "recipeId": "11_cubism",
+      "name": "Kubisme analitis",
+      "row": 4,
+      "column": 1,
+      "crop": [
+        8,
+        1038,
+        488,
+        1308
+      ],
+      "file": "src/renderer/src/assets/styles/huashu-11-cubism.webp",
+      "width": 480,
+      "height": 270,
+      "sha256": "52de0336a9d2789c7992b42c959c2fc3f37bd16e637238a740cf0d3f7f563174"
+    },
+    {
+      "styleId": "huashu-12-bauhaus",
+      "recipeId": "12_bauhaus",
+      "name": "Geometri Bauhaus",
+      "row": 4,
+      "column": 2,
+      "crop": [
+        496,
+        1038,
+        976,
+        1308
+      ],
+      "file": "src/renderer/src/assets/styles/huashu-12-bauhaus.webp",
+      "width": 480,
+      "height": 270,
+      "sha256": "75f6079906cbb857d5dd13bec49579af4e2d5cf995cfd20daa4516eb79ffdd1a"
+    },
+    {
+      "styleId": "huashu-22-constructivism",
+      "recipeId": "22_constructivism",
+      "name": "Konstruktivisme",
+      "row": 4,
+      "column": 3,
+      "crop": [
+        984,
+        1038,
+        1464,
+        1308
+      ],
+      "file": "src/renderer/src/assets/styles/huashu-22-constructivism.webp",
+      "width": 480,
+      "height": 270,
+      "sha256": "bbeb6b9a5dee6b01787743a52b4ec434b16e47ebea58bad3ffadbb9b8425d0c2"
+    },
+    {
+      "styleId": "huashu-33-rubberhose",
+      "recipeId": "33_rubberhose",
+      "name": "Kartun rubber hose",
+      "row": 4,
+      "column": 4,
+      "crop": [
+        1472,
+        1038,
+        1952,
+        1308
+      ],
+      "file": "src/renderer/src/assets/styles/huashu-33-rubberhose.webp",
+      "width": 480,
+      "height": 270,
+      "sha256": "671bdf3f2e643dbebff1dc19fe560aa69b935e3a93a00f214f04bd9291a2e2c2"
+    },
+    {
+      "styleId": "huashu-23-dali",
+      "recipeId": "23_dali",
+      "name": "Surealisme mimpi",
+      "row": 4,
+      "column": 5,
+      "crop": [
+        1960,
+        1038,
+        2440,
+        1308
+      ],
+      "file": "src/renderer/src/assets/styles/huashu-23-dali.webp",
+      "width": 480,
+      "height": 270,
+      "sha256": "4171b4616496bc7ea18f5ae7f7c05f7251bac59a37b96c1773e67172ed41431a"
+    },
+    {
+      "styleId": "huashu-24-hopper",
+      "recipeId": "24_hopper",
+      "name": "Realisme cahaya Hopper",
+      "row": 4,
+      "column": 6,
+      "crop": [
+        2448,
+        1038,
+        2928,
+        1308
+      ],
+      "file": "src/renderer/src/assets/styles/huashu-24-hopper.webp",
+      "width": 480,
+      "height": 270,
+      "sha256": "c915cfbb257a48a753c292a01f87bd8258c5f5385d3f84c0bbe39a4bb5706ce2"
+    },
+    {
+      "styleId": "huashu-30-matisse",
+      "recipeId": "30_matisse",
+      "name": "Potongan warna Matisse",
+      "row": 5,
+      "column": 1,
+      "crop": [
+        8,
+        1350,
+        488,
+        1620
+      ],
+      "file": "src/renderer/src/assets/styles/huashu-30-matisse.webp",
+      "width": 480,
+      "height": 270,
+      "sha256": "4b07c4200ccb9ae23f683615829e93425a145e0612496b5b6c04e6a12c06ae90"
+    },
+    {
+      "styleId": "huashu-13-pop",
+      "recipeId": "13_pop",
+      "name": "Pop Art cetak",
+      "row": 5,
+      "column": 2,
+      "crop": [
+        496,
+        1350,
+        976,
+        1620
+      ],
+      "file": "src/renderer/src/assets/styles/huashu-13-pop.webp",
+      "width": 480,
+      "height": 270,
+      "sha256": "66f7cf05aaf55167facb6c29cd0fccaa169ca852199a7fa744b34e33103ed49f"
+    },
+    {
+      "styleId": "huashu-21-kusama",
+      "recipeId": "21_kusama",
+      "name": "Dunia polkadot",
+      "row": 5,
+      "column": 3,
+      "crop": [
+        984,
+        1350,
+        1464,
+        1620
+      ],
+      "file": "src/renderer/src/assets/styles/huashu-21-kusama.webp",
+      "width": 480,
+      "height": 270,
+      "sha256": "abd5e41c0b301a7b623be440b94dfa58e6f6c0c065f0a6cea650c1adb6d9377d"
+    },
+    {
+      "styleId": "huashu-27-kirby",
+      "recipeId": "27_kirby",
+      "name": "Komik kosmik Kirby",
+      "row": 5,
+      "column": 4,
+      "crop": [
+        1472,
+        1350,
+        1952,
+        1620
+      ],
+      "file": "src/renderer/src/assets/styles/huashu-27-kirby.webp",
+      "width": 480,
+      "height": 270,
+      "sha256": "d316ee158fe6ce14c3381759901920b313029043a8ad342dbaaee81c7c395766"
+    },
+    {
+      "styleId": "huashu-31-haring",
+      "recipeId": "31_haring",
+      "name": "Figur ritmis Haring",
+      "row": 5,
+      "column": 5,
+      "crop": [
+        1960,
+        1350,
+        2440,
+        1620
+      ],
+      "file": "src/renderer/src/assets/styles/huashu-31-haring.webp",
+      "width": 480,
+      "height": 270,
+      "sha256": "f454b0735558b8de2c75f6a99bb0783d38fdd1e7fbf67568ac998dbc0eaf3b38"
+    },
+    {
+      "styleId": "huashu-14-8bit",
+      "recipeId": "14_8bit",
+      "name": "Pixel 8-bit",
+      "row": 5,
+      "column": 6,
+      "crop": [
+        2448,
+        1350,
+        2928,
+        1620
+      ],
+      "file": "src/renderer/src/assets/styles/huashu-14-8bit.webp",
+      "width": 480,
+      "height": 270,
+      "sha256": "7cb61ec81b7784bb858fa244f516296281c3482ec9e0ded3cfd1c48d5dc82ef3"
+    },
+    {
+      "styleId": "huashu-25-ghibli",
+      "recipeId": "25_ghibli",
+      "name": "Cat air anime Ghibli",
+      "row": 6,
+      "column": 1,
+      "crop": [
+        8,
+        1662,
+        488,
+        1932
+      ],
+      "file": "src/renderer/src/assets/styles/huashu-25-ghibli.webp",
+      "width": 480,
+      "height": 270,
+      "sha256": "dd5d0a13dc95e77f44839a841958bcc1f829e9cd5159989d7a1950b46e786dde"
+    },
+    {
+      "styleId": "huashu-15-raytrace",
+      "recipeId": "15_raytrace",
+      "name": "CGI awal 1990-an",
+      "row": 6,
+      "column": 2,
+      "crop": [
+        496,
+        1662,
+        976,
+        1932
+      ],
+      "file": "src/renderer/src/assets/styles/huashu-15-raytrace.webp",
+      "width": 480,
+      "height": 270,
+      "sha256": "2a22d74aef20fb88b355c551a7a20c71643ffa3292ee15a031df87c0f3931c8e"
+    },
+    {
+      "styleId": "huashu-26-vaporwave",
+      "recipeId": "26_vaporwave",
+      "name": "Vaporwave & neon",
+      "row": 6,
+      "column": 3,
+      "crop": [
+        984,
+        1662,
+        1464,
+        1932
+      ],
+      "file": "src/renderer/src/assets/styles/huashu-26-vaporwave.webp",
+      "width": 480,
+      "height": 270,
+      "sha256": "4d4e5a48cff5d973d66296a3f839a89699e23aa64fd1e57d90c90fa6181b3291"
+    },
+    {
+      "styleId": "huashu-35-shinkai",
+      "recipeId": "35_shinkai",
+      "name": "Anime cahaya sinematik",
+      "row": 6,
+      "column": 4,
+      "crop": [
+        1472,
+        1662,
+        1952,
+        1932
+      ],
+      "file": "src/renderer/src/assets/styles/huashu-35-shinkai.webp",
+      "width": 480,
+      "height": 270,
+      "sha256": "65b41a1eafa71753dca8d1dc3ec0173f99aa1c338fa6face9486f06c8982b014"
+    },
+    {
+      "styleId": "huashu-16-2026",
+      "recipeId": "16_2026",
+      "name": "Ilustrasi flat bertekstur",
+      "row": 6,
+      "column": 5,
+      "crop": [
+        1960,
+        1662,
+        2440,
+        1932
+      ],
+      "file": "src/renderer/src/assets/styles/huashu-16-2026.webp",
+      "width": 480,
+      "height": 270,
+      "sha256": "e2ccab04a59e9e6cef0634642947dbfbde1fba6792bd3ed31602916342c0327a"
+    }
+  ],
+  "missingPanels": [
+    {
+      "styleId": "huashu-37-rick-morty",
+      "recipeId": "37_rick_morty",
+      "name": "Kartun sci-fi flat"
+    }
+  ],
+  "missingPolicy": "Keep the existing procedural preview when no matching source panel exists."
+}

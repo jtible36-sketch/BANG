@@ -1,0 +1,102 @@
+{
+  "sourceRoot": "C:\\Users\\deathscythe hell\\Documents\\ChatGPT\\bang story\\app",
+  "targetRoot": "E:\\BANG",
+  "backupName": "codex-flow-2026-10-10T05-25-59-769Z",
+  "changes": [
+    {
+      "relativePath": "README.md",
+      "originalHash": "1c68ae4472ed0d40e27f237d0553fea7aa6bbdcbf99c805d0b8b8e6f25b09a89",
+      "sourceHash": "046fefd19a23eb5fd171688f45ba67bedeff0f709482398be973e7dad347f161"
+    },
+    {
+      "relativePath": "src\\main\\map-story.ts",
+      "originalHash": "e62bf566d100bf3ad9e994c7bf89826808308d113155cd8f64d491f533b2b4ff",
+      "sourceHash": "ec37ae4c9a87bfa2bf0f1945b161c82e7f293ddee39b99c0ed73f409bff83fc9"
+    },
+    {
+      "relativePath": "src\\main\\research.ts",
+      "originalHash": "541403fe83baf824120637b011d10c1acc7ff2efb35318e3a7cdb5a656234022",
+      "sourceHash": "ba582d3c980651060b2ce913d2966d66f5f8f3140e598e3f2d975e6cbd58ff2b"
+    },
+    {
+      "relativePath": "src\\renderer\\src\\components\\StyleArt.tsx",
+      "originalHash": "21235228d7fc5958cdded2e6068b0f74a64eff762b9efdeffbba213f020b2501",
+      "sourceHash": "ba4eab048932798df6ae0bbee55ebf7ee2d919fe59895ef9f7924463be076c0c"
+    },
+    {
+      "relativePath": "src\\renderer\\src\\pages\\MasterPrompts.tsx",
+      "originalHash": "fdfbdba9bdc50781cbfcab58f6f096fd38b25ee6c6b1f735a0519692d46f9a2d",
+      "sourceHash": "e9025186f56384bc333c895491aed63fd3602db53ce9a5b00e8bcff234ecb49c"
+    },
+    {
+      "relativePath": "src\\renderer\\src\\pages\\project\\StoryboardStep.tsx",
+      "originalHash": "a8b0c5a7e8dc0a4d7ccf476ff9f924fc02aa3696ddc82ce67eacbe2bb376ec62",
+      "sourceHash": "1cea81153debecc93e9de8563c2579f12062f6fa801ddfd1fd3a19e5c517de12"
+    },
+    {
+      "relativePath": "src\\shared\\external-prompts.ts",
+      "originalHash": "7b526bd395ebe3bb38a7e24d592c80f92a3884f3f0f2043881ab29801a9fc912",
+      "sourceHash": "0e1a5af35afff857c03c3d73c47f442405782a6dad0936adacc37d687176cdab"
+    },
+    {
+      "relativePath": "src\\shared\\map-animation-legacy-source.ts",
+      "originalHash": null,
+      "sourceHash": "97f348f1a39b1295230bd75b5cd78b3f861d482316f4ef81c492028801d512fd"
+    },
+    {
+      "relativePath": "src\\shared\\map-animation-legacy.ts",
+      "originalHash": null,
+      "sourceHash": "d75c2bf9e998a5a06fd5773adf769e91e9936106bc83115c64c09edc519e99ab"
+    },
+    {
+      "relativePath": "src\\shared\\map-animation-source.ts",
+      "originalHash": "508746ba6f669cffdcd7b4cdae971e408368859d292dd1fb0a411e98a082ab40",
+      "sourceHash": "c5cde698bee504589f9c5399231769cdfaaad6ec2f5b3ea616cc1e285f7c9555"
+    },
+    {
+      "relativePath": "src\\shared\\map-animation.ts",
+      "originalHash": "cd593f59bb0fe5716f19bfb1b5b5e103897e2b8366cfb3882d7d587a65a0b175",
+      "sourceHash": "c9e892dda2c6f84a61a102831fe3e1986352bb4edd34bccffb463206aa2e78d0"
+    },
+    {
+      "relativePath": "src\\shared\\master-prompts.ts",
+      "originalHash": "1ea8ae573c100fc72fa4a62a01d45ec4d6183679f7629768bd49d93e2ffd4b85",
+      "sourceHash": "615bca5198b4349faa752bf3f3702a075475575daa92d5d139d5ece0179e3794"
+    },
+    {
+      "relativePath": "src\\shared\\styles.ts",
+      "originalHash": "8328328dded3b9d03723840dfebf3f8dcca2fc275623e46492e963829fc56855",
+      "sourceHash": "196e165e60177f6e137faebcd7ca05c9e7c4e331efa134f710dd372dab4a9eb0"
+    },
+    {
+      "relativePath": "out\\main\\index.js",
+      "originalHash": "3f1b0b7eda1a54ae37c2fe44256e9c072cbce74da42884baf4081188b1b4dee7",
+      "sourceHash": "61a17f1e222efc5101520e2312ee95cd8cd1c7f888cd43993862609ecb2fbd15"
+    },
+    {
+      "relativePath": "out\\renderer\\assets\\index-C8lo2kWJ.js",
+      "originalHash": null,
+      "sourceHash": "128cabdfd471b5ecb096ed7817e49ccde17180fac2b26eff8c4e412d770439c2"
+    },
+    {
+      "relativePath": "out\\renderer\\assets\\index-DdYNIPOO.css",
+      "originalHash": null,
+      "sourceHash": "14619bf08c377931f70cf41efbafd66deca1e2f911863f7d619ddc6e9f5873f0"
+    },
+    {
+      "relativePath": "out\\renderer\\index.html",
+      "originalHash": "042d406b787e1ba143b2bb7a579efc8b6f72f0150a21eede5a8a5143a26eccc3",
+      "sourceHash": "38993486450aabaa20914613057bc96ba081b2f890692aa188f036a7e26c2d75"
+    },
+    {
+      "relativePath": "references\\Map Animation Content Master Prompt v1.md",
+      "originalHash": null,
+      "sourceHash": "16cf444ce1853796a1b4f984b4d7281b2f2fd69bc381f068078e99ad7847bb1f"
+    },
+    {
+      "relativePath": "references\\Map Animation Content Master Prompt.md",
+      "originalHash": "16cf444ce1853796a1b4f984b4d7281b2f2fd69bc381f068078e99ad7847bb1f",
+      "sourceHash": "9a7aa5e59606ad9495232d691ee0af685f9cfe00bfb6b819f0acb76730ac9237"
+    }
+  ]
+}
