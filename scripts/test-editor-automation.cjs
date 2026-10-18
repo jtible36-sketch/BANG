@@ -7,12 +7,12 @@ const root = path.resolve(__dirname, '..')
 const scratch = fs.mkdtempSync(path.join(os.tmpdir(), 'naraflow-edit-test-'))
 global.__fixtureEvents = []
 const modules = {
- './cutout-review-recovery':`export const missingAssetRecoveryStatus=()=>null;export const recordCompositionRejection=()=>{};export const startMissingAssetRecovery=async()=>{throw Error('Recovery needs its own integration fixture')};`,
- './cutout-assets':`export const cutoutAssetState=()=>({plan:null,stale:false,assets:[],jobs:[]});`,
+ './cutout-review-recovery':`export const convertReviewMissingAssets=async()=>{throw Error('Recovery needs integration fixture')};export const missingAssetRecoveryStatus=()=>null;export const recordCompositionRejection=()=>{};export const startMissingAssetRecovery=async()=>{throw Error('Recovery needs its own integration fixture')};`,
+ './cutout-assets':`export const appendCutoutRecoveryItems=()=>{throw Error('Recovery needs integration fixture')};export const generateCutoutAsset=()=>{throw Error('Recovery needs integration fixture')};export const cutoutAssetState=()=>({plan:null,stale:false,assets:[],jobs:[]});`,
 
  './cutout-composition-review':`export const reviewProductionComposition=async()=>({approved:true,problems:[],missingAssets:[]});`,
   './special-clips': `export const prepareSpecialVideos=()=>{throw Error('Special video needs integration fixture')};`,
-  './cutout-auto-production': `export const prepareProductionAssets=()=>{throw Error('Production mode needs integration fixture')};export const productionContactSheets=()=>{throw Error('Production mode needs integration fixture')};`,
+  './cutout-auto-production': `export const waitChild=async()=>{throw Error('Production needs integration fixture')};export const prepareProductionAssets=()=>{throw Error('Production mode needs integration fixture')};export const productionContactSheets=()=>{throw Error('Production mode needs integration fixture')};`,
   electron: `export const app={isPackaged:false,getPath:()=>${JSON.stringify(scratch)},getAppPath:()=>${JSON.stringify(root)}}; export const webContents={fromId:()=>({once:()=>{},isDestroyed:()=>false})}; export const nativeImage={createFromBuffer:()=>({isEmpty:()=>false,getSize:()=>({width:10,height:10}),toPNG:()=>Buffer.from('fixture')})};`,
   './events': `export const emit={editorAutomation:value=>global.__fixtureEvents.push(value),job:()=>{}};`,
   './codex-text': `export const generateCodexJson=(options)=>global.__generateCodex(options);`,

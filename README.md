@@ -143,7 +143,7 @@ Arahan **v4** memakai hook visual dalam 3 detik pertama, shot sekitar 2–4 deti
 
 Pemeriksaan otomatis menolak komposisi foto tunggal, mendeteksi gerak efektif layer serta pegas pada rig, dan menerapkan hard cut serta caption karaoke putih-hijau. Aset atau klip khusus yang kurang dilaporkan. Penilaian era, pose, kontak, amplitudo reaksi, dan kesesuaian narasi masih memerlukan tinjauan visual; bukan semua aturan artistik dapat dibuktikan dari keyframe. Klip khusus memenuhi frame sebagai pengecualian untuk aksi kontinu.
 
-Produksi Cutout pada preset referensi mengambil sampel frame hasil renderer untuk tinjauan visual. Kesalahan tata letak dapat mendapat satu percobaan koreksi. Bila aset atau pose belum mendukung aksi, hasil tidak otomatis dianggap benar hanya karena alpha dan keyframe valid. Sampel frame tetap bukan pemeriksaan seluruh frame atau jaminan kemiripan referensi.
+Produksi Cutout pada preset referensi mengambil sampel frame hasil renderer untuk tinjauan visual. Per klip, setelah tinjauan awal, komposisi dapat menjalani maksimal tiga percobaan perbaikan otomatis. Aset yang kurang ditambahkan ke paket yang sama dan dibuat melalui Codex; pelanggaran gerak diperbaiki dari problems dan frame hasil renderer, lalu ditinjau ulang. Progres menampilkan percobaan N/3. Batas gambar berlaku untuk generate awal serta seluruh percobaan di semua klip; loop berhenti sebelum mengirim gambar yang melampaui batas. Hasil yang tetap ditolak menampilkan temuan terakhir dan mempertahankan aset selesai. Bila aset atau pose belum mendukung aksi, hasil tidak otomatis dianggap benar hanya karena alpha dan keyframe valid. Sampel frame tetap bukan pemeriksaan seluruh frame atau jaminan kemiripan referensi.
 
 Jika proses gagal atau dibatalkan:
 

@@ -12,7 +12,7 @@ import {builtInMasterPrompts} from '../src/shared/master-prompts'
 const root=resolve(process.argv[2]),g=globalThis as any,checks:string[]=[]
 mkdirSync(root,{recursive:true});app.setPath('userData',join(root,'isolated-user-data'));app.commandLine.appendSwitch('disable-gpu');app.on('window-all-closed',()=>{})
 const check=async(name:string,run:()=>unknown|Promise<unknown>)=>{await run();checks.push(name);console.log('PASS',name)}
-const options={...DEFAULT_CUTOUT_PRODUCTION,maxAssetsPerClip:12,maxNewAssets:12,motion:'keyframes' as const}
+const options={...DEFAULT_CUTOUT_PRODUCTION,maxAssetsPerClip:12,maxNewAssets:2,motion:'keyframes' as const}
 function png(alpha=false){const b=Buffer.alloc(90*160*4);for(let y=0;y<160;y++)for(let x=0;x<90;x++){let i=(y*90+x)*4;b[i]=100;b[i+1]=140;b[i+2]=200;b[i+3]=alpha&&(x<10||x>79||y<10||y>149)?0:255}return nativeImage.createFromBitmap(b,{width:90,height:160}).toPNG()}
 async function done(id:string){for(let i=0;i<3000;i++){const j=getJob(id)!;if(['done','failed','canceled'].includes(j.status))return j;await new Promise(r=>setTimeout(r,20))}throw Error('timeout')}
 function project(){const p=createProject({durationSec:60,styleId:'cutout-facts',skillId:'animasi-cutout',masterPrompt:builtInMasterPrompts.find(p=>p.id==='builtin:cutout-facts')!});replaceScript(p.id,'Pintu troli',[{title:'Pintu',story:'Tokoh menunjuk pintu berengsel.',narration:'Pintu ini membuka ketika troli masuk.',durationMs:2000}]);return p.id}

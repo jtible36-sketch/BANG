@@ -9,12 +9,12 @@ import { basename, join } from 'node:path'
 import { nativeImage, webContents } from 'electron'
 import type { Job, ProjectBundle, ProjectSnapshot } from '@shared/types'
 import { CODEX_EDIT_PLAN_SCHEMA, EDITOR_EDIT_PLAN_SCHEMA, normalizeEditorEditPlan, type EditorEditPlan, type EditorAutomationResult, type EditorAutomationStatus } from '@shared/editor-automation'
-import { auditCutoutContacts, bakeCutoutFrames, composeCutoutAssets, normalizeCutoutProduction, type AutoEditInput, type CutoutProductionOptions } from '@shared/cutout-production'
+import { auditCutoutContacts, bakeCutoutFrames, composeCutoutAssets, normalizeCutoutProduction, generatedForItem, type AutoEditInput, type CutoutProductionOptions } from '@shared/cutout-production'
 import { resolveMasterPrompt } from '@shared/master-prompts'
 import { cutoutReferenceDirection } from '@shared/cutout-facts'
-import { prepareProductionAssets, productionContactSheets } from './cutout-auto-production'
-import { cutoutAssetState } from './cutout-assets'
-import { missingAssetRecoveryStatus, recordCompositionRejection, startMissingAssetRecovery } from './cutout-review-recovery'
+import { prepareProductionAssets, productionContactSheets, waitChild } from './cutout-auto-production'
+import { appendCutoutRecoveryItems, generateCutoutAsset, cutoutAssetState } from './cutout-assets'
+import { convertReviewMissingAssets, missingAssetRecoveryStatus, recordCompositionRejection, startMissingAssetRecovery } from './cutout-review-recovery'
 import type { RecoverMissingAssetsInput, RecoverMissingAssetsResult } from '@shared/missing-asset-recovery'
 import type { TaskCtx } from './jobs'
 import { cutoutAssetIds, CUTOUT_LIMITS } from '@shared/cutout-timeline'
@@ -98,7 +98,7 @@ export async function recoverMissingAssets(input:RecoverMissingAssetsInput):Prom
   return startMissingAssetRecovery(input,{
     structure:()=>structureRevision(input.projectId),
     ready:signal=>ensureEditorsReady(input.projectId,signal),
-    resume:(request,options,ctx)=>produceAndEdit(request,options,ctx,getEditingContext(input.projectId).revision)
+    resume:(request,options,ctx,alreadySubmitted)=>produceAndEdit(request,options,ctx,getEditingContext(input.projectId).revision,alreadySubmitted)
   })
 }
 function checkedBundle(projectId: string, expectedRevision: string, allowExpired=false): ProjectBundle {
@@ -293,7 +293,7 @@ function structureRevision(projectId:string):string {
   const b=getBundle(projectId)
   return createHash('sha256').update(stable({...snapshot(b),links:b.clips.map(c=>[c.id,c.imageAssetId,c.videoAssetId,c.audioAssetId]),characters:b.characters})).digest('hex')
 }
-async function produceAndEdit(input:AutoEditInput,options:CutoutProductionOptions,ctx:TaskCtx,initialRevision:string):Promise<{message:string}> {
+async function produceAndEdit(input:AutoEditInput,options:CutoutProductionOptions,ctx:TaskCtx,initialRevision:string,alreadySubmitted=0):Promise<{message:string}> {
   checkedBundle(input.projectId,initialRevision)
   const initial=getBundle(input.projectId),structure=structureRevision(input.projectId)
   const guard=async():Promise<void>=>{ctx.signal.throwIfAborted();await ensureEditorsReady(input.projectId,ctx.signal);if(structureRevision(input.projectId)!==structure)throw new Error('Revisi proyek berubah selama produksi. Aset selesai tetap di Cutout; komposisi tidak ditimpa. Jalankan kembali setelah menyimpan.')}
@@ -306,17 +306,27 @@ async function produceAndEdit(input:AutoEditInput,options:CutoutProductionOption
   const special=await prepareSpecialVideos(input,clips,ctx,guard)
   const regular=clips.filter(c=>!special.has(c.id))
   if(regular.length&&!options.enabled&&input.specialClips?.enabled)throw new Error('Beberapa klip cukup memakai Cutout. Aktifkan generate aset atau pilih satu klip dengan mode wajah/aksi kontinu.')
-  const plans=regular.length?await prepareProductionAssets(input,options,regular,ctx,guard):new Map()
+  const existingImages=new Set(getBundle(input.projectId).assets.filter(a=>a.kind==='image').map(a=>a.id))
+  const remainingInitialBudget=options.maxNewAssets-alreadySubmitted
+  if(remainingInitialBudget<0)throw new Error('Batas gambar proses sudah terlampaui sebelum komposisi.')
+  const plans=regular.length?await prepareProductionAssets(input,{...options,maxNewAssets:remainingInitialBudget},regular,ctx,guard):new Map()
+  // This counter is shared across every clip and all repair rounds. Explicit
+  // one-click recovery passes its own submissions in, rather than resetting it.
+  let submittedImages=alreadySubmitted+getBundle(input.projectId).assets.filter(a=>a.kind==='image'&&!existingImages.has(a.id)).length
   const changes:EditorEditPlan['clips']=[...special].map(([clipId,cutout])=>({clipId,cutout,...(isCutoutReference(initial.project)?{transition:'cut' as const}:{})})),summaries:string[]=[],folder=mkdtempSync(join(tmpdir(),'naraflow-production-edit-'))
   let editor:EditorEditPlan['editor']
   try {
     for(let i=0;i<regular.length;i++){
       await guard();ctx.progress(.71+.23*i/regular.length,`Menyusun komposisi dan kontak ${i+1}/${regular.length}: ${regular[i].title}`)
-      const b=getBundle(input.projectId),clip=b.clips.find(c=>c.id===regular[i].id)!,plan=plans.get(clip.id)!
-      const cacheKey=stepKey({structure,scope:input.clipId??null,instruction:input.instruction,codex:input.codex,motion:options.motion,fps:options.fps,plan,assets:b.assets.map(a=>[a.id,a.localPath,a.width,a.height,a.meta.words??null]).sort((a,b)=>String(a[0]).localeCompare(String(b[0]))),direction:cutoutReferenceDirection(b.project.styleId)})
+      let b=getBundle(input.projectId)
+      const clip=b.clips.find(c=>c.id===regular[i].id)!
+      let plan=plans.get(clip.id)!
+      const compositionKey=()=>stepKey({structure,scope:input.clipId??null,instruction:input.instruction,codex:input.codex,motion:options.motion,fps:options.fps,plan,assets:b.assets.map(a=>[a.id,a.localPath,a.width,a.height,a.meta.words??null]).sort((a,b)=>String(a[0]).localeCompare(String(b[0]))),direction:cutoutReferenceDirection(b.project.styleId)})
+      let cacheKey=compositionKey()
       const cached=loadStep(input.projectId,clip.id,cacheKey)
       const seed=composeCutoutAssets({...clip,cutout:null},plan,b.assets,b.project.aspectRatio)
-      const ids=cutoutAssetIds(seed),previews=productionContactSheets(input.projectId,b.assets,ids,folder)
+      let ids=cutoutAssetIds(seed)
+      const previews=productionContactSheets(input.projectId,b.assets,ids,folder)
       const full=getEditingContext(input.projectId),{schema:_schema,...context}=full
       const prompt=JSON.stringify({instruction:input.instruction,scope:{clipId:clip.id,rule:!input.clipId&&i===0?'Komposisi hanya klip ini; pengaturan editor global boleh disesuaikan sesuai arahan, pertahankan array overlay/SFX yang ada.':'Hanya klip ini; editor harus null.'},motion:options.motion,fps:options.fps,
         previewAssets:previews.previewAssets,detailAssets:previews.detailAssets,contactSheet:'Halaman previewAssets: 8 kolom × 4 baris; row/column 1-based. Setiap sel SATU aset terpisah. detailAssets memetakan gambar tambahan resolusi tinggi ke aset bagian tubuh/properti (nomor image 1-based). Jangan menyalin layout lembar ini menjadi frame video.',assetPlan:plan,seedComposition:seed,
@@ -324,7 +334,8 @@ async function produceAndEdit(input:AutoEditInput,options:CutoutProductionOption
         openingClip:clip.id===initial.clips[0]?.id,globalEditing:!input.clipId&&i===0,
         context:{...context,assets:context.assets.filter(a=>ids.includes(a.id)||!a.clipId||a.clipId===clip.id),clips:full.clips.filter(c=>c.id===clip.id)}})
       if(prompt.length>800000)throw new Error('Konteks komposisi terlalu besar. Kurangi aset/kompleksitas atau pisahkan klip.')
-      const raw=cached??await generateCodexJson<unknown>({codex:input.codex,system:SYSTEM+'\n\n'+cutoutReferenceDirection(b.project.styleId)+`\nMODE PRODUKSI: narrativeTimeline menyediakan narasi, offset proyek dan timing kata semua klip. openingClip menandai hook proyek, bukan setiap klip. Jika globalEditing true, susun teks judul editor sejak 0 detik untuk hook 3 detik, label tahun/nama 2–3 detik pada kata kunci, serta SFX yang tersedia di seluruh timeline; jika tidak, editor harus null. Label harus sesuai isi narasi, tidak mengarang fakta. Musik hanya memakai aset/proyek yang tersedia, volume di bawah narasi. Laporkan audio/pose/klip khusus yang belum ada dalam summary. Ikuti assetPlan.director bila ada: shot/rentang narasi, fokus, aksi, kamera, pose, occlusion dan kontak. Pilih wide/detail/reaksi sesuai shot, jangan semua layer bergerak bersamaan. Gunakan maskKeyframes untuk reveal/occlusion yang berubah; mask koordinat relatif aset, interpolasi linear atau hold; perubahan jenis/jumlah titik/invert berlaku diskret pada key. Pantulan adalah aset ilustrasi terpisah, bukan simulasi optik otomatis. Kebutuhan specialAssets yang belum tersedia harus disebut pada summary, jangan diklaim dibuat. Semua aset seed tersedia sebagai file, tetapi isi, pemisahan komponen, identitas dan registrasinya belum terbukti benar. Periksa piksel; jangan anggap prompt sudah dipatuhi. Susun dan kembalikan komposisi aktif klip ini; jangan sekadar melaporkan aset kurang. Gunakan setiap aset seed sebagai base/pose, kelompokkan varian dengan layerKey yang sama. Pastikan background memenuhi frame dan properti tidak menggandakan yang sudah ada di pose. Lihat SEMUA sel pada contact sheets dan gunakan ID sesuai koordinat.\nTentukan pose, panjang/pivot dan kontak dari piksel aset yang terlihat; jangan menganggap gambar tubuh utuh bisa ditekuk sebagai dua tulang. Untuk anggota tubuh terpisah, buat parenting dan IK yang sah. targetLayerId pada IK mengikat targetX/Y sebagai koordinat sumber target (0–1; .5,.5 tengah), mengikuti gerak/rotasi/scale/camera target setiap frame. Target tidak boleh tulang sendiri/turunannya atau dependensi melingkar. Gunakan weight/keyframe untuk lepas/pasang kontak. Gerak harus memperlihatkan aksi yang dinarasikan dan mempertahankan tangan pada pegangan, kaki pada pedal/tanah sesuai kebutuhan, sepanjang jangkauan rig. Jangan mengklaim presisi anatomi yang belum diperiksa.\nKeluarkan keyframe utama yang bermakna. Mode frames akan disampel lokal menjadi keyframe 30/60 fps; TIDAK perlu menulis ribuan keyframe JSON. Pose gambar berubah mengikuti timestamp paket, bukan setiap frame tanpa alasan. Preservasi identitas dan kontak lebih penting dari gerakan berlebihan.`,prompt,schema:CODEX_EDIT_PLAN_SCHEMA,images:previews.images,signal:ctx.signal},'visual')
+      const compositionSystem=SYSTEM+'\n\n'+cutoutReferenceDirection(b.project.styleId)+`\nMODE PRODUKSI: narrativeTimeline menyediakan narasi, offset proyek dan timing kata semua klip. openingClip menandai hook proyek, bukan setiap klip. Jika globalEditing true, susun teks judul editor sejak 0 detik untuk hook 3 detik, label tahun/nama 2–3 detik pada kata kunci, serta SFX yang tersedia di seluruh timeline; jika tidak, editor harus null. Label harus sesuai isi narasi, tidak mengarang fakta. Musik hanya memakai aset/proyek yang tersedia, volume di bawah narasi. Laporkan audio/pose/klip khusus yang belum ada dalam summary. Ikuti assetPlan.director bila ada: shot/rentang narasi, fokus, aksi, kamera, pose, occlusion dan kontak. Pilih wide/detail/reaksi sesuai shot, jangan semua layer bergerak bersamaan. Gunakan maskKeyframes untuk reveal/occlusion yang berubah; mask koordinat relatif aset, interpolasi linear atau hold; perubahan jenis/jumlah titik/invert berlaku diskret pada key. Pantulan adalah aset ilustrasi terpisah, bukan simulasi optik otomatis. Kebutuhan specialAssets yang belum tersedia harus disebut pada summary, jangan diklaim dibuat. Semua aset seed tersedia sebagai file, tetapi isi, pemisahan komponen, identitas dan registrasinya belum terbukti benar. Periksa piksel; jangan anggap prompt sudah dipatuhi. Susun dan kembalikan komposisi aktif klip ini; jangan sekadar melaporkan aset kurang. Gunakan setiap aset seed sebagai base/pose, kelompokkan varian dengan layerKey yang sama. Pastikan background memenuhi frame dan properti tidak menggandakan yang sudah ada di pose. Lihat SEMUA sel pada contact sheets dan gunakan ID sesuai koordinat.\nTentukan pose, panjang/pivot dan kontak dari piksel aset yang terlihat; jangan menganggap gambar tubuh utuh bisa ditekuk sebagai dua tulang. Untuk anggota tubuh terpisah, buat parenting dan IK yang sah. targetLayerId pada IK mengikat targetX/Y sebagai koordinat sumber target (0–1; .5,.5 tengah), mengikuti gerak/rotasi/scale/camera target setiap frame. Target tidak boleh tulang sendiri/turunannya atau dependensi melingkar. Gunakan weight/keyframe untuk lepas/pasang kontak. Gerak harus memperlihatkan aksi yang dinarasikan dan mempertahankan tangan pada pegangan, kaki pada pedal/tanah sesuai kebutuhan, sepanjang jangkauan rig. Jangan mengklaim presisi anatomi yang belum diperiksa.\nKeluarkan keyframe utama yang bermakna. Mode frames akan disampel lokal menjadi keyframe 30/60 fps; TIDAK perlu menulis ribuan keyframe JSON. Pose gambar berubah mengikuti timestamp paket, bukan setiap frame tanpa alasan. Preservasi identitas dan kontak lebih penting dari gerakan berlebihan.`
+      const raw=cached??await generateCodexJson<unknown>({codex:input.codex,system:compositionSystem,prompt,schema:CODEX_EDIT_PLAN_SCHEMA,images:previews.images,signal:ctx.signal},'visual')
       ctx.signal.throwIfAborted();let edited=normalizeEditorEditPlan(raw,!cached)
       if(edited.clips.length!==1||edited.clips[0].clipId!==clip.id||!edited.clips[0].cutout?.enabled||((input.clipId||i>0)&&edited.editor&&Object.keys(edited.editor).length))throw new Error('Rencana komposisi tidak sesuai cakupan. Aset selesai tersimpan; ulangi edit atau tinjau di Cutout.')
       let patch=edited.clips[0];const used=new Set(cutoutAssetIds(patch.cutout))
@@ -334,22 +345,67 @@ async function produceAndEdit(input:AutoEditInput,options:CutoutProductionOption
       if(isCutoutReference(b.project)){
         ctx.progress(.71+.23*i/regular.length,`Meninjau frame komposisi: ${clip.title}`)
         let review=await reviewProductionComposition({bundle:b,clip:{...clip,durationMs:patch.durationMs??clip.durationMs},scene:patch.cutout!,plan,jobId:ctx.jobId,signal:ctx.signal,codex:input.codex})
-        if(!review.approved&&!review.missingAssets.length){
-          ctx.progress(.71+.23*i/regular.length,`Memperbaiki komposisi dari tinjauan frame: ${clip.title}`)
-          const repaired=await generateCodexJson<unknown>({codex:input.codex,signal:ctx.signal,schema:CODEX_EDIT_PLAN_SCHEMA,images:review.framePaths,system:SYSTEM+'\n'+cutoutReferenceDirection(b.project.styleId)+'\nRepair ONLY the supplied composition using existing assets and visible review evidence. No image generation. Images are actual rendered frames in chronological order. Keep the same clip scope; editor must be null. Never claim a missing pose or component was created.',prompt:JSON.stringify({instruction:input.instruction,original:edited,review:{problems:review.problems},frameTimesNote:'See managed frame review; chronological sample images.',assetPlan:plan,context:{...context,clips:full.clips.filter(c=>c.id===clip.id)}})},'visual')
-          const fixed=normalizeEditorEditPlan(repaired,true)
-          if(fixed.clips.length!==1||fixed.clips[0].clipId!==clip.id||!fixed.clips[0].cutout?.enabled||fixed.editor&&Object.keys(fixed.editor).length)throw new Error('Perbaikan komposisi tidak sesuai cakupan. Aset tetap tersimpan.')
-          const fixedIds=new Set(cutoutAssetIds(fixed.clips[0].cutout))
-          if(ids.some(id=>!fixedIds.has(id)))throw new Error('Perbaikan mengabaikan aset yang diperlukan. Tinjau paket Cutout.')
-          const priorEditor=edited.editor;edited={...fixed,...(priorEditor?{editor:priorEditor}:{})};patch=edited.clips[0]
-          saveStep(input.projectId,clip.id,cacheKey,edited)
+        let stoppedReason=''
+        for(let attempt=1;!review.approved&&attempt<=3;attempt++){
           await guard()
+          const message=`Perbaikan otomatis komposisi (percobaan ${attempt}/3): ${clip.title}`
+          ctx.progress(.71+.23*(i+attempt/4)/regular.length,message)
+          if(review.missingAssets.length){
+            const descriptions=[...new Map(review.missingAssets.map(text=>[text.trim().toLowerCase().replace(/\s+/g,' '),text.trim()])).values()]
+            recordCompositionRejection(ctx.jobId,{clipId:clip.id,planId:plan.id,sourceHash:plan.sourceHash,structure,missingAssets:descriptions})
+            if(submittedImages+descriptions.length>options.maxNewAssets){
+              stoppedReason=`Perlu ${descriptions.length} gambar tambahan; sudah ${submittedImages}/${options.maxNewAssets} gambar dikirim dalam proses ini. Batas gambar per proses tidak boleh dilampaui.`
+              break
+            }
+            if(plan.items.length+descriptions.length>options.maxAssetsPerClip){
+              stoppedReason=`Kebutuhan tambahan melebihi batas ${options.maxAssetsPerClip} aset per klip.`
+              break
+            }
+            const additions=await convertReviewMissingAssets({key:ctx.jobId+':'+clip.id+':'+attempt,descriptions,clip,bundle:b,plan,codex:input.codex,signal:ctx.signal})
+            await guard()
+            plan=appendCutoutRecoveryItems(clip.id,plan.id,plan.sourceHash,additions);plans.set(clip.id,plan)
+            recordCompositionRejection(ctx.jobId,{clipId:clip.id,planId:plan.id,sourceHash:plan.sourceHash,structure,missingAssets:descriptions,items:additions})
+            const failures:string[]=[]
+            for(let assetIndex=0;assetIndex<additions.length;assetIndex++){
+              await guard();const item=additions[assetIndex]
+              if(generatedForItem(getBundle(input.projectId).assets,plan,item.id))continue
+              ctx.progress(.71+.23*(i+attempt/4)/regular.length,message+` · aset ${assetIndex+1}/${additions.length}: ${item.label}`)
+              // Count submissions, including failed provider requests, before dispatch.
+              submittedImages++
+              try{await waitChild(generateCutoutAsset({clipId:clip.id,planId:plan.id,itemId:item.id,provider:'codex',format:options.format}).id,ctx.signal)}
+              catch(error){ctx.signal.throwIfAborted();await guard();failures.push(item.label+': '+((error as Error).message??String(error)))}
+            }
+            if(failures.length){stoppedReason='Sebagian aset tambahan gagal: '+failures.join('; ');break}
+            await guard();b=getBundle(input.projectId);cacheKey=compositionKey()
+            const freshSeed=composeCutoutAssets({...clip,cutout:null},plan,b.assets,b.project.aspectRatio)
+            ids=cutoutAssetIds(freshSeed)
+            const freshPreviews=productionContactSheets(input.projectId,b.assets,ids,folder),fresh=getEditingContext(input.projectId),{schema:_schema,...freshContext}=fresh
+            const freshPrompt=JSON.stringify({...JSON.parse(prompt),assetPlan:plan,seedComposition:freshSeed,previewAssets:freshPreviews.previewAssets,detailAssets:freshPreviews.detailAssets,previousComposition:edited,review:{problems:review.problems,missingAssets:review.missingAssets},context:{...freshContext,assets:freshContext.assets.filter(a=>ids.includes(a.id)||!a.clipId||a.clipId===clip.id),clips:fresh.clips.filter(c=>c.id===clip.id)}})
+            if(freshPrompt.length>800000)throw new Error('Konteks komposisi terlalu besar setelah penambahan aset. Aset selesai tetap tersimpan.')
+            const recomposed=await generateCodexJson<unknown>({codex:input.codex,signal:ctx.signal,schema:CODEX_EDIT_PLAN_SCHEMA,system:compositionSystem+'\nSusun ulang klip memakai aset tambahan yang benar-benar tersedia. Perbaiki problems pada review sebelumnya. Pose changes serta parent/IK/mask/parallax motion ikut dihitung sebagai layer bergerak; anak dari parent yang bergerak ikut dihitung. Maksimal 2 layer bergerak; jangan mengganti pose dengan bobbing.',images:freshPreviews.images,prompt:freshPrompt},'visual')
+            const fixed=normalizeEditorEditPlan(recomposed,true)
+            if(fixed.clips.length!==1||fixed.clips[0].clipId!==clip.id||!fixed.clips[0].cutout?.enabled||((input.clipId||i>0)&&fixed.editor&&Object.keys(fixed.editor).length))throw new Error('Komposisi ulang tidak sesuai cakupan. Aset selesai tetap tersimpan.')
+            const fixedIds=new Set(cutoutAssetIds(fixed.clips[0].cutout))
+            if(ids.some(id=>!fixedIds.has(id)))throw new Error('Komposisi ulang mengabaikan aset yang diperlukan. Aset selesai tetap tersimpan.')
+            const priorEditor=edited.editor;edited={...fixed,...(fixed.editor?{}:priorEditor?{editor:priorEditor}:{})};patch=edited.clips[0]
+          }else{
+            const latest=getEditingContext(input.projectId),{schema:_repairSchema,...repairContext}=latest
+            const repaired=await generateCodexJson<unknown>({codex:input.codex,signal:ctx.signal,schema:CODEX_EDIT_PLAN_SCHEMA,images:review.framePaths,system:SYSTEM+'\n'+cutoutReferenceDirection(b.project.styleId)+'\nRepair ONLY the supplied composition using existing assets and visible review evidence. No image generation. Images are actual rendered frames in chronological order. Keep the same clip scope; editor must be null. Never claim a missing pose or component was created. Pose changes serta parent/IK/mask/parallax motion ikut dihitung sebagai layer bergerak; anak dari parent yang bergerak ikut dihitung. Maksimal 2 layer bergerak. Hold informasi/kontak, jangan menggerakkan semua anggota rig atau mengganti pose dengan bobbing.',prompt:JSON.stringify({instruction:input.instruction,original:edited,review:{problems:review.problems},frameTimesNote:'See managed frame review; chronological sample images.',assetPlan:plan,context:{...repairContext,clips:latest.clips.filter(c=>c.id===clip.id)}})},'visual')
+            const fixed=normalizeEditorEditPlan(repaired,true)
+            if(fixed.clips.length!==1||fixed.clips[0].clipId!==clip.id||!fixed.clips[0].cutout?.enabled||fixed.editor&&Object.keys(fixed.editor).length)throw new Error('Perbaikan komposisi tidak sesuai cakupan. Aset tetap tersimpan.')
+            const fixedIds=new Set(cutoutAssetIds(fixed.clips[0].cutout))
+            if(ids.some(id=>!fixedIds.has(id)))throw new Error('Perbaikan mengabaikan aset yang diperlukan. Tinjau paket Cutout.')
+            const priorEditor=edited.editor;edited={...fixed,...(priorEditor?{editor:priorEditor}:{})};patch=edited.clips[0]
+          }
+          await guard();saveStep(input.projectId,clip.id,cacheKey,edited)
           review=await reviewProductionComposition({bundle:b,clip:{...clip,durationMs:patch.durationMs??clip.durationMs},scene:patch.cutout!,plan,jobId:ctx.jobId,signal:ctx.signal,codex:input.codex})
+          await guard()
         }
-        await guard()
         if(!review.approved){
-          recordCompositionRejection(ctx.jobId,{clipId:clip.id,planId:plan.id,sourceHash:plan.sourceHash,structure,missingAssets:review.missingAssets})
-          throw new Error(('Komposisi belum lolos tinjauan visual: '+clip.title+'\n'+review.problems.join('\n')+(review.missingAssets.length?'\nAset perlu diperbaiki/ditambahkan: '+review.missingAssets.join('; '):'')+'\nAset dan susunan tahap selesai tetap tersimpan. Gunakan Generate aset yang kurang & lanjutkan, atau perbaiki di Cutout; gambar selesai tidak digenerate ulang otomatis.').slice(0,4000))
+          // Preserve prepared item IDs on provider failure so one-click recovery
+          // only retries unfinished files, rather than creating duplicate needs.
+          if(!stoppedReason.startsWith('Sebagian aset tambahan gagal'))recordCompositionRejection(ctx.jobId,{clipId:clip.id,planId:plan.id,sourceHash:plan.sourceHash,structure,missingAssets:review.missingAssets})
+          throw new Error(('Komposisi belum lolos tinjauan visual: '+clip.title+'\n'+(stoppedReason?stoppedReason+'\n':'Tiga percobaan perbaikan otomatis sudah dijalankan.\n')+review.problems.join('\n')+(review.missingAssets.length?'\nAset perlu diperbaiki/ditambahkan: '+review.missingAssets.join('; '):'')+'\nAset dan susunan tahap selesai tetap tersimpan. Gunakan Generate aset yang kurang & lanjutkan, atau perbaiki di Cutout; gambar selesai tidak digenerate ulang otomatis.').slice(0,4000))
         }
         summaries.push(clip.title+': sampel frame komposisi ditinjau; bukan pemeriksaan seluruh frame.')
       }
