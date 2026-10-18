@@ -16,7 +16,7 @@ const listen =
 
 const api: StudioApi = {
   cutoutAssets: { state: call('cutoutAssets:state'), plan: call('cutoutAssets:plan'), save: call('cutoutAssets:save'), status: call('cutoutAssets:status'), generate: call('cutoutAssets:generate'), recover: call('cutoutAssets:recover') },
-  editorAutomation: { resume: call('editorAutomation:resume'), status: call('editorAutomation:status'), context: call('editorAutomation:context'), run: call('editorAutomation:run'), undo: call('editorAutomation:undo'), presence: call('editorAutomation:presence') },
+  editorAutomation: { recoverMissingAssets: call('editorAutomation:recoverMissingAssets'), resume: call('editorAutomation:resume'), status: call('editorAutomation:status'), context: call('editorAutomation:context'), run: call('editorAutomation:run'), undo: call('editorAutomation:undo'), presence: call('editorAutomation:presence') },
   flow: {
     status: call('flow:status'), prepare: call('flow:prepare'), clipImage: call('flow:clipImage'), clipVideo: call('flow:clipVideo'),
     characterSheet: call('flow:characterSheet'), missingImages: call('flow:missingImages'), missingVideos: call('flow:missingVideos'), recover: call('flow:recover')

@@ -147,6 +147,10 @@ Produksi Cutout pada preset referensi mengambil sampel frame hasil renderer untu
 
 Jika proses gagal atau dibatalkan:
 
+Jika tinjauan komposisi menolak hasil dan menyebut aset yang kurang, panel **Edit otomatis** menampilkan **Generate aset yang kurang & lanjutkan**. Tombol ini mengubah temuan menjadi kebutuhan pada paket yang sama, membuat aset memakai provider/format terakhir di Cutout, lalu menyusun dan meninjau komposisi secara otomatis.
+
+Progres menampilkan aset yang sedang dikerjakan. Kegagalan satu gambar tidak menghentikan gambar berikutnya; ringkasan akhir menyebut yang gagal. Klik tombol yang sama untuk mencoba kebutuhan yang belum selesai. Gambar selesai dan ID paket tetap dipertahankan. Jika jumlah gambar baru melampaui **Gambar baru / proses**, aplikasi meminta konfirmasi jumlah sebelum generate. Perubahan narasi atau paket akan meminta tinjauan baru agar kebutuhan lama tidak diterapkan pada cerita yang berubah.
+
 1. Gambar yang selesai tetap disimpan di Cutout.
 2. Simpan perubahan proyek, lalu gunakan **Lanjutkan proses terakhir** bila tersedia.
 3. Paket aset yang masih valid dan checkpoint komposisi yang cocok dipakai kembali; kebutuhan yang belum selesai diproses.

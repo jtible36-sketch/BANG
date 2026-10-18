@@ -45,6 +45,49 @@ export function saveCutoutAssetPlan(clipId: string, items: unknown): CutoutAsset
   const plan:CutoutAssetPlan={version:1,id:randomUUID(),clipId,sourceHash:sourceHash(clipId),...(!state.stale&&state.plan?.planningKey?{planningKey:state.plan.planningKey}:{}),items:normalizeCutoutAssetItems(items,c.durationMs,charactersOf(c.projectId).map(x=>x.id)),...(!state.stale&&state.plan?.director&&JSON.stringify(items)===JSON.stringify(state.plan.items)?{director:state.plan.director}:{})}
   persistPlan(plan);return plan
 }
+
+/** Add review-requested assets without changing the package identity used by completed images. */
+export function appendCutoutRecoveryItems(clipId: string, expectedPlanId: string, expectedSourceHash: string, rawItems: unknown): CutoutAssetPlan {
+  const clip = getClip(clipId), state = cutoutAssetState(clipId), current = state.plan
+  if (!current || current.id !== expectedPlanId || current.sourceHash !== expectedSourceHash || state.stale)
+    throw new Error('Paket aset atau narasi berubah. Tinjau komposisi terbaru sebelum menambah aset yang kurang.')
+  if (state.jobs.some(entry => ['queued', 'running'].includes(entry.job.status)))
+    throw new Error('Tunggu penyusunan/generate aset selesai sebelum menambah kebutuhan pemulihan.')
+  const characterIds = charactersOf(clip.projectId).map(character => character.id)
+  const additions = normalizeCutoutAssetItems(rawItems, clip.durationMs, characterIds)
+  const originals = normalizeCutoutAssetItems(current.items, clip.durationMs, characterIds)
+  const byId = new Map(originals.map(item => [item.id, item]))
+  const fresh = additions.filter(item => {
+    const existing = byId.get(item.id)
+    if (!existing) return true
+    if (JSON.stringify(existing) !== JSON.stringify(item))
+      throw new Error(`Kebutuhan ${item.id} sudah ada dengan isi berbeda. Aset selesai tidak boleh ditimpa.`)
+    return false
+  })
+  // Validate the complete package so new entries cannot collide with an existing
+  // pose or exceed the shared manual-entry limits (256 items / 64 layer groups).
+  normalizeCutoutAssetItems([...current.items, ...fresh], clip.durationMs, characterIds)
+  if (!fresh.length) return current
+  if (!current.director)
+    throw new Error('Penyutradaraan paket belum tersedia. Tinjau komposisi sebelum menambah aset yang kurang.')
+  const director = structuredClone(current.director)
+  for (const item of fresh) {
+    const shot = director.shots.find(candidate => item.timeMs >= candidate.startMs && item.timeMs < candidate.endMs)
+    if (!shot) throw new Error(`Waktu kebutuhan ${item.id} tidak berada di dalam shot penyutradaraan.`)
+    shot.assetIds.push(item.id)
+  }
+  const items = [...current.items, ...fresh]
+  const words = getBundle(clip.projectId).assets.find(asset => asset.id === clip.audioAssetId)?.meta.words
+  const plan: CutoutAssetPlan = {
+    ...current, items,
+    director: normalizeCutoutDirector(director, clip.durationMs, items, Array.isArray(words) && words.length > 0)
+  }
+  // This synchronous append has no async gap: source checks and the single write
+  // cannot race the generation queue. Existing item objects stay byte-identical.
+  persistPlan(plan)
+  return plan
+}
+
 export async function cutoutProviderStatus(provider:CutoutAssetProvider):Promise<{ready:boolean;message:string}> {
   if(provider==='codex'){const s=await codexConnectionStatus();return {ready:s.available&&s.authenticated&&s.imageGeneration&&!!s.connections?.image,message:!s.connections?.image?'Hubungkan Codex gambar di Pengaturan.':s.message}}
   if(provider!=='flow-mcp')throw new Error('Provider tidak dikenal.')

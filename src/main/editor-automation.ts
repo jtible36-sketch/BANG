@@ -14,6 +14,8 @@ import { resolveMasterPrompt } from '@shared/master-prompts'
 import { cutoutReferenceDirection } from '@shared/cutout-facts'
 import { prepareProductionAssets, productionContactSheets } from './cutout-auto-production'
 import { cutoutAssetState } from './cutout-assets'
+import { missingAssetRecoveryStatus, recordCompositionRejection, startMissingAssetRecovery } from './cutout-review-recovery'
+import type { RecoverMissingAssetsInput, RecoverMissingAssetsResult } from '@shared/missing-asset-recovery'
 import type { TaskCtx } from './jobs'
 import { cutoutAssetIds, CUTOUT_LIMITS } from '@shared/cutout-timeline'
 import { validateSoundEffectAssets } from '@shared/sfx'
@@ -90,6 +92,15 @@ export function resumeCodexAutoEdit(projectId:string,jobId:string):Job {
   if(!saved||saved.projectId!==projectId)throw new Error('Pengaturan proses lama belum tersimpan. Jalankan edit lagi; paket aset valid yang tersedia tetap dipakai.')
   return startCodexAutoEdit(saved)
 }
+export async function recoverMissingAssets(input:RecoverMissingAssetsInput):Promise<RecoverMissingAssetsResult> {
+  const context=getEditingContext(input.projectId)
+  checkedBundle(input.projectId,context.revision,true)
+  return startMissingAssetRecovery(input,{
+    structure:()=>structureRevision(input.projectId),
+    ready:signal=>ensureEditorsReady(input.projectId,signal),
+    resume:(request,options,ctx)=>produceAndEdit(request,options,ctx,getEditingContext(input.projectId).revision)
+  })
+}
 function checkedBundle(projectId: string, expectedRevision: string, allowExpired=false): ProjectBundle {
   const b = getBundle(projectId)
   if (typeof expectedRevision !== 'string' || expectedRevision !== revisionOf(b)) throw new Error('Revisi proyek berubah. Baca proyek terbaru dan susun ulang edit; tidak ada perubahan diterapkan.')
@@ -103,6 +114,7 @@ export function getEditingContext(projectId: string) {
   let startMs = 0
   return {
     revision, undoAvailable: undo?.after_revision === revision,
+    missingAssetRecovery:missingAssetRecoveryStatus(projectId,structureRevision(projectId)),
     resumeJobId:b.jobs.filter(j=>j.kind==='auto-edit'&&['failed','canceled'].includes(j.status)).sort((a,b)=>b.createdAt-a.createdAt).find(j=>{try{return !!JSON.parse(String(getJobRaw(j.id)?.payload_json||'{}')).autoEditInput}catch{return false}})?.id??null,
     project: { id: b.project.id, title: b.project.title, synopsis: b.project.synopsis, subjectNiche: b.project.subjectNiche, aspectRatio: b.project.aspectRatio, masterPrompt: resolveMasterPrompt(b.project), language: b.project.language,
       styleId: b.project.styleId, directing: cutoutReferenceDirection(b.project.styleId), skillId: b.project.skillId, editor: b.project.editor },
@@ -251,6 +263,8 @@ export function startCodexAutoEdit(input: AutoEditInput): Job {
       signal.throwIfAborted()
       const plan = normalizeEditorEditPlan(raw, true)
       if (input.clipId && (plan.clips.some(c => c.clipId !== input.clipId) || (plan.editor && Object.keys(plan.editor).length))) throw new Error('Codex mengusulkan edit di luar adegan terpilih; tidak diterapkan. Gunakan mode seluruh proyek untuk caption/SFX global.')
+      // Revisions take precedence over creative diagnostics on a delayed response.
+      checkedBundle(input.projectId,context.revision)
       if (isCutoutReference(context.project)) {
         const bundle = getBundle(input.projectId)
         for (const patch of plan.clips) {
@@ -333,7 +347,10 @@ async function produceAndEdit(input:AutoEditInput,options:CutoutProductionOption
           review=await reviewProductionComposition({bundle:b,clip:{...clip,durationMs:patch.durationMs??clip.durationMs},scene:patch.cutout!,plan,jobId:ctx.jobId,signal:ctx.signal,codex:input.codex})
         }
         await guard()
-        if(!review.approved)throw new Error(('Komposisi belum lolos tinjauan visual: '+clip.title+'\n'+review.problems.join('\n')+(review.missingAssets.length?'\nAset perlu diperbaiki/ditambahkan: '+review.missingAssets.join('; '):'')+'\nAset dan susunan tahap selesai tetap tersimpan. Perbaiki di Cutout, lalu lanjutkan; gambar tidak digenerate ulang otomatis.').slice(0,4000))
+        if(!review.approved){
+          recordCompositionRejection(ctx.jobId,{clipId:clip.id,planId:plan.id,sourceHash:plan.sourceHash,structure,missingAssets:review.missingAssets})
+          throw new Error(('Komposisi belum lolos tinjauan visual: '+clip.title+'\n'+review.problems.join('\n')+(review.missingAssets.length?'\nAset perlu diperbaiki/ditambahkan: '+review.missingAssets.join('; '):'')+'\nAset dan susunan tahap selesai tetap tersimpan. Gunakan Generate aset yang kurang & lanjutkan, atau perbaiki di Cutout; gambar selesai tidak digenerate ulang otomatis.').slice(0,4000))
+        }
         summaries.push(clip.title+': sampel frame komposisi ditinjau; bukan pemeriksaan seluruh frame.')
       }
       if(cached)ctx.progress(.71+.23*i/regular.length,`Memakai komposisi tersimpan: ${clip.title}`)

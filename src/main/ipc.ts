@@ -18,7 +18,7 @@ import type {
 } from '@shared/types'
 import { startExport } from './exporter'
 import { cutoutAssetState, cutoutProviderStatus, generateCutoutAsset, planCutoutAssets, recoverCutoutAssets, saveCutoutAssetPlan } from './cutout-assets'
-import { assertEditingEpoch, editorAutomationStatus, getEditingContext, startCodexAutoEdit, resumeCodexAutoEdit, undoEditingPlan, updateEditorPresence, withEditingEpoch } from './editor-automation'
+import { assertEditingEpoch, editorAutomationStatus, getEditingContext, startCodexAutoEdit, resumeCodexAutoEdit, recoverMissingAssets, undoEditingPlan, updateEditorPresence, withEditingEpoch } from './editor-automation'
 import { startCapcutExport } from './capcut-export'
 import { readFlowStatus, prepareFlow } from './providers/flow-mcp'
 import { generateFlowImage, generateFlowVideo, generateFlowCharacter, missingFlowImages, missingFlowVideos, recoverFlowJobs } from './flow-generation'
@@ -99,6 +99,7 @@ export function registerIpc(): void {
   handle('editorAutomation:context', getEditingContext)
   handle('editorAutomation:run', startCodexAutoEdit)
   handle('editorAutomation:resume', resumeCodexAutoEdit)
+  handle('editorAutomation:recoverMissingAssets', recoverMissingAssets)
   handle('editorAutomation:undo', undoEditingPlan)
   ipcMain.handle('editorAutomation:presence', (event, input) => updateEditorPresence(event.sender.id, input))
   handle('flow:status', readFlowStatus)

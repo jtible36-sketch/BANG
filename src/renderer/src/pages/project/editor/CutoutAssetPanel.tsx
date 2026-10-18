@@ -7,6 +7,7 @@ import type { Asset, Clip } from '@shared/types'
 import { Button, cx, inputCls } from '../../../components/ui'
 import { useProject } from '../../../store/project'
 import { errorText } from '../../../lib/format'
+import { readCutoutGenerationPreferences, saveCutoutGenerationPreferences } from '../../../lib/cutout-generation-preferences'
 
 export function CutoutAssetPanel({ clip, attach, pose }: { clip: Clip; attach(asset: Asset): void; pose(asset: Asset): void }) {
   const { project, clips, characters, jobs, assets, savedAt } = useProject()
@@ -15,8 +16,8 @@ export function CutoutAssetPanel({ clip, attach, pose }: { clip: Clip; attach(as
   const [dirty, setDirty] = useState(false)
   const [reviewFps,setReviewFps]=useState<30|60>(30)
   const [maxAssets,setMaxAssets]=useState(64)
-  const [provider, setProvider] = useState<CutoutAssetProvider>('codex')
-  const [format, setFormat] = useState<'png'|'webp'>('png')
+  const [provider, setProvider] = useState<CutoutAssetProvider>(()=>readCutoutGenerationPreferences().provider)
+  const [format, setFormat] = useState<'png'|'webp'>(()=>readCutoutGenerationPreferences().format)
   const [busy, setBusy] = useState(false), [error, setError] = useState<string|null>(null), [connection, setConnection] = useState('')
   const current = useRef(clip.id), dirtyRef = useRef(false), locked=useRef(false)
   current.current=clip.id;dirtyRef.current=dirty
@@ -48,7 +49,7 @@ export function CutoutAssetPanel({ clip, attach, pose }: { clip: Clip; attach(as
     <p className="text-xs leading-relaxed text-muted">Susun kebutuhan dari narasi, lalu buat background bersih, pose, properti atau bagian rig. Setiap item menghasilkan satu gambar; tinjau identitas dan tepi alpha sebelum dipakai.</p>
     <Button size="sm" icon={<Sparkles className="size-3.5"/>} loading={busy} disabled={!!active.length} onClick={()=>void work(async()=>{const j=await window.api.cutoutAssets.plan(clip.id,{maxAssets});useProject.getState().upsertJob(j)})}>Susun kebutuhan dari narasi · Codex</Button>
     <label className="text-xs">Batas kebutuhan aset<select aria-label="Batas kebutuhan aset Cutout" className={cx(inputCls,'mt-1 w-full text-xs')} value={maxAssets} disabled={busy||!!active.length} onChange={e=>setMaxAssets(Number(e.target.value))}>{[12,32,64,128,256].map(n=><option value={n} key={n}>{n} gambar maksimum</option>)}</select></label>
-    <div className="grid grid-cols-2 gap-2"><label className="text-xs">Provider<select aria-label="Provider aset Cutout" className={cx(inputCls,'mt-1 w-full text-xs')} value={provider} disabled={busy||!!active.length} onChange={e=>{setProvider(e.target.value as CutoutAssetProvider);setConnection('')}}><option value="codex">Codex</option><option value="flow-mcp">Flow MCP</option></select></label><label className="text-xs">Format<select aria-label="Format aset Cutout" className={cx(inputCls,'mt-1 w-full text-xs')} value={format} onChange={e=>setFormat(e.target.value as 'png'|'webp')}><option value="png">PNG</option><option value="webp">WebP lossless</option></select></label></div>
+    <div className="grid grid-cols-2 gap-2"><label className="text-xs">Provider<select aria-label="Provider aset Cutout" className={cx(inputCls,'mt-1 w-full text-xs')} value={provider} disabled={busy||!!active.length} onChange={e=>{setProvider(e.target.value as CutoutAssetProvider);saveCutoutGenerationPreferences({provider:e.target.value as CutoutAssetProvider});setConnection('')}}><option value="codex">Codex</option><option value="flow-mcp">Flow MCP</option></select></label><label className="text-xs">Format<select aria-label="Format aset Cutout" className={cx(inputCls,'mt-1 w-full text-xs')} value={format} onChange={e=>{setFormat(e.target.value as 'png'|'webp');saveCutoutGenerationPreferences({format:e.target.value as 'png'|'webp'})}}><option value="png">PNG</option><option value="webp">WebP lossless</option></select></label></div>
     <Button size="sm" icon={<RefreshCw className="size-3"/>} onClick={()=>void work(async()=>{const s=await window.api.cutoutAssets.status(provider);setConnection(s.message)})}>Cek koneksi {provider==='codex'?'Codex':'Flow MCP'}</Button>
     {connection&&<p className="text-xs text-muted">{connection}</p>}
     {state?.stale&&<p role="alert" className="text-xs text-amber-800">Narasi/identitas berubah. Tinjau dan simpan ulang kebutuhan sebelum generate.</p>}

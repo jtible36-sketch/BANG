@@ -7,6 +7,9 @@ const root = path.resolve(__dirname, '..')
 const scratch = fs.mkdtempSync(path.join(os.tmpdir(), 'naraflow-edit-test-'))
 global.__fixtureEvents = []
 const modules = {
+ './cutout-review-recovery':`export const missingAssetRecoveryStatus=()=>null;export const recordCompositionRejection=()=>{};export const startMissingAssetRecovery=async()=>{throw Error('Recovery needs its own integration fixture')};`,
+ './cutout-assets':`export const cutoutAssetState=()=>({plan:null,stale:false,assets:[],jobs:[]});`,
+
  './cutout-composition-review':`export const reviewProductionComposition=async()=>({approved:true,problems:[],missingAssets:[]});`,
   './special-clips': `export const prepareSpecialVideos=()=>{throw Error('Special video needs integration fixture')};`,
   './cutout-auto-production': `export const prepareProductionAssets=()=>{throw Error('Production mode needs integration fixture')};export const productionContactSheets=()=>{throw Error('Production mode needs integration fixture')};`,

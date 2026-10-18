@@ -43,7 +43,8 @@ export interface StudioApi {
   }
   editorAutomation: {
     status(): Promise<import('./editor-automation').EditorAutomationStatus>
-    context(projectId: string): Promise<{ revision: string; undoAvailable: boolean; resumeJobId?: string | null }>
+    context(projectId: string): Promise<{ revision: string; undoAvailable: boolean; resumeJobId?: string | null; missingAssetRecovery?: import('./missing-asset-recovery').MissingAssetRecoveryStatus | null }>
+    recoverMissingAssets(input: import('./missing-asset-recovery').RecoverMissingAssetsInput): Promise<import('./missing-asset-recovery').RecoverMissingAssetsResult>
     resume(projectId: string, jobId: string): Promise<Job>
     run(input: import('./cutout-production').AutoEditInput): Promise<Job>
     undo(projectId: string, expectedRevision: string): Promise<import('./editor-automation').EditorAutomationResult>

@@ -8,6 +8,8 @@ import { DEFAULT_CUTOUT_PRODUCTION, type CutoutProductionOptions } from '@shared
 import type { Clip } from '@shared/types'
 import { Button, cx, inputCls } from '../../../components/ui'
 import { errorText } from '../../../lib/format'
+import { readCutoutGenerationPreferences } from '../../../lib/cutout-generation-preferences'
+import type { MissingAssetRecoveryStatus, RecoverMissingAssetsInput } from '@shared/missing-asset-recovery'
 import { useApp } from '../../../store/app'
 import { isRunning, jobFor, useProject } from '../../../store/project'
 import { usePlayback } from './engine'
@@ -27,6 +29,8 @@ export function AutoEditPanel({ clip }: { clip: Clip | null }) {
   const [status, setStatus] = useState<Awaited<ReturnType<typeof window.api.editorAutomation.status>> | null>(null)
   const [undoAvailable, setUndoAvailable] = useState(false)
   const [resumeJobId,setResumeJobId]=useState<string|null>(null)
+  const [missingRecovery,setMissingRecovery]=useState<MissingAssetRecoveryStatus|null>(null)
+  const [recoveryConfirmation,setRecoveryConfirmation]=useState<{request:RecoverMissingAssetsInput;count:number;limit:number;token:string}|null>(null)
   const [busy, setBusy] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const lock = useRef(false)
@@ -40,9 +44,9 @@ export function AutoEditPanel({ clip }: { clip: Clip | null }) {
     return () => { active = false }
   }, [project?.id])
   useEffect(() => {
-    if (!project || saveState !== 'saved' || running) { setUndoAvailable(false); return }
+    if (!project || saveState !== 'saved' || running) { setUndoAvailable(false); setMissingRecovery(null); setRecoveryConfirmation(null); return }
     let active = true
-    void window.api.editorAutomation.context(project.id).then(value => { if (active) {setUndoAvailable(value.undoAvailable);setResumeJobId(value.resumeJobId??null)} }).catch(() => { if (active) setUndoAvailable(false) })
+    void window.api.editorAutomation.context(project.id).then(value => { if (active) {setUndoAvailable(value.undoAvailable);setResumeJobId(value.resumeJobId??null);setMissingRecovery(value.missingAssetRecovery??null)} }).catch(() => { if (active) {setUndoAvailable(false);setMissingRecovery(null)} })
     return () => { active = false }
   }, [project?.id, savedAt, saveState, job?.updatedAt, running])
 
@@ -79,6 +83,20 @@ export function AutoEditPanel({ clip }: { clip: Clip | null }) {
       }
     } catch (err) { setError(errorText(err)) }
     finally { lock.current = false; setBusy(false) }
+  }
+  const recoverMissing = async (confirmed=false):Promise<void> => {
+    if(lock.current||running||!missingRecovery)return
+    lock.current=true;setBusy(true);setError(null)
+    try{
+      await prepare()
+      const request:RecoverMissingAssetsInput=confirmed&&recoveryConfirmation
+        ? {...recoveryConfirmation.request,confirmationToken:recoveryConfirmation.token,confirmedCount:recoveryConfirmation.count}
+        : {projectId:project.id,jobId:missingRecovery.jobId,...readCutoutGenerationPreferences(),maxNewAssets:production.maxNewAssets}
+      const result=await window.api.editorAutomation.recoverMissingAssets(request)
+      if(result.kind==='confirmation-required')setRecoveryConfirmation({request,count:result.count,limit:result.limit,token:result.token})
+      else{setRecoveryConfirmation(null);setMissingRecovery(null);useProject.getState().upsertJob(result.job)}
+    }catch(err){setRecoveryConfirmation(null);setError(errorText(err))}
+    finally{lock.current=false;setBusy(false)}
   }
 
   return <div className="flex flex-col gap-4 p-[18px]">
@@ -137,7 +155,17 @@ export function AutoEditPanel({ clip }: { clip: Clip | null }) {
       {running && <><progress aria-label="Progres edit otomatis" max={1} value={Math.max(0, Math.min(1, job.progress))} className="mt-2 h-2 w-full" /><Button size="sm" className="mt-2" icon={<X className="size-3" />} onClick={() => { void window.api.generate.cancel(job.id).catch(err => setError(errorText(err))) }}>Batalkan</Button></>}
       {job.error && <p role="alert" className="mt-2 break-words text-bad-ink">{job.error}</p>}
     </div>}
-    {job&&['failed','canceled'].includes(job.status)&&<div className="rounded-xl border border-line p-3 text-xs"><Button size="sm" disabled={busy||running||!status?.codexReady} onClick={()=>void run(false,true)}>Lanjutkan proses terakhir</Button><p className="mt-2 leading-relaxed text-muted">{resumeJobId?'Memakai cakupan, arahan, model dan batas produksi dari proses tersimpan. ':'Proses lama: cakupan sebelumnya, pengaturan panel saat ini. '}Paket aset valid dan komposisi tahap selesai dipakai kembali; hanya kebutuhan yang belum selesai diproses. Untuk kebutuhan baru, susun ulang paket di Cutout.</p></div>}
+    {job?.status==='failed'&&missingRecovery&&<section data-missing-asset-recovery className="flex flex-col gap-2 rounded-xl border border-line p-3 text-xs" aria-live="polite">
+      <p className="font-semibold">Aset kurang · {missingRecovery.clipTitle}</p>
+      <ul className="list-disc pl-4 leading-relaxed text-muted">{missingRecovery.missingAssets.map((description,index)=><li key={index}>{description}</li>)}</ul>
+      <p className="leading-relaxed text-muted">{missingRecovery.remaining} kebutuhan belum selesai. Provider dan format mengikuti pilihan di Cutout. Aset yang sudah selesai dipakai kembali; komposisi ditinjau ulang setelah antrean selesai.</p>
+      <Button size="sm" variant="primary" loading={busy} disabled={busy||running||!status?.codexReady} onClick={()=>void recoverMissing()}>Generate aset yang kurang &amp; lanjutkan</Button>
+      {recoveryConfirmation&&<div role="alert" className="rounded-lg border border-line p-3">
+        <p className="leading-relaxed">Perlu {recoveryConfirmation.count} gambar baru, melebihi batas {recoveryConfirmation.limit} gambar per proses. Izinkan {recoveryConfirmation.count} gambar untuk pemulihan ini? Generate memakai akun {recoveryConfirmation.request.provider==='codex'?'Codex':'Flow MCP'} · {recoveryConfirmation.request.format.toUpperCase()}.</p>
+        <div className="mt-2 flex flex-wrap gap-2"><Button size="sm" variant="primary" disabled={busy||running} onClick={()=>void recoverMissing(true)}>Izinkan {recoveryConfirmation.count} gambar &amp; lanjutkan</Button><Button size="sm" disabled={busy||running} onClick={()=>setRecoveryConfirmation(null)}>Batal</Button></div>
+      </div>}
+    </section>}
+    {job&&['failed','canceled'].includes(job.status)&&<div className="rounded-xl border border-line p-3 text-xs"><Button size="sm" disabled={busy||running||!status?.codexReady} onClick={()=>void run(false,true)}>Lanjutkan proses terakhir</Button><p className="mt-2 leading-relaxed text-muted">{resumeJobId?'Memakai cakupan, arahan, model dan batas produksi dari proses tersimpan. ':'Proses lama: cakupan sebelumnya, pengaturan panel saat ini. '}Paket aset valid dan komposisi tahap selesai dipakai kembali; hanya kebutuhan yang belum selesai diproses. Gunakan pemulihan aset di atas bila tinjauan meminta aset tambahan.</p></div>}
     {error && <p role="alert" className="text-xs leading-relaxed text-bad-ink">{error}</p>}
     <Button size="sm" icon={<Undo2 className="size-4" />} disabled={!undoAvailable || busy || running} onClick={() => void run(true)}>Batalkan edit otomatis terakhir</Button>
     <p className="text-[11px] leading-relaxed text-muted">Undo mengembalikan komposisi selama hasil belum diedit lagi. Aset gambar yang sudah dibuat tetap disimpan di Cutout.</p>

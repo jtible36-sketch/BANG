@@ -37,7 +37,9 @@ export async function run(): Promise<void> {
     actor.parentId = rig.id; actor.transform.x = 0; actor.transform.y = 0
     actor.keyframes = [{ id: 'move', timeMs: 1000, transform: { ...actor.transform, x: .1, rotation: 10 }, easing: 'ease-out' }]
     actor.poses = [{ id: 'react', timeMs: 1500, assetId: 'pose' }]
-    scene.layers = [rig, actor]
+    const background = insertAsset({id:'clean-background',projectId:p.id,clipId,kind:'image',localPath:'images/background.png',width:90,height:160,meta:{cutoutAsset:{role:'background',transparentFraction:0}}})
+    const bg=createCutoutLayer('background','Clean background',background.id);bg.width=1
+    scene.layers = [bg, rig, actor]
     const cue = { id: 'pop', assetId: 'effect', startMs: 1500, offsetMs: 200, durationMs: 800, volumeDb: -12, fadeInMs: 20, fadeOutMs: 100 }
     const plan = { summary: 'Gerak dan reaksi', clips: [{ clipId, cutout: scene }], editor: { captionHighlight: '#55FF44', sfx: [cue] } }
     const rev = () => getEditingContext(p.id).revision
@@ -97,13 +99,13 @@ export async function run(): Promise<void> {
     await check('foreign/missing assets, foreign clips, cyclic rigs and out-of-range keys reject without writes', () => {
       const before = rev()
       for (const assetId of ['foreign-image', 'missing', 'effect']) {
-        const invalid = structuredClone(plan); invalid.clips[0].cutout.layers[1].poses[0].assetId = assetId
+        const invalid = structuredClone(plan); invalid.clips[0].cutout.layers[2].poses[0].assetId = assetId
         assert.throws(() => applyEditingPlan(p.id, rev(), invalid), /Aset layer/)
       }
       assert.throws(() => applyEditingPlan(p.id, rev(), { summary: 'foreign', clips: [{ clipId: foreignClip, transition: 'fade' }] }), /di luar proyek/)
-      const cyclic = structuredClone(plan); cyclic.clips[0].cutout.layers[0].parentId = 'actor'
+      const cyclic = structuredClone(plan); cyclic.clips[0].cutout.layers[1].parentId = 'actor'
       assert.throws(() => applyEditingPlan(p.id, rev(), cyclic), /melingkar/)
-      const late = structuredClone(plan); late.clips[0].cutout.layers[1].keyframes[0].timeMs = 1_000_000
+      const late = structuredClone(plan); late.clips[0].cutout.layers[2].keyframes[0].timeMs = 1_000_000
       assert.throws(() => applyEditingPlan(p.id, rev(), late), /melewati durasi/)
       assert.equal(rev(), before)
     })
