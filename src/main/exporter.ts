@@ -1,3 +1,4 @@
+import {assertFinalCutoutPreviewReady} from './cutout-preview'
 import {productionReadiness,exportLicenseReport} from './cutout-v5'
 import {keyword} from '@shared/cutout-shot-proposals'
 import { exportRange, rangeCaptionChunks } from '@shared/export-range'
@@ -564,6 +565,7 @@ async function renderProject(ctx: TaskCtx, projectId: string, opts: ExportOption
 }
 
 export function startExport(projectId: string, opts: ExportOptions): Job {
+  assertFinalCutoutPreviewReady(getBundle(projectId))
   exportRange(opts.range,getBundle(projectId).clips.reduce((n,c)=>n+c.durationMs,0),opts.fps)
   const job = insertJob({ projectId, kind: 'export', provider: 'ffmpeg', payload: { ...opts } })
   emit.job(job)

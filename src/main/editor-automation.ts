@@ -1,3 +1,4 @@
+import {availableCutoutAssets} from '@shared/cutout-orphans'
 import {validatePngImpactScene} from '@shared/cutout-png-impact'
 import {validateComedyScene} from '@shared/comedy-jolt'
 import {loadComedyProfile} from './cutout-studio'
@@ -33,7 +34,7 @@ import { autoSyncEnabled, syncedVoiceDuration } from '@shared/voiceover'
 import { getDb } from './db'
 import { getBundle, getJobRaw, insertJob, saveSnapshot } from './repo'
 import { emit } from './events'
-import { runJob } from './jobs'
+import { runJob, cancelAbandonedCutoutJobs } from './jobs'
 import { generateCodexJson } from './codex-text'
 import { codexConnectionStatus, requireCodexConnection } from './codex-connections'
 import { readManagedImageBytes } from './media-import'
@@ -138,7 +139,7 @@ export function getEditingContext(projectId: string) {
   }
 }
 function prepare(b: ProjectBundle, plan: EditorEditPlan, timingScope?:Set<string>): ProjectSnapshot {
-  const next = snapshot(b), assets = new Map(b.assets.map(a => [a.id, a])), changes = new Map(plan.clips.map(c => [c.clipId, c]))
+  const next = snapshot(b), assets = new Map(availableCutoutAssets(b).map(a => [a.id, a])), changes = new Map(plan.clips.map(c => [c.clipId, c]))
   if (autoSyncEnabled(b.project)) for (const clip of b.clips.filter(c=>!timingScope||timingScope.has(c.id))) {
     const actual = syncedVoiceDuration(clip, b.assets.find(a => a.id === clip.audioAssetId))
     if (actual != null && actual !== clip.durationMs) throw new Error('Timing narasi tersimpan belum sinkron. Buka editor dan simpan sinkronisasi suara sebelum edit otomatis.')
@@ -234,6 +235,7 @@ export function startCodexAutoEdit(input: AutoEditInput): Job {
   input={...input,codex:normalizeCodexEdit(input?.codex),specialClips:normalizeSpecialClips(input?.specialClips)}
   const production=normalizeCutoutProduction(input?.production)
   if (!input || typeof input.projectId !== 'string' || typeof input.instruction !== 'string' || !input.instruction.trim() || input.instruction.length > 8000) throw new Error('Tulis arahan edit antara 1–8000 karakter.')
+  if(getBundle(input.projectId).project.styleId==='cutout-facts')cancelAbandonedCutoutJobs(input.projectId)
   if(getBundle(input.projectId).project.styleId==='cutout-facts'&&input.productionStrategy!=='agent'&&!input.specialClips?.enabled){
     const b=getBundle(input.projectId);if(b.jobs.some(j=>['auto-edit','cutout-batch'].includes(j.kind)&&['running','queued'].includes(j.status)))throw Error('Edit otomatis masih berjalan.')
     const context=getEditingContext(input.projectId);checkedBundle(input.projectId,context.revision,true)

@@ -31,7 +31,9 @@
     "test:autoedit-klip1": "node scripts/test-autoedit-klip1.cjs && node scripts/test-autoedit-klip1-integration.cjs",
     "test:cutout-permanent": "node scripts/test-cutout-permanent.cjs && node scripts/test-cutout-permanent-integration.cjs",
     "cutout:dry-run": "node scripts/cutout-dry-run.cjs",
-    "test:cutout-prefill-impact": "node scripts/test-cutout-prefill-impact.cjs"
+    "test:cutout-prefill-impact": "node scripts/test-cutout-prefill-impact.cjs",
+    "test:cutout-v6-ui": "node scripts/test-cutout-v6-ui.cjs",
+    "test:cutout-v6": "node scripts/test-cutout-v6-integration.cjs"
   },
   "dependencies": {
     "@google/genai": "^2.24.0",

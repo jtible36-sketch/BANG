@@ -24,7 +24,7 @@ import { visualSourceOf } from '@shared/script'
 import { autoSyncEnabled, syncedVoiceDuration } from '@shared/voiceover'
 import { validateDurationSec } from '@shared/duration'
 import { CONTENT_SKILLS, defaultStyleForSkill, getContentSkill, getSkillVariant, type SkillId } from '@shared/skills'
-import { validateMasterPrompt } from '@shared/master-prompts'
+import { validateMasterPrompt,builtInMasterPrompts,legacyCutoutFactsMaster } from '@shared/master-prompts'
 import { normalizeSubjectNiche } from '@shared/niches'
 import { cutoutAssetIds, normalizeCutoutScene, type CutoutScene } from '@shared/cutout-timeline'
 import { normalizeSoundEffects, validateSoundEffectAssets } from '@shared/sfx'
@@ -72,7 +72,7 @@ const toProject = (r: Row): Project => ({
   styleId: r.style_id,
   skillId: getContentSkill(r.skill_id).id,
   skillVariant: r.skill_variant ?? '',
-  masterPrompt: r.master_prompt_json ? validateMasterPrompt(JSON.parse(r.master_prompt_json)) : null,
+  masterPrompt: r.master_prompt_json ? validateMasterPrompt(JSON.parse(r.master_prompt_json)) : r.style_id==='cutout-facts'?structuredClone(legacyCutoutFactsMaster):null,
   ttsProvider: r.tts_provider,
   ttsVoice: r.tts_voice,
   imageModel: r.image_model,
@@ -183,7 +183,7 @@ export function createProject(input: NewProjectInput): Project {
   const subjectNiche = normalizeSubjectNiche(input.subjectNiche)
   const skill = projectSkill(input)
   const styleId = input.styleId ?? defaultStyleForSkill(skill.skillId, skill.skillVariant)
-  const masterPrompt = input.masterPrompt == null ? null : validateMasterPrompt(input.masterPrompt)
+  const masterPrompt = input.masterPrompt == null ? (styleId==='cutout-facts'?validateMasterPrompt(builtInMasterPrompts.find(p=>p.id==='builtin:cutout-facts')!):null) : validateMasterPrompt(input.masterPrompt)
   const s = getSettings()
   const now = Date.now()
   const id = randomUUID()
@@ -210,7 +210,7 @@ export function createProject(input: NewProjectInput): Project {
       skill.skillVariant,
       masterPrompt ? JSON.stringify(masterPrompt) : null,
       subjectNiche,
-      JSON.stringify({ ...DEFAULT_EDITOR, ...healthDialogueEditorDefaults(styleId), ...(styleId==='cutout-facts'?CUTOUT_CAPTION_DEFAULTS:{}) }),
+      JSON.stringify({ ...DEFAULT_EDITOR, ...healthDialogueEditorDefaults(styleId), ...(styleId==='cutout-facts'?{...CUTOUT_CAPTION_DEFAULTS,...(masterPrompt?.version===6?{cutoutV5:{motionProfile:'standard'}}:{})}:{}) }),
       now,
       now
     )

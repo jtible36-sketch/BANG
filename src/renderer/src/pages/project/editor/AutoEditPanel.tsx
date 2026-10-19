@@ -1,3 +1,4 @@
+import {resolveMasterPrompt} from '@shared/master-prompts'
 import {CutoutStudioPanel} from '../CutoutStudioPanel'
 import {CutoutV5Panel} from '../CutoutV5Panel'
 import type { FlowStatus } from '@shared/flow'
@@ -21,9 +22,9 @@ const DEFAULT_INSTRUCTION = 'Sutradarai mengikuti pola video referensi: framing 
 
 export function AutoEditPanel({ clip }: { clip: Clip | null }) {
   const { project, clips, jobs, savedAt, saveState } = useProject()
-  const [scope, setScope] = useState<'clip' | 'project'>(() => project && isCutoutReference(project) ? 'project' : 'clip')
+  const [scope, setScope] = useState<'clip' | 'project'>('clip')
   const [refineComposition,setRefineComposition]=useState(false)
-  const [instruction, setInstruction] = useState(() => project && isCutoutReference(project) ? CUTOUT_AUTO_EDIT_INSTRUCTION : DEFAULT_INSTRUCTION)
+  const [instruction, setInstruction] = useState(() => project && isCutoutReference(project) ? (resolveMasterPrompt(project)?.version??5)>=6?'Ikuti masterPrompt.sourceText v6 proyek; susun klip dari narasi aktual dan aset tersedia. Pertahankan identitas, timing dan batas dua mover.':CUTOUT_AUTO_EDIT_INSTRUCTION : DEFAULT_INSTRUCTION)
   const [production,setProduction]=useState<CutoutProductionOptions>(()=>({...DEFAULT_CUTOUT_PRODUCTION,...readCutoutGenerationPreferences(),enabled:project?.styleId==='cutout-facts'}))
   const [codex,setCodex]=useState<CodexEditOptions>(()=>{try{return normalizeCodexEdit(JSON.parse(localStorage.getItem('naraflow:auto-edit-codex')||'{}'))??{}}catch{return {}}})
   const [models,setModels]=useState<ModelOption[]>([])
@@ -77,6 +78,7 @@ export function AutoEditPanel({ clip }: { clip: Clip | null }) {
     setBusy(true)
     setError(null)
     try {
+      if(!undo&&!resume&&scope==='clip'&&!clip)throw new Error('Pilih klip di timeline sebelum menjalankan edit otomatis.')
       await prepare()
       if (undo) {
         const context = await window.api.editorAutomation.context(project.id)
@@ -136,6 +138,8 @@ export function AutoEditPanel({ clip }: { clip: Clip | null }) {
         {clip?.cutout?.specialVideo&&<p className="text-xs text-ok-ink">Terpasang: {clip.cutout.specialVideo.action} · {clip.cutout.specialVideo.speed.toFixed(2)}×</p>}
       </>}
     </section>
+    <p className="text-xs font-semibold" data-autoedit-scope>{scope==='clip'?'Cakupan: klip terpilih':'Cakupan: seluruh proyek'}</p>
+    {scope==='clip'&&!clip&&<p role="status" className="text-xs text-muted">Pilih klip di timeline untuk menjalankan edit otomatis. Cakupan tidak dialihkan ke seluruh proyek.</p>}
     <label className="flex flex-col gap-1.5 text-[13px]">Cakupan edit<select aria-label="Cakupan edit otomatis" className={inputCls} value={scope} disabled={busy || running} onChange={e => setScope(e.target.value as 'clip' | 'project')}><option value="clip">Klip terpilih{clip ? ` · ${clip.title}` : ''}</option><option value="project">Seluruh proyek</option></select></label>
     <p className="text-xs leading-relaxed text-muted">{scope === 'clip' ? 'Klip terpilih: gerak Cutout, pose, transisi, dan durasi adegan. Pilih Seluruh proyek untuk mengatur SFX, caption, label, dan musik.' : 'Seluruh proyek: gerak semua adegan, SFX, caption, label, dan volume musik dapat disesuaikan.'}</p>
     {isCutoutReference(project) && <div className="rounded-xl border border-line p-3 text-xs leading-relaxed" data-cutout-coverage><strong>Komposisi Cutout: {coverage.ready}/{coverage.total} klip</strong><p className="mt-1 text-muted">{scope === 'clip' ? 'Proses ini hanya mengubah satu klip. Klip lain dan caption proyek tidak ikut diperbaiki.' : 'Seluruh proyek diproses. Gambar utuh tetap membutuhkan aset terpisah untuk aksi dan pergantian pose.'} Kepadatan keyframe bukan ukuran kemiripan referensi. Narasi yang perlu ditulis ulang diselesaikan di tahap Naskah dan Suara sebelum produksi aset.</p></div>}
@@ -158,7 +162,7 @@ export function AutoEditPanel({ clip }: { clip: Clip | null }) {
         </div>
       </details>}
     </section>
-    {isCutoutReference(project) && <details className="rounded-xl border border-line p-3 text-xs" data-cutout-direction><summary className="cursor-pointer font-semibold">Arahan Cutout · Fakta &amp; Komedi v4</summary><p className="mt-2 whitespace-pre-wrap leading-relaxed text-muted">{CUTOUT_FACT_PRODUCTION_RULES}</p><p className="mt-3 leading-relaxed text-muted">Pemeriksaan struktur dan sampel frame membantu menilai hasil. Kesesuaian era, identitas, kontak sepanjang gerak, dan humor tetap perlu ditinjau. Aset atau klip khusus yang kurang ditampilkan pada hasil proses.</p></details>}
+    {isCutoutReference(project) && <details className="rounded-xl border border-line p-3 text-xs" data-cutout-direction><summary className="cursor-pointer font-semibold">Arahan Cutout · Fakta &amp; Komedi v{resolveMasterPrompt(project)?.version??5}</summary><p className="mt-2 whitespace-pre-wrap leading-relaxed text-muted">{(resolveMasterPrompt(project)?.version??5)>=6?resolveMasterPrompt(project)?.sourceText:CUTOUT_FACT_PRODUCTION_RULES}</p><p className="mt-3 leading-relaxed text-muted">Pemeriksaan struktur dan sampel frame membantu menilai hasil. Kesesuaian era, identitas, kontak sepanjang gerak, dan humor tetap perlu ditinjau. Aset atau klip khusus yang kurang ditampilkan pada hasil proses.</p></details>}
     <label className="flex flex-col gap-1.5 text-[13px]">Arahan untuk Codex<textarea aria-label="Arahan edit otomatis" className={cx(inputCls, 'min-h-36 resize-y text-[13px] leading-relaxed')} value={instruction} maxLength={6000} disabled={busy || running} onChange={e => setInstruction(e.target.value)} /></label>
     <p className="text-xs leading-relaxed text-muted">{production.enabled?'Aset baru dibuat sebagai layer/pose terpisah sesuai narasi. Foto utuh tidak otomatis menjadi rig. Komposisi diterapkan setelah semua tahap selesai; jika gagal atau dibatalkan, aset yang selesai tetap tersedia.':'Gunakan aset tokoh, properti, pose dan SFX yang sudah tersedia. Gambar utuh perlu aset terpisah untuk gerak per objek.'}</p>
     <Button size="sm" variant="primary" icon={<Sparkles className="size-4" />} loading={busy} disabled={running || (specialClips.enabled&&specialClips.source==='flow-mcp'&&(!flowStatus?.videoReady||flowBusy)) || (project.styleId!=='cutout-facts'||refineComposition)&&!status?.codexReady || !instruction.trim() || (scope === 'clip' && !clip)} onClick={() => void run()}>{specialClips.enabled?'Produksi klip khusus & edit otomatis':production.enabled&&project.styleId!=='cutout-facts'?'Generate aset & edit otomatis':project.styleId==='cutout-facts'?'Susun baseline & edit per klip':'Edit otomatis dengan Codex'}</Button>

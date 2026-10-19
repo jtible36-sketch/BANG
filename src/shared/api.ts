@@ -43,6 +43,10 @@ export interface StudioApi {
     recover(clipId: string): Promise<Job[]>
   }
   cutoutStudio:{
+    preview(projectId:string,clipId:string):Promise<import('./cutout-preview').CutoutClipPreview>
+    orphans(projectId:string):Promise<import('./cutout-orphans').OrphanReport & {targets:{clipId:string;title:string;itemIds:string[]}[]}>
+    linkOrphan(projectId:string,assetId:string,targetClipId:string,confirmed:boolean):Promise<Asset>
+    archiveOrphan(projectId:string,assetId:string,confirmed:boolean):Promise<Asset>
     reviewAsset(projectId:string,assetId:string,approved:boolean):Promise<Asset>
     report(projectId:string):Promise<import('./cutout-permanent').ClipPreflight[]>
     saveBrief(projectId:string,clipId:string,brief:import('./cutout-permanent').SceneBrief):Promise<import('./cutout-permanent').SceneBrief>
