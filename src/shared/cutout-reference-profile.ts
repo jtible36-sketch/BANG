@@ -20,6 +20,7 @@ export const CUTOUT_NARRATIVE_PROTOCOL = [
 
 export function cutoutRuntimeStage(context: MasterPromptContext, stage: string): string {
   if (!isCutoutReference(context)) return ''
+  if(context.styleId==='cutout-facts'&&(!context.masterPrompt||context.masterPrompt.version>=6))return ''
   const current = 'CURRENT CUTOUT V4 DIRECTION: these rules supersede older built-in directing defaults. Apply only to the requested stage; image tasks produce one requested asset, not captions or animation. A narration section may contain several 2–4 second visual shots. Preserve actual voice timing and do not force equal sentence lengths.\n' + CUTOUT_FACT_PRODUCTION_RULES
   if (stage === 'script') return CUTOUT_NARRATIVE_PROTOCOL + '\n\n' + current
   if (stage === 'visual' || stage === 'video') return current

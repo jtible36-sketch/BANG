@@ -62,7 +62,7 @@ export function CutoutVisualStep() {
   const planClip=()=>void work(async()=>{
     if(!clip)return
     if(plan?.items.length&&!await confirmDialog({title:'Susun ulang kebutuhan adegan?',body:'Paket baru mengikuti narasi terkini. Aset lama tetap tersimpan, tetapi paket baru memerlukan generasi sendiri. Untuk melanjutkan paket ini, gunakan Generate aset yang kurang.',confirm:'Susun ulang'}))return
-    const job=await window.api.cutoutAssets.plan(clip.id,{maxAssets,beatTemplate:true,instruction:CUTOUT_AUTO_EDIT_INSTRUCTION})
+    const job=await window.api.cutoutAssets.plan(clip.id,{maxAssets,beatTemplate:true,instruction:(resolveMasterPrompt(project)?.version??5)>=6?'Ikuti masterPrompt.sourceText v6 dan narasi aktual; gunakan skema kebutuhan aset yang disediakan.':CUTOUT_AUTO_EDIT_INSTRUCTION})
     useProject.getState().upsertJob(job)
   })
   const goProduction=()=>void work(async()=>{

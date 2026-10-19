@@ -10,6 +10,7 @@ import { getEditingContext, startCodexAutoEdit as startAgentComposer, resumeCode
 import { projectDir } from '../src/main/paths'
 import { cutoutAssetState } from '../src/main/cutout-assets'
 import { builtInMasterPrompts, masterStageDirection, resolveMasterPrompt } from '../src/shared/master-prompts'
+import {CUTOUT_FACT_DIRECTION as LEGACY_DIRECTION,CUTOUT_FACT_SOURCE as LEGACY_SOURCE} from '../src/shared/cutout-facts-v5'
 import { CUTOUT_FACT_DIRECTION, CUTOUT_FACT_SOURCE } from '../src/shared/cutout-facts'
 import { cutoutRuntimeStage } from '../src/shared/cutout-reference-profile'
 import { createCutoutScene, createCutoutLayer, cutoutAssetIds, cutoutCameraAt, cutoutTransformAt } from '../src/shared/cutout-timeline'
@@ -115,12 +116,13 @@ void app.whenReady().then(async () => {
       }
     }
   })
-  await check('v5 builtin preserves the user direction and runtime upgrades old snapshots without changing their asset fingerprint', () => {
-    assert.equal(current.version, 5)
+  await check('v6 has one source and v5 direction/runtime snapshots retain their asset fingerprint', () => {
+    assert.equal(current.version, 6)
     assert.equal(current.sourceText, CUTOUT_FACT_SOURCE)
+    assert(CUTOUT_FACT_SOURCE.includes('Maksimal **2 layer bergerak per shot**'));assert(CUTOUT_FACT_SOURCE.includes('Hard cut'));assert(CUTOUT_FACT_DIRECTION.length<250)
     for (const phrase of ['Dafiology', '3 detik pertama', 'hard cut', 'Sasaran maksimal 2 layer', 'Dilarang memakai kamera shake', 'setiap assetId', 'klip khusus']) {
-      assert(CUTOUT_FACT_SOURCE.includes(phrase), 'Source omitted user rule: ' + phrase)
-      assert(CUTOUT_FACT_DIRECTION.includes(phrase), 'Production direction omitted user rule: ' + phrase)
+      assert(LEGACY_SOURCE.includes(phrase), 'Legacy source omitted user rule: ' + phrase)
+      assert(LEGACY_DIRECTION.includes(phrase), 'Legacy direction omitted user rule: ' + phrase)
     }
     const context = { masterPrompt: old, styleId: 'cutout-facts' }
     const before = JSON.stringify(old)

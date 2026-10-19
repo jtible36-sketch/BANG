@@ -1,3 +1,4 @@
+import {CutoutMasterUpgrade} from './CutoutMasterUpgrade'
 import { useState, type ReactNode } from 'react'
 import { AlertCircle, ArrowLeft, Check, CheckCircle2, Loader2, Pencil, Save, SlidersHorizontal } from 'lucide-react'
 import type { Step } from '@shared/types'
@@ -104,7 +105,7 @@ export function ProjectHeader({ doneSteps, right }: { doneSteps: Step[]; right?:
               </>
             )}
           </div>
-          <SaveStatus />
+          <SaveStatus /><CutoutMasterUpgrade/>
         </div>
       </div>
 

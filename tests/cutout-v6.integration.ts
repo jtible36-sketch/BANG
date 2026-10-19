@@ -1,4 +1,8 @@
-import {cutoutActionForStatus,preflightCutout} from '../src/shared/cutout-permanent'
+import {builtInMasterPrompts,masterStageDirection,resolveMasterPrompt,legacyCutoutFactsMaster} from '../src/shared/master-prompts'
+import {cutoutRuntimeStage} from '../src/shared/cutout-reference-profile'
+import {getProject} from '../src/main/repo'
+import fixtures from './fixtures/cutout-projects-readonly.json'
+import {cutoutActionForStatus} from '../src/shared/cutout-permanent'
 import {previewCutoutClip,assertFinalCutoutPreviewReady} from '../src/main/cutout-preview'
 import {startExport} from '../src/main/exporter'
 import {insertJob} from '../src/main/repo'
@@ -6,6 +10,7 @@ import {runJob,cancelAbandonedCutoutJobs,isActive} from '../src/main/jobs'
 import {resumeJobs} from '../src/main/generation'
 import {createHash} from 'node:crypto'
 import {readFileSync} from 'node:fs'
+import {approvedBackgroundCandidates} from '../src/main/cutout-studio'
 import {cutoutOrphans,availableCutoutAssets} from '../src/shared/cutout-orphans'
 import {orphanAssetReport,linkOrphanAsset,archiveOrphanAsset} from '../src/main/cutout-orphans'
 import assert from 'node:assert/strict'
@@ -46,6 +51,19 @@ app.whenReady().then(async()=>{
  })
  await test('T5 every production status exposes one concrete UI action and a valid target',()=>{
   for(const status of ['ready','needs-assets','needs-character','needs-special-clip','invalid-plan','done','failed'] as const){const a=cutoutActionForStatus(status);assert(a.action.trim());assert(['assets','characters','plan','production','special-clip'].includes(a.actionTarget))}const b=make(2);seed(b.project.id,b.clips[0].id);const rows=studioReport(b.project.id);assert(rows.every(r=>r.action&&r.actionTarget));assert.equal(rows[1].actionTarget,'assets')
+ })
+ await test('T6 v6 uses one unique source document in each stage, and new projects snapshot v6 with karaoke',()=>{
+  const p=builtInMasterPrompts.find(p=>p.id==='builtin:cutout-facts')!;assert.equal(p.version,6);const headings=p.sourceText.split('\n').filter(s=>/^#{1,6} /.test(s));assert.equal(new Set(headings).size,headings.length);assert.equal(headings.length,12);assert(Object.values(p.stages).every(s=>s.length<250));for(const stage of ['research','script','visual','video','thumbnail','voice'] as const){const direction=masterStageDirection({styleId:'cutout-facts',masterPrompt:p},stage);assert.equal(direction.split('# Master prompt:').length-1,1);assert(!direction.includes('CURRENT CUTOUT V4'));assert.equal(cutoutRuntimeStage({styleId:'cutout-facts',masterPrompt:p},stage),'')}
+  const project=createProject({styleId:'cutout-facts'});assert.equal(project.masterPrompt?.version,6);assert.equal(project.editor.captionStyle,'karaoke');assert.equal(project.editor.cutoutV5?.motionProfile,'standard')
+ })
+ await test('T6 legacy null and explicit v5 stay unchanged until user opts in; captions and other presets are preserved',()=>{
+  const b=make();getDb().prepare('UPDATE projects SET master_prompt_json=NULL,editor_json=? WHERE id=?').run(JSON.stringify({...b.project.editor,captionStyle:'none'}),b.project.id);const before=getDb().prepare('SELECT master_prompt_json,editor_json,updated_at FROM projects WHERE id=?').get(b.project.id);const p=getProject(b.project.id);assert.equal(resolveMasterPrompt(p)?.version,5);assert.equal(p.editor.captionStyle,'none');assert.deepEqual(getDb().prepare('SELECT master_prompt_json,editor_json,updated_at FROM projects WHERE id=?').get(b.project.id),before);assert.deepEqual(p.masterPrompt,legacyCutoutFactsMaster);for(const styleId of ['stickman','collage','vox-paper','map-animation','archival','anime','cinematic']){const other=createProject({styleId});assert.notEqual(resolveMasterPrompt(other)?.id,'builtin:cutout-facts')}
+ })
+ await test('T2 exported inventories may omit projectId; explicit foreign ownership is still excluded',()=>{
+  const fixture=fixtures[1].bundle as any,report=cutoutOrphans(fixture);assert.equal(report.orphanAssetCount,7);assert.equal(report.groups[0].oldClipId,'d140b0c0-8875-4015-8bb2-6ba9092b8200');const foreign={...fixture.assets[0],id:'foreign',projectId:'another-project'};assert(!availableCutoutAssets({...fixture,assets:[foreign]}).length);assert.equal(cutoutOrphans({...fixture,assets:[{...foreign,clipId:'gone'}]}).orphanAssetCount,0)
+ })
+ await test('T2 orphan and archived background cannot be reused or block new background work',()=>{
+  const b=make(2),plan=seed(b.project.id,b.clips[0].id),asset=getBundle(b.project.id).assets.find(a=>(a.meta.cutoutAsset as any)?.role==='background')!;getDb().prepare('UPDATE assets SET clip_id=?,meta_json=? WHERE id=?').run('deleted-source',JSON.stringify({...asset.meta,cutoutAsset:{...(asset.meta.cutoutAsset as any),review:'approved'}}),asset.id);assert.equal(reusableCutoutBackground(b.clips[1].id,plan.items[0]),undefined);assert.equal(approvedBackgroundCandidates(b.project.id).length,0);getDb().prepare('UPDATE assets SET clip_id=?,meta_json=? WHERE id=?').run(b.clips[0].id,JSON.stringify({...asset.meta,cutoutOrphanArchive:{at:1},cutoutAsset:{...(asset.meta.cutoutAsset as any),review:'approved'}}),asset.id);assert.equal(reusableCutoutBackground(b.clips[1].id,plan.items[0]),undefined)
  })
  writeFileSync(join(out,'result.json'),JSON.stringify({status:'passed',checks,paidCalls:0,actualSQLite:true,liveUserDatabaseTouched:false},null,2));closeDb();app.quit()
 }).catch(e=>{console.error(e);closeDb();app.exit(1)})

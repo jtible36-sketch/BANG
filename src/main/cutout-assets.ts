@@ -1,3 +1,4 @@
+import {availableCutoutAssets} from '@shared/cutout-orphans'
 import {canonicalLocationKey,migrateCutoutPlan} from '@shared/cutout-permanent'
 import {requireBriefApproved,requireAssetConsent,consumeAssetConsent} from './cutout-studio'
 import {validateDirectorWithRepair} from './cutout-director-repair'
@@ -175,7 +176,7 @@ function references(p:Payload,folder:string):string[]{
   if(cast.length>max)throw new Error(`Maksimal ${max} referensi karakter untuk provider ini.`)
   const paths=cast.map((x,i)=>{const path=join(folder,`identity-${i}.png`);writeFileSync(path,readManagedImageBytes(x.sheetAssetId!,c.projectId));return path})
   const group=p.item.layerKey
-  const base=group?getBundle(c.projectId).assets.find(a=>{const m=a.meta.cutoutAsset as {planId?:string;layerKey?:string}|undefined;return a.clipId===c.id&&m?.planId===p.planId&&m.layerKey===group}):undefined
+  const base=group?availableCutoutAssets(getBundle(c.projectId)).find(a=>{const m=a.meta.cutoutAsset as {planId?:string;layerKey?:string}|undefined;return a.clipId===c.id&&m?.planId===p.planId&&m.layerKey===group}):undefined
   if(!paths.length&&c.imageAssetId&&p.item.role!=='prop'){const file=join(folder,'scene-identity.png');writeFileSync(file,readManagedImageBytes(c.imageAssetId,c.projectId));paths.push(file)}
   const source=base?.id
   if(source&&paths.length<max){const file=join(folder,'pose-continuity.png');writeFileSync(file,readManagedImageBytes(source,c.projectId));paths.push(file)}
@@ -228,7 +229,7 @@ export function backgroundReuseKey(clipId:string,item:CutoutAssetItem):string|nu
 }
 export function reusableCutoutBackground(clipId:string,item:CutoutAssetItem){
   const key=backgroundReuseKey(clipId,item);if(!key)return undefined
-  const b=getBundle(getClip(clipId).projectId);return b.assets.find(a=>{const m=a.meta.cutoutAsset as any;return a.kind==='image'&&m?.role==='background'&&(b.project.styleId!=='cutout-facts'||m.review==='approved')&&(m.backgroundKey===key||!!m.locationKey&&canonicalLocationKey(m.locationKey,b.project.editor.cutoutV5?.locationAliases)===canonicalLocationKey(item.locationKey??'',b.project.editor.cutoutV5?.locationAliases))})
+  const b=getBundle(getClip(clipId).projectId);return availableCutoutAssets(b).find(a=>{const m=a.meta.cutoutAsset as any;return a.kind==='image'&&m?.role==='background'&&(b.project.styleId!=='cutout-facts'||m.review==='approved')&&(m.backgroundKey===key||!!m.locationKey&&canonicalLocationKey(m.locationKey,b.project.editor.cutoutV5?.locationAliases)===canonicalLocationKey(item.locationKey??'',b.project.editor.cutoutV5?.locationAliases))})
 }
 export function generateCutoutAsset(input:{clipId:string;planId:string;itemId:string;provider:CutoutAssetProvider;format:'png'|'webp'}):Job{
   if(!input||!['codex','flow-mcp'].includes(input.provider)||!['png','webp'].includes(input.format))throw new Error('Provider/format aset tidak valid.')
@@ -241,7 +242,7 @@ export function generateCutoutAsset(input:{clipId:string;planId:string;itemId:st
     return j.job.status==='failed'&&j.job.error?.includes('Pulihkan')||j.job.status==='canceled'&&payload.submissionStarted===true
   })
   if(uncertain)throw new Error('Pengiriman Flow sebelumnya belum pasti. Klik Pulihkan aset Flow dahulu.')
-  const already=getBundle(c.projectId).assets.find(a=>(a.meta.cutoutAsset as any)?.planId===plan.id&&(a.meta.cutoutAsset as any)?.itemId===item.id);if(already){const job=insertJob({projectId:c.projectId,clipId:c.id,kind:'cutout-asset',provider:input.provider,payload:{item}});return runJob(job,'automation',async()=>already.id)}
+  const already=availableCutoutAssets(getBundle(c.projectId)).find(a=>a.clipId===c.id&&(a.meta.cutoutAsset as any)?.planId===plan.id&&(a.meta.cutoutAsset as any)?.itemId===item.id);if(already){const job=insertJob({projectId:c.projectId,clipId:c.id,kind:'cutout-asset',provider:input.provider,payload:{item}});return runJob(job,'automation',async()=>already.id)}
   const reusable=reusableCutoutBackground(c.id,item)
   if(input.provider==='codex'&&!reusable)requireCodexConnection('image')
   const job=insertJob({projectId:c.projectId,clipId:c.id,characterId:item.characterId,kind:'cutout-asset',provider:input.provider})
@@ -249,7 +250,7 @@ export function generateCutoutAsset(input:{clipId:string;planId:string;itemId:st
   return runJob(job,input.provider==='codex'?'codex':'flow',async ctx=>{
     assertFresh(p)
     if(reusable){p.reusedFrom=reusable.id;ctx.progress(.5,'Memakai ulang background lokasi/era tersimpan…');return storeAsset(ctx,p,readManagedImageBytes(reusable.id,c.projectId))}
-    if(getProject(c.projectId).styleId==='cutout-facts'&&item.role==='background'&&item.locationKey){const pending=getBundle(c.projectId).assets.find(a=>{const m=a.meta.cutoutAsset as any;return m?.role==='background'&&m.locationKey&&m.review!=='approved'&&canonicalLocationKey(m.locationKey)===canonicalLocationKey(item.locationKey!)});if(pending)throw Error('Background lokasi/era yang sama sudah dibuat tetapi belum disetujui: '+pending.id+'. Tinjau background di Visual lalu tandai lolos review untuk reuse; tidak ada gambar duplikat dikirim.')}
+    if(getProject(c.projectId).styleId==='cutout-facts'&&item.role==='background'&&item.locationKey){const pending=availableCutoutAssets(getBundle(c.projectId)).find(a=>{const m=a.meta.cutoutAsset as any;return m?.role==='background'&&m.locationKey&&m.review!=='approved'&&canonicalLocationKey(m.locationKey)===canonicalLocationKey(item.locationKey!)});if(pending)throw Error('Background lokasi/era yang sama sudah dibuat tetapi belum disetujui: '+pending.id+'. Tinjau background di Visual lalu tandai lolos review untuk reuse; tidak ada gambar duplikat dikirim.')}
     if(getProject(c.projectId).styleId==='cutout-facts')consumeAssetConsent(c.id,item.id)
     if(p.provider==='codex')return withCodexConnection('image',async signal=>{
       const root=realpathSync(tmpdir()),folder=mkdtempSync(join(root,'naraflow-cutout-asset-')),actual=realpathSync(folder)

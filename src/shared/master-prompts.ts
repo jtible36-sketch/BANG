@@ -1,3 +1,4 @@
+import {CUTOUT_FACT_SOURCE as LEGACY_CUTOUT_SOURCE,CUTOUT_FACT_STAGES as LEGACY_CUTOUT_STAGES} from './cutout-facts-v5'
 import { cutoutRuntimeStage } from './cutout-reference-profile'
 import { getContentSkill, LEGACY_HEALTH_SKILL, type SkillId } from './skills'
 import { HEALTH_DIALOGUE_NAME, HEALTH_DIALOGUE_NICHES, HEALTH_DIALOGUE_SOURCE, HEALTH_DIALOGUE_STAGES, isHealthDialogueStyle } from './health-dialogue'
@@ -54,6 +55,8 @@ function skillProfile(skillId: SkillId, id: string): MasterPromptProfile {
 // Lookup-only compatibility for saved projects; retired from new master choices.
 const legacyHealthMaster = skillProfile('explainer-animasi-kesehatan', 'builtin:health')
 
+export const legacyCutoutFactsMaster:MasterPromptProfile={id:'builtin:cutout-facts',name:CUTOUT_FACT_NAME,description:'Studio aset per adegan: narasi sebab-akibat, clean plate + pose + properti, detail mekanisme dan reaksi; aset Visual langsung dipakai komposer per shot di Produksi.',version:5,baseProfile:'legacy',sourceText:LEGACY_CUTOUT_SOURCE,stages:{...LEGACY_CUTOUT_STAGES},timing:{wordsPerSecond:2.9,beatSeconds:6,sourceVideoSeconds:4},videoMode:'scene',lockedCamera:false,subjectNiches:[...CUTOUT_FACT_NICHES],durationOptionsSec:[30,45,60,90]}
+
 export const builtInMasterPrompts: MasterPromptProfile[] = [
   skillProfile('bang-motion', 'builtin:bang-motion'),
   skillProfile('huashu-art-motion', 'builtin:huashu'),
@@ -70,9 +73,9 @@ export const builtInMasterPrompts: MasterPromptProfile[] = [
   {
     id: 'builtin:cutout-facts', name: CUTOUT_FACT_NAME,
     description: 'Studio aset per adegan: narasi sebab-akibat, clean plate + pose + properti, detail mekanisme dan reaksi; aset Visual langsung dipakai komposer per shot di Produksi.',
-    version: 5, baseProfile: 'legacy', sourceText: CUTOUT_FACT_SOURCE,
+    version: 6, baseProfile: 'legacy', sourceText: CUTOUT_FACT_SOURCE,
     stages: { ...CUTOUT_FACT_STAGES },
-    timing: { wordsPerSecond: 2.9, beatSeconds: 6, sourceVideoSeconds: 4 },
+    timing: { wordsPerSecond: 2.9, beatSeconds: 4, sourceVideoSeconds: 4 },
     videoMode: 'scene', lockedCamera: false,
     subjectNiches: [...CUTOUT_FACT_NICHES], durationOptionsSec: [30, 45, 60, 90]
   },
@@ -240,8 +243,10 @@ export function masterStageDirection(context: MasterPromptContext, stage: Master
     && profile.sourceText === field(STICKMAN_MASTER_SOURCE_TEXT, 'Master prompt asli', 100_000)
   const stockMapSource = profile.baseProfile === 'map'
     && [MAP_MASTER_SOURCE_TEXT, LEGACY_MAP_MASTER_SOURCE_TEXT].some((source) => profile.sourceText === field(source, 'Master prompt asli', 100_000))
-  const original = profile.id.startsWith('custom:') && !stockStickmanSource && !stockMapSource ? profile.sourceText.trim() : ''
+  const singleCutoutSource=context.styleId==='cutout-facts'&&profile.version>=6
+  const original = !singleCutoutSource&&profile.id.startsWith('custom:') && !stockStickmanSource && !stockMapSource ? profile.sourceText.trim() : ''
   let direction = profile.stages[stage].trim() || (!mapped ? profile.sourceText.trim() : '')
+  if(singleCutoutSource)direction=[profile.sourceText.trim(),profile.stages[stage].trim()].filter(Boolean).join('\n\n')
   if (original && direction !== original) direction = [
     'ORIGINAL CREATIVE REFERENCE: apply only the rules relevant to the current stage. Unknown headings below remain part of the reference.',
     original,
