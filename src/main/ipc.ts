@@ -1,3 +1,6 @@
+import {studioReport,saveSceneBrief,approveAssetCredits,upgradeStudioPlan,readClipOutcomes,approvedBackgroundCandidates,loadComedyProfile,studioJobHistory,reviewStudioAsset} from './cutout-studio'
+import {productionReadiness,recordAssetLicense} from './cutout-v5'
+import { generateVisualCutoutBatch } from './cutout-visual'
 import { randomUUID } from 'node:crypto'
 import { copyFileSync, mkdirSync } from 'node:fs'
 import { basename, dirname, extname, join } from 'node:path'
@@ -89,12 +92,24 @@ function defaultExportFolder(): string {
 }
 
 export function registerIpc(): void {
+  handle('cutoutAssets:generateBatch', generateVisualCutoutBatch)
   handle('cutoutAssets:state', cutoutAssetState)
   handle('cutoutAssets:plan', planCutoutAssets)
   handle('cutoutAssets:save', saveCutoutAssetPlan)
   handle('cutoutAssets:status', cutoutProviderStatus)
   handle('cutoutAssets:generate', generateCutoutAsset)
   handle('cutoutAssets:recover', recoverCutoutAssets)
+  handle('cutoutStudio:report',studioReport)
+  handle('cutoutStudio:saveBrief',saveSceneBrief)
+  handle('cutoutStudio:approveCredits',approveAssetCredits)
+  handle('cutoutStudio:upgradePlan',upgradeStudioPlan)
+  handle('cutoutStudio:outcomes',readClipOutcomes)
+  handle('cutoutStudio:backgrounds',approvedBackgroundCandidates)
+  handle('cutoutStudio:comedyProfile',loadComedyProfile)
+  handle('cutoutStudio:reviewAsset',reviewStudioAsset)
+  handle('cutoutStudio:history',studioJobHistory)
+  handle('cutoutV5:readiness', productionReadiness)
+  handle('cutoutV5:recordLicense', recordAssetLicense)
   handle('editorAutomation:status', editorAutomationStatus)
   handle('editorAutomation:context', getEditingContext)
   handle('editorAutomation:run', startCodexAutoEdit)

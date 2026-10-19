@@ -268,6 +268,16 @@ export function CutoutPanel({ clip }: { clip: Clip }) {
     if (playing && event.target instanceof HTMLElement && event.target.matches('input, select')) { clipPlayback.current = false; pause() }
   }}>
     <CutoutAssetPanel clip={clip} attach={attachGenerated} pose={poseGenerated}/>
+    {!!scene.shots?.length&&<Section title="Shot produksi · Dafiology">
+      <p className="text-[11px] leading-relaxed text-muted">Klik shot untuk pratinjau pada waktunya. Aset tetap tersimpan sebagai layer/pose; pola gerak disusun dari daftar terbatas.</p>
+      <ol className="flex flex-col gap-2" data-cutout-shot-list>{scene.shots.map((shot,index)=><li key={shot.id}>
+        <button type="button" className={cx(actionCls,'w-full flex-col items-start text-left')} onClick={()=>{jumpTo(shot.startMs);if(shot.movers[0])selection.select(clip.id,shot.movers[0])}}>
+          <span>{index+1}. {shot.beat} · {sec(shot.startMs)}–{sec(shot.endMs)}</span>
+          <span className="text-[11px] font-normal">{shot.motionPattern} · {shot.movers.length} mover: {shot.movers.map(id=>scene.layers.find(l=>l.id===id)?.name??id).join(', ')||'statis'}</span>
+          <span className="text-[11px] font-normal text-muted">{shot.action}</span>
+        </button>
+      </li>)}</ol>
+    </Section>}
     <Section title="Cutout · Fakta & Komedi">
       <div className="flex items-center justify-between gap-2"><span className="truncate text-xs font-semibold">{clip.title}</span>
         <label className="flex shrink-0 items-center gap-1.5 text-xs"><input type="checkbox" checked={scene.enabled} onChange={event => save({ ...scene, enabled: event.target.checked })} />Aktif</label>

@@ -1,3 +1,4 @@
+import { normalizeShotMetadata, type CutoutShot } from './cutout-shot-types'
 import { cutoutEase, clampMotion } from './cutout-easing'
 export type { CutoutEasing } from './cutout-easing'
 import type { CutoutEasing } from './cutout-easing'
@@ -10,6 +11,7 @@ export interface CutoutTransform { x: number; y: number; scale: number; rotation
 export interface CutoutKeyframe { id: string; timeMs: number; transform: CutoutTransform; easing: CutoutEasing }
 export interface CutoutPose { id: string; timeMs: number; assetId: string }
 export interface CutoutLayer {
+  motionRole?: 'mover' | 'static'
   id: string; name: string; assetId: string | null; parentId: string | null
   /** Width relative to frame width; source image proportions are always preserved. */
   width: number; pivotX: number; pivotY: number
@@ -21,7 +23,7 @@ export interface CutoutLayer {
 }
 export interface CutoutCameraKeyframe { id: string; timeMs: number; x: number; y: number; zoom: number; easing: CutoutEasing }
 export interface CutoutCamera { x: number; y: number; zoom: number; keyframes: CutoutCameraKeyframe[] }
-export interface CutoutScene { specialVideo?: SpecialVideo; version: 1; enabled: boolean; backgroundColor: string; camera: CutoutCamera; layers: CutoutLayer[]; ik?: CutoutIkChain[] }
+export interface CutoutScene { shots?: CutoutShot[]; specialVideo?: SpecialVideo; version: 1; enabled: boolean; backgroundColor: string; camera: CutoutCamera; layers: CutoutLayer[]; ik?: CutoutIkChain[] }
 export type CutoutMatrix = [number, number, number, number, number, number]
 export interface CutoutDrawItem { layerId: string; assetId: string; matrix: CutoutMatrix; width: number; height: number; opacity: number; mask?: CutoutMask | null }
 export interface CutoutAssetSize { width: number | null; height: number | null }
@@ -65,11 +67,27 @@ function transform(value: unknown): CutoutTransform {
   return { x: number(v.x, -10, 10, 'Posisi X'), y: number(v.y, -10, 10, 'Posisi Y'),
     scale: number(v.scale, 0.01, 10, 'Skala'), rotation: number(v.rotation, -36_000, 36_000, 'Rotasi'), opacity: number(v.opacity, 0, 1, 'Opacity') }
 }
+export const CUTOUT_POSE_TIMING_RULE = 'timeMs harus UNIK dalam satu grup layerKey; jangan pernah memberi dua pose dalam grup yang sama timestamp yang sama.'
+
+/** Preserve every pose; move a collision forward by whole milliseconds and log it. */
+export function claimCutoutPoseTime(id:string,requested:number,occupied:Set<number>,endExclusive=CUTOUT_LIMITS.timeMs+1):number {
+  let resolved=time(requested)
+  while(occupied.has(resolved)&&resolved<endExclusive&&resolved<=CUTOUT_LIMITS.timeMs)resolved+=1
+  if(resolved>=endExclusive||resolved>CUTOUT_LIMITS.timeMs)throw new Error(`Tidak ada milidetik kosong setelah ${requested} untuk pose ${id} di dalam durasi. Pisahkan/atur ulang pose; tidak ada pose dibuang.`)
+  occupied.add(resolved)
+  if(resolved!==requested)console.warn(`timeMs digeser otomatis: ${id} ${requested}→${resolved}`)
+  return resolved
+}
+
 function sequence<T extends { id: string; timeMs: number }>(raw: unknown, max: number, parse: (value: unknown) => T, label: string): T[] {
   if (!Array.isArray(raw) || raw.length > max) throw new Error(`${label} maksimal ${max} entri.`)
   const result = raw.map(parse).sort((a, b) => a.timeMs - b.timeMs)
   if (new Set(result.map(item => item.id)).size !== result.length) throw new Error(`ID ${label} harus unik.`)
-  if (new Set(result.map(item => item.timeMs)).size !== result.length) throw new Error(`Waktu ${label} tidak boleh berulang.`)
+  if(label==='pose'){
+    const occupied=new Set<number>()
+    for(const item of result)item.timeMs=claimCutoutPoseTime(item.id,item.timeMs,occupied)
+    result.sort((a,b)=>a.timeMs-b.timeMs)
+  }else if (new Set(result.map(item => item.timeMs)).size !== result.length) throw new Error(`Waktu ${label} tidak boleh berulang.`)
   return result
 }
 function time(value: unknown): number { return number(value, 0, CUTOUT_LIMITS.timeMs, 'Waktu animasi (ms)') }
@@ -90,9 +108,10 @@ export function normalizeCutoutScene(value: unknown): CutoutScene | null {
   const layers: CutoutLayer[] = v.layers.map(raw => {
     const l = object(raw, 'Layer Cutout')
     if (typeof l.name !== 'string' || !l.name.trim() || l.name.length > 120) throw new Error('Nama layer harus berisi 1–120 karakter.')
+    if(l.motionRole!==undefined&&!['mover','static'].includes(String(l.motionRole)))throw new Error('Peran gerak layer tidak valid.')
     const inMs = time(l.inMs), outMs = l.outMs === null ? null : time(l.outMs)
     if (outMs !== null && outMs <= inMs) throw new Error('Waktu keluar layer harus setelah waktu masuk.')
-    return { id: identifier(l.id, 'ID layer'), name: l.name.trim(), assetId: l.assetId === null ? null : identifier(l.assetId, 'ID aset'),
+    return { ...(l.motionRole?{motionRole:l.motionRole as 'mover'|'static'}:{}), id: identifier(l.id, 'ID layer'), name: l.name.trim(), assetId: l.assetId === null ? null : identifier(l.assetId, 'ID aset'),
       parentId: l.parentId === null ? null : identifier(l.parentId, 'ID induk'), width: number(l.width, 0.005, 10, 'Lebar layer'),
       pivotX: number(l.pivotX, -2, 3, 'Pivot X'), pivotY: number(l.pivotY, -2, 3, 'Pivot Y'), depth: number(l.depth, 0, 2, 'Kedalaman'),
       inMs, outMs, visible: flag(l.visible, 'Visibilitas'), transform: transform(l.transform),
@@ -109,6 +128,13 @@ export function normalizeCutoutScene(value: unknown): CutoutScene | null {
   })
   const byId = new Map(layers.map(layer => [layer.id, layer]))
   if (byId.size !== layers.length) throw new Error('ID layer harus unik.')
+  if(v.shots!==undefined){
+    const registered=new Set(layers.flatMap(l=>[l.assetId,...l.poses.map(p=>p.assetId)]))
+    for(const shot of normalizeShotMetadata(v.shots)){
+      if(!registered.has(shot.startPose)||!registered.has(shot.endPose))throw new Error('Pose metadata shot harus tersedia pada layer komposisi.')
+      if(shot.movers.some(id=>!byId.has(id)||byId.get(id)!.motionRole==='static'))throw new Error('Mover metadata shot harus layer yang tersedia dan diizinkan bergerak.')
+    }
+  }
   for (const layer of layers) {
     const chain = new Set([layer.id])
     let parent = layer.parentId
@@ -119,7 +145,7 @@ export function normalizeCutoutScene(value: unknown): CutoutScene | null {
       chain.add(parent); parent = ancestor.parentId
     }
   }
-  return { version: 1, enabled: flag(v.enabled, 'Status Cutout'), backgroundColor: v.backgroundColor, camera, layers,
+  return { ...(v.shots===undefined?{}:{shots:normalizeShotMetadata(v.shots)}), version: 1, enabled: flag(v.enabled, 'Status Cutout'), backgroundColor: v.backgroundColor, camera, layers,
     ...(v.specialVideo == null ? {} : { specialVideo: normalizeSpecialVideo(v.specialVideo, layers.length) }),
     ...(v.ik === undefined ? {} : { ik: normalizeCutoutIk(v.ik, layers) }) }
 }

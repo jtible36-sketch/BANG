@@ -1,7 +1,10 @@
+import {mkdirSync,writeFileSync} from 'node:fs'
+import {dirname} from 'node:path'
+import {assetAbsPath} from '../src/main/paths'
 import assert from 'node:assert/strict'
 import { getDb, closeDb } from '../src/main/db'
 import { createProject, replaceScript, getBundle, patchClip, insertAsset, getJob, saveSnapshot } from '../src/main/repo'
-import { getEditingContext, validateEditingPlan, applyEditingPlan, undoEditingPlan, updateEditorPresence, withEditingEpoch, assertEditingEpoch, startCodexAutoEdit, editorAutomationStatus } from '../src/main/editor-automation'
+import { getEditingContext, validateEditingPlan, applyEditingPlan, undoEditingPlan, updateEditorPresence, withEditingEpoch, assertEditingEpoch, startCodexAutoEdit as startAgentComposer, editorAutomationStatus } from '../src/main/editor-automation'
 import { createCutoutScene, createCutoutLayer } from '../src/shared/cutout-timeline'
 import { createCutoutMask } from '../src/shared/cutout-mask'
 import { cancelJob } from '../src/main/jobs'
@@ -171,6 +174,10 @@ export async function run(): Promise<void> {
       assert.throws(() => validateEditingPlan(p.id, rev(), { summary: 'inject', clips: [], command: 'shell' }), /field tidak didukung/)
     })
     await check('real job cancellation aborts mocked Codex generation before any edit', async () => {
+      // Whole-project preflight now correctly requires every clip to have media.
+      // Prepare the second fixture clip so this still tests in-flight cancellation.
+      const ready=createCutoutScene();ready.layers=[createCutoutLayer('background','Background',background.id),createCutoutLayer('held','Held person',image.id)];ready.layers[0].width=1;patchClip(getBundle(p.id).clips[1].id,{cutout:ready});
+      for(const a of getBundle(p.id).assets.filter(a=>a.kind==='image')){const path=assetAbsPath(p.id,a.localPath);mkdirSync(dirname(path),{recursive:true});writeFileSync(path,Buffer.from('controlled decoder fixture'))}
       let entered = false
       g.__generateCodex = ({ signal }: { signal: AbortSignal }) => new Promise((_resolve, reject) => { entered = true; signal.addEventListener('abort', () => reject(new Error('aborted')), { once: true }) })
       const before = rev(), job = startCodexAutoEdit({ projectId: p.id, instruction: 'Move actor' })
@@ -199,7 +206,7 @@ export async function run(): Promise<void> {
       assert.match(done.error!, /di luar adegan/); assert.equal(rev(), before)
     })
     await check('successful Codex structured plan saves through the real transaction and creates undo', async () => {
-      g.__generateCodex = async () => ({ summary: 'Pindah pada akhir shot', clips: [{ clipId, cutout: scene, transition: 'cut', durationMs: null }], editor: null })
+      g.__generateCodex = async () => ({ summary: 'Pindah pada akhir shot', clips: [{ clipId, cutout: {...scene,camera:{...scene.camera,zoom:1.01}}, transition: 'cut', durationMs: null }], editor: null })
       const job = startCodexAutoEdit({ projectId: p.id, clipId, instruction: 'Move actor' })
       const done = await until(() => getJob(job.id)!, j => j.status === 'done' || j.status === 'failed')
       assert.equal(done.status, 'done', done.error ?? undefined)
@@ -214,3 +221,6 @@ export async function run(): Promise<void> {
     console.log(JSON.stringify({ status: 'passed', cases, realSQLite: true, realJobQueue: true, liveUserDatabaseTouched: false }, null, 2))
   } finally { closeDb() }
 }
+
+// Explicit optional-agent regression; default baseline/consent covered by cutout-permanent integration.
+function startCodexAutoEdit(input:Parameters<typeof startAgentComposer>[0]){return startAgentComposer({...input,productionStrategy:'agent'})}

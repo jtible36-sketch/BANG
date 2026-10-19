@@ -6,11 +6,12 @@ import { INSPECTOR_TABS, Inspector, type InspectorTab } from './editor/Inspector
 import { Player } from './editor/Player'
 import { Timeline } from './editor/Timeline'
 import { CUTOUT_FACT_STYLE_ID } from '@shared/cutout-facts'
+import { isCutoutReference } from '@shared/cutout-reference-profile'
 
 export function EditorStep() {
   const { project, assets, selectedClipId, select, clips } = useProject()
   const { items, total, chunks } = useTimeline()
-  const [tab, setTab] = useState<InspectorTab>('klip')
+  const [tab, setTab] = useState<InspectorTab>(()=>project&&isCutoutReference(project)?'otomatis':'klip')
   const selectedOverlayId = useOverlayUi((s) => s.selectedId)
   const selectOverlay = useOverlayUi((s) => s.select)
   const selectedSfxId = useSfxUi(s => s.selectedId)
@@ -69,7 +70,7 @@ export function EditorStep() {
             )
           })}
         </nav>
-        <Player
+        <Player styleId={project.styleId}
           items={items}
           total={total}
           chunks={chunks}

@@ -15,6 +15,8 @@ const appRequire = createRequire(path.join(root, 'package.json'))
 const esbuild = appRequire('esbuild')
 const scratch = fs.mkdtempSync(path.join(os.tmpdir(), 'naraflow-cutout-direction-test-'))
 const modules = {
+ // Scoped media-consent fixture only; no real providers. Real gate tested separately.
+ './cutout-studio':`export const requireBriefApproved=()=>({approved:true,fixtureConsent:true});export const requireAssetConsent=()=>{};export const consumeAssetConsent=()=>{};export const readClipOutcomes=()=>[];export const completedClipMatches=()=>false;export const studioReport=()=>[];export const writeClipOutcome=()=>{};export const loadComedyProfile=()=>({id:'comedy-jolt',verified:false});`,
   './naraflow-mcp': `export const getNaraflowMcpStatus=()=>({running:false,descriptorPath:'fixture',relayPath:'fixture'});`,
   './codex-text': `export const generateCodexJson=options=>globalThis.__assetPlan(options);`,
   './codex-connections': `export const requireCodexConnection=()=>{};export const withCodexConnection=async(c,fn,signal)=>fn(signal);export const codexConnectionStatus=async()=>({available:true,authenticated:true,imageGeneration:true,connections:{image:true,visual:true}});`,

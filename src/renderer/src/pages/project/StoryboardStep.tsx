@@ -1,3 +1,5 @@
+import { isCutoutReference } from '@shared/cutout-reference-profile'
+import { CutoutVisualStep } from './CutoutVisualStep'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import {
   ArrowLeft,
@@ -673,6 +675,11 @@ function ClipPanel({ clip, index, total, higgsfield, codexStatus, checkingCodex 
 }
 
 export function StoryboardStep() {
+  const project=useProject(s=>s.project)
+  return project&&isCutoutReference(project)?<CutoutVisualStep key={project.id}/>:<StandardStoryboardStep/>
+}
+
+function StandardStoryboardStep() {
   const { project, clips, characters, assets, jobs, selectedClipId, select, addClip, updateProject, flush, load, upsertJob } = useProject()
   const { toast, go } = useApp()
   const higgsfield = useVisualWorkflow()

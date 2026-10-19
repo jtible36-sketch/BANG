@@ -1,3 +1,4 @@
+import {keyword} from '@shared/cutout-shot-proposals'
 import { specialVideoTime } from '@shared/special-clips'
 import { useEffect, useLayoutEffect, useRef, useState, type CSSProperties, type PointerEvent } from 'react'
 import { Pause, Play, SkipBack, SkipForward } from 'lucide-react'
@@ -83,7 +84,7 @@ function textWidth(font: string, text: string): number {
   return measureCtx.measureText(text).width
 }
 
-function Caption({ chunks, t, editor, width, height }: { chunks: CaptionChunk[]; t: number; editor: EditorSettings; width: number; height: number }) {
+function Caption({ chunks, t, editor, width, height, keywordsEnabled }: {keywordsEnabled?:boolean; chunks: CaptionChunk[]; t: number; editor: EditorSettings; width: number; height: number }) {
   const style = resolveCaption(editor)
   if (!style) return null
   const hit = captionAt(chunks, t)
@@ -126,7 +127,7 @@ function Caption({ chunks, t, editor, width, height }: { chunks: CaptionChunk[];
           {line.map((word, k) => {
             const i = index++
             return (
-              <span key={k} style={highlight && i === hit.word ? { color: style.highlight } : undefined}>
+              <span key={k} style={highlight && i === hit.word && (!keywordsEnabled||!editor.cutoutV5?.keywords||keyword(hit.chunk.words[i].text,editor.cutoutV5.keywords)) ? { color: style.highlight } : undefined}>
                 {word}
                 {k < line.length - 1 ? ' ' : ''}
               </span>
@@ -224,7 +225,7 @@ export function Player({
   editor,
   assets,
   editOverlays,
-  editCutout = false
+  editCutout = false, styleId
 }: {
   items: TimelineItem[]
   total: number
@@ -235,6 +236,7 @@ export function Player({
   /** The Overlay tab is open: overlays can be selected and dragged. */
   editOverlays: boolean
   /** The Cutout tab is open: objects can be selected in the preview. */
+  styleId?: string
   editCutout?: boolean
 }) {
   const { t, playing, toggle, seek } = usePlayback()
@@ -297,7 +299,7 @@ export function Player({
           .map((o) => (
             <OverlayItem key={o.id} o={o} asset={o.kind === 'image' ? (assets[o.assetId] ?? null) : null} box={box} editable={editOverlays} />
           ))}
-        <Caption chunks={chunks} t={t} editor={editor} width={box.w} height={box.h} />
+        <Caption keywordsEnabled={styleId==='cutout-facts'} chunks={chunks} t={t} editor={editor} width={box.w} height={box.h} />
         {shown
           .filter((o) => o.kind === 'text')
           .map((o) => (

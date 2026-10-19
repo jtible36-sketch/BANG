@@ -305,10 +305,10 @@ export function chunkWords(words: WordTiming[], maxWords = 5, maxChars = 30): Ca
 }
 
 /** Word timings of every clip shifted onto the video timeline, chunked per clip so a line never spans two scenes. */
-export function timelineChunks(items: { start: number; words: WordTiming[] }[]): CaptionChunk[] {
+export function timelineChunks(items: { start: number; words: WordTiming[] }[], cutoutNumericDisplay=false): CaptionChunk[] {
   const out: CaptionChunk[] = []
   for (const item of items) {
-    for (const c of chunkWords(item.words)) {
+    for (const c of chunkWords(cutoutNumericDisplay?cutoutDisplayWordTimings(item.words):item.words)) {
       out.push({
         start: c.start + item.start,
         end: c.end + item.start,
@@ -335,4 +335,19 @@ export function captionAt(chunks: CaptionChunk[], t: number): { chunk: CaptionCh
 
 export function displayWord(text: string, style: CaptionStyle): string {
   return style.uppercase ? text.toLocaleUpperCase('id-ID') : text
+}
+
+/** Display-only proportional segments, NOT newly measured word alignment. Original audio/timings stay intact.
+ * A long year/range token is expanded into Indonesian spoken words. Other presets opt out. */
+export function cutoutDisplayWordTimings(words:WordTiming[]):WordTiming[]{
+ const small=['nol','satu','dua','tiga','empat','lima','enam','tujuh','delapan','sembilan','sepuluh','sebelas']
+ const say=(n:number):string=>n<12?small[n]:n<20?say(n-10)+' belas':n<100?say(Math.floor(n/10))+' puluh'+(n%10?' '+say(n%10):''):n<200?'seratus'+(n%100?' '+say(n%100):''):n<1000?say(Math.floor(n/100))+' ratus'+(n%100?' '+say(n%100):''):n<2000?'seribu'+(n%1000?' '+say(n%1000):''):say(Math.floor(n/1000))+' ribu'+(n%1000?' '+say(n%1000):'')
+ return words.flatMap(w=>{
+  if(w.end-w.start<=1.2)return [{...w}]
+  const range=w.text.match(/^(\d{3,4})[–—-](\d{3,4})([.!?,]?)$/),single=w.text.match(/^(\d{3,4})([.!?,]?)$/)
+  if(!range&&!single)return [{...w}]
+  const text=range?say(Number(range[1]))+' sampai '+say(Number(range[2]))+(range[3]??''):say(Number(single![1]))+(single![2]??'')
+  const tokens=text.split(' '),weights=tokens.map(t=>t.replace(/[^a-z]/gi,'').length),total=weights.reduce((a,b)=>a+b,0);let at=w.start
+  return tokens.map((text,i)=>{const end=i===tokens.length-1?w.end:at+(w.end-w.start)*weights[i]/total,out={...w,text,start:at,end};at=end;return out})
+ })
 }

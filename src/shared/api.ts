@@ -34,12 +34,28 @@ import type { MasterPromptProfile } from './master-prompts'
 /** The typed surface the preload script exposes as `window.api`. */
 export interface StudioApi {
   cutoutAssets: {
+    generateBatch(input: import('./cutout-visual').CutoutVisualBatchInput): Promise<Job>
     state(clipId: string): Promise<import('./cutout-assets').CutoutAssetState>
-    plan(clipId: string, options?: {maxAssets?: number; instruction?: string; motion?: string}): Promise<Job>
+    plan(clipId: string, options?: {maxAssets?: number; instruction?: string; motion?: string; beatTemplate?: boolean}): Promise<Job>
     save(clipId: string, items: import('./cutout-assets').CutoutAssetItem[]): Promise<import('./cutout-assets').CutoutAssetPlan>
     status(provider: import('./cutout-assets').CutoutAssetProvider): Promise<{ ready: boolean; message: string }>
     generate(input: { clipId: string; planId: string; itemId: string; provider: import('./cutout-assets').CutoutAssetProvider; format: 'png' | 'webp' }): Promise<Job>
     recover(clipId: string): Promise<Job[]>
+  }
+  cutoutStudio:{
+    reviewAsset(projectId:string,assetId:string,approved:boolean):Promise<Asset>
+    report(projectId:string):Promise<import('./cutout-permanent').ClipPreflight[]>
+    saveBrief(projectId:string,clipId:string,brief:import('./cutout-permanent').SceneBrief):Promise<import('./cutout-permanent').SceneBrief>
+    approveCredits(projectId:string,clipId:string,planId:string,itemIds:string[]):Promise<{approved:number}>
+    upgradePlan(clipId:string,options?:{motionProfile:'png-impact'}):Promise<import('./cutout-assets').CutoutAssetPlan>
+    outcomes(projectId:string):Promise<{clipId:string;jobId:string;status:import('./cutout-permanent').ClipProductionStatus;reason:string}[]>
+    backgrounds(projectId:string):Promise<{assetId:string;locationKey:string;review:string}[]>
+    comedyProfile():Promise<import('./comedy-jolt').ComedyJoltProfile>
+    history(projectId:string,clipId:string):Promise<Job[]>
+  }
+  cutoutV5: {
+    readiness(projectId:string): Promise<import('./cutout-shot-rules').ClipReadiness[]>
+    recordLicense(projectId:string,assetId:string,manifest:import('./asset-license').AssetLicenseManifest,internetImage:boolean):Promise<Asset>
   }
   editorAutomation: {
     status(): Promise<import('./editor-automation').EditorAutomationStatus>

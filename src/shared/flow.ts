@@ -9,6 +9,8 @@ export const FLOW_VIDEO_SECONDS = 4
 export const FLOW_IMAGE_SECONDS = 1.5
 
 export interface FlowStatus {
+  videoReady?: boolean
+  completedVideoJobs?: number
   available: boolean
   signedIn: boolean
   inProject: boolean

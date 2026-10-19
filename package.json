@@ -20,7 +20,18 @@
     "test:sfx": "node scripts/test-sfx.cjs",
     "test:cutout-advanced": "node scripts/test-cutout-advanced.cjs",
     "test:cutout-assets": "node scripts/test-cutout-assets.cjs",
-    "test:cutout-production": "node scripts/test-cutout-production.cjs"
+    "test:cutout-production": "node scripts/test-cutout-production.cjs",
+    "test:direction": "node scripts/test-cutout-direction-policy.cjs && node scripts/test-cutout-direction.cjs",
+    "test:composition-repair-loop": "node scripts/test-composition-repair-loop.cjs",
+    "test:shot-motion": "node scripts/test-shot-motion.cjs",
+    "test:shot-production": "node scripts/test-shot-production.cjs",
+    "test:cutout-visual": "node scripts/test-cutout-visual.cjs",
+    "test:cutout-v5": "node scripts/test-cutout-v5.cjs",
+    "test:cutout-v5-integration": "node scripts/test-cutout-v5-integration.cjs",
+    "test:autoedit-klip1": "node scripts/test-autoedit-klip1.cjs && node scripts/test-autoedit-klip1-integration.cjs",
+    "test:cutout-permanent": "node scripts/test-cutout-permanent.cjs && node scripts/test-cutout-permanent-integration.cjs",
+    "cutout:dry-run": "node scripts/cutout-dry-run.cjs",
+    "test:cutout-prefill-impact": "node scripts/test-cutout-prefill-impact.cjs"
   },
   "dependencies": {
     "@google/genai": "^2.24.0",

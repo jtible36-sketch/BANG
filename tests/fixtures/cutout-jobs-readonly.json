@@ -1,0 +1,711 @@
+[
+  {
+    "id": "d9cd2eef-9a02-4392-8605-7ec96fea5d2e",
+    "clip_id": null,
+    "kind": "narration",
+    "status": "done",
+    "error": null,
+    "message": "10 adegan disuarakan dalam satu rekaman",
+    "itemId": null,
+    "compositionRejection": null
+  },
+  {
+    "id": "8d252d1b-0785-44b9-b805-36461dea6567",
+    "clip_id": null,
+    "kind": "sheet",
+    "status": "done",
+    "error": null,
+    "message": null,
+    "itemId": null,
+    "compositionRejection": null
+  },
+  {
+    "id": "92a1e816-9ebd-4f2e-b37e-b0567e0a6cf8",
+    "clip_id": null,
+    "kind": "sheet",
+    "status": "done",
+    "error": null,
+    "message": null,
+    "itemId": null,
+    "compositionRejection": null
+  },
+  {
+    "id": "a48366de-86ef-4c1a-a03a-9aa000163457",
+    "clip_id": null,
+    "kind": "sheet",
+    "status": "done",
+    "error": null,
+    "message": null,
+    "itemId": null,
+    "compositionRejection": null
+  },
+  {
+    "id": "57b8a5ea-f320-4ac8-8e9d-13fcd3fdf471",
+    "clip_id": null,
+    "kind": "sheet",
+    "status": "done",
+    "error": null,
+    "message": null,
+    "itemId": null,
+    "compositionRejection": null
+  },
+  {
+    "id": "1565e639-773e-41bf-aaba-b0bf5876870d",
+    "clip_id": "d3c47a82-818e-4564-acd4-238968ef9d06",
+    "kind": "cutout-plan",
+    "status": "done",
+    "error": null,
+    "message": "5 kebutuhan aset siap dibuat.",
+    "itemId": null,
+    "compositionRejection": null
+  },
+  {
+    "id": "48be7c93-b1dd-4286-b786-5ab818c4a22a",
+    "clip_id": null,
+    "kind": "cutout-batch",
+    "status": "done",
+    "error": null,
+    "message": "5 aset selesai. Tinjau alpha, identitas dan pose, lalu lanjut Produksi.",
+    "itemId": null,
+    "compositionRejection": null
+  },
+  {
+    "id": "a9c0d71c-8be5-41de-87e2-968c8b4d2913",
+    "clip_id": "d3c47a82-818e-4564-acd4-238968ef9d06",
+    "kind": "cutout-asset",
+    "status": "done",
+    "error": null,
+    "message": null,
+    "itemId": "plate-arctic",
+    "compositionRejection": null
+  },
+  {
+    "id": "ed9fb746-2fb6-4fec-b8e0-20de0470aa28",
+    "clip_id": "d3c47a82-818e-4564-acd4-238968ef9d06",
+    "kind": "cutout-asset",
+    "status": "done",
+    "error": null,
+    "message": null,
+    "itemId": "thomas-hold",
+    "compositionRejection": null
+  },
+  {
+    "id": "9678b8aa-d6bd-4266-b994-020a4d21fe47",
+    "clip_id": "d3c47a82-818e-4564-acd4-238968ef9d06",
+    "kind": "cutout-asset",
+    "status": "done",
+    "error": null,
+    "message": null,
+    "itemId": "thomas-surprised",
+    "compositionRejection": null
+  },
+  {
+    "id": "4e5168d5-59d6-44f5-8a04-e775f80628d3",
+    "clip_id": "d3c47a82-818e-4564-acd4-238968ef9d06",
+    "kind": "cutout-asset",
+    "status": "done",
+    "error": null,
+    "message": null,
+    "itemId": "tools",
+    "compositionRejection": null
+  },
+  {
+    "id": "2a6bf988-11a7-4492-8548-5b774e4bd85d",
+    "clip_id": "d3c47a82-818e-4564-acd4-238968ef9d06",
+    "kind": "cutout-asset",
+    "status": "done",
+    "error": null,
+    "message": null,
+    "itemId": "rail",
+    "compositionRejection": null
+  },
+  {
+    "id": "95581b83-a13a-46ca-969c-44dd3fb29a06",
+    "clip_id": "d3c47a82-818e-4564-acd4-238968ef9d06",
+    "kind": "auto-edit",
+    "status": "failed",
+    "error": "Komposisi belum lolos tinjauan visual: Bekal dan Perkakas · shot 1\nAt 0 and 1300 ms, Thomas holds the can in the same neutral pose. At 2600 ms, he looks down toward the can rather than reacting to the tools; the planned change to a surprised look at the tools is not visibly achieved.\nThe frames show a can and tools but no opening action or visible change to the can. They establish the contrast, but do not depict the narrated opening with a hammer.\nDelta shot dan aset selesai tersimpan. Lanjutkan proses terakhir untuk memakai kembali hasilnya.",
+    "message": null,
+    "itemId": null,
+    "compositionRejection": null
+  },
+  {
+    "id": "93eccdfa-916b-4ada-8ba3-24b5de577333",
+    "clip_id": "d3c47a82-818e-4564-acd4-238968ef9d06",
+    "kind": "auto-edit",
+    "status": "failed",
+    "error": "Komposisi belum lolos tinjauan visual: Bekal dan Perkakas · shot 1\nAt 0, 1300, and 2600 ms, Thomas holds the can, but no hammer or other tool is visible on the crate or elsewhere. The planned contrast with heavy tools—and the reaction to them—does not read.\nThe 2600 ms frame shows at most a slight change in gaze; it does not clearly establish the described surprised reaction. The sampled frames do not show a distinct action or meaningful pose change.\nAset perlu diperbaiki/ditambahkan: A visible hammer or other relevant tool prop, placed on the crate or in Thomas’s reach, is needed for the planned contrast and reaction.\nDelta shot dan aset selesai tersimpan. Lanjutkan proses terakhir untuk memakai kembali hasilnya.",
+    "message": null,
+    "itemId": null,
+    "compositionRejection": {
+      "clipId": "d3c47a82-818e-4564-acd4-238968ef9d06",
+      "planId": "1b308cfe-e0fc-4081-89d8-757e1eb2b351",
+      "sourceHash": "7eb3bddb93db02dbded686b2e7f6f15431bc24c10454d1bea7ab63ce7a698d2e",
+      "structure": "0bb64a1cc1da2d5da12fb858a01ad900e3c5e596b95aa15b72c683794932e86b",
+      "missingAssets": [
+        "A visible hammer or other relevant tool prop, placed on the crate or in Thomas’s reach, is needed for the planned contrast and reaction."
+      ],
+      "version": 1
+    }
+  },
+  {
+    "id": "6f5a5ebc-8be0-4627-bbbd-99485734e135",
+    "clip_id": "d3c47a82-818e-4564-acd4-238968ef9d06",
+    "kind": "cutout-asset",
+    "status": "done",
+    "error": null,
+    "message": null,
+    "itemId": "review-ed903078d40226706484ae9b09b3",
+    "compositionRejection": null
+  },
+  {
+    "id": "59b600f2-41fd-4ca9-bcbe-32144f4bf642",
+    "clip_id": null,
+    "kind": "auto-edit",
+    "status": "failed",
+    "error": "Rencana penyutradaraan tidak valid: shot 1: pergantian pose grup tools harus ditandai mover sejak perencanaan.",
+    "message": null,
+    "itemId": null,
+    "compositionRejection": {
+      "clipId": "d3c47a82-818e-4564-acd4-238968ef9d06",
+      "planId": "1b308cfe-e0fc-4081-89d8-757e1eb2b351",
+      "sourceHash": "7eb3bddb93db02dbded686b2e7f6f15431bc24c10454d1bea7ab63ce7a698d2e",
+      "structure": "0bb64a1cc1da2d5da12fb858a01ad900e3c5e596b95aa15b72c683794932e86b",
+      "missingAssets": [
+        "A visible hammer or other relevant tool prop, placed on the crate or in Thomas’s reach, is needed for the planned contrast and reaction."
+      ],
+      "version": 1,
+      "items": [
+        {
+          "layerKey": "tools",
+          "id": "review-846bebd319bce22737ea5fa4da8a",
+          "role": "prop",
+          "label": "Palu dan pahat di atas peti",
+          "prompt": "Create one photographic isolated prop cutout: a period-appropriate early nineteenth-century hand hammer and stout iron chisel arranged together diagonally, resting as a static still life on an invisible horizontal surface. Worn wooden hammer handle, forged iron head, believable iron chisel; no modern grips. Match the British Arctic sailing expedition ship setting of 1824–1825, chest-level perspective, cold morning daylight with warm upper-left highlights, realistic material texture and subtle contact shadows directly beneath the tools. Keep the arrangement compact and clearly recognizable at a glance. Genuine transparent alpha around complete silhouettes, with padding. No chest, hands, can, person, background, text, labels, logo, or watermark. Static still image only; it cannot depict continuous striking or can-opening action.",
+          "characterId": null,
+          "timeMs": 1
+        }
+      ]
+    }
+  },
+  {
+    "id": "d1723485-b4f7-45ae-83ed-f48d6a289124",
+    "clip_id": null,
+    "kind": "auto-edit",
+    "status": "failed",
+    "error": "Rencana penyutradaraan tidak valid: shot 1: pergantian pose grup tools harus ditandai mover sejak perencanaan.",
+    "message": null,
+    "itemId": null,
+    "compositionRejection": {
+      "clipId": "d3c47a82-818e-4564-acd4-238968ef9d06",
+      "planId": "1b308cfe-e0fc-4081-89d8-757e1eb2b351",
+      "sourceHash": "7eb3bddb93db02dbded686b2e7f6f15431bc24c10454d1bea7ab63ce7a698d2e",
+      "structure": "0bb64a1cc1da2d5da12fb858a01ad900e3c5e596b95aa15b72c683794932e86b",
+      "missingAssets": [
+        "A visible hammer or other relevant tool prop, placed on the crate or in Thomas’s reach, is needed for the planned contrast and reaction."
+      ],
+      "version": 1,
+      "items": [
+        {
+          "layerKey": "tools",
+          "id": "review-846bebd319bce22737ea5fa4da8a",
+          "role": "prop",
+          "label": "Palu dan pahat di atas peti",
+          "prompt": "Create one photographic isolated prop cutout: a period-appropriate early nineteenth-century hand hammer and stout iron chisel arranged together diagonally, resting as a static still life on an invisible horizontal surface. Worn wooden hammer handle, forged iron head, believable iron chisel; no modern grips. Match the British Arctic sailing expedition ship setting of 1824–1825, chest-level perspective, cold morning daylight with warm upper-left highlights, realistic material texture and subtle contact shadows directly beneath the tools. Keep the arrangement compact and clearly recognizable at a glance. Genuine transparent alpha around complete silhouettes, with padding. No chest, hands, can, person, background, text, labels, logo, or watermark. Static still image only; it cannot depict continuous striking or can-opening action.",
+          "characterId": null,
+          "timeMs": 1
+        }
+      ]
+    }
+  },
+  {
+    "id": "61a72bcc-72c0-4c6d-a07d-57586eff7eef",
+    "clip_id": null,
+    "kind": "auto-edit",
+    "status": "failed",
+    "error": "Revisi proyek berubah selama produksi. Aset selesai tetap di Cutout; komposisi tidak ditimpa. Jalankan kembali setelah menyimpan.",
+    "message": null,
+    "itemId": null,
+    "compositionRejection": null
+  },
+  {
+    "id": "7e6a0432-f9c8-43eb-b7f7-d3037873dd88",
+    "clip_id": "4efea541-b1fb-4152-a68e-e3a8dc247475",
+    "kind": "cutout-plan",
+    "status": "done",
+    "error": null,
+    "message": "6 kebutuhan aset siap dibuat.",
+    "itemId": null,
+    "compositionRejection": null
+  },
+  {
+    "id": "dd02881f-7c91-4f12-a5e7-11f745db38cd",
+    "clip_id": "e4fa3222-9a1a-4a79-91e4-43ead425e066",
+    "kind": "cutout-plan",
+    "status": "failed",
+    "error": "Karakter aset harus berasal dari proyek ini.",
+    "message": null,
+    "itemId": null,
+    "compositionRejection": null
+  },
+  {
+    "id": "98ba4bcf-1774-47b3-a28f-012d2449629f",
+    "clip_id": "3e945e1e-4316-4c30-8f03-abd557a496ea",
+    "kind": "cutout-plan",
+    "status": "done",
+    "error": null,
+    "message": "5 kebutuhan aset siap dibuat.",
+    "itemId": null,
+    "compositionRejection": null
+  },
+  {
+    "id": "0b827b42-788b-41dd-9e68-0d803396012b",
+    "clip_id": "2c7c6c64-6386-4c57-98e6-3fc21e4b2a02",
+    "kind": "cutout-plan",
+    "status": "done",
+    "error": null,
+    "message": "9 kebutuhan aset siap dibuat.",
+    "itemId": null,
+    "compositionRejection": null
+  },
+  {
+    "id": "7ab83cf1-aa55-4561-ae0c-69160e877496",
+    "clip_id": "d9710ddb-7299-4bdc-8246-d9b2499bc470",
+    "kind": "cutout-plan",
+    "status": "failed",
+    "error": "blocked: validasi rencana klip d9710ddb-7299-4bdc-8246-d9b2499bc470 gagal setelah satu perbaikan. Sumber: validator lokal. Codex gagal memproses permintaan. (other) {\"type\":\"error\",\"error\":{\"message\":\"Invalid schema for response_format 'codex_output_schema': 'schema.properties.shots.items.required' is required to include every key in properties. Missing 'beat'.\",\"type\":\"invalid_request_error\",\"param\":\"text.format.schema\",\"code\":\"invalid_json_schema\"},\"status\":400} Pilihan: rencanakan ulang grup menjadi mover (maksimal 2) atau pertahankan static dan hapus pergantian/pilih satu varian. Aset selesai tetap disimpan; proyek belum diubah.",
+    "message": null,
+    "itemId": null,
+    "compositionRejection": null
+  },
+  {
+    "id": "16c180fc-76a1-487a-94f9-aee3e5a16353",
+    "clip_id": "d2e33145-d5f0-4a5d-a24f-537105b29dc4",
+    "kind": "cutout-plan",
+    "status": "failed",
+    "error": "Grup clara_pose memiliki motionRole bertentangan; selaraskan rencana aset sebelum produksi.",
+    "message": null,
+    "itemId": null,
+    "compositionRejection": null
+  },
+  {
+    "id": "a13ac7f4-7191-45bd-a1fb-eac24bb70e56",
+    "clip_id": "1bf35714-d7b6-481d-8298-47512a0527d4",
+    "kind": "cutout-plan",
+    "status": "failed",
+    "error": "blocked: validasi rencana klip 1bf35714-d7b6-481d-8298-47512a0527d4 gagal setelah satu perbaikan. Sumber: validator lokal. Codex gagal memproses permintaan. (other) {\"type\":\"error\",\"error\":{\"message\":\"Invalid schema for response_format 'codex_output_schema': 'schema.properties.shots.items.required' is required to include every key in properties. Missing 'beat'.\",\"type\":\"invalid_request_error\",\"param\":\"text.format.schema\",\"code\":\"invalid_json_schema\"},\"status\":400} Pilihan: rencanakan ulang grup menjadi mover (maksimal 2) atau pertahankan static dan hapus pergantian/pilih satu varian. Aset selesai tetap disimpan; proyek belum diubah.",
+    "message": null,
+    "itemId": null,
+    "compositionRejection": null
+  },
+  {
+    "id": "aeba9ae4-caf7-4b15-ada5-0a0f7b1855a7",
+    "clip_id": "5764da19-220b-4eea-8628-1c357cc4fe17",
+    "kind": "cutout-plan",
+    "status": "done",
+    "error": null,
+    "message": "4 kebutuhan aset siap dibuat.",
+    "itemId": null,
+    "compositionRejection": null
+  },
+  {
+    "id": "65e2190c-cff1-48c3-b5c3-a7bf6dd34a67",
+    "clip_id": "56e6bd62-90d3-4fda-8b63-0f4d725da3c3",
+    "kind": "cutout-plan",
+    "status": "done",
+    "error": null,
+    "message": "9 kebutuhan aset siap dibuat.",
+    "itemId": null,
+    "compositionRejection": null
+  },
+  {
+    "id": "f50cf4c5-0edd-4290-ab11-1894a9022861",
+    "clip_id": "4efea541-b1fb-4152-a68e-e3a8dc247475",
+    "kind": "cutout-asset",
+    "status": "done",
+    "error": null,
+    "message": null,
+    "itemId": "plate_deck_1824",
+    "compositionRejection": null
+  },
+  {
+    "id": "c47f8484-effb-4ef2-a50b-7d5386625c6e",
+    "clip_id": "4efea541-b1fb-4152-a68e-e3a8dc247475",
+    "kind": "cutout-asset",
+    "status": "done",
+    "error": null,
+    "message": null,
+    "itemId": "thomas_spoon_raised",
+    "compositionRejection": null
+  },
+  {
+    "id": "e1be0fe0-58e5-4a2d-b896-39a7458894d8",
+    "clip_id": "4efea541-b1fb-4152-a68e-e3a8dc247475",
+    "kind": "cutout-asset",
+    "status": "done",
+    "error": null,
+    "message": null,
+    "itemId": "thomas_spoon_resigned",
+    "compositionRejection": null
+  },
+  {
+    "id": "f11923b8-9a61-4778-94ef-2d65bbc18233",
+    "clip_id": "4efea541-b1fb-4152-a68e-e3a8dc247475",
+    "kind": "cutout-asset",
+    "status": "done",
+    "error": null,
+    "message": null,
+    "itemId": "spoon",
+    "compositionRejection": null
+  },
+  {
+    "id": "8077cefd-4389-4c10-a8ca-daa45bb7810c",
+    "clip_id": "4efea541-b1fb-4152-a68e-e3a8dc247475",
+    "kind": "cutout-asset",
+    "status": "done",
+    "error": null,
+    "message": null,
+    "itemId": "sealed_can",
+    "compositionRejection": null
+  },
+  {
+    "id": "eb59ed16-0cbb-400b-ae44-6f3738d3d7ac",
+    "clip_id": "4efea541-b1fb-4152-a68e-e3a8dc247475",
+    "kind": "cutout-asset",
+    "status": "done",
+    "error": null,
+    "message": null,
+    "itemId": "chest_edge",
+    "compositionRejection": null
+  },
+  {
+    "id": "27f5595d-f8cb-4f75-9f23-ae907fb78526",
+    "clip_id": "3e945e1e-4316-4c30-8f03-abd557a496ea",
+    "kind": "cutout-asset",
+    "status": "done",
+    "error": null,
+    "message": null,
+    "itemId": "bg_workshop_1810",
+    "compositionRejection": null
+  },
+  {
+    "id": "36e18465-3fb4-4568-a728-d144640dadfb",
+    "clip_id": "3e945e1e-4316-4c30-8f03-abd557a496ea",
+    "kind": "cutout-asset",
+    "status": "done",
+    "error": null,
+    "message": null,
+    "itemId": "edward_placing_vessel",
+    "compositionRejection": null
+  },
+  {
+    "id": "a637598d-faf1-4c33-a66f-b8d20f93dad6",
+    "clip_id": "d3c47a82-818e-4564-acd4-238968ef9d06",
+    "kind": "auto-edit",
+    "status": "failed",
+    "error": "Pose metadata shot harus tersedia pada layer komposisi.",
+    "message": null,
+    "itemId": null,
+    "compositionRejection": null
+  },
+  {
+    "id": "b64daec4-7feb-46b4-903a-a3739e3ef7b8",
+    "clip_id": "d3c47a82-818e-4564-acd4-238968ef9d06",
+    "kind": "auto-edit",
+    "status": "failed",
+    "error": "Pose metadata shot harus tersedia pada layer komposisi.",
+    "message": null,
+    "itemId": null,
+    "compositionRejection": null
+  },
+  {
+    "id": "edfd3ffd-3d9c-4248-8261-f17b29625fd3",
+    "clip_id": "d3c47a82-818e-4564-acd4-238968ef9d06",
+    "kind": "auto-edit",
+    "status": "failed",
+    "error": "blocked: 1 klip belum lolos. Klip tervalidasi disimpan sebagai checkpoint dan tidak dikerjakan ulang saat retry. Proyek belum diterapkan.\nBekal dan Perkakas: Komposisi belum lolos tinjauan visual: Bekal dan Perkakas · shot 1\nSumber: model tinjauan. Frames 0–2.6 s: the tools are almost entirely cropped off at the bottom edge; only a small, disconnected-looking portion of a hammer/chisel is visible. This weakens the planned contrast between the can and heavy tools, and the prop is not clearly readable. Reposition the existing tools asset into the deck area beside the crate, with its full silhouette visible.\nSumber: model tinjauan. Frames 0–1.3 s show the same held pose, which is acceptable; by 2.6 s Thomas does glance toward the can, but the prepared reaction reads only subtly. The tools’ near-invisibility makes the intended surprised look at them unclear.\nDelta shot dan aset selesai tersimpan. Lanjutkan proses terakhir untuk memakai kembali hasilnya.",
+    "message": null,
+    "itemId": null,
+    "compositionRejection": null
+  },
+  {
+    "id": "40ec8135-29e6-477a-9cf4-eb93b8ca7b6b",
+    "clip_id": null,
+    "kind": "cutout-batch",
+    "status": "failed",
+    "error": "24/25 aset selesai; 1 gagal. Klik Generate aset yang kurang untuk melanjutkan.\nPembuka roda terpasang pada kaleng: Codex gagal memproses permintaan. (serverOverloaded) Selected model is at capacity. Please try a different model.",
+    "message": null,
+    "itemId": null,
+    "compositionRejection": null
+  },
+  {
+    "id": "2badbe35-ffea-4e76-bb61-8d154a06cd52",
+    "clip_id": "3e945e1e-4316-4c30-8f03-abd557a496ea",
+    "kind": "cutout-asset",
+    "status": "done",
+    "error": null,
+    "message": null,
+    "itemId": "edward_explaining_vessel",
+    "compositionRejection": null
+  },
+  {
+    "id": "fe2dea5a-0804-4792-a473-28faaa4551df",
+    "clip_id": "3e945e1e-4316-4c30-8f03-abd557a496ea",
+    "kind": "cutout-asset",
+    "status": "done",
+    "error": null,
+    "message": null,
+    "itemId": "prop_vessel_sealed",
+    "compositionRejection": null
+  },
+  {
+    "id": "3a79c389-27fd-4f19-a6a8-f66eef1dc456",
+    "clip_id": "3e945e1e-4316-4c30-8f03-abd557a496ea",
+    "kind": "cutout-asset",
+    "status": "done",
+    "error": null,
+    "message": null,
+    "itemId": "fg_tool_rack",
+    "compositionRejection": null
+  },
+  {
+    "id": "e800c7d5-e49c-4077-acac-1514f963e260",
+    "clip_id": "2c7c6c64-6386-4c57-98e6-3fc21e4b2a02",
+    "kind": "cutout-asset",
+    "status": "done",
+    "error": null,
+    "message": null,
+    "itemId": "bg_kitchen_1810",
+    "compositionRejection": null
+  },
+  {
+    "id": "5153444f-8f63-4fe7-ad78-ca7400528790",
+    "clip_id": "2c7c6c64-6386-4c57-98e6-3fc21e4b2a02",
+    "kind": "cutout-asset",
+    "status": "done",
+    "error": null,
+    "message": null,
+    "itemId": "edward_point",
+    "compositionRejection": null
+  },
+  {
+    "id": "d8cfc3a7-e48d-43ae-a26b-3c433fceeb77",
+    "clip_id": "2c7c6c64-6386-4c57-98e6-3fc21e4b2a02",
+    "kind": "cutout-asset",
+    "status": "done",
+    "error": null,
+    "message": null,
+    "itemId": "edward_hungry_reaction",
+    "compositionRejection": null
+  },
+  {
+    "id": "f8e3cdc5-a807-49f1-b0ab-aeaf7b6fffbc",
+    "clip_id": "2c7c6c64-6386-4c57-98e6-3fc21e4b2a02",
+    "kind": "cutout-asset",
+    "status": "done",
+    "error": null,
+    "message": null,
+    "itemId": "vessel_heating",
+    "compositionRejection": null
+  },
+  {
+    "id": "812a3e96-63c6-4e9f-8073-e9bd9d1064f6",
+    "clip_id": "2c7c6c64-6386-4c57-98e6-3fc21e4b2a02",
+    "kind": "cutout-asset",
+    "status": "done",
+    "error": null,
+    "message": null,
+    "itemId": "vessel_sealed_cutaway",
+    "compositionRejection": null
+  },
+  {
+    "id": "ee88d456-a78b-4f51-8bd3-6b4dc603a850",
+    "clip_id": "2c7c6c64-6386-4c57-98e6-3fc21e4b2a02",
+    "kind": "cutout-asset",
+    "status": "done",
+    "error": null,
+    "message": null,
+    "itemId": "vessel_sealed",
+    "compositionRejection": null
+  },
+  {
+    "id": "815df860-7439-4d0d-8f2c-4415029d6cd4",
+    "clip_id": "2c7c6c64-6386-4c57-98e6-3fc21e4b2a02",
+    "kind": "cutout-asset",
+    "status": "done",
+    "error": null,
+    "message": null,
+    "itemId": "heat_diagram",
+    "compositionRejection": null
+  },
+  {
+    "id": "cca7ad3c-610d-47e2-873c-e401c73f1fa1",
+    "clip_id": "2c7c6c64-6386-4c57-98e6-3fc21e4b2a02",
+    "kind": "cutout-asset",
+    "status": "done",
+    "error": null,
+    "message": null,
+    "itemId": "contamination_barrier_diagram",
+    "compositionRejection": null
+  },
+  {
+    "id": "2addf0da-d288-406b-8efc-10eeef8b7c0a",
+    "clip_id": "2c7c6c64-6386-4c57-98e6-3fc21e4b2a02",
+    "kind": "cutout-asset",
+    "status": "done",
+    "error": null,
+    "message": null,
+    "itemId": "foreground_worktop",
+    "compositionRejection": null
+  },
+  {
+    "id": "e48e64af-6b1f-44a9-a872-432d70f69622",
+    "clip_id": "5764da19-220b-4eea-8628-1c357cc4fe17",
+    "kind": "cutout-asset",
+    "status": "done",
+    "error": null,
+    "message": null,
+    "itemId": "bg_kitchen",
+    "compositionRejection": null
+  },
+  {
+    "id": "4bb90023-a8e3-48c1-a2d0-af14ed22ba11",
+    "clip_id": "5764da19-220b-4eea-8628-1c357cc4fe17",
+    "kind": "cutout-asset",
+    "status": "done",
+    "error": null,
+    "message": null,
+    "itemId": "maya_focus",
+    "compositionRejection": null
+  },
+  {
+    "id": "d4b65589-bb29-4a04-b372-a42760c12296",
+    "clip_id": "5764da19-220b-4eea-8628-1c357cc4fe17",
+    "kind": "cutout-asset",
+    "status": "done",
+    "error": null,
+    "message": null,
+    "itemId": "maya_relief",
+    "compositionRejection": null
+  },
+  {
+    "id": "b6fa2d6b-d53a-4785-8300-2ce319e80428",
+    "clip_id": "5764da19-220b-4eea-8628-1c357cc4fe17",
+    "kind": "cutout-asset",
+    "status": "failed",
+    "error": "Codex gagal memproses permintaan. (serverOverloaded) Selected model is at capacity. Please try a different model.",
+    "message": null,
+    "itemId": "opener_can",
+    "compositionRejection": null
+  },
+  {
+    "id": "ce189cb2-5a8c-49c3-9868-434db16d6fc8",
+    "clip_id": "56e6bd62-90d3-4fda-8b63-0f4d725da3c3",
+    "kind": "cutout-asset",
+    "status": "done",
+    "error": null,
+    "message": null,
+    "itemId": "bg-kitchen-modern",
+    "compositionRejection": null
+  },
+  {
+    "id": "da77f99c-4642-401e-82e8-763e4acdce5d",
+    "clip_id": "56e6bd62-90d3-4fda-8b63-0f4d725da3c3",
+    "kind": "cutout-asset",
+    "status": "done",
+    "error": null,
+    "message": null,
+    "itemId": "pose-maya-spoon",
+    "compositionRejection": null
+  },
+  {
+    "id": "13164f0e-7bc6-4c24-8c76-782fe9661f3c",
+    "clip_id": "56e6bd62-90d3-4fda-8b63-0f4d725da3c3",
+    "kind": "cutout-asset",
+    "status": "done",
+    "error": null,
+    "message": null,
+    "itemId": "pose-maya-relieved-glance",
+    "compositionRejection": null
+  },
+  {
+    "id": "c489cb41-a2f2-4828-ba0e-7812044bdff1",
+    "clip_id": "56e6bd62-90d3-4fda-8b63-0f4d725da3c3",
+    "kind": "cutout-asset",
+    "status": "done",
+    "error": null,
+    "message": null,
+    "itemId": "prop-spoon",
+    "compositionRejection": null
+  },
+  {
+    "id": "7b119a3e-8dfb-4433-904a-843acc4754ce",
+    "clip_id": "56e6bd62-90d3-4fda-8b63-0f4d725da3c3",
+    "kind": "cutout-asset",
+    "status": "done",
+    "error": null,
+    "message": null,
+    "itemId": "prop-open-ring-can",
+    "compositionRejection": null
+  },
+  {
+    "id": "84537c04-bac4-4f21-817c-0a43300afdae",
+    "clip_id": "56e6bd62-90d3-4fda-8b63-0f4d725da3c3",
+    "kind": "cutout-asset",
+    "status": "done",
+    "error": null,
+    "message": null,
+    "itemId": "prop-detached-ring-lid",
+    "compositionRejection": null
+  },
+  {
+    "id": "ada715d5-5b1d-493c-88d9-9b4cc274b396",
+    "clip_id": "56e6bd62-90d3-4fda-8b63-0f4d725da3c3",
+    "kind": "cutout-asset",
+    "status": "done",
+    "error": null,
+    "message": null,
+    "itemId": "prop-small-dish",
+    "compositionRejection": null
+  },
+  {
+    "id": "15551ea7-3b96-40a2-b93c-793affc63a2d",
+    "clip_id": "56e6bd62-90d3-4fda-8b63-0f4d725da3c3",
+    "kind": "cutout-asset",
+    "status": "done",
+    "error": null,
+    "message": null,
+    "itemId": "prop-small-hammer",
+    "compositionRejection": null
+  },
+  {
+    "id": "db382045-ceae-4598-90d0-f043c983ee86",
+    "clip_id": "56e6bd62-90d3-4fda-8b63-0f4d725da3c3",
+    "kind": "cutout-asset",
+    "status": "done",
+    "error": null,
+    "message": null,
+    "itemId": "fg-counter-edge",
+    "compositionRejection": null
+  },
+  {
+    "id": "e911dd36-07a9-4a66-9b13-2668eb7cb0ef",
+    "clip_id": null,
+    "kind": "cutout-batch",
+    "status": "canceled",
+    "error": null,
+    "message": null,
+    "itemId": null,
+    "compositionRejection": null
+  },
+  {
+    "id": "7015b175-6c00-4662-b099-e96d4ad43413",
+    "clip_id": "5764da19-220b-4eea-8628-1c357cc4fe17",
+    "kind": "cutout-asset",
+    "status": "canceled",
+    "error": null,
+    "message": null,
+    "itemId": "opener_can",
+    "compositionRejection": null
+  }
+]

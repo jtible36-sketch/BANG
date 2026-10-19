@@ -1,35 +1,39 @@
+import {cutoutGroupKey,scheduledItem} from './cutout-plan-diagnostics'
 import type { Asset, Clip, CodexEditOptions } from './types'
 import type { CutoutAssetItem, CutoutAssetPlan, CutoutAssetProvider } from './cutout-assets'
 import { createCutoutLayer, createCutoutScene, cutoutCameraAt, cutoutTransformAt, evaluateCutoutScene, CUTOUT_LIMITS, normalizeCutoutScene, type CutoutScene } from './cutout-timeline'
 import { cutoutIkAt } from './cutout-ik'
+import { claimCutoutPoseTime } from './cutout-timeline'
 
 export interface CutoutProductionOptions {
-  enabled: boolean; provider: CutoutAssetProvider; format: 'png' | 'webp'
+  beatTemplate?: boolean; enabled: boolean; provider: CutoutAssetProvider; format: 'png' | 'webp'
   maxAssetsPerClip: number; maxNewAssets: number; motion: 'keyframes' | 'frames'; fps: 30 | 60
 }
-export interface AutoEditInput { projectId: string; clipId?: string; instruction: string; production?: CutoutProductionOptions; codex?: CodexEditOptions; specialClips?: import('./special-clips').SpecialClipOptions }
-export const DEFAULT_CUTOUT_PRODUCTION: CutoutProductionOptions = { enabled: true, provider: 'codex', format: 'png', maxAssetsPerClip: 64, maxNewAssets: 512, motion: 'frames', fps: 60 }
+export interface AutoEditInput { productionStrategy?:'baseline'|'agent';retryFailedOnly?:boolean;refineComposition?:boolean; projectId: string; clipId?: string; instruction: string; production?: CutoutProductionOptions; codex?: CodexEditOptions; specialClips?: import('./special-clips').SpecialClipOptions }
+export const DEFAULT_CUTOUT_PRODUCTION: CutoutProductionOptions = { beatTemplate: true, enabled: true, provider: 'codex', format: 'png', maxAssetsPerClip: 64, maxNewAssets: 512, motion: 'frames', fps: 60 }
 export function normalizeCutoutProduction(raw: unknown): CutoutProductionOptions | null {
   if (raw == null) return null
   if (typeof raw !== 'object' || Array.isArray(raw)) throw new Error('Pengaturan produksi Cutout tidak valid.')
   const v = raw as CutoutProductionOptions
-  if (Object.keys(v).some(k => !Object.hasOwn(DEFAULT_CUTOUT_PRODUCTION,k)) || Object.keys(DEFAULT_CUTOUT_PRODUCTION).some(k => !Object.hasOwn(v,k))) throw new Error('Pengaturan produksi Cutout tidak lengkap.')
+  if (Object.keys(v).some(k => !Object.hasOwn(DEFAULT_CUTOUT_PRODUCTION,k)) || Object.keys(DEFAULT_CUTOUT_PRODUCTION).some(k => k!=='beatTemplate'&&!Object.hasOwn(v,k))) throw new Error('Pengaturan produksi Cutout tidak lengkap.')
+  if(v.beatTemplate!==undefined&&typeof v.beatTemplate!=='boolean')throw new Error('Pilihan beat template harus aktif/nonaktif.')
   if (typeof v.enabled !== 'boolean' || !['codex','flow-mcp'].includes(v.provider) || !['png','webp'].includes(v.format) || !['keyframes','frames'].includes(v.motion) || ![30,60].includes(v.fps)) throw new Error('Provider, format atau gerak produksi tidak valid.')
   if (!Number.isInteger(v.maxAssetsPerClip) || v.maxAssetsPerClip < 1 || v.maxAssetsPerClip > 256 || !Number.isInteger(v.maxNewAssets) || v.maxNewAssets < 1 || v.maxNewAssets > 2048) throw new Error('Batas aset: 1–256 per klip dan 1–2048 gambar baru per proses.')
-  return { ...v }
+  return { beatTemplate:true, ...v }
 }
 export function generatedForItem(assets: Asset[], plan: CutoutAssetPlan, itemId: string): Asset | undefined {
   return assets.find(a => { const m=a.meta.cutoutAsset as {planId?:string;itemId?:string}|undefined;return a.kind==='image' && a.clipId===plan.clipId && m?.planId===plan.id && m.itemId===itemId })
 }
 /** Stable layer groups let many pose PNGs share a single transform/rig track. */
 export function cutoutItemGroup(item: CutoutAssetItem): string {
-  return item.layerKey || (item.role==='background' ? 'background' : ['character','pose'].includes(item.role) ? `actor-${item.characterId??'main'}` : item.id)
+  return cutoutGroupKey(item)
 }
+export function cutoutGroupLayerId(key:string):string {let hash=2166136261;for(const c of key)hash=Math.imul(hash^c.charCodeAt(0),16777619);return `asset-${key.slice(0,90)}-${hash>>>0}`}
 export function composeCutoutAssets(clip: Clip, plan: CutoutAssetPlan, assets: Asset[], aspect: string): CutoutScene {
   const scene=clip.cutout ? structuredClone(clip.cutout) : createCutoutScene()
   const present=new Set(scene.layers.flatMap(l=>[l.assetId,...l.poses.map(p=>p.assetId)]))
   const groups=new Map<string,{item:CutoutAssetItem;asset:Asset}[]>()
-  for (const item of plan.items) {
+  for (const item of plan.items.filter(item=>scheduledItem(item)||!plan.items.some(other=>scheduledItem(other)&&cutoutGroupKey(other)===cutoutGroupKey(item)))) {
     const asset=generatedForItem(assets,plan,item.id)
     if (!asset) throw new Error(`Aset belum tersedia: ${item.label}`)
     if (present.has(asset.id)) continue
@@ -51,10 +55,14 @@ export function composeCutoutAssets(clip: Clip, plan: CutoutAssetPlan, assets: A
       layer.inMs=isBg?0:first.item.timeMs;layer.transform.y=isBg ? .5 : .58
       if (isBg) scene.layers.unshift(layer);else scene.layers.push(layer)
     }
-    const times=new Set(layer.poses.map(p=>p.timeMs))
+    if(entries.some(e=>e.item.motionRole==='mover'))layer.motionRole='mover'
+    else if(entries.every(e=>e.item.motionRole==='static'))layer.motionRole='static'
+    // The base image occupies its entry time too; it must not be overwritten by
+    // a second planned item at the exact same moment. Existing poses stay put.
+    const times=new Set([layer.inMs,...layer.poses.map(p=>p.timeMs)])
     for (const {item,asset} of entries) if(asset.id!==layer.assetId){
-      if(times.has(item.timeMs)) throw new Error(`Dua pose pada waktu yang sama untuk ${key}. Tinjau paket aset di Cutout.`)
-      times.add(item.timeMs);layer.poses.push({id:`pose-${item.id}`,timeMs:item.timeMs,assetId:asset.id})
+      const timeMs=claimCutoutPoseTime(item.id,item.timeMs,times,Math.min(clip.durationMs,layer.outMs??clip.durationMs))
+      layer.poses.push({id:`pose-${item.id}`,timeMs,assetId:asset.id})
     }
   }
   if(scene.layers.length>CUTOUT_LIMITS.layers)throw new Error('Terlalu banyak grup objek. Gunakan layerKey yang sama untuk pose satu objek atau pisahkan klip.')

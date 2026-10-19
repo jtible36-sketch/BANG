@@ -7,6 +7,8 @@ const root = path.resolve(__dirname, '..')
 const scratch = fs.mkdtempSync(path.join(os.tmpdir(), 'naraflow-edit-test-'))
 global.__fixtureEvents = []
 const modules = {
+ // Scoped media-consent fixture only; no real providers. Real gate tested separately.
+ './cutout-studio':`export const requireBriefApproved=()=>({approved:true,fixtureConsent:true});export const requireAssetConsent=()=>{};export const consumeAssetConsent=()=>{};export const readClipOutcomes=()=>[];export const completedClipMatches=()=>false;export const studioReport=()=>[];export const writeClipOutcome=()=>{};export const loadComedyProfile=()=>({id:'comedy-jolt',verified:false});`,
  './cutout-review-recovery':`export const convertReviewMissingAssets=async()=>{throw Error('Recovery needs integration fixture')};export const missingAssetRecoveryStatus=()=>null;export const recordCompositionRejection=()=>{};export const startMissingAssetRecovery=async()=>{throw Error('Recovery needs its own integration fixture')};`,
  './cutout-assets':`export const appendCutoutRecoveryItems=()=>{throw Error('Recovery needs integration fixture')};export const generateCutoutAsset=()=>{throw Error('Recovery needs integration fixture')};export const cutoutAssetState=()=>({plan:null,stale:false,assets:[],jobs:[]});`,
 

@@ -1,0 +1,2 @@
+const fs=require('fs'),path=require('path'),os=require('os'),root=path.resolve(__dirname,'..'),tmp=fs.mkdtempSync(path.join(os.tmpdir(),'naraflow-v5-')),real=fs.realpathSync(tmp);
+try{const out=path.join(tmp,'test.cjs');require('esbuild').buildSync({entryPoints:[path.join(root,'tests/autoedit-klip1.test.ts')],bundle:true,platform:'node',format:'cjs',outfile:out,tsconfig:path.join(root,'tsconfig.node.json')});require(out)}finally{if(path.dirname(real)===fs.realpathSync(os.tmpdir())&&path.basename(real).startsWith('naraflow-v5-'))fs.rmSync(real,{recursive:true,force:true})}

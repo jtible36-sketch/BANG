@@ -1,3 +1,5 @@
+import {productionReadiness,exportLicenseReport} from './cutout-v5'
+import {keyword} from '@shared/cutout-shot-proposals'
 import { exportRange, rangeCaptionChunks } from '@shared/export-range'
 import { specialVideoFilter, validateSpecialVideo } from '@shared/special-clips'
 import { spawn } from 'node:child_process'
@@ -112,6 +114,7 @@ function srtTime(sec: number): string {
 const escapeAss = (t: string): string => t.replace(/\\/g, '\\\\').replace(/[{}]/g, '')
 
 interface CaptionTrack {
+  keywords?: import('@shared/cutout-shot-proposals').KeywordRules
   chunks: CaptionChunk[]
   style: ResolvedCaption
   pos: string
@@ -237,7 +240,7 @@ function captionEvents(track: CaptionTrack, w: number, h: number): string[] {
       const start = j === 0 ? c.start : wd.start
       const end = j + 1 < c.words.length ? c.words[j + 1].start : holdUntil
       if (end <= start) return
-      lines.push(`Dialogue: 1,${assTime(start)},${assTime(end)},Cap,,0,0,0,,${textOf((k) => (k === j ? `{\\c${hl}}${words[k]}{\\c${base}}` : words[k]))}`)
+      lines.push(`Dialogue: 1,${assTime(start)},${assTime(end)},Cap,,0,0,0,,${textOf((k) => (k === j && (!track.keywords||keyword(c.words[k].text,track.keywords)) ? `{\\c${hl}}${words[k]}{\\c${base}}` : words[k]))}`)
     })
   })
   return lines
@@ -350,6 +353,10 @@ async function renderProject(ctx: TaskCtx, projectId: string, opts: ExportOption
   const bundle = await syncVoiceover(projectId)
   assertCurrentVoiceover(bundle)
   if (!bundle.clips.length) throw new Error('Proyek belum punya klip')
+  const readiness=productionReadiness(projectId),blocked=readiness.filter(c=>c.status==='blocked'||c.missingAssets.length>0)
+  if(blocked.length)throw Error('Ekspor diblokir: '+blocked.map(c=>c.title+': '+c.reasons.join('; ')).join('\n'))
+  const attribution=exportLicenseReport(bundle)
+  if(bundle.project.styleId==='cutout-facts'&&(bundle.project.editor.sfx??[]).some(c=>c.volumeDb> -12))throw Error('Volume SFX Cutout v5 maksimal -12 dB agar di bawah narasi.')
   const size = outputSize(bundle.project.aspectRatio, opts.resolution)
   const tmp = join(dataDir(), 'tmp', `export-${ctx.jobId}`)
   mkdirSync(tmp, { recursive: true })
@@ -399,7 +406,7 @@ async function renderProject(ctx: TaskCtx, projectId: string, opts: ExportOption
     // 2. captions
     const style = resolveCaption(bundle.project.editor)
     const chunks = timelineChunks(
-      timeline.map((s) => ({ start: s.start, words: assetOf(bundle, s.clip.audioAssetId)?.meta.words ?? [] }))
+      timeline.map((s) => ({ start: s.start, words: assetOf(bundle, s.clip.audioAssetId)?.meta.words ?? [] })),bundle.project.styleId==='cutout-facts'
     )
     const burn = opts.burnCaptions && !!style && chunks.length > 0
     // Overlays are part of the picture, so they are drawn even when captions are left out.
@@ -416,7 +423,8 @@ async function renderProject(ctx: TaskCtx, projectId: string, opts: ExportOption
             chunks,
             style: style!,
             pos: bundle.project.editor.captionPosition,
-            sizeScale: captionScaleOf(bundle.project.editor)
+            sizeScale: captionScaleOf(bundle.project.editor),
+            keywords: bundle.project.styleId==='cutout-facts'?bundle.project.editor.cutoutV5?.keywords:undefined
           }
         : null
       writeFileSync(join(tmp, 'captions.ass'), buildAss(captions, texts, total, size.w, size.h), 'utf8')
@@ -544,6 +552,7 @@ async function renderProject(ctx: TaskCtx, projectId: string, opts: ExportOption
       (f) => ctx.progress(0.64 + 0.34 * f, 'Menggabungkan klip, suara, dan caption')
     )
     if (opts.writeSrt && chunks.length) writeFileSync(outPath.replace(/\.mp4$/i, '.srt'), buildSrt(rangeCaptionChunks(chunks,selected),selected.durationSec), 'utf8')
+    if(attribution)writeFileSync(outPath.replace(/\.mp4$/i,'.attribution.txt'),attribution,'utf8')
     return outPath
   } catch (error) {
     renderFailed = true

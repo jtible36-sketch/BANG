@@ -1,0 +1,3151 @@
+{
+  "mode": "read-only exported fixtures; no DB/provider calls",
+  "projects": [
+    {
+      "projectId": "a2a6e08d-e5e4-48bb-a0bf-97d9132585c4",
+      "title": "Makan Siang yang Butuh Pahat",
+      "revision": "c80e3a5f7665c784ac5da57df71c2aadb4dca303f44f7d3e93ac3b7d2f9e490a",
+      "clips": [
+        {
+          "clipId": "d3c47a82-818e-4564-acd4-238968ef9d06",
+          "title": "Bekal dan Perkakas",
+          "status": "ready",
+          "reason": "Aset lengkap; baseline lokal tersedia. Review piksel tetap diperlukan.",
+          "action": "Susun baseline / edit otomatis",
+          "legacy": true,
+          "plannerVersion": null,
+          "planId": "1b308cfe-e0fc-4081-89d8-757e1eb2b351",
+          "missingItems": [],
+          "planned": 6,
+          "generated": 6,
+          "reviewed": 0,
+          "special": [],
+          "warnings": [
+            "Avoid (larangan visual, bukan bukti benda ada): readable instructions, modern can opener, steamship machinery, modern outdoor clothing, archival-photo appearance"
+          ],
+          "validBaseline": true,
+          "sceneLayerCount": 4,
+          "brief": {
+            "era": "1824–1825",
+            "location": "Arktik",
+            "locationCertain": true,
+            "evidence": [
+              {
+                "field": "era",
+                "quote": "1824–1825",
+                "startWord": 16,
+                "endWord": 16,
+                "startMs": 6800,
+                "endMs": 10827,
+                "source": "narration"
+              },
+              {
+                "field": "location",
+                "quote": "Arktik",
+                "startWord": 14,
+                "endWord": 14,
+                "startMs": 6000,
+                "endMs": 6400,
+                "source": "narration"
+              },
+              {
+                "field": "prop",
+                "quote": "Kaleng",
+                "startWord": 0,
+                "endWord": 0,
+                "startMs": 0,
+                "endMs": 240,
+                "source": "narration"
+              },
+              {
+                "field": "prop",
+                "quote": "makanan",
+                "startWord": 1,
+                "endWord": 1,
+                "startMs": 320,
+                "endMs": 800,
+                "source": "narration"
+              },
+              {
+                "field": "prop",
+                "quote": "palu",
+                "startWord": 5,
+                "endWord": 5,
+                "startMs": 2000,
+                "endMs": 2320,
+                "source": "narration"
+              },
+              {
+                "field": "prop",
+                "quote": "pahat",
+                "startWord": 7,
+                "endWord": 7,
+                "startMs": 2640,
+                "endMs": 3120,
+                "source": "narration"
+              },
+              {
+                "field": "prop",
+                "quote": "kaleng",
+                "startWord": 0,
+                "endWord": 0,
+                "startMs": 0,
+                "endMs": 240,
+                "source": "narration"
+              }
+            ]
+          }
+        },
+        {
+          "clipId": "4efea541-b1fb-4152-a68e-e3a8dc247475",
+          "title": "Sendok Belum Berguna",
+          "status": "ready",
+          "reason": "Aset lengkap; baseline lokal tersedia. Review piksel tetap diperlukan.",
+          "action": "Susun baseline / edit otomatis",
+          "legacy": true,
+          "plannerVersion": null,
+          "planId": "c503d5f1-7058-4a78-93a6-102b26678fa4",
+          "missingItems": [],
+          "planned": 6,
+          "generated": 6,
+          "reviewed": 0,
+          "special": [],
+          "warnings": [
+            "Avoid (larangan visual, bukan bukti benda ada): open lid, modern ring pull, floating spoon, changed facial identity, baked-in captions",
+            "Lokasi tidak pasti; storyboard tidak dianggap bukti narasi. Konfirmasikan lokasi, jangan warisi diam-diam.",
+            "Era belum disebut jelas; konfirmasikan sebelum generasi."
+          ],
+          "validBaseline": true,
+          "sceneLayerCount": 5,
+          "brief": {
+            "era": "belum ditetapkan",
+            "location": "lokasi-tidak-pasti",
+            "locationCertain": false,
+            "evidence": [
+              {
+                "field": "prop",
+                "quote": "sendok",
+                "startWord": 3,
+                "endWord": 3,
+                "startMs": 1706,
+                "endMs": 2266,
+                "source": "narration"
+              }
+            ]
+          }
+        },
+        {
+          "clipId": "e4fa3222-9a1a-4a79-91e4-43ead425e066",
+          "title": "Mundur ke Masalah Awal",
+          "status": "needs-character",
+          "reason": "Tokoh visual belum didefinisikan atau ID bukan milik proyek.",
+          "action": "Tambah/pilih karakter, lalu setujui brief; identity sheet hanya setelah konfirmasi.",
+          "legacy": true,
+          "plannerVersion": null,
+          "planId": null,
+          "missingItems": [],
+          "planned": 0,
+          "generated": 0,
+          "reviewed": 0,
+          "special": [],
+          "warnings": [
+            "Avoid (larangan visual, bukan bukti benda ada): refrigerator, plastic containers, modern kitchen fittings, exaggerated glowing mold, readable labels",
+            "Lokasi tidak pasti; storyboard tidak dianggap bukti narasi. Konfirmasikan lokasi, jangan warisi diam-diam.",
+            "Era belum disebut jelas; konfirmasikan sebelum generasi."
+          ],
+          "validBaseline": false,
+          "sceneLayerCount": 0,
+          "brief": {
+            "era": "belum ditetapkan",
+            "location": "lokasi-tidak-pasti",
+            "locationCertain": false,
+            "characterProposal": {
+              "name": "Pekerja dapur (usulan)",
+              "age": 40,
+              "wardrobe": "Pakaian sesuai era yang dikonfirmasi; tinjau gaun wol, apron linen dan penutup kepala bila sesuai.",
+              "reason": "Visual memerlukan orang tetapi characterIds kosong; jangan mengarang ID karakter."
+            },
+            "evidence": [
+              {
+                "field": "prop",
+                "quote": "Makanan",
+                "startWord": 2,
+                "endWord": 2,
+                "startMs": 1220,
+                "endMs": 1699,
+                "source": "narration"
+              }
+            ]
+          }
+        },
+        {
+          "clipId": "3e945e1e-4316-4c30-8f03-abd557a496ea",
+          "title": "Solusi Wadah Logam",
+          "status": "ready",
+          "reason": "Aset lengkap; baseline lokal tersedia. Review piksel tetap diperlukan.",
+          "action": "Susun baseline / edit otomatis",
+          "legacy": true,
+          "plannerVersion": null,
+          "planId": "a926282f-94cd-4efc-a410-664ea968618d",
+          "missingItems": [],
+          "planned": 5,
+          "generated": 5,
+          "reviewed": 0,
+          "special": [],
+          "warnings": [
+            "Avoid (larangan visual, bukan bukti benda ada): invented Durand likeness, readable patent, modern rolled can seams, electric machinery, modern packaging"
+          ],
+          "validBaseline": true,
+          "sceneLayerCount": 4,
+          "brief": {
+            "era": "1810",
+            "location": "Inggris",
+            "locationCertain": true,
+            "evidence": [
+              {
+                "field": "era",
+                "quote": "1810",
+                "startWord": 1,
+                "endWord": 1,
+                "startMs": 480,
+                "endMs": 1800,
+                "source": "narration"
+              },
+              {
+                "field": "location",
+                "quote": "Inggris",
+                "startWord": 6,
+                "endWord": 6,
+                "startMs": 3600,
+                "endMs": 3920,
+                "source": "narration"
+              },
+              {
+                "field": "prop",
+                "quote": "makanan",
+                "startWord": 9,
+                "endWord": 9,
+                "startMs": 4800,
+                "endMs": 5199,
+                "source": "narration"
+              },
+              {
+                "field": "prop",
+                "quote": "wadah",
+                "startWord": 11,
+                "endWord": 11,
+                "startMs": 5559,
+                "endMs": 6239,
+                "source": "narration"
+              }
+            ]
+          }
+        },
+        {
+          "clipId": "2c7c6c64-6386-4c57-98e6-3fc21e4b2a02",
+          "title": "Panas dan Tutup Rapat",
+          "status": "ready",
+          "reason": "Aset lengkap; baseline lokal tersedia. Review piksel tetap diperlukan.",
+          "action": "Susun baseline / edit otomatis",
+          "legacy": true,
+          "plannerVersion": null,
+          "planId": "b4ae250b-eb69-45c6-912b-6e2a22ceb760",
+          "missingItems": [],
+          "planned": 9,
+          "generated": 9,
+          "reviewed": 0,
+          "special": [],
+          "warnings": [
+            "Avoid (larangan visual, bukan bukti benda ada): cartoon microbes, text arrows, transparent historical metal, bare hand touching hot pot, sealing depicted as sterilization",
+            "Lokasi tidak pasti; storyboard tidak dianggap bukti narasi. Konfirmasikan lokasi, jangan warisi diam-diam.",
+            "Era belum disebut jelas; konfirmasikan sebelum generasi."
+          ],
+          "validBaseline": true,
+          "sceneLayerCount": 6,
+          "brief": {
+            "era": "belum ditetapkan",
+            "location": "lokasi-tidak-pasti",
+            "locationCertain": false,
+            "evidence": []
+          }
+        },
+        {
+          "clipId": "d9710ddb-7299-4bdc-8246-d9b2499bc470",
+          "title": "Membuka dengan Tenaga",
+          "status": "needs-assets",
+          "reason": "Rencana belum ada.",
+          "action": "Tinjau Scene Brief → susun rencana",
+          "legacy": true,
+          "plannerVersion": null,
+          "planId": null,
+          "missingItems": [],
+          "planned": 0,
+          "generated": 0,
+          "reviewed": 0,
+          "special": [],
+          "warnings": [
+            "Avoid (larangan visual, bukan bukti benda ada): hammer striking fingers, unsecured sliding can, blood, modern opener, readable historical instructions",
+            "Lokasi tidak pasti; storyboard tidak dianggap bukti narasi. Konfirmasikan lokasi, jangan warisi diam-diam.",
+            "Era belum disebut jelas; konfirmasikan sebelum generasi."
+          ],
+          "validBaseline": false,
+          "sceneLayerCount": 0,
+          "brief": {
+            "era": "belum ditetapkan",
+            "location": "lokasi-tidak-pasti",
+            "locationCertain": false,
+            "evidence": []
+          }
+        },
+        {
+          "clipId": "d2e33145-d5f0-4a5d-a24f-537105b29dc4",
+          "title": "Bilah Khusus",
+          "status": "needs-assets",
+          "reason": "Rencana belum ada.",
+          "action": "Tinjau Scene Brief → susun rencana",
+          "legacy": true,
+          "plannerVersion": null,
+          "planId": null,
+          "missingItems": [],
+          "planned": 0,
+          "generated": 0,
+          "reviewed": 0,
+          "special": [],
+          "warnings": [
+            "Avoid (larangan visual, bukan bukti benda ada): modern butterfly opener, blade toward supporting fingers, fully detached lid, contemporary clothing, invented patent markings",
+            "Lokasi tidak pasti; storyboard tidak dianggap bukti narasi. Konfirmasikan lokasi, jangan warisi diam-diam."
+          ],
+          "validBaseline": false,
+          "sceneLayerCount": 0,
+          "brief": {
+            "era": "abad ke-19",
+            "location": "lokasi-tidak-pasti",
+            "locationCertain": false,
+            "evidence": [
+              {
+                "field": "era",
+                "quote": "abad ke-19",
+                "startWord": 3,
+                "endWord": 4,
+                "startMs": 1439,
+                "endMs": 2480,
+                "source": "narration"
+              },
+              {
+                "field": "prop",
+                "quote": "pembuka",
+                "startWord": 6,
+                "endWord": 6,
+                "startMs": 3119,
+                "endMs": 3439,
+                "source": "narration"
+              }
+            ]
+          }
+        },
+        {
+          "clipId": "1bf35714-d7b6-481d-8298-47512a0527d4",
+          "title": "Praktis, tetapi Tajam",
+          "status": "needs-assets",
+          "reason": "Rencana belum ada.",
+          "action": "Tinjau Scene Brief → susun rencana",
+          "legacy": true,
+          "plannerVersion": null,
+          "planId": null,
+          "missingItems": [],
+          "planned": 0,
+          "generated": 0,
+          "reviewed": 0,
+          "special": [],
+          "warnings": [
+            "Avoid (larangan visual, bukan bukti benda ada): blood or injury, fingers gripping sharp lid, smooth harmless cut edge, modern kitchen, exaggerated rubbery face",
+            "Lokasi tidak pasti; storyboard tidak dianggap bukti narasi. Konfirmasikan lokasi, jangan warisi diam-diam.",
+            "Era belum disebut jelas; konfirmasikan sebelum generasi."
+          ],
+          "validBaseline": false,
+          "sceneLayerCount": 0,
+          "brief": {
+            "era": "belum ditetapkan",
+            "location": "lokasi-tidak-pasti",
+            "locationCertain": false,
+            "evidence": [
+              {
+                "field": "prop",
+                "quote": "kaleng",
+                "startWord": 6,
+                "endWord": 6,
+                "startMs": 2539,
+                "endMs": 2739,
+                "source": "narration"
+              }
+            ]
+          }
+        },
+        {
+          "clipId": "5764da19-220b-4eea-8628-1c357cc4fe17",
+          "title": "Roda Mengikuti Bibir",
+          "status": "needs-assets",
+          "reason": "Aset belum dibuat: opener_can",
+          "action": "Generate item yang kurang (konfirmasi kredit)",
+          "legacy": true,
+          "plannerVersion": null,
+          "planId": "36161772-5dfb-406e-bf71-d128ed7f3a7e",
+          "missingItems": [
+            {
+              "id": "opener_can",
+              "label": "Pembuka roda terpasang pada kaleng",
+              "error": "Codex gagal memproses permintaan. (serverOverloaded) Selected model is at capacity. Please try a different model."
+            }
+          ],
+          "planned": 4,
+          "generated": 3,
+          "reviewed": 0,
+          "special": [],
+          "warnings": [
+            "Avoid (larangan visual, bukan bukti benda ada): wheel floating off rim, impossible handle grip, electric opener, readable branding, detached spinning lid",
+            "Lokasi tidak pasti; storyboard tidak dianggap bukti narasi. Konfirmasikan lokasi, jangan warisi diam-diam.",
+            "Era belum disebut jelas; konfirmasikan sebelum generasi."
+          ],
+          "validBaseline": false,
+          "sceneLayerCount": 0,
+          "brief": {
+            "era": "belum ditetapkan",
+            "location": "lokasi-tidak-pasti",
+            "locationCertain": false,
+            "evidence": [
+              {
+                "field": "prop",
+                "quote": "roda",
+                "startWord": 3,
+                "endWord": 3,
+                "startMs": 1719,
+                "endMs": 1879,
+                "source": "narration"
+              },
+              {
+                "field": "prop",
+                "quote": "kaleng",
+                "startWord": 9,
+                "endWord": 9,
+                "startMs": 3959,
+                "endMs": 4359,
+                "source": "narration"
+              }
+            ]
+          }
+        },
+        {
+          "clipId": "56e6bd62-90d3-4fda-8b63-0f4d725da3c3",
+          "title": "Sendok Akhirnya Menang",
+          "status": "ready",
+          "reason": "Aset lengkap; baseline lokal tersedia. Review piksel tetap diperlukan.",
+          "action": "Susun baseline / edit otomatis",
+          "legacy": true,
+          "plannerVersion": null,
+          "planId": "585ca73a-d10a-435c-9600-dbff2b1339e4",
+          "missingItems": [],
+          "planned": 9,
+          "generated": 9,
+          "reviewed": 0,
+          "special": [],
+          "warnings": [
+            "Avoid (larangan visual, bukan bukti benda ada): hammer beside food, hand gripping sharp lid, unopened can, readable subscription text, costume change",
+            "Lokasi tidak pasti; storyboard tidak dianggap bukti narasi. Konfirmasikan lokasi, jangan warisi diam-diam."
+          ],
+          "validBaseline": true,
+          "sceneLayerCount": 8,
+          "brief": {
+            "era": "Sekarang",
+            "location": "lokasi-tidak-pasti",
+            "locationCertain": false,
+            "evidence": [
+              {
+                "field": "era",
+                "quote": "Sekarang",
+                "startWord": 0,
+                "endWord": 0,
+                "startMs": 200,
+                "endMs": 840,
+                "source": "narration"
+              },
+              {
+                "field": "prop",
+                "quote": "kaleng",
+                "startWord": 2,
+                "endWord": 2,
+                "startMs": 1239,
+                "endMs": 1560,
+                "source": "narration"
+              },
+              {
+                "field": "prop",
+                "quote": "sendok",
+                "startWord": 7,
+                "endWord": 7,
+                "startMs": 4120,
+                "endMs": 4519,
+                "source": "narration"
+              },
+              {
+                "field": "prop",
+                "quote": "palu",
+                "startWord": 12,
+                "endWord": 12,
+                "startMs": 6239,
+                "endMs": 6519,
+                "source": "narration"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "projectId": "0396be12-c834-4705-9c0b-20726976de2a",
+      "title": "Porselen Rapuh, Solusinya Mesin Besar",
+      "revision": "f8a204f24692765f87d3198b5c5b3cb5442278673470f000c39732fad1d3a5db",
+      "clips": [
+        {
+          "clipId": "c5695703-0f25-4d55-b77c-85229945d03c",
+          "title": "Khawatir Porselen Rusak",
+          "status": "ready",
+          "reason": "Aset lengkap; baseline lokal tersedia. Review piksel tetap diperlukan.",
+          "action": "Susun baseline / edit otomatis",
+          "legacy": true,
+          "plannerVersion": null,
+          "planId": "c0aa301c-da62-4441-b25d-956f1fbe709f",
+          "missingItems": [],
+          "planned": 10,
+          "generated": 10,
+          "reviewed": 0,
+          "special": [],
+          "warnings": [
+            "Avoid (larangan visual, bukan bukti benda ada): readable text, modern appliances, shattered plate explosion, altered reference face, extra fingers, sepia treatment",
+            "Lokasi tidak pasti; storyboard tidak dianggap bukti narasi. Konfirmasikan lokasi, jangan warisi diam-diam.",
+            "Era belum disebut jelas; konfirmasikan sebelum generasi."
+          ],
+          "validBaseline": true,
+          "sceneLayerCount": 4,
+          "brief": {
+            "era": "belum ditetapkan",
+            "location": "lokasi-tidak-pasti",
+            "locationCertain": false,
+            "evidence": [
+              {
+                "field": "prop",
+                "quote": "mesin",
+                "startWord": 5,
+                "endWord": 5,
+                "startMs": 2160,
+                "endMs": 2400,
+                "source": "narration"
+              }
+            ]
+          }
+        },
+        {
+          "clipId": "4bf69387-129f-4458-9b02-541d93426ee9",
+          "title": "Mencari Cara Lain",
+          "status": "ready",
+          "reason": "Aset lengkap; baseline lokal tersedia. Review piksel tetap diperlukan.",
+          "action": "Susun baseline / edit otomatis",
+          "legacy": true,
+          "plannerVersion": null,
+          "planId": "24e735f2-c195-489d-b376-7a369471572e",
+          "missingItems": [],
+          "planned": 6,
+          "generated": 6,
+          "reviewed": 0,
+          "special": [],
+          "warnings": [
+            "Avoid (larangan visual, bukan bukti benda ada): running modern faucet, electric dishwasher, readable labels, floating cloth, wet clothing transformation, extra hands",
+            "Lokasi tidak pasti; storyboard tidak dianggap bukti narasi. Konfirmasikan lokasi, jangan warisi diam-diam.",
+            "Era belum disebut jelas; konfirmasikan sebelum generasi."
+          ],
+          "validBaseline": true,
+          "sceneLayerCount": 4,
+          "brief": {
+            "era": "belum ditetapkan",
+            "location": "lokasi-tidak-pasti",
+            "locationCertain": false,
+            "evidence": []
+          }
+        },
+        {
+          "clipId": "47e6027c-7e08-4101-b6b1-17df7f8cbe1d",
+          "title": "Gagasan Masuk Bengkel",
+          "status": "ready",
+          "reason": "Aset lengkap; baseline lokal tersedia. Review piksel tetap diperlukan.",
+          "action": "Susun baseline / edit otomatis",
+          "legacy": true,
+          "plannerVersion": null,
+          "planId": "ac9fa169-4d30-4840-8310-c6e3633da75f",
+          "missingItems": [],
+          "planned": 6,
+          "generated": 6,
+          "reviewed": 0,
+          "special": [],
+          "warnings": [
+            "Avoid (larangan visual, bukan bukti benda ada): power tools, modern stainless dishwasher, readable blueprints, unsupported metal frame, altered character identities, duplicated hands",
+            "Lokasi tidak pasti; storyboard tidak dianggap bukti narasi. Konfirmasikan lokasi, jangan warisi diam-diam.",
+            "Era belum disebut jelas; konfirmasikan sebelum generasi."
+          ],
+          "validBaseline": true,
+          "sceneLayerCount": 5,
+          "brief": {
+            "era": "belum ditetapkan",
+            "location": "lokasi-tidak-pasti",
+            "locationCertain": false,
+            "evidence": [
+              {
+                "field": "prop",
+                "quote": "mesin",
+                "startWord": 10,
+                "endWord": 10,
+                "startMs": 6220,
+                "endMs": 6420,
+                "source": "narration"
+              }
+            ]
+          }
+        },
+        {
+          "clipId": "941905ac-6344-4827-b689-2e8388f45605",
+          "title": "Rak Memegang Piring",
+          "status": "ready",
+          "reason": "Aset lengkap; baseline lokal tersedia. Review piksel tetap diperlukan.",
+          "action": "Susun baseline / edit otomatis",
+          "legacy": true,
+          "plannerVersion": null,
+          "planId": "64149bca-eacb-4fad-b380-00a3818b61f7",
+          "missingItems": [],
+          "planned": 7,
+          "generated": 7,
+          "reviewed": 0,
+          "special": [],
+          "warnings": [
+            "Avoid (larangan visual, bukan bukti benda ada): touching plate faces, modern plastic rack, floating porcelain, unreadable rack geometry, extra fingers, baked-in arrows or labels",
+            "Lokasi tidak pasti; storyboard tidak dianggap bukti narasi. Konfirmasikan lokasi, jangan warisi diam-diam.",
+            "Era belum disebut jelas; konfirmasikan sebelum generasi."
+          ],
+          "validBaseline": true,
+          "sceneLayerCount": 5,
+          "brief": {
+            "era": "belum ditetapkan",
+            "location": "lokasi-tidak-pasti",
+            "locationCertain": false,
+            "evidence": []
+          }
+        },
+        {
+          "clipId": "75f53a05-3523-4d6a-9b40-2be76e369e88",
+          "title": "Air yang Bekerja",
+          "status": "ready",
+          "reason": "Aset lengkap; baseline lokal tersedia. Review piksel tetap diperlukan.",
+          "action": "Susun baseline / edit otomatis",
+          "legacy": true,
+          "plannerVersion": null,
+          "planId": "e9ab1be1-79d7-4636-b7fe-b526b2268b4a",
+          "missingItems": [],
+          "planned": 6,
+          "generated": 6,
+          "reviewed": 0,
+          "special": [],
+          "warnings": [
+            "Avoid (larangan visual, bukan bukti benda ada): modern spray-arm claims, transparent whole human, cartoon water faces, explosive splashes, hands inside operating mechanism, readable labels",
+            "Lokasi tidak pasti; storyboard tidak dianggap bukti narasi. Konfirmasikan lokasi, jangan warisi diam-diam.",
+            "Era belum disebut jelas; konfirmasikan sebelum generasi."
+          ],
+          "validBaseline": true,
+          "sceneLayerCount": 5,
+          "brief": {
+            "era": "belum ditetapkan",
+            "location": "lokasi-tidak-pasti",
+            "locationCertain": false,
+            "evidence": [
+              {
+                "field": "prop",
+                "quote": "mesin",
+                "startWord": 7,
+                "endWord": 7,
+                "startMs": 2679,
+                "endMs": 3000,
+                "source": "narration"
+              }
+            ]
+          }
+        },
+        {
+          "clipId": "b34a638d-e84a-40ee-a833-ef29b0cba12d",
+          "title": "Bukan yang Pertama",
+          "status": "ready",
+          "reason": "Aset lengkap; baseline lokal tersedia. Review piksel tetap diperlukan.",
+          "action": "Susun baseline / edit otomatis",
+          "legacy": true,
+          "plannerVersion": null,
+          "planId": "5490cd9a-c344-4ca0-95b5-fb82a6392830",
+          "missingItems": [],
+          "planned": 6,
+          "generated": 6,
+          "reviewed": 0,
+          "special": [],
+          "warnings": [
+            "Avoid (larangan visual, bukan bukti benda ada): readable patent text, first-inventor trophy, modern printer paper branding, authentic-document claim, floating paper, sepia archival styling",
+            "Lokasi tidak pasti; storyboard tidak dianggap bukti narasi. Konfirmasikan lokasi, jangan warisi diam-diam."
+          ],
+          "validBaseline": true,
+          "sceneLayerCount": 4,
+          "brief": {
+            "era": "1886",
+            "location": "lokasi-tidak-pasti",
+            "locationCertain": false,
+            "evidence": [
+              {
+                "field": "era",
+                "quote": "1886",
+                "startWord": 4,
+                "endWord": 4,
+                "startMs": 1699,
+                "endMs": 3832,
+                "source": "narration"
+              },
+              {
+                "field": "prop",
+                "quote": "mesin",
+                "startWord": 6,
+                "endWord": 6,
+                "startMs": 4339,
+                "endMs": 4500,
+                "source": "narration"
+              }
+            ]
+          }
+        },
+        {
+          "clipId": "fdd1eb2b-930c-47c9-b22d-c049aec1dec9",
+          "title": "Menuju Dapur Hotel",
+          "status": "ready",
+          "reason": "Aset lengkap; baseline lokal tersedia. Review piksel tetap diperlukan.",
+          "action": "Susun baseline / edit otomatis",
+          "legacy": true,
+          "plannerVersion": null,
+          "planId": "fe64003f-9f25-4d49-8696-1c24b799d3f3",
+          "missingItems": [],
+          "planned": 7,
+          "generated": 7,
+          "reviewed": 0,
+          "special": [],
+          "warnings": [
+            "Avoid (larangan visual, bukan bukti benda ada): modern commercial kitchen, electric control panel, contemporary chef clothing, impossible dish towers, readable hotel signage, extra background people",
+            "Lokasi tidak pasti; storyboard tidak dianggap bukti narasi. Konfirmasikan lokasi, jangan warisi diam-diam.",
+            "Era belum disebut jelas; konfirmasikan sebelum generasi."
+          ],
+          "validBaseline": true,
+          "sceneLayerCount": 5,
+          "brief": {
+            "era": "belum ditetapkan",
+            "location": "lokasi-tidak-pasti",
+            "locationCertain": false,
+            "evidence": []
+          }
+        },
+        {
+          "clipId": "c4aa452d-9d52-46ee-b8fe-04e0dfc6f3bd",
+          "title": "Rapuh Bertemu Besar",
+          "status": "ready",
+          "reason": "Aset lengkap; baseline lokal tersedia. Review piksel tetap diperlukan.",
+          "action": "Susun baseline / edit otomatis",
+          "legacy": true,
+          "plannerVersion": null,
+          "planId": "5f159e6c-8380-42a0-9a1d-1cbbee0591da",
+          "missingItems": [],
+          "planned": 6,
+          "generated": 6,
+          "reviewed": 0,
+          "special": [],
+          "warnings": [
+            "Avoid (larangan visual, bukan bukti benda ada): miniature human, oversized fantasy plate, modern dishwasher, exaggerated rubber face, readable call-to-action text, identity changes",
+            "Lokasi tidak pasti; storyboard tidak dianggap bukti narasi. Konfirmasikan lokasi, jangan warisi diam-diam.",
+            "Era belum disebut jelas; konfirmasikan sebelum generasi."
+          ],
+          "validBaseline": true,
+          "sceneLayerCount": 4,
+          "brief": {
+            "era": "belum ditetapkan",
+            "location": "lokasi-tidak-pasti",
+            "locationCertain": false,
+            "evidence": [
+              {
+                "field": "prop",
+                "quote": "mesin",
+                "startWord": 6,
+                "endWord": 6,
+                "startMs": 3640,
+                "endMs": 3879,
+                "source": "narration"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "projectId": "688cd93f-29a6-4593-bc43-29642221366f",
+      "title": "Dokter yang Tak Mau Menunggu Kiriman Es",
+      "revision": "34552460af764abbe1c408ad43683059f75a9be02b7e1469bfda5df837d2abd8",
+      "clips": [
+        {
+          "clipId": "1118a988-7c09-46eb-9560-3d1b6418bedf",
+          "title": "Dingin dari Jauh",
+          "status": "ready",
+          "reason": "Aset lengkap; baseline lokal tersedia. Review piksel tetap diperlukan.",
+          "action": "Susun baseline / edit otomatis",
+          "legacy": true,
+          "plannerVersion": null,
+          "planId": "263cec28-5635-4a0f-8de6-4f63d0c19d73",
+          "missingItems": [],
+          "planned": 17,
+          "generated": 17,
+          "reviewed": 0,
+          "special": [],
+          "warnings": [
+            "Avoid (larangan visual, bukan bukti benda ada): steam container ship, modern cargo equipment, readable shipping marks, pristine unmelted cargo, duplicated workers, baked-in title",
+            "Lokasi tidak pasti; storyboard tidak dianggap bukti narasi. Konfirmasikan lokasi, jangan warisi diam-diam.",
+            "Era belum disebut jelas; konfirmasikan sebelum generasi.",
+            "Grup static dockworker: hanya satu varian hold dipakai; kandidat lain tidak dipaksa bergerak.",
+            "Grup static john-gorrie: hanya satu varian hold dipakai; kandidat lain tidak dipaksa bergerak."
+          ],
+          "validBaseline": true,
+          "sceneLayerCount": 6,
+          "brief": {
+            "era": "belum ditetapkan",
+            "location": "lokasi-tidak-pasti",
+            "locationCertain": false,
+            "evidence": []
+          }
+        },
+        {
+          "clipId": "b5307d29-236f-4029-8f54-e344f28d532e",
+          "title": "Menunggu Kapal",
+          "status": "ready",
+          "reason": "Aset lengkap; baseline lokal tersedia. Review piksel tetap diperlukan.",
+          "action": "Susun baseline / edit otomatis",
+          "legacy": true,
+          "plannerVersion": null,
+          "planId": "7460e422-d1ae-4381-86d5-00f94ce33ed0",
+          "missingItems": [],
+          "planned": 24,
+          "generated": 24,
+          "reviewed": 0,
+          "special": [],
+          "warnings": [
+            "Avoid (larangan visual, bukan bukti benda ada): electric fan, modern hospital equipment, abundant ice, spacesuit, readable medical chart, exaggerated illness symptoms",
+            "Lokasi tidak pasti; storyboard tidak dianggap bukti narasi. Konfirmasikan lokasi, jangan warisi diam-diam.",
+            "Era belum disebut jelas; konfirmasikan sebelum generasi.",
+            "Grup static basin: hanya satu varian hold dipakai; kandidat lain tidak dipaksa bergerak.",
+            "Grup static gorrie: hanya satu varian hold dipakai; kandidat lain tidak dipaksa bergerak."
+          ],
+          "validBaseline": true,
+          "sceneLayerCount": 7,
+          "brief": {
+            "era": "belum ditetapkan",
+            "location": "lokasi-tidak-pasti",
+            "locationCertain": false,
+            "evidence": []
+          }
+        },
+        {
+          "clipId": "e00b0b70-1375-4036-a03a-de000dfe3f8c",
+          "title": "Mencoba Membuat Dingin",
+          "status": "ready",
+          "reason": "Aset lengkap; baseline lokal tersedia. Review piksel tetap diperlukan.",
+          "action": "Susun baseline / edit otomatis",
+          "legacy": true,
+          "plannerVersion": null,
+          "planId": "167679b6-69ac-4866-8bd4-c1bbdcda8d96",
+          "missingItems": [],
+          "planned": 13,
+          "generated": 13,
+          "reviewed": 0,
+          "special": [],
+          "warnings": [
+            "Avoid (larangan visual, bukan bukti benda ada): modern refrigerator, electrical motor, exact-replica claim, floating pipe connections, readable blueprint, magical cold glow",
+            "Lokasi tidak pasti; storyboard tidak dianggap bukti narasi. Konfirmasikan lokasi, jangan warisi diam-diam.",
+            "Era belum disebut jelas; konfirmasikan sebelum generasi.",
+            "Grup static john_gorrie: hanya satu varian hold dipakai; kandidat lain tidak dipaksa bergerak.",
+            "Grup static air_diagram: hanya satu varian hold dipakai; kandidat lain tidak dipaksa bergerak."
+          ],
+          "validBaseline": true,
+          "sceneLayerCount": 7,
+          "brief": {
+            "era": "belum ditetapkan",
+            "location": "lokasi-tidak-pasti",
+            "locationCertain": false,
+            "evidence": [
+              {
+                "field": "prop",
+                "quote": "mesin",
+                "startWord": 6,
+                "endWord": 6,
+                "startMs": 2840,
+                "endMs": 3039,
+                "source": "narration"
+              }
+            ]
+          }
+        },
+        {
+          "clipId": "1fc4e851-5a3d-46f2-84cf-1f6fa2c2d3a4",
+          "title": "Tekan, Lalu Buang Panas",
+          "status": "ready",
+          "reason": "Aset lengkap; baseline lokal tersedia. Review piksel tetap diperlukan.",
+          "action": "Susun baseline / edit otomatis",
+          "legacy": true,
+          "plannerVersion": null,
+          "planId": "cdbba49f-32a8-439f-912b-06ab430d47f4",
+          "missingItems": [],
+          "planned": 21,
+          "generated": 21,
+          "reviewed": 0,
+          "special": [],
+          "warnings": [
+            "Avoid (larangan visual, bukan bukti benda ada): combustion flames, refrigerant-liquid substitution, cartoon particles with faces, unreadable pipe maze, baked-in arrows with text, modern digital gauges",
+            "Lokasi tidak pasti; storyboard tidak dianggap bukti narasi. Konfirmasikan lokasi, jangan warisi diam-diam.",
+            "Era belum disebut jelas; konfirmasikan sebelum generasi.",
+            "Grup static gorrie: hanya satu varian hold dipakai; kandidat lain tidak dipaksa bergerak.",
+            "Grup static piston: hanya satu varian hold dipakai; kandidat lain tidak dipaksa bergerak.",
+            "Grup static compression_overlay: hanya satu varian hold dipakai; kandidat lain tidak dipaksa bergerak.",
+            "Grup static heat_overlay: hanya satu varian hold dipakai; kandidat lain tidak dipaksa bergerak.",
+            "Grup static expansion_inset: hanya satu varian hold dipakai; kandidat lain tidak dipaksa bergerak."
+          ],
+          "validBaseline": true,
+          "sceneLayerCount": 8,
+          "brief": {
+            "era": "belum ditetapkan",
+            "location": "lokasi-tidak-pasti",
+            "locationCertain": false,
+            "evidence": []
+          }
+        },
+        {
+          "clipId": "c54e0191-9b35-42e6-8c69-02b108229795",
+          "title": "Dingin Menjadi Es",
+          "status": "ready",
+          "reason": "Aset lengkap; baseline lokal tersedia. Review piksel tetap diperlukan.",
+          "action": "Susun baseline / edit otomatis",
+          "legacy": true,
+          "plannerVersion": null,
+          "planId": "81fcca43-8966-4856-9a15-358bd24fa36c",
+          "missingItems": [],
+          "planned": 11,
+          "generated": 11,
+          "reviewed": 0,
+          "special": [],
+          "warnings": [
+            "Avoid (larangan visual, bukan bukti benda ada): air becoming solid ice, giant ice harvest, readable patent lettering, modern ice tray, triumphant crowd, authentic archival-photo claim",
+            "Lokasi tidak pasti; storyboard tidak dianggap bukti narasi. Konfirmasikan lokasi, jangan warisi diam-diam.",
+            "Grup static john-gorrie: hanya satu varian hold dipakai; kandidat lain tidak dipaksa bergerak."
+          ],
+          "validBaseline": true,
+          "sceneLayerCount": 9,
+          "brief": {
+            "era": "1851",
+            "location": "lokasi-tidak-pasti",
+            "locationCertain": false,
+            "evidence": [
+              {
+                "field": "era",
+                "quote": "1851",
+                "startWord": 6,
+                "endWord": 6,
+                "startMs": 3239,
+                "endMs": 5319,
+                "source": "narration"
+              },
+              {
+                "field": "prop",
+                "quote": "mesin",
+                "startWord": 11,
+                "endWord": 11,
+                "startMs": 6919,
+                "endMs": 7080,
+                "source": "narration"
+              }
+            ]
+          }
+        },
+        {
+          "clipId": "c596530a-641f-4542-a7e8-8474dc334947",
+          "title": "Niat Baik, Teori Berbeda",
+          "status": "ready",
+          "reason": "Aset lengkap; baseline lokal tersedia. Review piksel tetap diperlukan.",
+          "action": "Susun baseline / edit otomatis",
+          "legacy": true,
+          "plannerVersion": null,
+          "planId": "e325dc60-5f47-477b-9fc3-ce6018a20630",
+          "missingItems": [],
+          "planned": 13,
+          "generated": 13,
+          "reviewed": 0,
+          "special": [],
+          "warnings": [
+            "Avoid (larangan visual, bukan bukti benda ada): instant recovery, heat depicted as a pathogen, modern medical devices, cartoon anatomy, split-screen montage, readable bedside labels",
+            "Lokasi tidak pasti; storyboard tidak dianggap bukti narasi. Konfirmasikan lokasi, jangan warisi diam-diam.",
+            "Grup static gorrie: hanya satu varian hold dipakai; kandidat lain tidak dipaksa bergerak.",
+            "Grup static female-patient: hanya satu varian hold dipakai; kandidat lain tidak dipaksa bergerak."
+          ],
+          "validBaseline": true,
+          "sceneLayerCount": 9,
+          "brief": {
+            "era": "sekarang",
+            "location": "lokasi-tidak-pasti",
+            "locationCertain": false,
+            "evidence": [
+              {
+                "field": "era",
+                "quote": "sekarang",
+                "startWord": 9,
+                "endWord": 9,
+                "startMs": 4259,
+                "endMs": 4739,
+                "source": "narration"
+              }
+            ]
+          }
+        },
+        {
+          "clipId": "f3a24c2f-d5ac-4bc7-9018-21df6686b484",
+          "title": "Mesin Belum Berarti Sukses",
+          "status": "ready",
+          "reason": "Aset lengkap; baseline lokal tersedia. Review piksel tetap diperlukan.",
+          "action": "Susun baseline / edit otomatis",
+          "legacy": true,
+          "plannerVersion": null,
+          "planId": "5f1545d0-11d8-4008-b4b8-8d203d02d09f",
+          "missingItems": [],
+          "planned": 14,
+          "generated": 14,
+          "reviewed": 0,
+          "special": [],
+          "warnings": [
+            "Avoid (larangan visual, bukan bukti benda ada): broken machine, smoke or sparks, invented rejection letter text, crowds of buyers, modern banknotes, exaggerated bankruptcy spectacle",
+            "Lokasi tidak pasti; storyboard tidak dianggap bukti narasi. Konfirmasikan lokasi, jangan warisi diam-diam.",
+            "Era belum disebut jelas; konfirmasikan sebelum generasi.",
+            "Grup static gorrie: hanya satu varian hold dipakai; kandidat lain tidak dipaksa bergerak."
+          ],
+          "validBaseline": true,
+          "sceneLayerCount": 7,
+          "brief": {
+            "era": "belum ditetapkan",
+            "location": "lokasi-tidak-pasti",
+            "locationCertain": false,
+            "evidence": []
+          }
+        },
+        {
+          "clipId": "e79597dc-2c45-4471-b357-56d60ec58d57",
+          "title": "Dingin Tanpa Menunggu Kapal",
+          "status": "needs-character",
+          "reason": "Tokoh visual belum didefinisikan atau ID bukan milik proyek.",
+          "action": "Tambah/pilih karakter, lalu setujui brief; identity sheet hanya setelah konfirmasi.",
+          "legacy": true,
+          "plannerVersion": null,
+          "planId": "0347cc97-6b50-48c7-a678-c02ff4bf79a5",
+          "missingItems": [],
+          "planned": 17,
+          "generated": 17,
+          "reviewed": 0,
+          "special": [],
+          "warnings": [
+            "Avoid (larangan visual, bukan bukti benda ada): Gorrie in modern clothing, identical historical refrigeration mechanism, oversized ice cube, extra fingers, branded appliance, baked-in subscribe text",
+            "Lokasi tidak pasti; storyboard tidak dianggap bukti narasi. Konfirmasikan lokasi, jangan warisi diam-diam.",
+            "Era belum disebut jelas; konfirmasikan sebelum generasi.",
+            "Grup static resident: hanya satu varian hold dipakai; kandidat lain tidak dipaksa bergerak.",
+            "Grup static freezer-drawer: hanya satu varian hold dipakai; kandidat lain tidak dipaksa bergerak."
+          ],
+          "validBaseline": true,
+          "sceneLayerCount": 8,
+          "brief": {
+            "era": "belum ditetapkan",
+            "location": "lokasi-tidak-pasti",
+            "locationCertain": false,
+            "characterProposal": {
+              "name": "Pekerja dapur (usulan)",
+              "age": null,
+              "wardrobe": "Pakaian sesuai era yang dikonfirmasi; tinjau gaun wol, apron linen dan penutup kepala bila sesuai.",
+              "reason": "Visual memerlukan orang tetapi characterIds kosong; jangan mengarang ID karakter."
+            },
+            "evidence": [
+              {
+                "field": "prop",
+                "quote": "mesin",
+                "startWord": 1,
+                "endWord": 1,
+                "startMs": 759,
+                "endMs": 999,
+                "source": "narration"
+              },
+              {
+                "field": "prop",
+                "quote": "kapal",
+                "startWord": 8,
+                "endWord": 8,
+                "startMs": 3839,
+                "endMs": 4199,
+                "source": "narration"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "projectId": "c2026ca2-b171-49c5-adcd-d1e0d8d2da8e",
+      "title": "Pintu Kecil di Balik Troli yang Bersarang",
+      "revision": "edcb969e4277e6e4643b2f5f95bae57e2f0320df177d3edbbcbfac0a3f8b0746",
+      "clips": [
+        {
+          "clipId": "6c2f2d8e-7fe5-4e1f-a8aa-1f4c329cf8e1",
+          "title": "Belakangnya Mengalah",
+          "status": "ready",
+          "reason": "Aset lengkap; baseline lokal tersedia. Review piksel tetap diperlukan.",
+          "action": "Susun baseline / edit otomatis",
+          "legacy": true,
+          "plannerVersion": null,
+          "planId": "9aa69980-f0d7-48b4-927a-4d2d6f470d97",
+          "missingItems": [],
+          "planned": 10,
+          "generated": 10,
+          "reviewed": 0,
+          "special": [],
+          "warnings": [
+            "Avoid (larangan visual, bukan bukti benda ada): shrinking baskets, front-opening gate, fused wire meshes, modern plastic child seats, baked-in text",
+            "Lokasi tidak pasti; storyboard tidak dianggap bukti narasi. Konfirmasikan lokasi, jangan warisi diam-diam.",
+            "Era belum disebut jelas; konfirmasikan sebelum generasi.",
+            "Grup static leading-rear-gate: hanya satu varian hold dipakai; kandidat lain tidak dipaksa bergerak."
+          ],
+          "validBaseline": true,
+          "sceneLayerCount": 7,
+          "brief": {
+            "era": "belum ditetapkan",
+            "location": "lokasi-tidak-pasti",
+            "locationCertain": false,
+            "evidence": []
+          }
+        },
+        {
+          "clipId": "f1c238f0-4b56-4c80-81e8-8ffe067f42ee",
+          "title": "Rahasia di Belakang",
+          "status": "needs-assets",
+          "reason": "Rencana belum ada.",
+          "action": "Tinjau Scene Brief → susun rencana",
+          "legacy": true,
+          "plannerVersion": null,
+          "planId": null,
+          "missingItems": [],
+          "planned": 0,
+          "generated": 0,
+          "reviewed": 0,
+          "special": [],
+          "warnings": [
+            "Avoid (larangan visual, bukan bukti benda ada): side door, miniature inset door, bottom hinge, detached basket, text",
+            "Lokasi tidak pasti; storyboard tidak dianggap bukti narasi. Konfirmasikan lokasi, jangan warisi diam-diam.",
+            "Era belum disebut jelas; konfirmasikan sebelum generasi."
+          ],
+          "validBaseline": false,
+          "sceneLayerCount": 0,
+          "brief": {
+            "era": "belum ditetapkan",
+            "location": "lokasi-tidak-pasti",
+            "locationCertain": false,
+            "evidence": []
+          }
+        },
+        {
+          "clipId": "acd3ae38-9420-49a1-9748-e6a68b5e138a",
+          "title": "Masalah Parkir",
+          "status": "needs-assets",
+          "reason": "Rencana belum ada.",
+          "action": "Tinjau Scene Brief → susun rencana",
+          "legacy": true,
+          "plannerVersion": null,
+          "planId": null,
+          "missingItems": [],
+          "planned": 0,
+          "generated": 0,
+          "reviewed": 0,
+          "special": [],
+          "warnings": [
+            "Avoid (larangan visual, bukan bukti benda ada): nested carts, contemporary supermarket fixtures, oversized warehouse, unreadable body pose, printed carton labels",
+            "Lokasi tidak pasti; storyboard tidak dianggap bukti narasi. Konfirmasikan lokasi, jangan warisi diam-diam.",
+            "Era belum disebut jelas; konfirmasikan sebelum generasi."
+          ],
+          "validBaseline": false,
+          "sceneLayerCount": 0,
+          "brief": {
+            "era": "belum ditetapkan",
+            "location": "lokasi-tidak-pasti",
+            "locationCertain": false,
+            "evidence": []
+          }
+        },
+        {
+          "clipId": "f1d11e54-7cdb-43a2-b30c-f5f267397d77",
+          "title": "Mundur ke Model Awal",
+          "status": "needs-assets",
+          "reason": "Rencana belum ada.",
+          "action": "Tinjau Scene Brief → susun rencana",
+          "legacy": true,
+          "plannerVersion": null,
+          "planId": null,
+          "missingItems": [],
+          "planned": 0,
+          "generated": 0,
+          "reviewed": 0,
+          "special": [],
+          "warnings": [
+            "Avoid (larangan visual, bukan bukti benda ada): modern single-basket cart, welded fixed baskets, plastic components, invented brand lettering, sepia",
+            "Lokasi tidak pasti; storyboard tidak dianggap bukti narasi. Konfirmasikan lokasi, jangan warisi diam-diam.",
+            "Era belum disebut jelas; konfirmasikan sebelum generasi."
+          ],
+          "validBaseline": false,
+          "sceneLayerCount": 0,
+          "brief": {
+            "era": "belum ditetapkan",
+            "location": "lokasi-tidak-pasti",
+            "locationCertain": false,
+            "evidence": []
+          }
+        },
+        {
+          "clipId": "7227b44f-8679-4a78-893e-899623eadd0f",
+          "title": "Angkat Dahulu",
+          "status": "needs-assets",
+          "reason": "Rencana belum ada.",
+          "action": "Tinjau Scene Brief → susun rencana",
+          "legacy": true,
+          "plannerVersion": null,
+          "planId": null,
+          "missingItems": [],
+          "planned": 0,
+          "generated": 0,
+          "reviewed": 0,
+          "special": [],
+          "warnings": [
+            "Avoid (larangan visual, bukan bukti benda ada): lifting entire cart, floating basket without grip, extra fingers, basket passing through supports, text",
+            "Lokasi tidak pasti; storyboard tidak dianggap bukti narasi. Konfirmasikan lokasi, jangan warisi diam-diam.",
+            "Era belum disebut jelas; konfirmasikan sebelum generasi."
+          ],
+          "validBaseline": false,
+          "sceneLayerCount": 0,
+          "brief": {
+            "era": "belum ditetapkan",
+            "location": "lokasi-tidak-pasti",
+            "locationCertain": false,
+            "evidence": []
+          }
+        },
+        {
+          "clipId": "188e62ac-8e94-48df-844a-b6f0a71fae8b",
+          "title": "Lipat Kemudian",
+          "status": "needs-assets",
+          "reason": "Rencana belum ada.",
+          "action": "Tinjau Scene Brief → susun rencana",
+          "legacy": true,
+          "plannerVersion": null,
+          "planId": null,
+          "missingItems": [],
+          "planned": 0,
+          "generated": 0,
+          "reviewed": 0,
+          "special": [],
+          "warnings": [
+            "Avoid (larangan visual, bukan bukti benda ada): baskets still on folding frame, telescoping cart, impossible joint bending, hands inside hinges, printed text",
+            "Lokasi tidak pasti; storyboard tidak dianggap bukti narasi. Konfirmasikan lokasi, jangan warisi diam-diam.",
+            "Era belum disebut jelas; konfirmasikan sebelum generasi."
+          ],
+          "validBaseline": false,
+          "sceneLayerCount": 0,
+          "brief": {
+            "era": "belum ditetapkan",
+            "location": "lokasi-tidak-pasti",
+            "locationCertain": false,
+            "evidence": []
+          }
+        },
+        {
+          "clipId": "ed19b9e7-438c-494e-801b-424608090256",
+          "title": "Pekerjaan Berulang",
+          "status": "needs-assets",
+          "reason": "Rencana belum ada.",
+          "action": "Tinjau Scene Brief → susun rencana",
+          "legacy": true,
+          "plannerVersion": null,
+          "planId": null,
+          "missingItems": [],
+          "planned": 0,
+          "generated": 0,
+          "reviewed": 0,
+          "special": [],
+          "warnings": [
+            "Avoid (larangan visual, bukan bukti benda ada): identical duplicated people, nested early carts, modern handles, magical basket removal, labels",
+            "Lokasi tidak pasti; storyboard tidak dianggap bukti narasi. Konfirmasikan lokasi, jangan warisi diam-diam.",
+            "Era belum disebut jelas; konfirmasikan sebelum generasi."
+          ],
+          "validBaseline": false,
+          "sceneLayerCount": 0,
+          "brief": {
+            "era": "belum ditetapkan",
+            "location": "lokasi-tidak-pasti",
+            "locationCertain": false,
+            "evidence": []
+          }
+        },
+        {
+          "clipId": "16fa55b9-c7f0-4888-a484-516bdde00fbf",
+          "title": "Beres Belanja, Belum Beres Kerja",
+          "status": "needs-assets",
+          "reason": "Rencana belum ada.",
+          "action": "Tinjau Scene Brief → susun rencana",
+          "legacy": true,
+          "plannerVersion": null,
+          "planId": null,
+          "missingItems": [],
+          "planned": 0,
+          "generated": 0,
+          "reviewed": 0,
+          "special": [],
+          "warnings": [
+            "Avoid (larangan visual, bukan bukti benda ada): customers still shopping, modern checkout screen, exaggerated cartoon face, text on walls",
+            "Lokasi tidak pasti; storyboard tidak dianggap bukti narasi. Konfirmasikan lokasi, jangan warisi diam-diam.",
+            "Era belum disebut jelas; konfirmasikan sebelum generasi."
+          ],
+          "validBaseline": false,
+          "sceneLayerCount": 0,
+          "brief": {
+            "era": "belum ditetapkan",
+            "location": "lokasi-tidak-pasti",
+            "locationCertain": false,
+            "evidence": []
+          }
+        },
+        {
+          "clipId": "cb4102ee-4a64-47d0-bb60-a051c7134cfe",
+          "title": "Bengkel Kansas City",
+          "status": "needs-assets",
+          "reason": "Rencana belum ada.",
+          "action": "Tinjau Scene Brief → susun rencana",
+          "legacy": true,
+          "plannerVersion": null,
+          "planId": null,
+          "missingItems": [],
+          "planned": 0,
+          "generated": 0,
+          "reviewed": 0,
+          "special": [],
+          "warnings": [
+            "Avoid (larangan visual, bukan bukti benda ada): authenticated archival-photo treatment, modern power tools, digital screens, modern plastic carts, baked-in name",
+            "Lokasi tidak pasti; storyboard tidak dianggap bukti narasi. Konfirmasikan lokasi, jangan warisi diam-diam.",
+            "Era belum disebut jelas; konfirmasikan sebelum generasi."
+          ],
+          "validBaseline": false,
+          "sceneLayerCount": 0,
+          "brief": {
+            "era": "belum ditetapkan",
+            "location": "lokasi-tidak-pasti",
+            "locationCertain": false,
+            "evidence": []
+          }
+        },
+        {
+          "clipId": "c3fe8eb6-70e9-481a-b37b-0771f9735a22",
+          "title": "Tahun Pengembangan",
+          "status": "needs-assets",
+          "reason": "Rencana belum ada.",
+          "action": "Tinjau Scene Brief → susun rencana",
+          "legacy": true,
+          "plannerVersion": null,
+          "planId": null,
+          "missingItems": [],
+          "planned": 0,
+          "generated": 0,
+          "reviewed": 0,
+          "special": [],
+          "warnings": [
+            "Avoid (larangan visual, bukan bukti benda ada): generated year digits, readable blueprints, modern cart design, duplicate Watson, baskets changing size",
+            "Lokasi tidak pasti; storyboard tidak dianggap bukti narasi. Konfirmasikan lokasi, jangan warisi diam-diam."
+          ],
+          "validBaseline": false,
+          "sceneLayerCount": 0,
+          "brief": {
+            "era": "1946",
+            "location": "lokasi-tidak-pasti",
+            "locationCertain": false,
+            "evidence": [
+              {
+                "field": "era",
+                "quote": "1946",
+                "startWord": 1,
+                "endWord": 1,
+                "startMs": 480,
+                "endMs": 2267,
+                "source": "narration"
+              }
+            ]
+          }
+        },
+        {
+          "clipId": "b3aa9529-ddfe-4dea-8ee8-4fdf4443040b",
+          "title": "Bukan Dilipat",
+          "status": "needs-assets",
+          "reason": "Rencana belum ada.",
+          "action": "Tinjau Scene Brief → susun rencana",
+          "legacy": true,
+          "plannerVersion": null,
+          "planId": null,
+          "missingItems": [],
+          "planned": 0,
+          "generated": 0,
+          "reviewed": 0,
+          "special": [],
+          "warnings": [
+            "Avoid (larangan visual, bukan bukti benda ada): nose-to-nose carts, folded baskets, crossing wheel frames, modern child seats, text",
+            "Lokasi tidak pasti; storyboard tidak dianggap bukti narasi. Konfirmasikan lokasi, jangan warisi diam-diam.",
+            "Era belum disebut jelas; konfirmasikan sebelum generasi."
+          ],
+          "validBaseline": false,
+          "sceneLayerCount": 0,
+          "brief": {
+            "era": "belum ditetapkan",
+            "location": "lokasi-tidak-pasti",
+            "locationCertain": false,
+            "evidence": []
+          }
+        },
+        {
+          "clipId": "c87444a0-c9e5-4a34-9676-fa94a715ca7a",
+          "title": "Dinding yang Bergerak",
+          "status": "needs-assets",
+          "reason": "Rencana belum ada.",
+          "action": "Tinjau Scene Brief → susun rencana",
+          "legacy": true,
+          "plannerVersion": null,
+          "planId": null,
+          "missingItems": [],
+          "planned": 0,
+          "generated": 0,
+          "reviewed": 0,
+          "special": [],
+          "warnings": [
+            "Avoid (larangan visual, bukan bukti benda ada): bottom hinge, swinging side door, disconnected pivot, decorative hardware, diagram lettering",
+            "Lokasi tidak pasti; storyboard tidak dianggap bukti narasi. Konfirmasikan lokasi, jangan warisi diam-diam.",
+            "Era belum disebut jelas; konfirmasikan sebelum generasi."
+          ],
+          "validBaseline": false,
+          "sceneLayerCount": 0,
+          "brief": {
+            "era": "belum ditetapkan",
+            "location": "lokasi-tidak-pasti",
+            "locationCertain": false,
+            "evidence": []
+          }
+        },
+        {
+          "clipId": "387f1011-3534-4daa-9394-0dc1ba3fb97c",
+          "title": "Dorongan Pertama",
+          "status": "needs-assets",
+          "reason": "Rencana belum ada.",
+          "action": "Tinjau Scene Brief → susun rencana",
+          "legacy": true,
+          "plannerVersion": null,
+          "planId": null,
+          "missingItems": [],
+          "planned": 0,
+          "generated": 0,
+          "reviewed": 0,
+          "special": [],
+          "warnings": [
+            "Avoid (larangan visual, bukan bukti benda ada): basket clipping through closed gate, front gate opening, fused carts, bending wire, text",
+            "Lokasi tidak pasti; storyboard tidak dianggap bukti narasi. Konfirmasikan lokasi, jangan warisi diam-diam.",
+            "Era belum disebut jelas; konfirmasikan sebelum generasi."
+          ],
+          "validBaseline": false,
+          "sceneLayerCount": 0,
+          "brief": {
+            "era": "belum ditetapkan",
+            "location": "lokasi-tidak-pasti",
+            "locationCertain": false,
+            "evidence": []
+          }
+        },
+        {
+          "clipId": "96c8c405-1a00-4453-89e5-49fe070081af",
+          "title": "Jalan Terbuka",
+          "status": "needs-assets",
+          "reason": "Rencana belum ada.",
+          "action": "Tinjau Scene Brief → susun rencana",
+          "legacy": true,
+          "plannerVersion": null,
+          "planId": null,
+          "missingItems": [],
+          "planned": 0,
+          "generated": 0,
+          "reviewed": 0,
+          "special": [],
+          "warnings": [
+            "Avoid (larangan visual, bukan bukti benda ada): basket shrinking, gate detaching, rear gate rotating downward, intersecting underframes, text",
+            "Lokasi tidak pasti; storyboard tidak dianggap bukti narasi. Konfirmasikan lokasi, jangan warisi diam-diam.",
+            "Era belum disebut jelas; konfirmasikan sebelum generasi."
+          ],
+          "validBaseline": false,
+          "sceneLayerCount": 0,
+          "brief": {
+            "era": "belum ditetapkan",
+            "location": "lokasi-tidak-pasti",
+            "locationCertain": false,
+            "evidence": []
+          }
+        },
+        {
+          "clipId": "03e48fd7-ae4f-418c-8c83-37a4ef214f0f",
+          "title": "Masuk Berurutan",
+          "status": "needs-assets",
+          "reason": "Rencana belum ada.",
+          "action": "Tinjau Scene Brief → susun rencana",
+          "legacy": true,
+          "plannerVersion": null,
+          "planId": null,
+          "missingItems": [],
+          "planned": 0,
+          "generated": 0,
+          "reviewed": 0,
+          "special": [],
+          "warnings": [
+            "Avoid (larangan visual, bukan bukti benda ada): three carts fused into one, multiple Watson figures, extra wheels, all gates opening independently, text",
+            "Lokasi tidak pasti; storyboard tidak dianggap bukti narasi. Konfirmasikan lokasi, jangan warisi diam-diam.",
+            "Era belum disebut jelas; konfirmasikan sebelum generasi."
+          ],
+          "validBaseline": false,
+          "sceneLayerCount": 0,
+          "brief": {
+            "era": "belum ditetapkan",
+            "location": "lokasi-tidak-pasti",
+            "locationCertain": false,
+            "evidence": []
+          }
+        },
+        {
+          "clipId": "12293e79-4041-46fd-8d74-bc54351733ea",
+          "title": "Lantai Kembali Lega",
+          "status": "needs-assets",
+          "reason": "Rencana belum ada.",
+          "action": "Tinjau Scene Brief → susun rencana",
+          "legacy": true,
+          "plannerVersion": null,
+          "planId": null,
+          "missingItems": [],
+          "planned": 0,
+          "generated": 0,
+          "reviewed": 0,
+          "special": [],
+          "warnings": [
+            "Avoid (larangan visual, bukan bukti benda ada): floor dimension labels, detached baskets, impossible handle spacing, modern plastic carts, symbolic arrows",
+            "Lokasi tidak pasti; storyboard tidak dianggap bukti narasi. Konfirmasikan lokasi, jangan warisi diam-diam.",
+            "Era belum disebut jelas; konfirmasikan sebelum generasi."
+          ],
+          "validBaseline": false,
+          "sceneLayerCount": 0,
+          "brief": {
+            "era": "belum ditetapkan",
+            "location": "lokasi-tidak-pasti",
+            "locationCertain": false,
+            "evidence": []
+          }
+        },
+        {
+          "clipId": "65f58f1b-5bb3-480c-8e4a-56849a7378cf",
+          "title": "Ambil dan Pakai",
+          "status": "needs-assets",
+          "reason": "Rencana belum ada.",
+          "action": "Tinjau Scene Brief → susun rencana",
+          "legacy": true,
+          "plannerVersion": null,
+          "planId": null,
+          "missingItems": [],
+          "planned": 0,
+          "generated": 0,
+          "reviewed": 0,
+          "special": [],
+          "warnings": [
+            "Avoid (larangan visual, bukan bukti benda ada): basket removal, reversed extraction direction, floating cart, open gate on free cart, text",
+            "Lokasi tidak pasti; storyboard tidak dianggap bukti narasi. Konfirmasikan lokasi, jangan warisi diam-diam.",
+            "Era belum disebut jelas; konfirmasikan sebelum generasi."
+          ],
+          "validBaseline": false,
+          "sceneLayerCount": 0,
+          "brief": {
+            "era": "belum ditetapkan",
+            "location": "lokasi-tidak-pasti",
+            "locationCertain": false,
+            "evidence": []
+          }
+        },
+        {
+          "clipId": "e2ca9d81-559d-4a57-b803-30743804cad7",
+          "title": "Masuk Toko",
+          "status": "needs-assets",
+          "reason": "Rencana belum ada.",
+          "action": "Tinjau Scene Brief → susun rencana",
+          "legacy": true,
+          "plannerVersion": null,
+          "planId": null,
+          "missingItems": [],
+          "planned": 0,
+          "generated": 0,
+          "reviewed": 0,
+          "special": [],
+          "warnings": [
+            "Avoid (larangan visual, bukan bukti benda ada): generated date, modern checkout scanner, contemporary clothing, shopping bags with logos, handshake instead of handle transfer",
+            "Lokasi tidak pasti; storyboard tidak dianggap bukti narasi. Konfirmasikan lokasi, jangan warisi diam-diam."
+          ],
+          "validBaseline": false,
+          "sceneLayerCount": 0,
+          "brief": {
+            "era": "1947",
+            "location": "lokasi-tidak-pasti",
+            "locationCertain": false,
+            "evidence": [
+              {
+                "field": "era",
+                "quote": "1947",
+                "startWord": 6,
+                "endWord": 6,
+                "startMs": 2600,
+                "endMs": 4813,
+                "source": "narration"
+              }
+            ]
+          }
+        },
+        {
+          "clipId": "10f932e7-eb06-4074-ba81-93760f586a58",
+          "title": "Tak Semulus Rodanya",
+          "status": "needs-assets",
+          "reason": "Rencana belum ada.",
+          "action": "Tinjau Scene Brief → susun rencana",
+          "legacy": true,
+          "plannerVersion": null,
+          "planId": null,
+          "missingItems": [],
+          "planned": 0,
+          "generated": 0,
+          "reviewed": 0,
+          "special": [],
+          "warnings": [
+            "Avoid (larangan visual, bukan bukti benda ada): readable legal claims, invented court ruling, judge or courtroom, modern laptop, authenticated document appearance",
+            "Lokasi tidak pasti; storyboard tidak dianggap bukti narasi. Konfirmasikan lokasi, jangan warisi diam-diam.",
+            "Era belum disebut jelas; konfirmasikan sebelum generasi."
+          ],
+          "validBaseline": false,
+          "sceneLayerCount": 0,
+          "brief": {
+            "era": "belum ditetapkan",
+            "location": "lokasi-tidak-pasti",
+            "locationCertain": false,
+            "evidence": []
+          }
+        },
+        {
+          "clipId": "bc53dd1b-742f-4646-bd70-40a7bf8cc532",
+          "title": "Jejak dalam Arsip",
+          "status": "needs-character",
+          "reason": "Tokoh visual belum didefinisikan atau ID bukan milik proyek.",
+          "action": "Tambah/pilih karakter, lalu setujui brief; identity sheet hanya setelah konfirmasi.",
+          "legacy": true,
+          "plannerVersion": null,
+          "planId": null,
+          "missingItems": [],
+          "planned": 0,
+          "generated": 0,
+          "reviewed": 0,
+          "special": [],
+          "warnings": [
+            "Avoid (larangan visual, bukan bukti benda ada): readable fabricated archival text, white cotton gloves on paper, museum logo, claimed original document facsimile, sepia",
+            "Lokasi tidak pasti; storyboard tidak dianggap bukti narasi. Konfirmasikan lokasi, jangan warisi diam-diam.",
+            "Era belum disebut jelas; konfirmasikan sebelum generasi."
+          ],
+          "validBaseline": false,
+          "sceneLayerCount": 0,
+          "brief": {
+            "era": "belum ditetapkan",
+            "location": "lokasi-tidak-pasti",
+            "locationCertain": false,
+            "characterProposal": {
+              "name": "Pekerja dapur (usulan)",
+              "age": null,
+              "wardrobe": "Pakaian sesuai era yang dikonfirmasi; tinjau gaun wol, apron linen dan penutup kepala bila sesuai.",
+              "reason": "Visual memerlukan orang tetapi characterIds kosong; jangan mengarang ID karakter."
+            },
+            "evidence": []
+          }
+        },
+        {
+          "clipId": "039c4345-a611-404c-8654-2c48f7455e6f",
+          "title": "Gagasan Lain",
+          "status": "needs-assets",
+          "reason": "Rencana belum ada.",
+          "action": "Tinjau Scene Brief → susun rencana",
+          "legacy": true,
+          "plannerVersion": null,
+          "planId": null,
+          "missingItems": [],
+          "planned": 0,
+          "generated": 0,
+          "reviewed": 0,
+          "special": [],
+          "warnings": [
+            "Avoid (larangan visual, bukan bukti benda ada): invented patent numbers, readable annotations, rear gate presented as lifting device, cartoon basket, purported exact archival reproduction",
+            "Lokasi tidak pasti; storyboard tidak dianggap bukti narasi. Konfirmasikan lokasi, jangan warisi diam-diam.",
+            "Era belum disebut jelas; konfirmasikan sebelum generasi."
+          ],
+          "validBaseline": false,
+          "sceneLayerCount": 0,
+          "brief": {
+            "era": "belum ditetapkan",
+            "location": "lokasi-tidak-pasti",
+            "locationCertain": false,
+            "evidence": []
+          }
+        },
+        {
+          "clipId": "536bd246-a8df-4bbb-87b8-904f4a4fb27b",
+          "title": "Jawaban Sederhana",
+          "status": "needs-assets",
+          "reason": "Rencana belum ada.",
+          "action": "Tinjau Scene Brief → susun rencana",
+          "legacy": true,
+          "plannerVersion": null,
+          "planId": null,
+          "missingItems": [],
+          "planned": 0,
+          "generated": 0,
+          "reviewed": 0,
+          "special": [],
+          "warnings": [
+            "Avoid (larangan visual, bukan bukti benda ada): split-screen panels, duplicate Arthur, historical scene passed off as original evidence, modern plastic carts, baked-in comparison text",
+            "Lokasi tidak pasti; storyboard tidak dianggap bukti narasi. Konfirmasikan lokasi, jangan warisi diam-diam.",
+            "Era belum disebut jelas; konfirmasikan sebelum generasi."
+          ],
+          "validBaseline": false,
+          "sceneLayerCount": 0,
+          "brief": {
+            "era": "belum ditetapkan",
+            "location": "lokasi-tidak-pasti",
+            "locationCertain": false,
+            "evidence": []
+          }
+        },
+        {
+          "clipId": "54a0128d-8c99-4f76-8b7a-fe7cd31061c5",
+          "title": "Yang Mengalah Menang",
+          "status": "needs-assets",
+          "reason": "Rencana belum ada.",
+          "action": "Tinjau Scene Brief → susun rencana",
+          "legacy": true,
+          "plannerVersion": null,
+          "planId": null,
+          "missingItems": [],
+          "planned": 0,
+          "generated": 0,
+          "reviewed": 0,
+          "special": [],
+          "warnings": [
+            "Avoid (larangan visual, bukan bukti benda ada): shrinking carts, gate opening outward, exaggerated cartoon grin, cluttered aisle, text",
+            "Lokasi tidak pasti; storyboard tidak dianggap bukti narasi. Konfirmasikan lokasi, jangan warisi diam-diam.",
+            "Era belum disebut jelas; konfirmasikan sebelum generasi."
+          ],
+          "validBaseline": false,
+          "sceneLayerCount": 0,
+          "brief": {
+            "era": "belum ditetapkan",
+            "location": "lokasi-tidak-pasti",
+            "locationCertain": false,
+            "evidence": []
+          }
+        },
+        {
+          "clipId": "70ff648e-af36-4654-8b49-f6f385bc8bac",
+          "title": "Ajakan Penutup",
+          "status": "needs-assets",
+          "reason": "Rencana belum ada.",
+          "action": "Tinjau Scene Brief → susun rencana",
+          "legacy": true,
+          "plannerVersion": null,
+          "planId": null,
+          "missingItems": [],
+          "planned": 0,
+          "generated": 0,
+          "reviewed": 0,
+          "special": [],
+          "warnings": [
+            "Avoid (larangan visual, bukan bukti benda ada): generated subscribe button, social media logos, readable shelf packaging, detached baskets, title-card background",
+            "Lokasi tidak pasti; storyboard tidak dianggap bukti narasi. Konfirmasikan lokasi, jangan warisi diam-diam.",
+            "Era belum disebut jelas; konfirmasikan sebelum generasi."
+          ],
+          "validBaseline": false,
+          "sceneLayerCount": 0,
+          "brief": {
+            "era": "belum ditetapkan",
+            "location": "lokasi-tidak-pasti",
+            "locationCertain": false,
+            "evidence": []
+          }
+        }
+      ]
+    },
+    {
+      "projectId": "f0ee03d9-8607-4684-b88d-0ace648808b3",
+      "title": "Mengapa Sepeda Turun dari Roda Raksasa?",
+      "revision": "ccac6eb321ed05896e4c66e50820bde82d8e14d8110003c8e7c160a46ea1c842",
+      "clips": [
+        {
+          "clipId": "8a96ec59-0f27-4c3a-bb27-01efb4b75422",
+          "title": "Duduk di Ketinggian",
+          "status": "ready",
+          "reason": "Aset lengkap; baseline lokal tersedia. Review piksel tetap diperlukan.",
+          "action": "Susun baseline / edit otomatis",
+          "legacy": true,
+          "plannerVersion": null,
+          "planId": "dd969ba7-2f21-4e26-a46c-6d80fcf2fa9d",
+          "missingItems": [],
+          "planned": 7,
+          "generated": 7,
+          "reviewed": 0,
+          "special": [],
+          "warnings": [
+            "Avoid (larangan visual, bukan bukti benda ada): chain drive, equally sized wheels, modern street furniture, cropped front wheel, baked text",
+            "Lokasi tidak pasti; storyboard tidak dianggap bukti narasi. Konfirmasikan lokasi, jangan warisi diam-diam.",
+            "Era belum disebut jelas; konfirmasikan sebelum generasi.",
+            "Rentang director legacy/tidak valid: baseline hold mencakup durasi bulat, tinjau ulang shot.",
+            "Grup static arthur-seated: hanya satu varian hold dipakai; kandidat lain tidak dipaksa bergerak."
+          ],
+          "validBaseline": true,
+          "sceneLayerCount": 4,
+          "brief": {
+            "era": "belum ditetapkan",
+            "location": "lokasi-tidak-pasti",
+            "locationCertain": false,
+            "evidence": [
+              {
+                "field": "prop",
+                "quote": "roda",
+                "startWord": 6,
+                "endWord": 6,
+                "startMs": 2400,
+                "endMs": 2560,
+                "source": "narration"
+              }
+            ]
+          }
+        },
+        {
+          "clipId": "22d500bd-1ede-4584-ab02-fd595fec5ceb",
+          "title": "Bukan Sekadar Gaya",
+          "status": "ready",
+          "reason": "Aset lengkap; baseline lokal tersedia. Review piksel tetap diperlukan.",
+          "action": "Susun baseline / edit otomatis",
+          "legacy": true,
+          "plannerVersion": null,
+          "planId": "326afb5d-fc4f-4c8c-b2ea-82ad505314b8",
+          "missingItems": [],
+          "planned": 7,
+          "generated": 7,
+          "reviewed": 0,
+          "special": [],
+          "warnings": [
+            "Avoid (larangan visual, bukan bukti benda ada): equal wheels, missing rear wheel, modern bicycle frame, exaggerated anatomy, readable signs",
+            "Lokasi tidak pasti; storyboard tidak dianggap bukti narasi. Konfirmasikan lokasi, jangan warisi diam-diam.",
+            "Era belum disebut jelas; konfirmasikan sebelum generasi.",
+            "Rentang director legacy/tidak valid: baseline hold mencakup durasi bulat, tinjau ulang shot.",
+            "Grup static arthur: hanya satu varian hold dipakai; kandidat lain tidak dipaksa bergerak."
+          ],
+          "validBaseline": true,
+          "sceneLayerCount": 3,
+          "brief": {
+            "era": "belum ditetapkan",
+            "location": "lokasi-tidak-pasti",
+            "locationCertain": false,
+            "evidence": []
+          }
+        },
+        {
+          "clipId": "5151c789-03db-4a07-96fd-5689f0d58519",
+          "title": "Pedal Langsung",
+          "status": "needs-assets",
+          "reason": "Rencana belum ada.",
+          "action": "Tinjau Scene Brief → susun rencana",
+          "legacy": true,
+          "plannerVersion": null,
+          "planId": null,
+          "missingItems": [],
+          "planned": 0,
+          "generated": 0,
+          "reviewed": 0,
+          "special": [],
+          "warnings": [
+            "Avoid (larangan visual, bukan bukti benda ada): chain, rear sprocket, floating pedal, crank disconnected from axle, modern components",
+            "Lokasi tidak pasti; storyboard tidak dianggap bukti narasi. Konfirmasikan lokasi, jangan warisi diam-diam.",
+            "Era belum disebut jelas; konfirmasikan sebelum generasi."
+          ],
+          "validBaseline": false,
+          "sceneLayerCount": 0,
+          "brief": {
+            "era": "belum ditetapkan",
+            "location": "lokasi-tidak-pasti",
+            "locationCertain": false,
+            "evidence": [
+              {
+                "field": "prop",
+                "quote": "roda",
+                "startWord": 3,
+                "endWord": 3,
+                "startMs": 1519,
+                "endMs": 1720,
+                "source": "narration"
+              }
+            ]
+          }
+        },
+        {
+          "clipId": "0e1ba5e1-c168-41b0-8d06-d1d741edc2fe",
+          "title": "Sekali Putar",
+          "status": "ready",
+          "reason": "Aset lengkap; baseline lokal tersedia. Review piksel tetap diperlukan.",
+          "action": "Susun baseline / edit otomatis",
+          "legacy": true,
+          "plannerVersion": null,
+          "planId": "6ea079ff-dacd-49c8-91f1-c8b849e53515",
+          "missingItems": [],
+          "planned": 7,
+          "generated": 7,
+          "reviewed": 0,
+          "special": [],
+          "warnings": [
+            "Avoid (larangan visual, bukan bukti benda ada): multiple tire tracks, numerical measurements, wheel spinning in place, deep tractor tread, chain drive",
+            "Lokasi tidak pasti; storyboard tidak dianggap bukti narasi. Konfirmasikan lokasi, jangan warisi diam-diam.",
+            "Era belum disebut jelas; konfirmasikan sebelum generasi.",
+            "Rentang director legacy/tidak valid: baseline hold mencakup durasi bulat, tinjau ulang shot."
+          ],
+          "validBaseline": true,
+          "sceneLayerCount": 7,
+          "brief": {
+            "era": "belum ditetapkan",
+            "location": "lokasi-tidak-pasti",
+            "locationCertain": false,
+            "evidence": [
+              {
+                "field": "prop",
+                "quote": "Roda",
+                "startWord": 0,
+                "endWord": 0,
+                "startMs": 200,
+                "endMs": 360,
+                "source": "narration"
+              }
+            ]
+          }
+        },
+        {
+          "clipId": "f1c30376-4397-4013-997c-5fe4bce9712c",
+          "title": "Mengejar Kecepatan",
+          "status": "ready",
+          "reason": "Aset lengkap; baseline lokal tersedia. Review piksel tetap diperlukan.",
+          "action": "Susun baseline / edit otomatis",
+          "legacy": true,
+          "plannerVersion": null,
+          "planId": "a7da7f1c-1272-4a3c-aecc-f5e9e4e2c7b0",
+          "missingItems": [],
+          "planned": 6,
+          "generated": 6,
+          "reviewed": 0,
+          "special": [],
+          "warnings": [
+            "Avoid (larangan visual, bukan bukti benda ada): racing motorcycle speed, chain drive, modern road markings, invisible rear wheel, extreme motion blur",
+            "Lokasi tidak pasti; storyboard tidak dianggap bukti narasi. Konfirmasikan lokasi, jangan warisi diam-diam.",
+            "Era belum disebut jelas; konfirmasikan sebelum generasi.",
+            "Rentang director legacy/tidak valid: baseline hold mencakup durasi bulat, tinjau ulang shot.",
+            "Grup static actor-ab6b85aa-63c5-4a6c-9f30-ae89d655562c: hanya satu varian hold dipakai; kandidat lain tidak dipaksa bergerak."
+          ],
+          "validBaseline": true,
+          "sceneLayerCount": 4,
+          "brief": {
+            "era": "belum ditetapkan",
+            "location": "lokasi-tidak-pasti",
+            "locationCertain": false,
+            "evidence": []
+          }
+        },
+        {
+          "clipId": "38688fbe-074c-4634-908c-29407a26d6ae",
+          "title": "Harga Ketinggian",
+          "status": "ready",
+          "reason": "Aset lengkap; baseline lokal tersedia. Review piksel tetap diperlukan.",
+          "action": "Susun baseline / edit otomatis",
+          "legacy": true,
+          "plannerVersion": null,
+          "planId": "4e53bbd2-27fb-42c0-8054-425e074563a2",
+          "missingItems": [],
+          "planned": 6,
+          "generated": 6,
+          "reviewed": 0,
+          "special": [],
+          "warnings": [
+            "Avoid (larangan visual, bukan bukti benda ada): floating bicycle, feet touching road, distorted wheel, modern helmet, text",
+            "Lokasi tidak pasti; storyboard tidak dianggap bukti narasi. Konfirmasikan lokasi, jangan warisi diam-diam.",
+            "Era belum disebut jelas; konfirmasikan sebelum generasi.",
+            "Grup static arthur: hanya satu varian hold dipakai; kandidat lain tidak dipaksa bergerak."
+          ],
+          "validBaseline": true,
+          "sceneLayerCount": 4,
+          "brief": {
+            "era": "belum ditetapkan",
+            "location": "lokasi-tidak-pasti",
+            "locationCertain": false,
+            "evidence": []
+          }
+        },
+        {
+          "clipId": "4fdaf3ca-6ba4-4a9c-83b2-12764e6db3a0",
+          "title": "Naik Dulu",
+          "status": "needs-assets",
+          "reason": "Rencana belum ada.",
+          "action": "Tinjau Scene Brief → susun rencana",
+          "legacy": true,
+          "plannerVersion": null,
+          "planId": null,
+          "missingItems": [],
+          "planned": 0,
+          "generated": 0,
+          "reviewed": 0,
+          "special": [],
+          "warnings": [
+            "Avoid (larangan visual, bukan bukti benda ada): mounting from front, foot on rear tire, extra legs, modern kickstand, impossible handlebar reach",
+            "Lokasi tidak pasti; storyboard tidak dianggap bukti narasi. Konfirmasikan lokasi, jangan warisi diam-diam.",
+            "Era belum disebut jelas; konfirmasikan sebelum generasi."
+          ],
+          "validBaseline": false,
+          "sceneLayerCount": 0,
+          "brief": {
+            "era": "belum ditetapkan",
+            "location": "lokasi-tidak-pasti",
+            "locationCertain": false,
+            "evidence": []
+          }
+        },
+        {
+          "clipId": "60c27ba9-6575-4146-896a-e3ee9042fc54",
+          "title": "Rintangan Kecil",
+          "status": "needs-assets",
+          "reason": "Rencana belum ada.",
+          "action": "Tinjau Scene Brief → susun rencana",
+          "legacy": true,
+          "plannerVersion": null,
+          "planId": null,
+          "missingItems": [],
+          "planned": 0,
+          "generated": 0,
+          "reviewed": 0,
+          "special": [],
+          "warnings": [
+            "Avoid (larangan visual, bukan bukti benda ada): giant boulder, stone behind wheel, collision already completed, modern asphalt, missing pedals",
+            "Lokasi tidak pasti; storyboard tidak dianggap bukti narasi. Konfirmasikan lokasi, jangan warisi diam-diam.",
+            "Era belum disebut jelas; konfirmasikan sebelum generasi."
+          ],
+          "validBaseline": false,
+          "sceneLayerCount": 0,
+          "brief": {
+            "era": "belum ditetapkan",
+            "location": "lokasi-tidak-pasti",
+            "locationCertain": false,
+            "evidence": [
+              {
+                "field": "prop",
+                "quote": "roda",
+                "startWord": 3,
+                "endWord": 3,
+                "startMs": 1520,
+                "endMs": 1680,
+                "source": "narration"
+              }
+            ]
+          }
+        },
+        {
+          "clipId": "e2f5d4a7-23cc-4ba3-ae64-7fea22e3f43f",
+          "title": "Terjungkal",
+          "status": "needs-assets",
+          "reason": "Rencana belum ada.",
+          "action": "Tinjau Scene Brief → susun rencana",
+          "legacy": true,
+          "plannerVersion": null,
+          "planId": null,
+          "missingItems": [],
+          "planned": 0,
+          "generated": 0,
+          "reviewed": 0,
+          "special": [],
+          "warnings": [
+            "Avoid (larangan visual, bukan bukti benda ada): blood, head impact, backward fall, detached limbs, rear wheel remaining grounded, slapstick body deformation",
+            "Lokasi tidak pasti; storyboard tidak dianggap bukti narasi. Konfirmasikan lokasi, jangan warisi diam-diam.",
+            "Era belum disebut jelas; konfirmasikan sebelum generasi."
+          ],
+          "validBaseline": false,
+          "sceneLayerCount": 0,
+          "brief": {
+            "era": "belum ditetapkan",
+            "location": "lokasi-tidak-pasti",
+            "locationCertain": false,
+            "evidence": []
+          }
+        },
+        {
+          "clipId": "86dd1d2f-4dc9-4dce-a549-8271a684e3dd",
+          "title": "Salah Tujuan",
+          "status": "needs-assets",
+          "reason": "Aset belum dibuat: arthur-palm-inspect, arthur-palm-reaction, fallen-bicycle, grass-foreground",
+          "action": "Generate item yang kurang (konfirmasi kredit)",
+          "legacy": true,
+          "plannerVersion": null,
+          "planId": "edf7dd82-75e7-4f9d-89c9-d916bc433f53",
+          "missingItems": [
+            {
+              "id": "arthur-palm-inspect",
+              "label": "Arthur memeriksa telapak berdebu"
+            },
+            {
+              "id": "arthur-palm-reaction",
+              "label": "Arthur bereaksi malu dengan satu alis"
+            },
+            {
+              "id": "fallen-bicycle",
+              "label": "Sepeda roda tinggi tergeletak"
+            },
+            {
+              "id": "grass-foreground",
+              "label": "Rumput depan penutup titik tumpu"
+            }
+          ],
+          "planned": 7,
+          "generated": 3,
+          "reviewed": 0,
+          "special": [],
+          "warnings": [
+            "Avoid (larangan visual, bukan bukti benda ada): visible injuries, blood, cheerful victory pose, damaged anatomy, broken bicycle beyond recognition",
+            "Lokasi tidak pasti; storyboard tidak dianggap bukti narasi. Konfirmasikan lokasi, jangan warisi diam-diam.",
+            "Era belum disebut jelas; konfirmasikan sebelum generasi."
+          ],
+          "validBaseline": false,
+          "sceneLayerCount": 0,
+          "brief": {
+            "era": "belum ditetapkan",
+            "location": "lokasi-tidak-pasti",
+            "locationCertain": false,
+            "evidence": []
+          }
+        },
+        {
+          "clipId": "64b20f40-d5f7-4b4b-87c2-4b96a2652d5c",
+          "title": "Mencari Jalan Keluar",
+          "status": "needs-assets",
+          "reason": "Rencana belum ada.",
+          "action": "Tinjau Scene Brief → susun rencana",
+          "legacy": true,
+          "plannerVersion": null,
+          "planId": null,
+          "missingItems": [],
+          "planned": 0,
+          "generated": 0,
+          "reviewed": 0,
+          "special": [],
+          "warnings": [
+            "Avoid (larangan visual, bukan bukti benda ada): readable handwriting, modern CAD screen, blueprint lettering, identical designs, authentic archival claim",
+            "Lokasi tidak pasti; storyboard tidak dianggap bukti narasi. Konfirmasikan lokasi, jangan warisi diam-diam.",
+            "Era belum disebut jelas; konfirmasikan sebelum generasi."
+          ],
+          "validBaseline": false,
+          "sceneLayerCount": 0,
+          "brief": {
+            "era": "belum ditetapkan",
+            "location": "lokasi-tidak-pasti",
+            "locationCertain": false,
+            "evidence": []
+          }
+        },
+        {
+          "clipId": "046e2e70-2c8e-4cc6-a6f7-e2b478a8e803",
+          "title": "Turunkan Sadel",
+          "status": "needs-assets",
+          "reason": "Rencana belum ada.",
+          "action": "Tinjau Scene Brief → susun rencana",
+          "legacy": true,
+          "plannerVersion": null,
+          "planId": null,
+          "missingItems": [],
+          "planned": 0,
+          "generated": 0,
+          "reviewed": 0,
+          "special": [],
+          "warnings": [
+            "Avoid (larangan visual, bukan bukti benda ada): written annotations, fantasy bicycle, unreadable clutter, floating saddle without frame, multiple storyboard panels",
+            "Lokasi tidak pasti; storyboard tidak dianggap bukti narasi. Konfirmasikan lokasi, jangan warisi diam-diam.",
+            "Era belum disebut jelas; konfirmasikan sebelum generasi."
+          ],
+          "validBaseline": false,
+          "sceneLayerCount": 0,
+          "brief": {
+            "era": "belum ditetapkan",
+            "location": "lokasi-tidak-pasti",
+            "locationCertain": false,
+            "evidence": []
+          }
+        },
+        {
+          "clipId": "1758ea28-75da-4ca6-8e97-3f572ea9b399",
+          "title": "Roda Mengecil",
+          "status": "needs-assets",
+          "reason": "Rencana belum ada.",
+          "action": "Tinjau Scene Brief → susun rencana",
+          "legacy": true,
+          "plannerVersion": null,
+          "planId": null,
+          "missingItems": [],
+          "planned": 0,
+          "generated": 0,
+          "reviewed": 0,
+          "special": [],
+          "warnings": [
+            "Avoid (larangan visual, bukan bukti benda ada): tiny toy bicycle, modern derailleur, enormous front wheel on safety bicycle, missing chain, text",
+            "Lokasi tidak pasti; storyboard tidak dianggap bukti narasi. Konfirmasikan lokasi, jangan warisi diam-diam.",
+            "Era belum disebut jelas; konfirmasikan sebelum generasi."
+          ],
+          "validBaseline": false,
+          "sceneLayerCount": 0,
+          "brief": {
+            "era": "belum ditetapkan",
+            "location": "lokasi-tidak-pasti",
+            "locationCertain": false,
+            "evidence": [
+              {
+                "field": "prop",
+                "quote": "roda",
+                "startWord": 4,
+                "endWord": 4,
+                "startMs": 1640,
+                "endMs": 1880,
+                "source": "narration"
+              }
+            ]
+          }
+        },
+        {
+          "clipId": "d603fc7a-8c7d-4d91-b971-88678a01a9eb",
+          "title": "Masalah Kayuhan",
+          "status": "needs-assets",
+          "reason": "Rencana belum ada.",
+          "action": "Tinjau Scene Brief → susun rencana",
+          "legacy": true,
+          "plannerVersion": null,
+          "planId": null,
+          "missingItems": [],
+          "planned": 0,
+          "generated": 0,
+          "reviewed": 0,
+          "special": [],
+          "warnings": [
+            "Avoid (larangan visual, bukan bukti benda ada): equal trail lengths, multiple revolutions, speed arrows, numerical labels, giant safety wheel",
+            "Lokasi tidak pasti; storyboard tidak dianggap bukti narasi. Konfirmasikan lokasi, jangan warisi diam-diam.",
+            "Era belum disebut jelas; konfirmasikan sebelum generasi."
+          ],
+          "validBaseline": false,
+          "sceneLayerCount": 0,
+          "brief": {
+            "era": "belum ditetapkan",
+            "location": "lokasi-tidak-pasti",
+            "locationCertain": false,
+            "evidence": [
+              {
+                "field": "prop",
+                "quote": "roda",
+                "startWord": 1,
+                "endWord": 1,
+                "startMs": 579,
+                "endMs": 740,
+                "source": "narration"
+              }
+            ]
+          }
+        },
+        {
+          "clipId": "72f2dc8b-789b-496c-a379-1d47aa34d4d1",
+          "title": "Rantai Menghubungkan",
+          "status": "needs-assets",
+          "reason": "Rencana belum ada.",
+          "action": "Tinjau Scene Brief → susun rencana",
+          "legacy": true,
+          "plannerVersion": null,
+          "planId": null,
+          "missingItems": [],
+          "planned": 0,
+          "generated": 0,
+          "reviewed": 0,
+          "special": [],
+          "warnings": [
+            "Avoid (larangan visual, bukan bukti benda ada): chain attached to front wheel, modern derailleur, fingers inside moving gears, disconnected chain, readable branding",
+            "Lokasi tidak pasti; storyboard tidak dianggap bukti narasi. Konfirmasikan lokasi, jangan warisi diam-diam.",
+            "Era belum disebut jelas; konfirmasikan sebelum generasi."
+          ],
+          "validBaseline": false,
+          "sceneLayerCount": 0,
+          "brief": {
+            "era": "belum ditetapkan",
+            "location": "lokasi-tidak-pasti",
+            "locationCertain": false,
+            "evidence": [
+              {
+                "field": "prop",
+                "quote": "roda",
+                "startWord": 5,
+                "endWord": 5,
+                "startMs": 2920,
+                "endMs": 3079,
+                "source": "narration"
+              }
+            ]
+          }
+        },
+        {
+          "clipId": "53d1c974-4ce0-4793-917b-2967067203b5",
+          "title": "Perbandingan Gigi",
+          "status": "needs-assets",
+          "reason": "Rencana belum ada.",
+          "action": "Tinjau Scene Brief → susun rencana",
+          "legacy": true,
+          "plannerVersion": null,
+          "planId": null,
+          "missingItems": [],
+          "planned": 0,
+          "generated": 0,
+          "reviewed": 0,
+          "special": [],
+          "warnings": [
+            "Avoid (larangan visual, bukan bukti benda ada): equal sprockets, chain crossing itself, incompatible tooth engagement, modern cassette, numerical overlays",
+            "Lokasi tidak pasti; storyboard tidak dianggap bukti narasi. Konfirmasikan lokasi, jangan warisi diam-diam.",
+            "Era belum disebut jelas; konfirmasikan sebelum generasi."
+          ],
+          "validBaseline": false,
+          "sceneLayerCount": 0,
+          "brief": {
+            "era": "belum ditetapkan",
+            "location": "lokasi-tidak-pasti",
+            "locationCertain": false,
+            "evidence": [
+              {
+                "field": "prop",
+                "quote": "roda",
+                "startWord": 1,
+                "endWord": 1,
+                "startMs": 640,
+                "endMs": 800,
+                "source": "narration"
+              }
+            ]
+          }
+        },
+        {
+          "clipId": "9a890170-d70e-4d76-bdd2-baa9bc76bda0",
+          "title": "Tak Perlu Raksasa",
+          "status": "needs-assets",
+          "reason": "Rencana belum ada.",
+          "action": "Tinjau Scene Brief → susun rencana",
+          "legacy": true,
+          "plannerVersion": null,
+          "planId": null,
+          "missingItems": [],
+          "planned": 0,
+          "generated": 0,
+          "reviewed": 0,
+          "special": [],
+          "warnings": [
+            "Avoid (larangan visual, bukan bukti benda ada): high-wheel bicycle, racing aerodynamic pose, modern gears, oversized front wheel, floating tires",
+            "Lokasi tidak pasti; storyboard tidak dianggap bukti narasi. Konfirmasikan lokasi, jangan warisi diam-diam.",
+            "Era belum disebut jelas; konfirmasikan sebelum generasi."
+          ],
+          "validBaseline": false,
+          "sceneLayerCount": 0,
+          "brief": {
+            "era": "belum ditetapkan",
+            "location": "lokasi-tidak-pasti",
+            "locationCertain": false,
+            "evidence": [
+              {
+                "field": "prop",
+                "quote": "roda",
+                "startWord": 5,
+                "endWord": 5,
+                "startMs": 2420,
+                "endMs": 2579,
+                "source": "narration"
+              }
+            ]
+          }
+        },
+        {
+          "clipId": "952388ae-8419-48dc-87b5-dc9408ba7d71",
+          "title": "Contoh Berpengaruh",
+          "status": "needs-assets",
+          "reason": "Rencana belum ada.",
+          "action": "Tinjau Scene Brief → susun rencana",
+          "legacy": true,
+          "plannerVersion": null,
+          "planId": null,
+          "missingItems": [],
+          "planned": 0,
+          "generated": 0,
+          "reviewed": 0,
+          "special": [],
+          "warnings": [
+            "Avoid (larangan visual, bukan bukti benda ada): modern diamond-frame substitution, pneumatic modern tires, baked date, branded lettering, authentic archival photograph claim",
+            "Lokasi tidak pasti; storyboard tidak dianggap bukti narasi. Konfirmasikan lokasi, jangan warisi diam-diam."
+          ],
+          "validBaseline": false,
+          "sceneLayerCount": 0,
+          "brief": {
+            "era": "1885",
+            "location": "lokasi-tidak-pasti",
+            "locationCertain": false,
+            "evidence": [
+              {
+                "field": "era",
+                "quote": "1885",
+                "startWord": 2,
+                "endWord": 2,
+                "startMs": 919,
+                "endMs": 2599,
+                "source": "narration"
+              }
+            ]
+          }
+        },
+        {
+          "clipId": "842dde01-a360-437e-8fbb-98220827d98a",
+          "title": "Lebih Dekat Tanah",
+          "status": "needs-assets",
+          "reason": "Rencana belum ada.",
+          "action": "Tinjau Scene Brief → susun rencana",
+          "legacy": true,
+          "plannerVersion": null,
+          "planId": null,
+          "missingItems": [],
+          "planned": 0,
+          "generated": 0,
+          "reviewed": 0,
+          "special": [],
+          "warnings": [
+            "Avoid (larangan visual, bukan bukti benda ada): duplicated Arthur, inconsistent ground level, toy-scale bicycle, equal saddle heights, modern components",
+            "Lokasi tidak pasti; storyboard tidak dianggap bukti narasi. Konfirmasikan lokasi, jangan warisi diam-diam.",
+            "Era belum disebut jelas; konfirmasikan sebelum generasi."
+          ],
+          "validBaseline": false,
+          "sceneLayerCount": 0,
+          "brief": {
+            "era": "belum ditetapkan",
+            "location": "lokasi-tidak-pasti",
+            "locationCertain": false,
+            "evidence": [
+              {
+                "field": "prop",
+                "quote": "roda",
+                "startWord": 7,
+                "endWord": 7,
+                "startMs": 2799,
+                "endMs": 3120,
+                "source": "narration"
+              }
+            ]
+          }
+        },
+        {
+          "clipId": "9339873c-935f-43c0-b772-74c5f4c0f621",
+          "title": "Ban Berisi Udara",
+          "status": "needs-assets",
+          "reason": "Rencana belum ada.",
+          "action": "Tinjau Scene Brief → susun rencana",
+          "legacy": true,
+          "plannerVersion": null,
+          "planId": null,
+          "missingItems": [],
+          "planned": 0,
+          "generated": 0,
+          "reviewed": 0,
+          "special": [],
+          "warnings": [
+            "Avoid (larangan visual, bukan bukti benda ada): solid rubber interior, cartoon eyes, liquid-filled tube, exploding tire, illegible labels, extreme deformation",
+            "Lokasi tidak pasti; storyboard tidak dianggap bukti narasi. Konfirmasikan lokasi, jangan warisi diam-diam.",
+            "Era belum disebut jelas; konfirmasikan sebelum generasi."
+          ],
+          "validBaseline": false,
+          "sceneLayerCount": 0,
+          "brief": {
+            "era": "belum ditetapkan",
+            "location": "lokasi-tidak-pasti",
+            "locationCertain": false,
+            "evidence": []
+          }
+        },
+        {
+          "clipId": "55525a06-4d33-4400-b999-e673e39c348e",
+          "title": "Mengendalikan Laju",
+          "status": "needs-assets",
+          "reason": "Rencana belum ada.",
+          "action": "Tinjau Scene Brief → susun rencana",
+          "legacy": true,
+          "plannerVersion": null,
+          "planId": null,
+          "missingItems": [],
+          "planned": 0,
+          "generated": 0,
+          "reviewed": 0,
+          "special": [],
+          "warnings": [
+            "Avoid (larangan visual, bukan bukti benda ada): disc brake, modern cable caliper, rear wheel skidding, hand off handlebar, brake pressing empty air",
+            "Lokasi tidak pasti; storyboard tidak dianggap bukti narasi. Konfirmasikan lokasi, jangan warisi diam-diam.",
+            "Era belum disebut jelas; konfirmasikan sebelum generasi."
+          ],
+          "validBaseline": false,
+          "sceneLayerCount": 0,
+          "brief": {
+            "era": "belum ditetapkan",
+            "location": "lokasi-tidak-pasti",
+            "locationCertain": false,
+            "evidence": []
+          }
+        },
+        {
+          "clipId": "337ac3d2-49fe-42f0-88e8-f50be854f627",
+          "title": "Bentuk yang Bertahan",
+          "status": "needs-assets",
+          "reason": "Rencana belum ada.",
+          "action": "Tinjau Scene Brief → susun rencana",
+          "legacy": true,
+          "plannerVersion": null,
+          "planId": null,
+          "missingItems": [],
+          "planned": 0,
+          "generated": 0,
+          "reviewed": 0,
+          "special": [],
+          "warnings": [
+            "Avoid (larangan visual, bukan bukti benda ada): bicycle morphing, overlapping frames, readable museum signs, futuristic levitating wheels, identical period and modern components",
+            "Lokasi tidak pasti; storyboard tidak dianggap bukti narasi. Konfirmasikan lokasi, jangan warisi diam-diam."
+          ],
+          "validBaseline": false,
+          "sceneLayerCount": 0,
+          "brief": {
+            "era": "modern",
+            "location": "lokasi-tidak-pasti",
+            "locationCertain": false,
+            "evidence": [
+              {
+                "field": "era",
+                "quote": "modern",
+                "startWord": 7,
+                "endWord": 7,
+                "startMs": 3000,
+                "endMs": 3439,
+                "source": "narration"
+              }
+            ]
+          }
+        },
+        {
+          "clipId": "4c00a816-5572-4894-872c-787b8686102b",
+          "title": "Turun demi Selamat",
+          "status": "needs-assets",
+          "reason": "Rencana belum ada.",
+          "action": "Tinjau Scene Brief → susun rencana",
+          "legacy": true,
+          "plannerVersion": null,
+          "planId": null,
+          "missingItems": [],
+          "planned": 0,
+          "generated": 0,
+          "reviewed": 0,
+          "special": [],
+          "warnings": [
+            "Avoid (larangan visual, bukan bukti benda ada): Arthur in modern clothing, modern rider on high-wheel bicycle, floating planted foot, readable museum logo, exaggerated head size",
+            "Lokasi tidak pasti; storyboard tidak dianggap bukti narasi. Konfirmasikan lokasi, jangan warisi diam-diam.",
+            "Era belum disebut jelas; konfirmasikan sebelum generasi."
+          ],
+          "validBaseline": false,
+          "sceneLayerCount": 0,
+          "brief": {
+            "era": "belum ditetapkan",
+            "location": "lokasi-tidak-pasti",
+            "locationCertain": false,
+            "evidence": []
+          }
+        },
+        {
+          "clipId": "ef5586a5-fb20-47b9-851f-8bb3daf0396e",
+          "title": "Ajakan Penutup",
+          "status": "needs-assets",
+          "reason": "Rencana belum ada.",
+          "action": "Tinjau Scene Brief → susun rencana",
+          "legacy": true,
+          "plannerVersion": null,
+          "planId": null,
+          "missingItems": [],
+          "planned": 0,
+          "generated": 0,
+          "reviewed": 0,
+          "special": [],
+          "warnings": [
+            "Avoid (larangan visual, bukan bukti benda ada): baked subscribe button, generated lettering, waving while steering, backward bicycle travel, new characters, scene change",
+            "Lokasi tidak pasti; storyboard tidak dianggap bukti narasi. Konfirmasikan lokasi, jangan warisi diam-diam.",
+            "Era belum disebut jelas; konfirmasikan sebelum generasi."
+          ],
+          "validBaseline": false,
+          "sceneLayerCount": 0,
+          "brief": {
+            "era": "belum ditetapkan",
+            "location": "lokasi-tidak-pasti",
+            "locationCertain": false,
+            "evidence": []
+          }
+        }
+      ]
+    },
+    {
+      "projectId": "ead17e0a-1ca6-4b46-8e79-d9264a168f7f",
+      "title": "Biru: Warna yang Terlambat Datang",
+      "revision": "6715e130c3ac1fd08a8955027b1c1a6449c361ab5d414916dc4f5caaf1985c95",
+      "clips": [
+        {
+          "clipId": "53642476-c190-4cd6-9a39-8f74e4ff4450",
+          "title": "Biru Tertinggal",
+          "status": "ready",
+          "reason": "Aset lengkap; baseline lokal tersedia. Review piksel tetap diperlukan.",
+          "action": "Susun baseline / edit otomatis",
+          "legacy": true,
+          "plannerVersion": null,
+          "planId": "5238ad28-75df-4906-a3a8-c54754dfdd98",
+          "missingItems": [],
+          "planned": 6,
+          "generated": 6,
+          "reviewed": 0,
+          "special": [],
+          "warnings": [
+            "Avoid (larangan visual, bukan bukti benda ada): glowing blue LED, colored plastic mistaken for emission, readable circuit labels, extra LEDs, scrapbook borders",
+            "Lokasi tidak pasti; storyboard tidak dianggap bukti narasi. Konfirmasikan lokasi, jangan warisi diam-diam.",
+            "Era belum disebut jelas; konfirmasikan sebelum generasi.",
+            "Rentang director legacy/tidak valid: baseline hold mencakup durasi bulat, tinjau ulang shot."
+          ],
+          "validBaseline": true,
+          "sceneLayerCount": 6,
+          "brief": {
+            "era": "belum ditetapkan",
+            "location": "lokasi-tidak-pasti",
+            "locationCertain": false,
+            "evidence": []
+          }
+        },
+        {
+          "clipId": "d7ca15b8-b96f-419e-a1dd-ded468024ac3",
+          "title": "Dua Warna Mendahului",
+          "status": "needs-assets",
+          "reason": "Rencana belum ada.",
+          "action": "Tinjau Scene Brief → susun rencana",
+          "legacy": true,
+          "plannerVersion": null,
+          "planId": null,
+          "missingItems": [],
+          "planned": 0,
+          "generated": 0,
+          "reviewed": 0,
+          "special": [],
+          "warnings": [
+            "Avoid (larangan visual, bukan bukti benda ada): blue indicators, modern smartphones, digital touchscreens, readable brand names, glowing numerical displays",
+            "Lokasi tidak pasti; storyboard tidak dianggap bukti narasi. Konfirmasikan lokasi, jangan warisi diam-diam.",
+            "Era belum disebut jelas; konfirmasikan sebelum generasi."
+          ],
+          "validBaseline": false,
+          "sceneLayerCount": 0,
+          "brief": {
+            "era": "belum ditetapkan",
+            "location": "lokasi-tidak-pasti",
+            "locationCertain": false,
+            "evidence": []
+          }
+        },
+        {
+          "clipId": "48626d77-7425-4370-9620-a42b2c1a5ffe",
+          "title": "Bukan Penutup",
+          "status": "needs-assets",
+          "reason": "Rencana belum ada.",
+          "action": "Tinjau Scene Brief → susun rencana",
+          "legacy": true,
+          "plannerVersion": null,
+          "planId": null,
+          "missingItems": [],
+          "planned": 0,
+          "generated": 0,
+          "reviewed": 0,
+          "special": [],
+          "warnings": [
+            "Avoid (larangan visual, bukan bukti benda ada): blue emission from red LED, bright red beam through blue filter, floating hand, readable markings, full person",
+            "Lokasi tidak pasti; storyboard tidak dianggap bukti narasi. Konfirmasikan lokasi, jangan warisi diam-diam.",
+            "Era belum disebut jelas; konfirmasikan sebelum generasi."
+          ],
+          "validBaseline": false,
+          "sceneLayerCount": 0,
+          "brief": {
+            "era": "belum ditetapkan",
+            "location": "lokasi-tidak-pasti",
+            "locationCertain": false,
+            "evidence": []
+          }
+        },
+        {
+          "clipId": "70f1e2be-4897-4c06-9ea8-01cc02d264ee",
+          "title": "Dari Dalam Bahan",
+          "status": "needs-assets",
+          "reason": "Rencana belum ada.",
+          "action": "Tinjau Scene Brief → susun rencana",
+          "legacy": true,
+          "plannerVersion": null,
+          "planId": null,
+          "missingItems": [],
+          "planned": 0,
+          "generated": 0,
+          "reviewed": 0,
+          "special": [],
+          "warnings": [
+            "Avoid (larangan visual, bukan bukti benda ada): upward light-emitting transition, cartoon faces, planetary electron orbits, readable symbols, literal oversized atoms",
+            "Lokasi tidak pasti; storyboard tidak dianggap bukti narasi. Konfirmasikan lokasi, jangan warisi diam-diam.",
+            "Era belum disebut jelas; konfirmasikan sebelum generasi."
+          ],
+          "validBaseline": false,
+          "sceneLayerCount": 0,
+          "brief": {
+            "era": "belum ditetapkan",
+            "location": "lokasi-tidak-pasti",
+            "locationCertain": false,
+            "evidence": []
+          }
+        },
+        {
+          "clipId": "5270cbe4-eb8e-4251-8024-b0c09600c17b",
+          "title": "Lompatan Lebih Besar",
+          "status": "needs-assets",
+          "reason": "Rencana belum ada.",
+          "action": "Tinjau Scene Brief → susun rencana",
+          "legacy": true,
+          "plannerVersion": null,
+          "planId": null,
+          "missingItems": [],
+          "planned": 0,
+          "generated": 0,
+          "reviewed": 0,
+          "special": [],
+          "warnings": [
+            "Avoid (larangan visual, bukan bukti benda ada): equal energy gaps, blue gap smaller than red, upward emission arrows, readable equations, rainbow decoration",
+            "Lokasi tidak pasti; storyboard tidak dianggap bukti narasi. Konfirmasikan lokasi, jangan warisi diam-diam.",
+            "Era belum disebut jelas; konfirmasikan sebelum generasi."
+          ],
+          "validBaseline": false,
+          "sceneLayerCount": 0,
+          "brief": {
+            "era": "belum ditetapkan",
+            "location": "lokasi-tidak-pasti",
+            "locationCertain": false,
+            "evidence": []
+          }
+        },
+        {
+          "clipId": "688c310b-db54-4930-8339-934c24c3f752",
+          "title": "Kandidat Sulit",
+          "status": "needs-assets",
+          "reason": "Rencana belum ada.",
+          "action": "Tinjau Scene Brief → susun rencana",
+          "legacy": true,
+          "plannerVersion": null,
+          "planId": null,
+          "missingItems": [],
+          "planned": 0,
+          "generated": 0,
+          "reviewed": 0,
+          "special": [],
+          "warnings": [
+            "Avoid (larangan visual, bukan bukti benda ada): large blue gemstone, self-luminous crystal, readable sample labels, futuristic holograms, modern touchscreens",
+            "Lokasi tidak pasti; storyboard tidak dianggap bukti narasi. Konfirmasikan lokasi, jangan warisi diam-diam.",
+            "Era belum disebut jelas; konfirmasikan sebelum generasi."
+          ],
+          "validBaseline": false,
+          "sceneLayerCount": 0,
+          "brief": {
+            "era": "belum ditetapkan",
+            "location": "lokasi-tidak-pasti",
+            "locationCertain": false,
+            "evidence": []
+          }
+        },
+        {
+          "clipId": "29987820-46e0-4cb0-bbea-ca219a13d670",
+          "title": "Kristal Bermasalah",
+          "status": "needs-assets",
+          "reason": "Rencana belum ada.",
+          "action": "Tinjau Scene Brief → susun rencana",
+          "legacy": true,
+          "plannerVersion": null,
+          "planId": null,
+          "missingItems": [],
+          "planned": 0,
+          "generated": 0,
+          "reviewed": 0,
+          "special": [],
+          "warnings": [
+            "Avoid (larangan visual, bukan bukti benda ada): defects shown only as dirt, shattered gemstone, perfect lattice, readable labels, photoreal claim for atomic diagram",
+            "Lokasi tidak pasti; storyboard tidak dianggap bukti narasi. Konfirmasikan lokasi, jangan warisi diam-diam.",
+            "Era belum disebut jelas; konfirmasikan sebelum generasi."
+          ],
+          "validBaseline": false,
+          "sceneLayerCount": 0,
+          "brief": {
+            "era": "belum ditetapkan",
+            "location": "lokasi-tidak-pasti",
+            "locationCertain": false,
+            "evidence": []
+          }
+        },
+        {
+          "clipId": "4b8920fc-8bb0-4268-b0a4-3a3c02a80c32",
+          "title": "Hambatan Berikutnya",
+          "status": "needs-assets",
+          "reason": "Rencana belum ada.",
+          "action": "Tinjau Scene Brief → susun rencana",
+          "legacy": true,
+          "plannerVersion": null,
+          "planId": null,
+          "missingItems": [],
+          "planned": 0,
+          "generated": 0,
+          "reviewed": 0,
+          "special": [],
+          "warnings": [
+            "Avoid (larangan visual, bukan bukti benda ada): positive carriers shown as tiny people, readable plus signs, strong current flow, cartoon faces, modern digital readouts",
+            "Lokasi tidak pasti; storyboard tidak dianggap bukti narasi. Konfirmasikan lokasi, jangan warisi diam-diam.",
+            "Era belum disebut jelas; konfirmasikan sebelum generasi."
+          ],
+          "validBaseline": false,
+          "sceneLayerCount": 0,
+          "brief": {
+            "era": "belum ditetapkan",
+            "location": "lokasi-tidak-pasti",
+            "locationCertain": false,
+            "evidence": []
+          }
+        },
+        {
+          "clipId": "1c676303-d75a-4d56-9e34-040a1310bcdf",
+          "title": "Tiga Peneliti",
+          "status": "needs-assets",
+          "reason": "Rencana belum ada.",
+          "action": "Tinjau Scene Brief → susun rencana",
+          "legacy": true,
+          "plannerVersion": null,
+          "planId": null,
+          "missingItems": [],
+          "planned": 0,
+          "generated": 0,
+          "reviewed": 0,
+          "special": [],
+          "warnings": [
+            "Avoid (larangan visual, bukan bukti benda ada): baked-in names, claim of archival photograph, identical faces, ceremonial medals, shared experiment in progress",
+            "Lokasi tidak pasti; storyboard tidak dianggap bukti narasi. Konfirmasikan lokasi, jangan warisi diam-diam.",
+            "Era belum disebut jelas; konfirmasikan sebelum generasi."
+          ],
+          "validBaseline": false,
+          "sceneLayerCount": 0,
+          "brief": {
+            "era": "belum ditetapkan",
+            "location": "lokasi-tidak-pasti",
+            "locationCertain": false,
+            "evidence": []
+          }
+        },
+        {
+          "clipId": "56270500-ee83-4c5f-ab31-c420370474e0",
+          "title": "Fondasi Kristal",
+          "status": "needs-assets",
+          "reason": "Rencana belum ada.",
+          "action": "Tinjau Scene Brief → susun rencana",
+          "legacy": true,
+          "plannerVersion": null,
+          "planId": null,
+          "missingItems": [],
+          "planned": 0,
+          "generated": 0,
+          "reviewed": 0,
+          "special": [],
+          "warnings": [
+            "Avoid (larangan visual, bukan bukti benda ada): thick buffer slab, completely defect-free crystal, bare hands touching sample, readable controls, glowing blue bulk crystal",
+            "Lokasi tidak pasti; storyboard tidak dianggap bukti narasi. Konfirmasikan lokasi, jangan warisi diam-diam.",
+            "Era belum disebut jelas; konfirmasikan sebelum generasi."
+          ],
+          "validBaseline": false,
+          "sceneLayerCount": 0,
+          "brief": {
+            "era": "belum ditetapkan",
+            "location": "lokasi-tidak-pasti",
+            "locationCertain": false,
+            "evidence": []
+          }
+        },
+        {
+          "clipId": "3ee5603c-939e-4ce1-ab8f-06745da2e1a1",
+          "title": "Membuka Jalan",
+          "status": "needs-assets",
+          "reason": "Rencana belum ada.",
+          "action": "Tinjau Scene Brief → susun rencana",
+          "legacy": true,
+          "plannerVersion": null,
+          "planId": null,
+          "missingItems": [],
+          "planned": 0,
+          "generated": 0,
+          "reviewed": 0,
+          "special": [],
+          "warnings": [
+            "Avoid (larangan visual, bukan bukti benda ada): blue LED breakthrough already shown, readable meter numbers, literal positively charged beads, sparks, modern laptop",
+            "Lokasi tidak pasti; storyboard tidak dianggap bukti narasi. Konfirmasikan lokasi, jangan warisi diam-diam.",
+            "Era belum disebut jelas; konfirmasikan sebelum generasi."
+          ],
+          "validBaseline": false,
+          "sceneLayerCount": 0,
+          "brief": {
+            "era": "belum ditetapkan",
+            "location": "lokasi-tidak-pasti",
+            "locationCertain": false,
+            "evidence": []
+          }
+        },
+        {
+          "clipId": "a60996df-7909-4a06-8379-92501c39faeb",
+          "title": "Jalur Nakamura",
+          "status": "needs-assets",
+          "reason": "Rencana belum ada.",
+          "action": "Tinjau Scene Brief → susun rencana",
+          "legacy": true,
+          "plannerVersion": null,
+          "planId": null,
+          "missingItems": [],
+          "planned": 0,
+          "generated": 0,
+          "reviewed": 0,
+          "special": [],
+          "warnings": [
+            "Avoid (larangan visual, bukan bukti benda ada): open hot reactor, unsecured gas cylinders, magical blue vapor, readable equipment labels, modern touchscreen",
+            "Lokasi tidak pasti; storyboard tidak dianggap bukti narasi. Konfirmasikan lokasi, jangan warisi diam-diam.",
+            "Era belum disebut jelas; konfirmasikan sebelum generasi."
+          ],
+          "validBaseline": false,
+          "sceneLayerCount": 0,
+          "brief": {
+            "era": "belum ditetapkan",
+            "location": "lokasi-tidak-pasti",
+            "locationCertain": false,
+            "evidence": []
+          }
+        },
+        {
+          "clipId": "3fe93341-1918-458c-bab0-62938552873e",
+          "title": "Biru Terang",
+          "status": "needs-assets",
+          "reason": "Rencana belum ada.",
+          "action": "Tinjau Scene Brief → susun rencana",
+          "legacy": true,
+          "plannerVersion": null,
+          "planId": null,
+          "missingItems": [],
+          "planned": 0,
+          "generated": 0,
+          "reviewed": 0,
+          "special": [],
+          "warnings": [
+            "Avoid (larangan visual, bukan bukti benda ada): readable calendar, giant LED, blue laser beam, entire room washed blue, modern instruments, authentic archival framing",
+            "Lokasi tidak pasti; storyboard tidak dianggap bukti narasi. Konfirmasikan lokasi, jangan warisi diam-diam."
+          ],
+          "validBaseline": false,
+          "sceneLayerCount": 0,
+          "brief": {
+            "era": "1990",
+            "location": "lokasi-tidak-pasti",
+            "locationCertain": false,
+            "evidence": [
+              {
+                "field": "era",
+                "quote": "1990",
+                "startWord": null,
+                "endWord": null,
+                "startMs": null,
+                "endMs": null,
+                "source": "narration"
+              }
+            ]
+          }
+        },
+        {
+          "clipId": "0bb0c438-098a-4aa6-ac07-ecb41a9610aa",
+          "title": "Menuju Putih",
+          "status": "needs-assets",
+          "reason": "Rencana belum ada.",
+          "action": "Tinjau Scene Brief → susun rencana",
+          "legacy": true,
+          "plannerVersion": null,
+          "planId": null,
+          "missingItems": [],
+          "planned": 0,
+          "generated": 0,
+          "reviewed": 0,
+          "special": [],
+          "warnings": [
+            "Avoid (larangan visual, bukan bukti benda ada): blue plastic cap as mechanism, laser apparatus, floating phosphor sheet, readable labels, cartoon anatomy",
+            "Lokasi tidak pasti; storyboard tidak dianggap bukti narasi. Konfirmasikan lokasi, jangan warisi diam-diam.",
+            "Era belum disebut jelas; konfirmasikan sebelum generasi."
+          ],
+          "validBaseline": false,
+          "sceneLayerCount": 0,
+          "brief": {
+            "era": "belum ditetapkan",
+            "location": "lokasi-tidak-pasti",
+            "locationCertain": false,
+            "evidence": []
+          }
+        },
+        {
+          "clipId": "d7aea0ef-0e4c-45c3-ba08-b732c60ab07a",
+          "title": "Warna Bercampur",
+          "status": "needs-assets",
+          "reason": "Rencana belum ada.",
+          "action": "Tinjau Scene Brief → susun rencana",
+          "legacy": true,
+          "plannerVersion": null,
+          "planId": null,
+          "missingItems": [],
+          "planned": 0,
+          "generated": 0,
+          "reviewed": 0,
+          "special": [],
+          "warnings": [
+            "Avoid (larangan visual, bukan bukti benda ada): all blue light converted, white pigment pouring out, RGB three-chip mechanism, perfectly single-wavelength yellow output, readable arrows or labels",
+            "Lokasi tidak pasti; storyboard tidak dianggap bukti narasi. Konfirmasikan lokasi, jangan warisi diam-diam.",
+            "Era belum disebut jelas; konfirmasikan sebelum generasi."
+          ],
+          "validBaseline": false,
+          "sceneLayerCount": 0,
+          "brief": {
+            "era": "belum ditetapkan",
+            "location": "lokasi-tidak-pasti",
+            "locationCertain": false,
+            "evidence": []
+          }
+        },
+        {
+          "clipId": "e55681f4-f861-4a5b-8a71-d4a12ddcd910",
+          "title": "Hemat Energi",
+          "status": "needs-assets",
+          "reason": "Rencana belum ada.",
+          "action": "Tinjau Scene Brief → susun rencana",
+          "legacy": true,
+          "plannerVersion": null,
+          "planId": null,
+          "missingItems": [],
+          "planned": 0,
+          "generated": 0,
+          "reviewed": 0,
+          "special": [],
+          "warnings": [
+            "Avoid (larangan visual, bukan bukti benda ada): LED shown producing no heat, unequal task brightness, literal flames, readable wattage numbers, identical power readings",
+            "Lokasi tidak pasti; storyboard tidak dianggap bukti narasi. Konfirmasikan lokasi, jangan warisi diam-diam.",
+            "Era belum disebut jelas; konfirmasikan sebelum generasi."
+          ],
+          "validBaseline": false,
+          "sceneLayerCount": 0,
+          "brief": {
+            "era": "belum ditetapkan",
+            "location": "lokasi-tidak-pasti",
+            "locationCertain": false,
+            "evidence": []
+          }
+        },
+        {
+          "clipId": "f110185b-2d05-465d-8663-e62785fb0768",
+          "title": "Masalahnya di Dalam",
+          "status": "needs-assets",
+          "reason": "Rencana belum ada.",
+          "action": "Tinjau Scene Brief → susun rencana",
+          "legacy": true,
+          "plannerVersion": null,
+          "planId": null,
+          "missingItems": [],
+          "planned": 0,
+          "generated": 0,
+          "reviewed": 0,
+          "special": [],
+          "warnings": [
+            "Avoid (larangan visual, bukan bukti benda ada): blue cap emitting light, giant gemstone die, readable labels, destroyed package, decorative crystal pile",
+            "Lokasi tidak pasti; storyboard tidak dianggap bukti narasi. Konfirmasikan lokasi, jangan warisi diam-diam.",
+            "Era belum disebut jelas; konfirmasikan sebelum generasi."
+          ],
+          "validBaseline": false,
+          "sceneLayerCount": 0,
+          "brief": {
+            "era": "belum ditetapkan",
+            "location": "lokasi-tidak-pasti",
+            "locationCertain": false,
+            "evidence": []
+          }
+        },
+        {
+          "clipId": "fbb4d1b1-2ead-479e-9452-c9113c274f36",
+          "title": "Ajakan Penutup",
+          "status": "needs-assets",
+          "reason": "Rencana belum ada.",
+          "action": "Tinjau Scene Brief → susun rencana",
+          "legacy": true,
+          "plannerVersion": null,
+          "planId": null,
+          "missingItems": [],
+          "planned": 0,
+          "generated": 0,
+          "reviewed": 0,
+          "special": [],
+          "warnings": [
+            "Avoid (larangan visual, bukan bukti benda ada): generated subscription icons, readable notebook text, logos, floating interface graphics, blue-only room lighting",
+            "Lokasi tidak pasti; storyboard tidak dianggap bukti narasi. Konfirmasikan lokasi, jangan warisi diam-diam.",
+            "Era belum disebut jelas; konfirmasikan sebelum generasi."
+          ],
+          "validBaseline": false,
+          "sceneLayerCount": 0,
+          "brief": {
+            "era": "belum ditetapkan",
+            "location": "lokasi-tidak-pasti",
+            "locationCertain": false,
+            "evidence": []
+          }
+        }
+      ]
+    }
+  ],
+  "totalClips": 92
+}

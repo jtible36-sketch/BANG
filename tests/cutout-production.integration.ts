@@ -1,3 +1,4 @@
+// Legacy free-scene regressions. The new default shot contract has its own eight-clip suite.
 import assert from 'node:assert/strict'
 import { app, nativeImage } from 'electron'
 import { mkdirSync, writeFileSync } from 'node:fs'
@@ -5,7 +6,7 @@ import { join,resolve } from 'node:path'
 import { execFileSync } from 'node:child_process'
 import { closeDb, getDb } from '../src/main/db'
 import { createProject, replaceScript, getBundle, getJob, patchClip, insertAsset } from '../src/main/repo'
-import { startCodexAutoEdit, getEditingContext, undoEditingPlan } from '../src/main/editor-automation'
+import { startCodexAutoEdit as startAgentComposer, getEditingContext, undoEditingPlan } from '../src/main/editor-automation'
 import { cancelJob } from '../src/main/jobs'
 import { createCutoutLayer, createCutoutScene, evaluateCutoutScene, normalizeCutoutScene } from '../src/shared/cutout-timeline'
 import { auditCutoutContacts, bakeCutoutFrames, DEFAULT_CUTOUT_PRODUCTION } from '../src/shared/cutout-production'
@@ -20,7 +21,7 @@ function png(w:number,h:number,color:[number,number,number],transparent=false){c
 async function done(id:string){const until=Date.now()+60000;while(Date.now()<until){const j=getJob(id)!;if(['done','failed','canceled'].includes(j.status))return j;await new Promise(r=>setTimeout(r,20))}throw Error('timeout '+id)}
 async function until(fn:()=>unknown){const end=Date.now()+10000;while(Date.now()<end){if(fn())return;await new Promise(r=>setTimeout(r,10))}throw Error('not entered')}
 function project(){const p=createProject({durationSec:60,styleId:'cutout-facts',skillId:'animasi-cutout'});replaceScript(p.id,'Fixture',[{title:'Aksi',story:'Tokoh memegang benda lalu bereaksi.',narration:'Tokoh memegang benda lalu bereaksi.',durationMs:2000}]);return {id:p.id,clipId:getBundle(p.id).clips[0].id}}
-const options={...DEFAULT_CUTOUT_PRODUCTION,maxAssetsPerClip:128,maxNewAssets:128},request=(p:{id:string;clipId:string},instruction='Buat aksi dengan banyak pose')=>({projectId:p.id,clipId:p.clipId,instruction,production:options})
+const options={...DEFAULT_CUTOUT_PRODUCTION,beatTemplate:false,maxAssetsPerClip:128,maxNewAssets:128},request=(p:{id:string;clipId:string},instruction='Buat aksi dengan banyak pose')=>({projectId:p.id,clipId:p.clipId,instruction,production:options})
 let planned=0,generated=0
 function planner(count=34){return async(o:any)=>{
   if(o.schema?.properties?.shots){const p=JSON.parse(o.prompt);return {timing:'provisional',shots:[{startMs:0,endMs:p.durationMs,narrationCue:'Tokoh memegang',action:'memegang',location:'meja',focus:'benda',startPose:'netral',endPose:'memegang',reaction:'penasaran',camera:'medium',occlusion:'tidak diperlukan',contact:'tangan pada benda',sfxCue:'tidak diperlukan',assetIds:p.items.map((i:any)=>i.id)}],specialAssets:[]}}
@@ -132,3 +133,6 @@ void app.whenReady().then(async()=>{
   })
   const result={status:'passed',checks,actualElectron:true,actualSQLite:true,providerResponses:'controlled; no external generation',liveUserDatabaseTouched:false,proof:join(root,'contact-and-many-poses.mp4')};writeFileSync(join(root,'result.json'),JSON.stringify(result,null,2));console.log(JSON.stringify(result));closeDb();app.quit()
 }).catch(e=>{console.error(e);closeDb();app.exit(1)})
+
+// Explicit optional-agent regression; default baseline/consent covered by cutout-permanent integration.
+function startCodexAutoEdit(input:Parameters<typeof startAgentComposer>[0]){return startAgentComposer({...input,productionStrategy:'agent'})}

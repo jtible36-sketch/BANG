@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import {CutoutBriefSetup} from './CutoutBriefSetup'
 import { StoryIdeasButton } from '../../components/StoryIdeasButton'
 import { Library, Sparkles } from 'lucide-react'
 import { LANGUAGES, clipCountFor } from '@shared/models'
@@ -193,6 +194,8 @@ export function IdeaStep() {
             </div>
 
             <MasterPromptPicker value={project.masterPrompt} context={project} disabled={busy || planningCharacters} onChange={(masterPrompt) => updateProject({ masterPrompt, ...(masterPrompt?.baseProfile === 'stickman' ? { styleId: 'stickman', skillId: 'general', skillVariant: undefined } : masterPrompt?.baseProfile === 'map' ? { styleId: 'map-animation', skillId: 'general', skillVariant: undefined, ...(!clips.length ? { durationSec: MAP_DEFAULT_DURATION_SEC, aspectRatio: '9:16' as const } : {}) } : {}) })} onManage={() => { void (async () => { await flush(); if (useProject.getState().saveState === 'error') { toast('error', 'Simpan perubahan proyek sebelum membuka pustaka master.'); return } go({ name: 'masters', back: { name: 'project', id: project.id } }) })() }} />
+
+            <CutoutBriefSetup/>
 
             <NichePicker value={project.subjectNiche ?? ''} context={project} onChange={(subjectNiche) => updateProject({ subjectNiche })} disabled={busy || planningCharacters} />
 

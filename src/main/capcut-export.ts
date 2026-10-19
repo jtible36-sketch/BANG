@@ -1,3 +1,4 @@
+import {productionReadiness,exportLicenseReport} from './cutout-v5'
 import { execFile } from 'node:child_process'
 import { randomUUID } from 'node:crypto'
 import { copyFileSync, mkdirSync, realpathSync, statSync, writeFileSync } from 'node:fs'
@@ -44,11 +45,15 @@ export function startCapcutExport(projectId: string, folder: string): Job {
   return runJob(job, 'export', async ctx => {
     bundle = await syncVoiceover(projectId); clips = [...bundle.clips].sort((a, b) => a.sort - b.sort)
     assertCurrentVoiceover(bundle)
+    const blocked=productionReadiness(projectId).filter(c=>c.status==='blocked'||c.missingAssets.length>0);if(blocked.length)throw Error('Ekspor Cutout diblokir: '+blocked.map(c=>c.title+': '+c.reasons.join('; ')).join('\n'))
+    const attribution=exportLicenseReport(bundle)
+    if(bundle.project.styleId==='cutout-facts'&&(bundle.project.editor.sfx??[]).some(c=>c.volumeDb> -12))throw Error('Volume SFX Cutout v5 maksimal -12 dB.')
     const effects = projectSoundEffects(bundle, clips.reduce((total, clip) => total + clip.durationMs, 0))
     const slug = bundle.project.title.replace(/[^\p{L}\p{N}_-]+/gu, '-').slice(0, 50) || 'Naraflow'
     const output = resolve(folder, `${slug}-CapCut-${randomUUID().slice(0, 8)}`)
     if (dirname(output) !== resolve(folder)) throw new Error('Lokasi ekspor tidak valid.')
     mkdirSync(output, { recursive: true })
+    if(attribution)writeFileSync(join(output,'ATTRIBUTION.txt'),attribution,'utf8')
     for (const child of ['shots', 'originals', 'audio', 'characters', 'editing', 'overlays', 'cutout', 'sfx']) mkdirSync(join(output, child))
     writeFileSync(join(output, 'BELUM-SELESAI.txt'), 'Ekspor belum selesai; gunakan paket setelah pekerjaan selesai di Naraflow.\n')
     const rows: Record<string, unknown>[] = [], captions: string[] = [], audioFiles: string[] = []

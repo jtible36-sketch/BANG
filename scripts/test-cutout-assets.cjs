@@ -1,6 +1,8 @@
 const fs=require('node:fs'),path=require('node:path'),os=require('node:os'),{spawn}=require('node:child_process'),esbuild=require('esbuild')
 const root=path.resolve(__dirname,'..'),scratch=fs.mkdtempSync(path.join(os.tmpdir(),'naraflow-cutout-assets-test-'))
 const modules={
+ // Scoped media-consent fixture only; no real providers. Real gate tested separately.
+ './cutout-studio':`export const requireBriefApproved=()=>({approved:true,fixtureConsent:true});export const requireAssetConsent=()=>{};export const consumeAssetConsent=()=>{};export const readClipOutcomes=()=>[];export const completedClipMatches=()=>false;export const studioReport=()=>[];export const writeClipOutcome=()=>{};export const loadComedyProfile=()=>({id:'comedy-jolt',verified:false});`,
  './codex-text':`export const generateCodexJson=options=>globalThis.__assetPlan(options);`,
  './codex-connections':`export const requireCodexConnection=()=>{};export const withCodexConnection=async(c,fn,signal)=>fn(signal);export const codexConnectionStatus=async()=>({available:true,authenticated:true,imageGeneration:true,connections:{image:true}});`,
  './providers/codex':`export const generatePNG=options=>globalThis.__assetGenerate(options);`,

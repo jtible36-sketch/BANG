@@ -20,7 +20,9 @@ function CueNumber({ label, value, min = 0, max, step = 0.01, onChange }: { labe
 }
 
 export function SfxPanel({ total }: { total: number }) {
-  const { project, assets, updateEditor } = useProject()
+  const { project, assets, updateEditor,clips,savedAt } = useProject()
+  const [plannedCues,setPlannedCues]=useState<{key:string;title:string;timeMs:number;text:string}[]>([])
+  useEffect(()=>{let active=true;if(project?.styleId!=='cutout-facts')return;void Promise.all(clips.map(async(c,index)=>{const state=await window.api.cutoutAssets.state(c.id);const offset=clips.slice(0,index).reduce((n,c)=>n+c.durationMs,0);return (state.stale?[]:state.plan?.director?.shots??[]).filter(s=>s.sfxCue&&!/^(none|tidak diperlukan)$/i.test(s.sfxCue)).map((s,n)=>({key:c.id+'-'+n,title:c.title,timeMs:offset+s.startMs,text:s.sfxCue}))})).then(rows=>{if(active)setPlannedCues(rows.flat())}).catch(()=>{if(active)setPlannedCues([])});return ()=>{active=false}},[project?.id,savedAt,clips])
   const selectedId = useSfxUi(s => s.selectedId)
   const [assetId, setAssetId] = useState('')
   const [importing, setImporting] = useState(false)
@@ -62,6 +64,7 @@ export function SfxPanel({ total }: { total: number }) {
   const actualMs = selected ? soundEffectDurationMs(selected, source?.durationMs, total * 1000) : 0
   return <div className="flex flex-col gap-4 p-[18px]">
     <div><h3 className="flex items-center gap-2 text-sm font-semibold"><Volume2 className="size-4" /> Efek suara terjadwal</h3><p className="mt-2 text-xs leading-relaxed text-muted">Letakkan efek pada momen aksi. Beberapa efek dapat berbunyi bersamaan dan ikut masuk ke ekspor video.</p></div>
+    {project.styleId==='cutout-facts'&&plannedCues.length>0&&<section className="rounded-xl border border-line p-3 text-xs" data-planned-sfx><b>Usulan cue SFX dari penyutradaraan</b><p className="my-2 text-muted">Usulan belum menjadi track audio. Impor/pilih audio lalu tempatkan di waktu usulan. Tanpa aset dan track SFX, cue tidak terdengar pada ekspor.</p>{plannedCues.map(c=><p className="my-1" key={c.key}>{(c.timeMs/1000).toFixed(2)}s · {c.title} · {c.text}</p>)}</section>}
     <Button size="sm" icon={<Upload className="size-4" />} loading={importing} disabled={cues.length >= SFX_LIMITS.cues || total <= 0} onClick={() => void pick()}>Impor efek suara</Button>
     <div className="flex gap-2"><select aria-label="Aset efek suara" className={cx(inputCls, 'min-w-0 flex-1 text-xs')} value={assetId} onChange={e => setAssetId(e.target.value)}><option value="">Pilih audio proyek…</option>{audio.map(a => <option value={a.id} key={a.id}>{a.prompt || a.id}</option>)}</select><Button size="sm" title="Tambah efek di playhead" aria-label="Tambah efek di playhead" disabled={!assets[assetId] || cues.length >= SFX_LIMITS.cues || total <= 0} icon={<Plus className="size-4" />} onClick={() => add(assets[assetId])} /></div>
     {error && <p role="alert" className="text-xs text-bad-ink">{error}</p>}

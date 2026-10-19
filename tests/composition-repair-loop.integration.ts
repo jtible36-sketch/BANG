@@ -1,10 +1,11 @@
+// Legacy free-scene regressions. The new default shot contract has its own eight-clip suite.
 import assert from 'node:assert/strict'
 import {app,nativeImage} from 'electron'
 import {mkdirSync,writeFileSync,existsSync} from 'node:fs'
 import {join,resolve} from 'node:path'
 import {closeDb} from '../src/main/db'
 import {createProject,replaceScript,getBundle,getJob} from '../src/main/repo'
-import {startCodexAutoEdit,getEditingContext,resumeCodexAutoEdit,recoverMissingAssets} from '../src/main/editor-automation'
+import {startCodexAutoEdit as startAgentComposer,getEditingContext,resumeCodexAutoEdit,recoverMissingAssets} from '../src/main/editor-automation'
 import {cutoutAssetState} from '../src/main/cutout-assets'
 import {cancelJob} from '../src/main/jobs'
 import {builtInMasterPrompts} from '../src/shared/master-prompts'
@@ -16,7 +17,7 @@ async function done(id:string){for(let i=0;i<4000;i++){const j=getJob(id)!;if(['
 async function check(name:string,run:()=>Promise<void>){await run();checks.push(name);console.log('PASS',name)}
 function png(alpha:boolean){const bytes=Buffer.alloc(90*160*4);for(let y=0;y<160;y++)for(let x=0;x<90;x++){const n=(y*90+x)*4;bytes[n]=60;bytes[n+1]=160;bytes[n+2]=200;bytes[n+3]=alpha&&(x<8||x>81||y<8||y>151)?0:255}return nativeImage.createFromBitmap(bytes,{width:90,height:160}).toPNG()}
 function project(count=1){const p=createProject({durationSec:60,styleId:'cutout-facts',skillId:'animasi-cutout',masterPrompt:builtInMasterPrompts.find(p=>p.id==='builtin:cutout-facts')!});replaceScript(p.id,'Loop',Array.from({length:count},(_,i)=>({title:'Klip '+(i+1),narration:'Tokoh menunjuk engsel pintu.',story:'Satu aksi menunjuk engsel.',durationMs:2000})));return p.id}
-const production={...DEFAULT_CUTOUT_PRODUCTION,maxAssetsPerClip:32,maxNewAssets:10,motion:'keyframes' as const}
+const production={...DEFAULT_CUTOUT_PRODUCTION,beatTemplate:false,maxAssetsPerClip:32,maxNewAssets:10,motion:'keyframes' as const}
 const approved={approved:true,problems:[],missingAssets:[]}
 let reviews=0,repairs=0,compositions=0,conversions=0,images=0,scenario='problems',blocked=false
 g.__progress=[]
@@ -64,3 +65,6 @@ void app.whenReady().then(async()=>{
  })
  const result={status:'passed',checks,actualElectron:true,actualSQLite:true,actualCanvas:true,providerResponses:'controlled; no external generation',userDatabaseChanged:false};writeFileSync(join(root,'composition-repair-loop-check.json'),JSON.stringify(result,null,2));console.log(JSON.stringify(result));closeDb();app.quit()
 }).catch(e=>{console.error(e);closeDb();app.exit(1)})
+
+// Explicit optional-agent regression; default baseline/consent covered by cutout-permanent integration.
+function startCodexAutoEdit(input:Parameters<typeof startAgentComposer>[0]){return startAgentComposer({...input,productionStrategy:'agent'})}

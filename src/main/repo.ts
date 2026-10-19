@@ -1,3 +1,4 @@
+import {CUTOUT_CAPTION_DEFAULTS} from '@shared/cutout-reference-profile'
 import { validateSpecialVideo } from '@shared/special-clips'
 import { healthDialogueEditorDefaults } from '@shared/health-dialogue'
 import { randomUUID } from 'node:crypto'
@@ -209,7 +210,7 @@ export function createProject(input: NewProjectInput): Project {
       skill.skillVariant,
       masterPrompt ? JSON.stringify(masterPrompt) : null,
       subjectNiche,
-      JSON.stringify({ ...DEFAULT_EDITOR, ...healthDialogueEditorDefaults(styleId) }),
+      JSON.stringify({ ...DEFAULT_EDITOR, ...healthDialogueEditorDefaults(styleId), ...(styleId==='cutout-facts'?CUTOUT_CAPTION_DEFAULTS:{}) }),
       now,
       now
     )
@@ -566,6 +567,7 @@ export function replaceScript(projectId: string, title: string, scenes: ScriptSc
        VALUES (?, ?, ?, ?, ?, ?, ?, '[]')`
     )
     scenes.forEach((c, i) => insert.run(randomUUID(), projectId, i, c.title, c.story, c.narration, c.durationMs))
+      if(getProject(projectId).styleId==='cutout-facts')db.prepare("UPDATE clips SET transition='cut',camera_preset='static' WHERE project_id=?").run(projectId)
     db.prepare("UPDATE projects SET title = ?, status = 'script', step = 2, updated_at = ? WHERE id = ?").run(title, Date.now(), projectId)
   })()
 }
@@ -611,7 +613,7 @@ export function applyVisuals(projectId: string, characters: { name: string; desc
     for (const v of scenes) {
       const clip = getClip(v.clipId)
       const ids = [...new Set(v.characterNames.map((n) => byName.get(n.trim().toLowerCase())).filter((x): x is string => !!x))]
-      update.run({ ...v, projectId, visualSource: visualSourceOf(clip), characterIds: JSON.stringify(ids) })
+      update.run({ ...v, ...(getProject(projectId).styleId==='cutout-facts'?{transition:'cut',cameraPreset:['static','zoomin'].includes(v.cameraPreset)?v.cameraPreset:'static'}:{}), projectId, visualSource: visualSourceOf(clip), characterIds: JSON.stringify(ids) })
     }
     db.prepare(
       "UPDATE projects SET status = CASE WHEN status IN ('draft', 'script') THEN 'storyboard' ELSE status END, step = 3, updated_at = ? WHERE id = ?"

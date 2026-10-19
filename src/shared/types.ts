@@ -18,6 +18,7 @@ export type CaptionSize = 'kecil' | 'sedang' | 'besar'
 export type Step = 1 | 2 | 3 | 4
 
 export interface EditorSettings {
+  cutoutV5?: import('./cutout-shot-rules').CutoutV5Settings
   /** Voice is the timeline clock. Omitted on old projects means enabled. */
   autoSyncVoiceover?: boolean
   captionStyle: CaptionStyleId
@@ -191,7 +192,7 @@ export interface Asset {
 }
 
 /** "narration" voices several scenes in one take and cuts it per scene. */
-export type JobKind = 'story' | 'image' | 'sheet' | 'video' | 'tts' | 'narration' | 'align' | 'export' | 'auto-edit' | 'cutout-plan' | 'cutout-asset'
+export type JobKind = 'story' | 'image' | 'sheet' | 'video' | 'tts' | 'narration' | 'align' | 'export' | 'auto-edit' | 'cutout-plan' | 'cutout-asset' | 'cutout-batch'
 export type JobStatus = 'queued' | 'running' | 'done' | 'failed' | 'canceled'
 
 export interface Job {

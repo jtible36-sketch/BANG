@@ -1,0 +1,17 @@
+{
+  "id": "comedy-jolt",
+  "label": "Komedi getar",
+  "verified": false,
+  "source": "unverified: reference files 8LjOuPhYO3I, AFJEO_gBYXg, 0_eDRQfEVO8 not analyzed",
+  "amplitude": null,
+  "frequencyHz": null,
+  "durationMs": null,
+  "decay": null,
+  "axis": null,
+  "maxJoltsPerClip": null,
+  "maxJoltDurationMs": null,
+  "zoomDelta": null,
+  "zoomDurationMs": null,
+  "allowOvershoot": null,
+  "maxKeysPerClip": null
+}

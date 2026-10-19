@@ -115,7 +115,7 @@ function queueTarget(target: Target): Job {
   savePayload(job.id, payload)
   emit.job(job)
   return runJob(job, 'flow', async ctx => {
-    await requireFlowReady(target.kind === 'video' ? 'video' : 'image', target.maxCredits)
+    await requireFlowReady(target.kind === 'video' ? 'video' : 'image', target.maxCredits, !!target.detached)
     ctx.signal.throwIfAborted()
     if (payload.captured !== fingerprint(target)) throw new Error('Adegan/karakter berubah saat mengantre. Susun arahan terbaru sebelum generate.')
     const freshProject = getProject(project.id), clip = target.clipId ? getClip(target.clipId) : null

@@ -1,3 +1,4 @@
+import { isCutoutReference, cutoutCoverage } from '@shared/cutout-reference-profile'
 import { useState } from 'react'
 import { ArrowUpRight, Check, ChevronDown, CircleDashed, FileText, Layers, ListChecks, SlidersHorizontal } from 'lucide-react'
 import { resolveMasterPrompt } from '@shared/master-prompts'
@@ -21,7 +22,10 @@ export function productionStages(project: Project, clips: Clip[], assets: Record
   const total = clips.length
   const written = clips.filter((clip) => clip.narration.trim()).length
   const planned = clips.filter((clip) => !needsVisual(clip)).length
-  const media = clips.filter((clip) => clip.motionType === 'video'
+  const cutout = isCutoutReference(project)
+  const layered = cutoutCoverage(clips).ready
+  const prepared = new Set(Object.values(assets).filter(a=>a.meta.cutoutAsset&&a.clipId).map(a=>a.clipId)).size
+  const media = cutout ? layered : clips.filter((clip) => clip.motionType === 'video'
     ? !!clip.videoAssetId && assets[clip.videoAssetId]?.kind === 'video'
     : !!clip.imageAssetId && assets[clip.imageAssetId]?.kind === 'image').length
   const voiced = clips.filter((clip) => !!clip.audioAssetId && assets[clip.audioAssetId]?.kind === 'audio'
@@ -33,8 +37,8 @@ export function productionStages(project: Project, clips: Clip[], assets: Record
   return [
     { id: 1, label: 'Brief', state: project.synopsis.trim() ? 'ready' : 'empty', detail: project.synopsis.trim() ? `${project.aspectRatio} · ${project.durationSec} detik` : 'Isi topik dan arah cerita' },
     { id: 2, label: 'Naskah', state: !total ? 'empty' : written < total ? 'partial' : wordReview ? 'review' : 'ready', detail: !total ? 'Belum ada adegan' : `${written}/${total} narasi · ${words} kata${wordReview ? ', tinjau durasi' : ''}` },
-    { id: 3, label: 'Visual', state: !total || !planned ? 'empty' : planned < total ? 'review' : 'ready', detail: total ? `${planned}/${total} prompt sesuai naskah` : 'Susun dari naskah' },
-    { id: 4, label: 'Produksi', state: !total || !media ? 'empty' : planned < total ? 'review' : media === total && voiced >= written ? 'ready' : 'partial', detail: total ? `${media}/${total} media · ${voiced}/${written} suara terkini${planned < total && media ? ', tinjau visual' : ''}` : 'Gambar, video dan suara' }
+    ...(cutout ? [{ id: 3 as const, label: 'Visual', state: (prepared ? 'review' : 'empty') as ProductionStage['state'], detail: `${prepared}/${total} adegan memiliki aset · tinjau paket` }] : [{ id: 3, label: 'Visual', state: !total || !planned ? 'empty' : planned < total ? 'review' : 'ready', detail: total ? `${planned}/${total} prompt sesuai naskah` : 'Susun dari naskah' } as ProductionStage]),
+    { id: 4, label: 'Produksi', state: !total || !media ? 'empty' : planned < total ? 'review' : media === total && voiced >= written ? 'ready' : 'partial', detail: total ? `${media}/${total} ${cutout?'komposisi':'media'} · ${voiced}/${written} suara terkini${planned < total && media ? ', tinjau visual' : ''}` : 'Gambar, video dan suara' }
   ]
 }
 

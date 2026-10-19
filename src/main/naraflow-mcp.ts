@@ -1,3 +1,4 @@
+import {readClipOutcomes} from './cutout-outcomes'
 import { retimeNarration } from './narration-tempo'
 import { createScriptRevision } from './script-revision'
 import { generateNarration } from './narration'
@@ -115,7 +116,7 @@ export async function dispatchNaraflowMcp(method: string, params: unknown): Prom
       case 'naraflow_get_job': {
         const a = args(raw, ['projectId', 'jobId']), projectId = id(a.projectId), job = getJob(id(a.jobId))
         if (!job || job.projectId !== projectId) throw new Error('Pekerjaan tidak ditemukan pada proyek ini.')
-        return result({ jobId: job.id, projectId: job.projectId, kind: job.kind, status: job.status, progress: job.progress, message: job.message, error: job.error })
+        return result({ jobId: job.id, projectId: job.projectId, kind: job.kind, status: job.status,...(job.kind==='auto-edit'?{clipOutcomes:readClipOutcomes(projectId).filter(r=>r.jobId===job.id)}:{}), progress: job.progress, message: job.message, error: job.error })
       }
       case 'naraflow_export_project': {
         const a = args(raw, ['projectId', 'expectedRevision', 'resolution', 'fps', 'burnCaptions', 'writeSrt', 'normalizeAudio', 'range'], ['projectId', 'expectedRevision'])

@@ -1,10 +1,11 @@
+// Legacy free-scene regressions. The new default shot contract has its own eight-clip suite.
 import assert from 'node:assert/strict'
 import {app,nativeImage} from 'electron'
 import {mkdirSync,readFileSync,writeFileSync,existsSync} from 'node:fs'
 import {join,resolve} from 'node:path'
 import {getDb,closeDb} from '../src/main/db'
 import {createProject,replaceScript,getBundle,insertAsset,patchClip,getJob} from '../src/main/repo'
-import {getEditingContext,startCodexAutoEdit} from '../src/main/editor-automation'
+import {getEditingContext,startCodexAutoEdit as startAgentComposer} from '../src/main/editor-automation'
 import {createScriptRevision} from '../src/main/script-revision'
 import {generateScript} from '../src/main/story'
 import {builtInMasterPrompts,masterStageDirection} from '../src/shared/master-prompts'
@@ -68,7 +69,7 @@ app.whenReady().then(async()=>{
      if(o.schema?.properties?.items){plans++;const items=[{id:'bg',role:'background',layerKey:'bg',label:'Location',prompt:'A location',characterId:null,timeMs:0},{id:'actor',role:'character',layerKey:'actor',label:'Actor',prompt:'One isolated actor.',characterId:null,timeMs:0}];return {items,director:{timing:'provisional',shots:[{startMs:0,endMs:2000,narrationCue:'Troli ini',action:'Troli masuk',location:'Toko',focus:'Troli',startPose:'mendorong',endPose:'berhenti',reaction:'penasaran',camera:'medium',occlusion:'tidak ada',contact:'roda lantai',sfxCue:'roda',assetIds:['bg','actor']}],specialAssets:[]}}}
      const p=JSON.parse(o.prompt);return {summary:'Fixture composition',clips:[{clipId:p.scope.clipId,cutout:p.seedComposition,transition:null,durationMs:null}],editor:null}
    }
-   const options={...DEFAULT_CUTOUT_PRODUCTION,maxAssetsPerClip:12,maxNewAssets:2,motion:'keyframes' as const},request={projectId:id,instruction:'Follow actions.',production:options};const first=await done(startCodexAutoEdit(request).id);assert.equal(first.status,'failed');assert.match(first.error!,/tinjauan visual/);assert.equal(getBundle(id).clips[0].cutout,null);const completed=images;assert.equal(completed,2);approved=true;
+   const options={...DEFAULT_CUTOUT_PRODUCTION,beatTemplate:false,maxAssetsPerClip:12,maxNewAssets:2,motion:'keyframes' as const},request={projectId:id,instruction:'Follow actions.',production:options};const first=await done(startCodexAutoEdit(request).id);assert.equal(first.status,'failed');assert.match(first.error!,/tinjauan visual/);assert.equal(getBundle(id).clips[0].cutout,null);const completed=images;assert.equal(completed,2);approved=true;
    const next=await done(startCodexAutoEdit(request).id);assert.equal(next.status,'done',next.error??'');assert.equal(images,completed);assert.equal(plans,1);assert.equal(getBundle(id).project.editor.captionStyle,'karaoke')
  })
  await check('one visual layout repair is rendered and reviewed before apply without regenerating assets',async()=>{
@@ -79,7 +80,10 @@ app.whenReady().then(async()=>{
      const prompt=JSON.parse(o.prompt);if(prompt.original){repairs++;assert(o.images.length>=3);return {...prompt.original,summary:'Corrected layout from actual frames',editor:null}}
      return base(o)
    }
-   const job=await done(startCodexAutoEdit({projectId:id,instruction:'One action.',production:{...DEFAULT_CUTOUT_PRODUCTION,maxAssetsPerClip:12,maxNewAssets:12,motion:'keyframes'}}).id);assert.equal(job.status,'done',job.error??'');assert.equal(reviews,2);assert.equal(repairs,1);assert.equal(generated,2);assert(getBundle(id).clips[0].cutout?.enabled)
+   const job=await done(startCodexAutoEdit({projectId:id,instruction:'One action.',production:{...DEFAULT_CUTOUT_PRODUCTION,beatTemplate:false,maxAssetsPerClip:12,maxNewAssets:12,motion:'keyframes'}}).id);assert.equal(job.status,'done',job.error??'');assert.equal(reviews,2);assert.equal(repairs,1);assert.equal(generated,2);assert(getBundle(id).clips[0].cutout?.enabled)
  })
  writeFileSync(join(root,'troli-fidelity-check.json'),JSON.stringify({status:'passed',checks,actualElectron:true,actualSQLite:true,actualCanvas:true,providerResponses:'controlled',liveUserDatabaseTouched:false},null,2));closeDb();app.quit()
 }).catch(e=>{console.error(e);closeDb();app.exit(1)})
+
+// Explicit optional-agent regression; default baseline/consent covered by cutout-permanent integration.
+function startCodexAutoEdit(input:Parameters<typeof startAgentComposer>[0]){return startAgentComposer({...input,productionStrategy:'agent'})}

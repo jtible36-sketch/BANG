@@ -33,7 +33,7 @@ function transformNumbers(t: CutoutTransform): number[] { return [t.x,t.y,t.scal
  * complement samples, including inherited motion; do this BEFORE baking frames.
  */
 export function auditCutoutDirection(scene: CutoutScene, assets: Asset[], durationMs: number,
-  director?: Pick<CutoutDirector, 'shots'>): CutoutDirectionAudit {
+  director?: Pick<CutoutDirector, 'shots'>, options?:{moverWarning?:boolean}): CutoutDirectionAudit {
   const problems = new Set<string>(), missingAssets = new Set<string>()
   const result = (): CutoutDirectionAudit => ({problems:[...problems], missingAssets:[...missingAssets]})
   if (!scene.enabled) { problems.add('Cutout referensi memerlukan komposisi aktif.'); return result() }
@@ -120,7 +120,7 @@ export function auditCutoutDirection(scene: CutoutScene, assets: Asset[], durati
       current=current.parentId?byLayer.get(current.parentId):undefined
     }
   }
-  if(moving.size>2)problems.add(`Maksimal 2 layer bergerak per klip; terdeteksi ${moving.size}: ${[...moving].map(id=>byLayer.get(id)?.name??id).join(', ')}. Gerak induk, IK, pose, mask dan parallax ikut dihitung; framing kamera bersama dikecualikan.`)
+  if(moving.size>2&&!options?.moverWarning)problems.add(`Maksimal 2 layer bergerak per klip; terdeteksi ${moving.size}: ${[...moving].map(id=>byLayer.get(id)?.name??id).join(', ')}. Gerak induk, IK, pose, mask dan parallax ikut dihitung; framing kamera bersama dikecualikan.`)
   const jointIds=new Set(scene.layers.filter(l=>l.parentId).flatMap(l=>[l.id,l.parentId!]))
   const contactIds=new Set<string>()
   for(const chain of scene.ik??[])if(chain.enabled&&(chain.weight>0||chain.keyframes.some(k=>k.timeMs<=durationMs&&k.weight>0))) {

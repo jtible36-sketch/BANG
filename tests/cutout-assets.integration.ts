@@ -7,7 +7,7 @@ import { once } from 'node:events'
 import { execFileSync, spawn, type ChildProcess } from 'node:child_process'
 import { getDb, closeDb } from '../src/main/db'
 import { createProject, replaceScript, getBundle, getJob, patchClip, insertAsset, updateJob } from '../src/main/repo'
-import { cutoutAssetState, generateCutoutAsset, planCutoutAssets, recoverCutoutAssets, saveCutoutAssetPlan } from '../src/main/cutout-assets'
+import { cutoutAssetState, generateCutoutAsset as generateFixtureAsset, planCutoutAssets, recoverCutoutAssets, saveCutoutAssetPlan } from '../src/main/cutout-assets'
 import { cancelJob } from '../src/main/jobs'
 import { readManagedImageBytes } from '../src/main/media-import'
 import { createCutoutLayer, createCutoutScene } from '../src/shared/cutout-timeline'
@@ -62,6 +62,18 @@ void app.whenReady().then(async()=>{
     const asset=getBundle(p.id).assets.find(a=>a.id===result.resultAssetId)!,image=nativeImage.createFromBuffer(readFileSync(join(app.getPath('userData'),'projects',p.id,asset.localPath)))
     assert.equal(image.toBitmap()[3],0);assert.equal((asset.meta.cutoutAsset as any).alpha,'chroma-matte');assert.equal(getBundle(p.id).clips[0].imageAssetId,null)
   })
+
+// Cleanup/format tests intentionally need a NEW provider request. Change the image prompt
+// explicitly; ordinary missing-only production now correctly reuses an existing file.
+let fixturePromptVersion=0
+function generateCutoutAsset(input:Parameters<typeof generateFixtureAsset>[0]){
+ const state=cutoutAssetState(input.clipId)
+ if(!state.stale&&state.plan&&getBundle(p.id).assets.some(a=>(a.meta.cutoutAsset as any)?.planId===state.plan!.id&&(a.meta.cutoutAsset as any)?.itemId===input.itemId)){
+  plan=saveCutoutAssetPlan(input.clipId,state.plan.items.map(i=>i.id===input.itemId?{...i,prompt:i.prompt+' Explicit fixture generation '+(++fixturePromptVersion)}:i));input={...input,planId:plan.id}
+ }
+ return generateFixtureAsset(input)
+}
+
   for (const mode of ['transient', 'persistent', 'provider-error'] as const) {
     await check('Windows cwd lock during cleanup: '+mode,async()=>{
       let child:ChildProcess|undefined,folder='';let exited:Promise<unknown>|undefined

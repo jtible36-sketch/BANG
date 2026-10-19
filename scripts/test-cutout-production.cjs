@@ -1,6 +1,8 @@
 const fs=require('node:fs'),path=require('node:path'),os=require('node:os'),{spawn}=require('node:child_process'),esbuild=require('esbuild')
 const root=path.resolve(__dirname,'..'),scratch=fs.mkdtempSync(path.join(os.tmpdir(),'naraflow-cutout-production-test-'))
 const modules={
+ // Scoped media-consent fixture only; no real providers. Real gate tested separately.
+ './cutout-studio':`export const requireBriefApproved=()=>({approved:true,fixtureConsent:true});export const requireAssetConsent=()=>{};export const consumeAssetConsent=()=>{};export const readClipOutcomes=()=>[];export const completedClipMatches=()=>false;export const studioReport=()=>[];export const writeClipOutcome=()=>{};export const loadComedyProfile=()=>({id:'comedy-jolt',verified:false});`,
  './cutout-composition-review':`export const reviewProductionComposition=async()=>({approved:true,problems:[],missingAssets:[]});`,
  './naraflow-mcp':`export const getNaraflowMcpStatus=()=>({running:false,descriptorPath:'fixture',relayPath:'fixture'});`,
  './codex-text':`export const generateCodexJson=options=>globalThis.__assetPlan(options);`,

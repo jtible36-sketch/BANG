@@ -1,0 +1,11 @@
+{
+  "id": "cutout-facts-v5",
+  "transition": {"default":"cut","allowed":["cut"],"severity":"warning"},
+  "shotDurationMs":{"typicalMin":2500,"typicalMax":4500,"explainerMax":13000,"montageMin":300,"montageMax":1000,"montageMaxConsecutive":8,"severity":"warning"},
+  "movers":{"maxPerShot":2,"note":"pilihan produksi proyek, bukan temuan referensi","severity":"warning"},
+  "camera":{"allowedPresets":["static","zoomin"],"shake":false,"reversalWindowMs":600,"maxReversals":2,"severity":"warning"},
+  "oneActionPerShot":true,
+  "eraLabel":{"enabled":true,"holdMs":[1000,2000],"styleRef":"yellow-outlined-center"},
+  "caption":{"position":"lower-third","keywordHighlight":true},
+  "character":{"elastic":false,"reversalWindowMs":900,"maxReversals":2,"severity":"error"}
+}

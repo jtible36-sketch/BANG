@@ -15,7 +15,9 @@ const listen =
   }
 
 const api: StudioApi = {
-  cutoutAssets: { state: call('cutoutAssets:state'), plan: call('cutoutAssets:plan'), save: call('cutoutAssets:save'), status: call('cutoutAssets:status'), generate: call('cutoutAssets:generate'), recover: call('cutoutAssets:recover') },
+  cutoutAssets: { generateBatch: call('cutoutAssets:generateBatch'), state: call('cutoutAssets:state'), plan: call('cutoutAssets:plan'), save: call('cutoutAssets:save'), status: call('cutoutAssets:status'), generate: call('cutoutAssets:generate'), recover: call('cutoutAssets:recover') },
+  cutoutStudio:{reviewAsset:call('cutoutStudio:reviewAsset'),report:call('cutoutStudio:report'),saveBrief:call('cutoutStudio:saveBrief'),approveCredits:call('cutoutStudio:approveCredits'),upgradePlan:call('cutoutStudio:upgradePlan'),outcomes:call('cutoutStudio:outcomes'),backgrounds:call('cutoutStudio:backgrounds'),comedyProfile:call('cutoutStudio:comedyProfile'),history:call('cutoutStudio:history')},
+  cutoutV5: {readiness:call('cutoutV5:readiness'),recordLicense:call('cutoutV5:recordLicense')},
   editorAutomation: { recoverMissingAssets: call('editorAutomation:recoverMissingAssets'), resume: call('editorAutomation:resume'), status: call('editorAutomation:status'), context: call('editorAutomation:context'), run: call('editorAutomation:run'), undo: call('editorAutomation:undo'), presence: call('editorAutomation:presence') },
   flow: {
     status: call('flow:status'), prepare: call('flow:prepare'), clipImage: call('flow:clipImage'), clipVideo: call('flow:clipVideo'),

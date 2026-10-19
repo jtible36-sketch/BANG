@@ -1,10 +1,11 @@
+// Legacy free-scene regressions. The new default shot contract has its own eight-clip suite.
 import assert from 'node:assert/strict'
 import {app,nativeImage} from 'electron'
 import {mkdirSync,writeFileSync,existsSync} from 'node:fs'
 import {join,resolve} from 'node:path'
 import {closeDb} from '../src/main/db'
 import {createProject,replaceScript,getBundle,getJob} from '../src/main/repo'
-import {startCodexAutoEdit} from '../src/main/editor-automation'
+import {startCodexAutoEdit as startAgentComposer} from '../src/main/editor-automation'
 import {builtInMasterPrompts} from '../src/shared/master-prompts'
 import {DEFAULT_CUTOUT_PRODUCTION} from '../src/shared/cutout-production'
 import {cutoutAssetIds} from '../src/shared/cutout-timeline'
@@ -12,7 +13,7 @@ const root=resolve(process.argv[2]),g=globalThis as any,checks:string[]=[]
 mkdirSync(root,{recursive:true});app.setPath('userData',join(root,'isolated-user-data'));app.commandLine.appendSwitch('disable-gpu');app.on('window-all-closed',()=>{})
 async function done(id:string){for(let i=0;i<4000;i++){const job=getJob(id)!;if(['done','failed','canceled'].includes(job.status))return job;await new Promise(r=>setTimeout(r,20))}throw Error('timeout')}
 function png(alpha:boolean){const b=Buffer.alloc(90*160*4);for(let y=0;y<160;y++)for(let x=0;x<90;x++){const n=(y*90+x)*4;b[n]=110;b[n+1]=160;b[n+2]=220;b[n+3]=alpha&&(x<8||x>81||y<8||y>151)?0:255}return nativeImage.createFromBitmap(b,{width:90,height:160}).toPNG()}
-const production={...DEFAULT_CUTOUT_PRODUCTION,maxAssetsPerClip:32,maxNewAssets:10,motion:'keyframes' as const}
+const production={...DEFAULT_CUTOUT_PRODUCTION,beatTemplate:false,maxAssetsPerClip:32,maxNewAssets:10,motion:'keyframes' as const}
 function project(){const p=createProject({durationSec:60,styleId:'cutout-facts',skillId:'animasi-cutout',masterPrompt:builtInMasterPrompts.find(p=>p.id==='builtin:cutout-facts')!});replaceScript(p.id,'Fixture',[{title:'Engsel pintu',narration:'Tokoh menjelaskan pintu berengsel.',story:'Satu aksi menjelaskan.',durationMs:2000}]);return p.id}
 let scenario='',images=0,inclusions=0,movement=0,reviews=0,conversions=0,fullScene:any,propIds:string[]=[],lastOmitted:string[]=[]
 const reset=(value:string)=>{scenario=value;images=0;inclusions=0;movement=0;reviews=0;conversions=0;propIds=[];lastOmitted=[]}
@@ -68,3 +69,6 @@ void app.whenReady().then(async()=>{
  })
  const result={status:'passed',checks,actualElectron:true,actualSQLite:true,actualCanvasFrames:true,providers:'controlled; no external generation',userProjectsChanged:false};writeFileSync(join(root,'asset-inclusion-repair-check.json'),JSON.stringify(result,null,2));console.log(JSON.stringify(result));closeDb();app.quit()
 }).catch(e=>{console.error(e);closeDb();app.exit(1)})
+
+// Explicit optional-agent regression; default baseline/consent covered by cutout-permanent integration.
+function startCodexAutoEdit(input:Parameters<typeof startAgentComposer>[0]){return startAgentComposer({...input,productionStrategy:'agent'})}

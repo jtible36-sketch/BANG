@@ -130,6 +130,18 @@ Mask tersedia sebagai persegi, elips, atau poligon, dengan inverse dan feather. 
 
 Keyframe setiap frame menyampel gerak yang direncanakan. Pengaturan ini tidak otomatis menghasilkan PNG baru pada setiap frame dan tidak menjamin kontak visual menjadi benar.
 
+### Alur otomatis per shot (master brief)
+
+Untuk preset Cutout, **Beat template Dafiology** aktif secara default. Komposer menerima satu shot kecil dan hanya memilih pose-swap, slide-linear, hold, prop-reaction, atau camera-push. Kode lokal menerjemahkan pola menjadi gerak; komposer tidak mengirim daftar layer atau keyframe bebas. Seed mempertahankan seluruh aset paket sebagai layer/pose.
+
+Perencana menandai grup **mover/static**, maksimal dua mover, serta membuat shot bertiming, beat dan label terstruktur. Shot harus menutup durasi rekaman tepat; batas internal memakai timestamp kata aktual bila tersedia. Timing tanpa bukti rekaman ditandai provisional. Era, lokasi dan identitas tetap perlu pemeriksaan. Background yang mempunyai kunci lokasi/era sama dipakai ulang dalam proyek; salinan file terpisah melindungi aset klip lain dari penghapusan.
+
+Tiap shot menjalani tinjauan sampel frame dan paling banyak tiga repair. Aset yang kurang dibuat dalam batas gambar proses, kemudian hanya delta shot bermasalah disusun ulang. Delta dan gambar tersimpan untuk resume; komposisi proyek diterapkan setelah semua klip berhasil. Label hook/tahun menjadi teks editor dengan gaya terkunci, caption karaoke mengikuti preset, antar shot hard cut. Klik daftar **Shot produksi** di Cutout untuk seek pratinjau.
+
+Matikan Beat template untuk alur komposisi bebas/legacy. Editor manual, mask dan IK tetap tersedia; pola otomatis tidak membuat auto-rig dari foto utuh. Wajah kontinu/interaksi rumit memakai **Klip khusus**; Flow video memerlukan koneksi tersendiri. Alur ini tidak menjamin hasil identik referensi.
+
+Timeout semua JSON visual mengikuti **visualTimeoutSec** di Pengaturan (30–1800 detik); pemilihan model/effort tetap berlaku. Test delapan klip memakai provider dan aset fixture terkontrol dengan antrean, SQLite, renderer dan MP4 nyata. Pengujian ini membuktikan mekanika/resume, bukan kualitas fotografis atau kemiripan video nyata.
+
 ## Edit otomatis dan pemulihan proses
 
 Panel **Produksi → Edit otomatis** menyediakan dua cakupan:
@@ -143,7 +155,7 @@ Arahan **v4** memakai hook visual dalam 3 detik pertama, shot sekitar 2–4 deti
 
 Pemeriksaan otomatis menolak komposisi foto tunggal, mendeteksi gerak efektif layer serta pegas pada rig, dan menerapkan hard cut serta caption karaoke putih-hijau. Aset atau klip khusus yang kurang dilaporkan. Penilaian era, pose, kontak, amplitudo reaksi, dan kesesuaian narasi masih memerlukan tinjauan visual; bukan semua aturan artistik dapat dibuktikan dari keyframe. Klip khusus memenuhi frame sebagai pengecualian untuk aksi kontinu.
 
-Produksi Cutout pada preset referensi mengambil sampel frame hasil renderer untuk tinjauan visual. Per klip, setelah tinjauan awal, komposisi dapat menjalani maksimal tiga percobaan perbaikan otomatis. Aset yang kurang ditambahkan ke paket yang sama dan dibuat melalui Codex; pelanggaran gerak diperbaiki dari problems dan frame hasil renderer, lalu ditinjau ulang. Progres menampilkan percobaan N/3. Batas gambar berlaku untuk generate awal serta seluruh percobaan di semua klip; loop berhenti sebelum mengirim gambar yang melampaui batas. Hasil yang tetap ditolak menampilkan temuan terakhir dan mempertahankan aset selesai. Bila aset atau pose belum mendukung aksi, hasil tidak otomatis dianggap benar hanya karena alpha dan keyframe valid. Sampel frame tetap bukan pemeriksaan seluruh frame atau jaminan kemiripan referensi.
+Produksi Cutout pada preset referensi mengambil sampel frame hasil renderer untuk tinjauan visual. Pada alur shot, setiap shot dapat menjalani maksimal tiga percobaan perbaikan otomatis setelah tinjauan awal. Alur legacy mempertahankan loop per klip. Aset yang kurang ditambahkan ke paket yang sama dan dibuat melalui Codex; pelanggaran gerak diperbaiki dari problems dan frame hasil renderer, lalu ditinjau ulang. Progres menampilkan percobaan N/3. Batas gambar berlaku untuk generate awal serta seluruh percobaan di semua klip; loop berhenti sebelum mengirim gambar yang melampaui batas. Hasil yang tetap ditolak menampilkan temuan terakhir dan mempertahankan aset selesai. Bila aset atau pose belum mendukung aksi, hasil tidak otomatis dianggap benar hanya karena alpha dan keyframe valid. Sampel frame tetap bukan pemeriksaan seluruh frame atau jaminan kemiripan referensi.
 
 Jika proses gagal atau dibatalkan:
 
@@ -255,6 +267,10 @@ Perintah utama tersedia pada `package.json`:
 ```powershell
 npm run typecheck
 npm run build
+npm run test:direction
+npm run test:composition-repair-loop
+npm run test:shot-motion
+npm run test:shot-production
 npm run test:cutout
 npm run test:cutout-advanced
 npm run test:cutout-assets
@@ -299,3 +315,36 @@ Sebagian panduan lama mencatat versi implementasi atau hasil uji pada saat dibua
 Konfigurasi paket menandai aplikasi sebagai `private`. README ini tidak menetapkan lisensi baru untuk keseluruhan Naraflow. Periksa lisensi masing-masing dependensi sebelum mendistribusikan build.
 
 Adaptasi komponen motion dari Filmcraft menyertakan [pemberitahuan lisensi MIT](docs/licenses/filmcraft-MIT.txt). Resource lisensi dan FFmpeg yang relevan disertakan melalui konfigurasi packaging.
+
+
+## Cutout · Fakta & Komedi v4 — Studio aset Visual
+
+Tahap Visual untuk preset ini membuka studio aset per adegan. Finalkan naskah dan suara terlebih dahulu, pilih adegan, lalu **Susun kebutuhan dari narasi**. Kartu menampilkan background tanpa tokoh, pose, properti dan foreground beserta waktu serta peran mover/statis. Klik kartu untuk meninjau prompt dan alpha. Pemeran tetap dapat diedit dari panel identitas.
+
+**Generate aset yang kurang** menjalankan paket adegan terpilih. **Generate paket siap** mengantre semua paket yang sudah direncanakan dan masih sesuai narasi. Provider Codex/Flow MCP dan PNG/WebP mengikuti pilihan panel. Batas gambar diperiksa sebelum pengiriman; satu item gagal tidak menghentikan item lain. Ulangi tombol setelah interupsi untuk memakai aset selesai. Narasi/identitas berubah memerlukan perencanaan ulang, bukan memakai paket usang.
+
+**Lanjut Produksi** aktif ketika semua paket saat ini memiliki director dan gambar lengkap. Ini status ketersediaan, bukan persetujuan kualitas. Buka Edit otomatis untuk menyusun shot dari paket yang sama; tidak perlu menambahkan layer secara manual. Aksi wajah/tangan kontinu, refleksi deformasi dan mekanisme kompleks dapat memerlukan klip khusus. Tidak ada jaminan hasil identik dengan referensi.
+
+Arahan Brief/Naskah/Visual/Produksi memakai pola kebutuhan → solusi → mekanisme → keterbatasan → perkembangan → callback. Kajian dua referensi: https://www.youtube.com/shorts/yc3Ah3jTOv8 dan https://www.youtube.com/shorts/zs224mIvfcY. Efek sumber diamati dari video; jenis software/rig pembuatnya tidak diketahui.
+
+## Klip khusus — video per shot dan koreksi kontak
+
+Pada Produksi → Edit otomatis, pilih cakupan klip hero, aktifkan **Klip khusus**, pilih **Full-motion · setiap shot dalam klip**, lalu sumber **Generate Flow MCP**. Setiap rentang shot rencana Visual menghasilkan video tersendiri; video 4 detik disesuaikan dengan durasi shot dan dirakit hard cut. Narasi tetap track terpisah dan audio sumber dibisukan. Mode otomatis memilih klip kompleks lalu membuat seluruh shot klip itu sebagai video; belum mencampur video dan PNG dalam satu klip.
+
+**Cek provider video** memeriksa login, proyek Flow, model, durasi dan resolusi. Jika belum siap, tombol produksi baru diblokir. Status terhubung bukan bukti kualitas generasi. Pilih **Pulihkan video Flow** untuk hasil remote yang belum masuk. Hasil shot dan rakitan yang selesai disimpan untuk resume tanpa generate ulang; perubahan narasi, referensi atau arahan menghasilkan kunci baru. Batas video baru dihitung per shot sebelum pengiriman.
+
+Komposer Cutout dapat memperbaiki posisi, skala dan rotasi statis per shot, serta menyembunyikan kandidat duplikat dengan alasan eksplisit. Perbaikan layout dicoba sebelum meminta gambar baru. Tinjauan visual dan batas dua layer bergerak tetap berlaku.
+
+Uji integrasi: `node scripts/test-hero-shots.cjs`, `npm run test:shot-motion`, `npm run test:shot-production`, `npm run typecheck`. Uji provider terkontrol memeriksa antrean, resume, batas, durasi rakitan dan audio bisu menggunakan Electron/SQLite/FFmpeg nyata; ini tidak membuktikan kualitas atau ketersediaan provider live.
+
+## Cutout · Fakta & Komedi v5 — kesiapan, gerak stabil dan usulan
+
+Versi aktif bawaan adalah v5. Visual dan Edit otomatis menampilkan **Kesiapan produksi** per klip. Klip video tanpa file diberi blocked; klik **Ubah ke Cutout**, **Rencanakan aset di Visual**, atau **Siapkan klip khusus** sesuai kebutuhan. Pemeriksaan tidak mengganti motionType diam-diam. Proyek lama dapat memilih **Gunakan arahan v5** di Visual.
+
+Karakter memakai hold atau satu masuk linear lalu hold. Spring/bobbing tubuh dan goyang berulang diperiksa di kode, bukan hanya prompt. Kamera otomatis melakukan push-in singkat lalu hold. Transisi rencana baru adalah cut, kamera static/zoomin; pan/fade pilihan manual tetap tersedia dengan warning. Aturan dan severity disimpan per proyek lewat panel JSON. Warning tidak memblokir; error dan media yang kurang menahan ekspor.
+
+Buka **Usulan shot & label**: sinkronkan kata rekaman lewat Whisper lokal jika belum tersedia, usulkan shot, edit batas/teks lalu terima. Rekaman tidak berubah. Susun kebutuhan aset setelah menerima rentang. Label era kuning di pusat dan cue SFX adalah usulan yang perlu diterima; caption putih-hijau memakai aturan kata kunci lokal yang sama pada preview/ekspor.
+
+SFX bersifat opsional dan tidak diklaim sebagai ciri audio referensi. Impor audio sendiri, isi manifest lisensi, pilih assetId di peta kata/kategori, lalu terima cue. Volume maksimal -12 dB; geser/hapus di panel SFX. Gambar internet juga melalui impor manual: periksa halaman sumber Commons dan lisensinya. Gambar lokal yang dipakai perlu klasifikasi asal, termasuk deklarasi karya sendiri. Aplikasi menghitung SHA-256, memeriksa manifest/hash sebelum ekspor MP4 maupun kit CapCut, dan menyertakan atribusi. Tidak ada unduhan pihak ketiga otomatis.
+
+Uji baru: `npm run test:cutout-v5` dan `npm run test:cutout-v5-integration`. Lihat [temuan dan batas pengujian](docs/cutout-v5-findings.md) serta [studi EffectCraft](docs/effectcraft-notes.md). Preset lain tidak memakai validator v5. Hasil fixture bukan bukti video artistik identik dengan referensi.

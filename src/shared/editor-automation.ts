@@ -1,4 +1,5 @@
 import { CUTOUT_EASING_IDS } from './cutout-easing'
+import { CUTOUT_SHOT_SCHEMA } from './cutout-shot-types'
 import type { EditorSettings, ProjectBundle, TransitionId } from './types'
 import { normalizeCutoutScene, CUTOUT_LIMITS, type CutoutScene } from './cutout-timeline'
 import { normalizeSoundEffects } from './sfx'
@@ -32,12 +33,12 @@ const camera = { x: num(-10, 10), y: num(-10, 10), zoom: num(.1, 10) }
 const mask = obj({ kind: en('rect', 'ellipse', 'polygon'), x: num(0,1), y: num(0,1), width: num(.001,1), height: num(.001,1), points: { ...arr(obj({ x: num(0,1), y: num(0,1) }),64), minItems:3 }, invert: bool, feather: num(0,.25) })
 const ikTarget = { targetX: num(-10,10), targetY: num(-10,10), weight: num(0,1) }
 const ik = arr(obj({ targetLayerId: nullable(id), id, name: str(120), enabled: bool, upperId: id, lowerId: id, endX: num(-10,10), endY: num(-10,10), ...ikTarget, bend: { type:'integer',enum:[1,-1] }, keyframes: arr(obj({ id, timeMs: time, ...ikTarget, easing }),CUTOUT_LIMITS.keys) }, ['id','name','enabled','upperId','lowerId','endX','endY','targetX','targetY','weight','bend','keyframes']),16)
-const layerProperties = { id, name: str(120), assetId: nullable(id), parentId: nullable(id), width: num(.005, 10), pivotX: num(-2, 3), pivotY: num(-2, 3), depth: num(0, 2),
+const layerProperties = { motionRole:en('mover','static'), id, name: str(120), assetId: nullable(id), parentId: nullable(id), width: num(.005, 10), pivotX: num(-2, 3), pivotY: num(-2, 3), depth: num(0, 2),
   inMs: time, outMs: nullable(time), visible: bool, transform,
   keyframes: arr(obj({ id, timeMs: time, transform, easing }), CUTOUT_LIMITS.keys), poses: arr(obj({ id, timeMs: time, assetId: id }), CUTOUT_LIMITS.poses), mask: nullable(mask), maskKeyframes: arr(obj({id,timeMs:time,mask,easing:en('linear','hold')}),512) }
-const cutout = obj({ version: { type: 'integer', enum: [1] }, enabled: bool, backgroundColor: color,
+const cutout = obj({ shots:{type:'array',maxItems:24,items:CUTOUT_SHOT_SCHEMA}, version: { type: 'integer', enum: [1] }, enabled: bool, backgroundColor: color,
   camera: obj({ ...camera, keyframes: arr(obj({ id, timeMs: time, ...camera, easing }), CUTOUT_LIMITS.keys) }),
-  layers: arr(obj(layerProperties,Object.keys(layerProperties).filter(k=>!['mask','maskKeyframes'].includes(k))),CUTOUT_LIMITS.layers), ik, specialVideo: obj({assetId:id,startMs:time,speed:num(.25,4),action:str(2000)}) }, ['version','enabled','backgroundColor','camera','layers'])
+  layers: arr(obj(layerProperties,Object.keys(layerProperties).filter(k=>!['mask','maskKeyframes','motionRole'].includes(k))),CUTOUT_LIMITS.layers), ik, specialVideo: obj({assetId:id,startMs:time,speed:num(.25,4),action:str(2000)}) }, ['version','enabled','backgroundColor','camera','layers'])
 const overlayBase = { id, anchor: { type: 'integer', minimum: 1, maximum: 9 }, x: num(-2, 3), y: num(-2, 3), start: num(0, 86400), end: nullable(num(0, 86400)) }
 const editorProperties = {
   sfx: arr(obj({ id, assetId: id, startMs: time, offsetMs: time, durationMs: { ...time, minimum: 1 }, volumeDb: num(-60, 0), fadeInMs: time, fadeOutMs: time }), 128),
@@ -89,7 +90,7 @@ export function normalizeEditorEditPlan(raw: unknown, fromCodex = false): Editor
   const plan = JSON.parse(JSON.stringify(raw)) as EditorEditPlan
   if (fromCodex) {
     if (!plan || !Array.isArray(plan.clips)) throw new Error('Rencana Codex tidak valid.')
-    for (const c of plan.clips) { if (c.transition === null) delete c.transition; if (c.durationMs === null) delete c.durationMs; if(c.cutout && c.cutout.specialVideo === null) delete c.cutout.specialVideo; if (c.cutout && c.cutout.ik === null) delete c.cutout.ik; for(const layer of c.cutout?.layers??[])if(layer.maskKeyframes===null)delete layer.maskKeyframes }
+    for (const c of plan.clips) { if (c.transition === null) delete c.transition; if (c.durationMs === null) delete c.durationMs; if(c.cutout && c.cutout.specialVideo === null) delete c.cutout.specialVideo; if (c.cutout && c.cutout.ik === null) delete c.cutout.ik; for(const layer of c.cutout?.layers??[]){if(layer.maskKeyframes===null)delete layer.maskKeyframes;if(layer.motionRole===null)delete layer.motionRole} }
     if (!plan.editor) delete plan.editor
     else {
       const fields = plan.editor as Record<string, unknown>

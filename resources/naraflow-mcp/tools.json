@@ -554,6 +554,185 @@
                         {
                           "type": "object",
                           "properties": {
+                            "shots": {
+                              "type": "array",
+                              "maxItems": 24,
+                              "items": {
+                                "type": "object",
+                                "additionalProperties": false,
+                                "required": [
+                                  "id",
+                                  "clipId",
+                                  "startMs",
+                                  "endMs",
+                                  "beat",
+                                  "action",
+                                  "movers",
+                                  "startPose",
+                                  "endPose",
+                                  "motionPattern",
+                                  "overlays",
+                                  "narrationCue"
+                                ],
+                                "properties": {
+                                  "placements": {
+                                    "type": "array",
+                                    "maxItems": 256,
+                                    "items": {
+                                      "type": "object",
+                                      "additionalProperties": false,
+                                      "required": [
+                                        "layerId",
+                                        "x",
+                                        "y",
+                                        "scale",
+                                        "rotation",
+                                        "visible",
+                                        "reason"
+                                      ],
+                                      "properties": {
+                                        "layerId": {
+                                          "type": "string"
+                                        },
+                                        "x": {
+                                          "type": "number",
+                                          "minimum": 0,
+                                          "maximum": 1
+                                        },
+                                        "y": {
+                                          "type": "number",
+                                          "minimum": 0,
+                                          "maximum": 1
+                                        },
+                                        "scale": {
+                                          "type": "number",
+                                          "minimum": 0.05,
+                                          "maximum": 3
+                                        },
+                                        "rotation": {
+                                          "type": "number",
+                                          "minimum": -180,
+                                          "maximum": 180
+                                        },
+                                        "visible": {
+                                          "type": "boolean"
+                                        },
+                                        "reason": {
+                                          "type": "string",
+                                          "minLength": 1,
+                                          "maxLength": 500
+                                        }
+                                      }
+                                    }
+                                  },
+                                  "id": {
+                                    "type": "string",
+                                    "minLength": 1,
+                                    "maxLength": 800
+                                  },
+                                  "clipId": {
+                                    "type": "string",
+                                    "minLength": 1,
+                                    "maxLength": 800
+                                  },
+                                  "startMs": {
+                                    "type": "number",
+                                    "minimum": 0
+                                  },
+                                  "endMs": {
+                                    "type": "number",
+                                    "minimum": 1
+                                  },
+                                  "beat": {
+                                    "type": "string",
+                                    "enum": [
+                                      "hook",
+                                      "konteks",
+                                      "kronologi",
+                                      "penutup"
+                                    ]
+                                  },
+                                  "action": {
+                                    "type": "string",
+                                    "minLength": 1,
+                                    "maxLength": 800
+                                  },
+                                  "movers": {
+                                    "type": "array",
+                                    "maxItems": 2,
+                                    "items": {
+                                      "type": "string",
+                                      "minLength": 1,
+                                      "maxLength": 800
+                                    }
+                                  },
+                                  "startPose": {
+                                    "type": "string",
+                                    "minLength": 1,
+                                    "maxLength": 800
+                                  },
+                                  "endPose": {
+                                    "type": "string",
+                                    "minLength": 1,
+                                    "maxLength": 800
+                                  },
+                                  "motionPattern": {
+                                    "type": "string",
+                                    "enum": [
+                                      "pose-swap",
+                                      "slide-linear",
+                                      "hold",
+                                      "prop-reaction",
+                                      "camera-push"
+                                    ]
+                                  },
+                                  "overlays": {
+                                    "type": "array",
+                                    "maxItems": 3,
+                                    "items": {
+                                      "type": "object",
+                                      "additionalProperties": false,
+                                      "required": [
+                                        "type",
+                                        "text"
+                                      ],
+                                      "properties": {
+                                        "type": {
+                                          "type": "string",
+                                          "enum": [
+                                            "year",
+                                            "name",
+                                            "label"
+                                          ]
+                                        },
+                                        "text": {
+                                          "type": "string",
+                                          "minLength": 1,
+                                          "maxLength": 120
+                                        }
+                                      }
+                                    }
+                                  },
+                                  "narrationCue": {
+                                    "type": "string",
+                                    "minLength": 1,
+                                    "maxLength": 800
+                                  },
+                                  "sfxCue": {
+                                    "anyOf": [
+                                      {
+                                        "type": "string",
+                                        "minLength": 1,
+                                        "maxLength": 800
+                                      },
+                                      {
+                                        "type": "null"
+                                      }
+                                    ]
+                                  }
+                                }
+                              }
+                            },
                             "version": {
                               "type": "integer",
                               "enum": [
@@ -655,6 +834,13 @@
                               "items": {
                                 "type": "object",
                                 "properties": {
+                                  "motionRole": {
+                                    "type": "string",
+                                    "enum": [
+                                      "mover",
+                                      "static"
+                                    ]
+                                  },
                                   "id": {
                                     "type": "string",
                                     "minLength": 1,
@@ -1689,6 +1875,185 @@
                         {
                           "type": "object",
                           "properties": {
+                            "shots": {
+                              "type": "array",
+                              "maxItems": 24,
+                              "items": {
+                                "type": "object",
+                                "additionalProperties": false,
+                                "required": [
+                                  "id",
+                                  "clipId",
+                                  "startMs",
+                                  "endMs",
+                                  "beat",
+                                  "action",
+                                  "movers",
+                                  "startPose",
+                                  "endPose",
+                                  "motionPattern",
+                                  "overlays",
+                                  "narrationCue"
+                                ],
+                                "properties": {
+                                  "placements": {
+                                    "type": "array",
+                                    "maxItems": 256,
+                                    "items": {
+                                      "type": "object",
+                                      "additionalProperties": false,
+                                      "required": [
+                                        "layerId",
+                                        "x",
+                                        "y",
+                                        "scale",
+                                        "rotation",
+                                        "visible",
+                                        "reason"
+                                      ],
+                                      "properties": {
+                                        "layerId": {
+                                          "type": "string"
+                                        },
+                                        "x": {
+                                          "type": "number",
+                                          "minimum": 0,
+                                          "maximum": 1
+                                        },
+                                        "y": {
+                                          "type": "number",
+                                          "minimum": 0,
+                                          "maximum": 1
+                                        },
+                                        "scale": {
+                                          "type": "number",
+                                          "minimum": 0.05,
+                                          "maximum": 3
+                                        },
+                                        "rotation": {
+                                          "type": "number",
+                                          "minimum": -180,
+                                          "maximum": 180
+                                        },
+                                        "visible": {
+                                          "type": "boolean"
+                                        },
+                                        "reason": {
+                                          "type": "string",
+                                          "minLength": 1,
+                                          "maxLength": 500
+                                        }
+                                      }
+                                    }
+                                  },
+                                  "id": {
+                                    "type": "string",
+                                    "minLength": 1,
+                                    "maxLength": 800
+                                  },
+                                  "clipId": {
+                                    "type": "string",
+                                    "minLength": 1,
+                                    "maxLength": 800
+                                  },
+                                  "startMs": {
+                                    "type": "number",
+                                    "minimum": 0
+                                  },
+                                  "endMs": {
+                                    "type": "number",
+                                    "minimum": 1
+                                  },
+                                  "beat": {
+                                    "type": "string",
+                                    "enum": [
+                                      "hook",
+                                      "konteks",
+                                      "kronologi",
+                                      "penutup"
+                                    ]
+                                  },
+                                  "action": {
+                                    "type": "string",
+                                    "minLength": 1,
+                                    "maxLength": 800
+                                  },
+                                  "movers": {
+                                    "type": "array",
+                                    "maxItems": 2,
+                                    "items": {
+                                      "type": "string",
+                                      "minLength": 1,
+                                      "maxLength": 800
+                                    }
+                                  },
+                                  "startPose": {
+                                    "type": "string",
+                                    "minLength": 1,
+                                    "maxLength": 800
+                                  },
+                                  "endPose": {
+                                    "type": "string",
+                                    "minLength": 1,
+                                    "maxLength": 800
+                                  },
+                                  "motionPattern": {
+                                    "type": "string",
+                                    "enum": [
+                                      "pose-swap",
+                                      "slide-linear",
+                                      "hold",
+                                      "prop-reaction",
+                                      "camera-push"
+                                    ]
+                                  },
+                                  "overlays": {
+                                    "type": "array",
+                                    "maxItems": 3,
+                                    "items": {
+                                      "type": "object",
+                                      "additionalProperties": false,
+                                      "required": [
+                                        "type",
+                                        "text"
+                                      ],
+                                      "properties": {
+                                        "type": {
+                                          "type": "string",
+                                          "enum": [
+                                            "year",
+                                            "name",
+                                            "label"
+                                          ]
+                                        },
+                                        "text": {
+                                          "type": "string",
+                                          "minLength": 1,
+                                          "maxLength": 120
+                                        }
+                                      }
+                                    }
+                                  },
+                                  "narrationCue": {
+                                    "type": "string",
+                                    "minLength": 1,
+                                    "maxLength": 800
+                                  },
+                                  "sfxCue": {
+                                    "anyOf": [
+                                      {
+                                        "type": "string",
+                                        "minLength": 1,
+                                        "maxLength": 800
+                                      },
+                                      {
+                                        "type": "null"
+                                      }
+                                    ]
+                                  }
+                                }
+                              }
+                            },
                             "version": {
                               "type": "integer",
                               "enum": [
@@ -1790,6 +2155,13 @@
                               "items": {
                                 "type": "object",
                                 "properties": {
+                                  "motionRole": {
+                                    "type": "string",
+                                    "enum": [
+                                      "mover",
+                                      "static"
+                                    ]
+                                  },
                                   "id": {
                                     "type": "string",
                                     "minLength": 1,

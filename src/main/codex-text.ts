@@ -17,7 +17,7 @@ export async function generateCodexJson<T>(request: CodexTextRequest, channel: C
     try {
       const result = await researchWithCodex({ prompt: `${request.system}\n\n${request.prompt}`,
         outputDirectory: path, outputSchema: request.schema as Record<string, unknown>,
-        webSearch: false, model: request.codex?.model || (channel === 'visual' ? getSettings().codexVisualModel : getSettings().codexModel), effort: request.codex?.effort, signal, timeoutMs: request.timeoutMs, imagePaths: request.images })
+        webSearch: false, model: request.codex?.model || (channel === 'visual' ? getSettings().codexVisualModel : getSettings().codexModel), effort: request.codex?.effort, signal, timeoutMs: request.timeoutMs ?? (channel === 'visual' ? getSettings().visualTimeoutSec * 1000 : undefined), imagePaths: request.images })
       signal.throwIfAborted()
       return extractJson(result.text) as T
     } catch (error) {

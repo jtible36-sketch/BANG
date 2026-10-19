@@ -1,3 +1,4 @@
+// Legacy free-scene regressions. The new default shot contract has its own eight-clip suite.
 import assert from 'node:assert/strict'
 import {app,nativeImage} from 'electron'
 import {mkdirSync,writeFileSync,existsSync} from 'node:fs'
@@ -5,14 +6,14 @@ import {join,resolve} from 'node:path'
 import {closeDb} from '../src/main/db'
 import {createProject,replaceScript,getBundle,getJob,getJobRaw,patchClip} from '../src/main/repo'
 import {recordCompositionRejection} from '../src/main/cutout-review-recovery'
-import {getEditingContext,startCodexAutoEdit,recoverMissingAssets} from '../src/main/editor-automation'
+import {getEditingContext,startCodexAutoEdit as startAgentComposer,recoverMissingAssets} from '../src/main/editor-automation'
 import {cutoutAssetState,appendCutoutRecoveryItems} from '../src/main/cutout-assets'
 import {DEFAULT_CUTOUT_PRODUCTION} from '../src/shared/cutout-production'
 import {builtInMasterPrompts} from '../src/shared/master-prompts'
 const root=resolve(process.argv[2]),g=globalThis as any,checks:string[]=[]
 mkdirSync(root,{recursive:true});app.setPath('userData',join(root,'isolated-user-data'));app.commandLine.appendSwitch('disable-gpu');app.on('window-all-closed',()=>{})
 const check=async(name:string,run:()=>unknown|Promise<unknown>)=>{await run();checks.push(name);console.log('PASS',name)}
-const options={...DEFAULT_CUTOUT_PRODUCTION,maxAssetsPerClip:12,maxNewAssets:2,motion:'keyframes' as const}
+const options={...DEFAULT_CUTOUT_PRODUCTION,beatTemplate:false,maxAssetsPerClip:12,maxNewAssets:2,motion:'keyframes' as const}
 function png(alpha=false){const b=Buffer.alloc(90*160*4);for(let y=0;y<160;y++)for(let x=0;x<90;x++){let i=(y*90+x)*4;b[i]=100;b[i+1]=140;b[i+2]=200;b[i+3]=alpha&&(x<10||x>79||y<10||y>149)?0:255}return nativeImage.createFromBitmap(b,{width:90,height:160}).toPNG()}
 async function done(id:string){for(let i=0;i<3000;i++){const j=getJob(id)!;if(['done','failed','canceled'].includes(j.status))return j;await new Promise(r=>setTimeout(r,20))}throw Error('timeout')}
 function project(){const p=createProject({durationSec:60,styleId:'cutout-facts',skillId:'animasi-cutout',masterPrompt:builtInMasterPrompts.find(p=>p.id==='builtin:cutout-facts')!});replaceScript(p.id,'Pintu troli',[{title:'Pintu',story:'Tokoh menunjuk pintu berengsel.',narration:'Pintu ini membuka ketika troli masuk.',durationMs:2000}]);return p.id}
@@ -55,3 +56,6 @@ void app.whenReady().then(async()=>{
  })
  const result={status:'passed',checks,actualElectron:true,actualSQLite:true,actualCanvas:true,actualWebp:true,providers:'controlled; no external generation',userProjectsChanged:false};writeFileSync(join(root,'missing-assets-recovery-check.json'),JSON.stringify(result,null,2));console.log(JSON.stringify(result));closeDb();app.quit()
 }).catch(e=>{console.error(e);closeDb();app.exit(1)})
+
+// Explicit optional-agent regression; default baseline/consent covered by cutout-permanent integration.
+function startCodexAutoEdit(input:Parameters<typeof startAgentComposer>[0]){return startAgentComposer({...input,productionStrategy:'agent'})}

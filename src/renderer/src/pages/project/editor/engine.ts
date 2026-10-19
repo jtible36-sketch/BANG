@@ -74,6 +74,7 @@ export function removeOverlay(id: string): void {
 }
 
 export function useTimeline(): { items: TimelineItem[]; total: number; chunks: CaptionChunk[] } {
+  const cutoutNumericDisplay=useProject(s=>s.project?.styleId==='cutout-facts')
   const clips = useProject((s) => s.clips)
   const assets = useProject((s) => s.assets)
   return useMemo(() => {
@@ -91,9 +92,9 @@ export function useTimeline(): { items: TimelineItem[]; total: number; chunks: C
         audio: clip.audioAssetId ? (assets[clip.audioAssetId] ?? null) : null
       }
     })
-    const chunks = timelineChunks(items.map((it) => ({ start: it.start, words: it.audio?.meta.words ?? [] })))
+    const chunks = timelineChunks(items.map((it) => ({ start: it.start, words: it.audio?.meta.words ?? [] })),cutoutNumericDisplay)
     return { items, total: acc, chunks }
-  }, [clips, assets])
+  }, [clips, assets,cutoutNumericDisplay])
 }
 
 export function itemAt(items: TimelineItem[], t: number): number {

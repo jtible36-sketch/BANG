@@ -45,6 +45,8 @@ export async function readFlowStatus(): Promise<FlowStatus> {
     return { available: true, signedIn, inProject,
       message: !signedIn ? 'Layanan Flow Naraflow siap. Login Google sekali pada jendela Flow yang terbuka, lalu buka proyek.' : !inProject ? 'Akun sudah masuk. Buka atau buat proyek di jendela Flow Naraflow.' : 'Flow Naraflow terhubung. Gambar dan video langsung masuk ke adegan.',
       videoModel: status.generationPolicy?.videoModel || FLOW_VIDEO_MODEL, imageModel: status.generationPolicy?.imageModel || FLOW_IMAGE_MODEL,
+      videoReady: signedIn && inProject && (!status.generationPolicy?.videoModel || status.generationPolicy.videoModel===FLOW_VIDEO_MODEL) && (!status.generationPolicy?.duration || status.generationPolicy.duration===4) && (!status.generationPolicy?.resolution || status.generationPolicy.resolution==='720p'),
+      completedVideoJobs:(status.jobs??[]).filter(j=>j.status==='done'&&j.files?.some(f=>/\.(mp4|webm|mov)$/i.test(f))).length,
       videoMaxCredits: getSettings().flowVideoMaxCredits, jobs: status.jobs?.filter(job => job.status === 'queued' || job.status === 'running').length ?? 0 }
   } catch (error) {
     return { available: false, signedIn: false, inProject: false, message: error instanceof Error ? error.message : 'Layanan Flow Naraflow belum siap. Klik Cek koneksi untuk mengaktifkannya kembali.',
@@ -57,8 +59,8 @@ export async function prepareFlow(): Promise<FlowStatus> {
   return readFlowStatus()
 }
 
-export async function requireFlowReady(kind: 'image' | 'video', maxCredits = 0): Promise<void> {
-  if (getSettings().visualWorkflow !== 'flow-mcp') throw new Error('Pilih Flow MCP langsung pada Pengaturan gambar dan video.')
+export async function requireFlowReady(kind: 'image' | 'video', maxCredits = 0, explicitProvider = false): Promise<void> {
+  if (!explicitProvider && getSettings().visualWorkflow !== 'flow-mcp') throw new Error('Pilih Flow MCP langsung pada Pengaturan gambar dan video.')
   const status = await flowOwnerStatus()
   if (!status.flow?.signedIn || !status.flow?.inProject) throw new Error('Flow belum siap. Masuk ke akun Google dan buka proyek Flow, atau klik Siapkan Flow.')
   const policy = status.generationPolicy

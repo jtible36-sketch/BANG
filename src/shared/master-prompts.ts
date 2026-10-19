@@ -69,8 +69,8 @@ export const builtInMasterPrompts: MasterPromptProfile[] = [
   },
   {
     id: 'builtin:cutout-facts', name: CUTOUT_FACT_NAME,
-    description: 'Kolase fotografis sinematik: hook 3 detik, shot 2–4 detik mengikuti rekaman, hard cut, pose kontekstual, maksimal dua layer bergerak, caption karaoke dan komedi reaksi.',
-    version: 4, baseProfile: 'legacy', sourceText: CUTOUT_FACT_SOURCE,
+    description: 'Studio aset per adegan: narasi sebab-akibat, clean plate + pose + properti, detail mekanisme dan reaksi; aset Visual langsung dipakai komposer per shot di Produksi.',
+    version: 5, baseProfile: 'legacy', sourceText: CUTOUT_FACT_SOURCE,
     stages: { ...CUTOUT_FACT_STAGES },
     timing: { wordsPerSecond: 2.9, beatSeconds: 6, sourceVideoSeconds: 4 },
     videoMode: 'scene', lockedCamera: false,

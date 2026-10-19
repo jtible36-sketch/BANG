@@ -1,3 +1,4 @@
+// Legacy free-scene regressions. The new default shot contract has its own eight-clip suite.
 import assert from 'node:assert/strict'
 import { app, nativeImage } from 'electron'
 import { mkdirSync, writeFileSync, existsSync } from 'node:fs'
@@ -5,7 +6,7 @@ import { join, resolve } from 'node:path'
 import { execFileSync } from 'node:child_process'
 import { closeDb, getDb } from '../src/main/db'
 import { createProject, replaceScript, getBundle, getJob, insertAsset, patchClip } from '../src/main/repo'
-import { getEditingContext, startCodexAutoEdit, resumeCodexAutoEdit } from '../src/main/editor-automation'
+import { getEditingContext, startCodexAutoEdit as startAgentComposer, resumeCodexAutoEdit } from '../src/main/editor-automation'
 import { projectDir } from '../src/main/paths'
 import { cutoutAssetState } from '../src/main/cutout-assets'
 import { builtInMasterPrompts, masterStageDirection, resolveMasterPrompt } from '../src/shared/master-prompts'
@@ -57,7 +58,7 @@ function project(count = 1) {
   for (const clip of getBundle(p.id).clips) patchClip(clip.id, { transition: 'fade' })
   return { id: p.id, clipId: getBundle(p.id).clips[0].id }
 }
-const production = { ...DEFAULT_CUTOUT_PRODUCTION, maxAssetsPerClip: 12, maxNewAssets: 24, motion: 'keyframes' as const }
+const production = { ...DEFAULT_CUTOUT_PRODUCTION,beatTemplate:false, maxAssetsPerClip: 12, maxNewAssets: 24, motion: 'keyframes' as const }
 function direction(items: { id: string }[]) {
   return { timing: 'provisional', shots: [{
     startMs: 0, endMs: 2000, narrationCue: 'Arthur menunjuk pintu troli.', action: 'menunjuk lalu menahan pose',
@@ -114,18 +115,18 @@ void app.whenReady().then(async () => {
       }
     }
   })
-  await check('v4 builtin preserves the user direction and runtime upgrades old snapshots without changing their asset fingerprint', () => {
-    assert.equal(current.version, 4)
+  await check('v5 builtin preserves the user direction and runtime upgrades old snapshots without changing their asset fingerprint', () => {
+    assert.equal(current.version, 5)
     assert.equal(current.sourceText, CUTOUT_FACT_SOURCE)
-    for (const phrase of ['Dafiology', '3 detik pertama', 'hard cut', 'Maksimal 2 layer', 'Dilarang memakai kamera shake', 'setiap assetId', 'klip khusus']) {
+    for (const phrase of ['Dafiology', '3 detik pertama', 'hard cut', 'Sasaran maksimal 2 layer', 'Dilarang memakai kamera shake', 'setiap assetId', 'klip khusus']) {
       assert(CUTOUT_FACT_SOURCE.includes(phrase), 'Source omitted user rule: ' + phrase)
       assert(CUTOUT_FACT_DIRECTION.includes(phrase), 'Production direction omitted user rule: ' + phrase)
     }
     const context = { masterPrompt: old, styleId: 'cutout-facts' }
     const before = JSON.stringify(old)
     for (const stage of ['script', 'visual', 'video', 'voice'] as const) {
-      assert(cutoutRuntimeStage(context, stage).includes('Dafiology'), 'Old snapshot lacks v4 ' + stage + ' runtime protocol')
-      assert(masterStageDirection(context, stage).includes('Maksimal 2 layer'), 'Stage did not receive latest motion constraints: ' + stage)
+      assert(cutoutRuntimeStage(context, stage).includes('Dafiology'), 'Old snapshot lacks v5 ' + stage + ' runtime protocol')
+      assert(masterStageDirection(context, stage).includes('Sasaran maksimal 2 layer'), 'Stage did not receive latest motion constraints: ' + stage)
     }
     assert.deepEqual(resolveMasterPrompt(context), old)
     assert.equal(JSON.stringify(old), before)
@@ -141,7 +142,9 @@ void app.whenReady().then(async () => {
     g.__assetPlan = planner(state)
     g.__assetGenerate = async (options: any) => { generated++; return { bytes: png(!options.prompt.includes('Role: background')) } }
     const before = getBundle(p.id).clips[0]
-    const first = await done(startCodexAutoEdit({ projectId: p.id, instruction: 'Satu aksi menunjuk; pose ditahan, tanpa shake.', production }).id)
+    // Exhaust the initial four-image budget so this case tests explicit review
+    // rejection/resume rather than entering the separate automatic asset repair.
+    const first = await done(startCodexAutoEdit({ projectId: p.id, instruction: 'Satu aksi menunjuk; pose ditahan, tanpa shake.', production: { ...production, maxNewAssets: 4 } }).id)
     assert.equal(first.status, 'failed')
     assert.match(first.error ?? '', /tinjauan|visual|pose/i)
     assert.equal(generated, 4)
@@ -218,3 +221,6 @@ void app.whenReady().then(async () => {
   writeFileSync(join(root, 'cutout-direction-check.json'), JSON.stringify(result, null, 2))
   closeDb(); app.quit()
 }).catch(error => { console.error(error); closeDb(); app.exit(1) })
+
+// Explicit optional-agent regression; default baseline/consent covered by cutout-permanent integration.
+function startCodexAutoEdit(input:Parameters<typeof startAgentComposer>[0]){return startAgentComposer({...input,productionStrategy:'agent'})}

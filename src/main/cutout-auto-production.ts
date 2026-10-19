@@ -1,3 +1,5 @@
+import { validateDirectorWithRepair } from './cutout-director-repair'
+import { saveProductionCheck } from './cutout-production-checks'
 import { nativeImage } from 'electron'
 import { createHash } from 'node:crypto'
 import { join } from 'node:path'
@@ -6,7 +8,7 @@ import type { Asset, Clip } from '@shared/types'
 import type { CutoutAssetPlan } from '@shared/cutout-assets'
 import type { CutoutProductionOptions, AutoEditInput } from '@shared/cutout-production'
 import { generatedForItem } from '@shared/cutout-production'
-import { cutoutAssetState, cutoutProviderStatus, generateCutoutAsset, planCutoutAssets, directCutoutAssets } from './cutout-assets'
+import { cutoutAssetState, cutoutProviderStatus, generateCutoutAsset, planCutoutAssets, directCutoutAssets, backgroundReuseKey, reusableCutoutBackground } from './cutout-assets'
 import { getBundle, getJob } from './repo'
 import { cancelJob, type TaskCtx } from './jobs'
 import { readManagedImageBytes } from './media-import'
@@ -29,12 +31,15 @@ export async function waitChild(id:string,signal:AbortSignal):Promise<void> {
   } finally {signal.removeEventListener('abort',abort)}
 }
 /** The coordinator owns a separate queue: it can await serialized Codex children without deadlocking. */
-export async function prepareProductionAssets(input:AutoEditInput,options:CutoutProductionOptions,clips:Clip[],ctx:TaskCtx,guard:()=>void|Promise<void>):Promise<Map<string,CutoutAssetPlan>> {
+export async function prepareProductionAssets(input:AutoEditInput,options:CutoutProductionOptions,clips:Clip[],ctx:TaskCtx,guard:()=>void|Promise<void>):Promise<Map<string,CutoutAssetPlan>&{blocked?:{clipId:string;reason:string}[]}> {
   // A fresh saved package is a durable checkpoint. Explicit replanning stays in Cutout.
-  const plans=new Map<string,CutoutAssetPlan>(),planOptions={maxAssets:options.maxAssetsPerClip,motion:options.motion,instruction:input.instruction,codex:input.codex}
+  const plans=new Map<string,CutoutAssetPlan>(),planOptions={maxAssets:options.maxAssetsPerClip,motion:options.motion,instruction:input.instruction,beatTemplate:options.beatTemplate,codex:input.codex}
+  const blocked:{clipId:string;reason:string}[]=[]
   for(let i=0;i<clips.length;i++){
+    try{
     ctx.signal.throwIfAborted();await guard();let state=cutoutAssetState(clips[i].id)
     if(state.stale||!state.plan){
+      if(!options.enabled)throw new Error('Susun kebutuhan di Cutout dan selesaikan aset terlebih dahulu, atau aktifkan Generate aset. Belum ada gambar dikirim.')
       ctx.progress(.03+.12*i/clips.length,`Menyusun kebutuhan ${i+1}/${clips.length}: ${clips[i].title}`)
       await waitChild(planCutoutAssets(clips[i].id,planOptions).id,ctx.signal);await guard();state=cutoutAssetState(clips[i].id)
     }
@@ -43,12 +48,22 @@ export async function prepareProductionAssets(input:AutoEditInput,options:Cutout
     }
     if(!state.plan||state.stale)throw new Error('Kebutuhan aset belum siap atau narasi berubah.')
     if(state.plan.items.length>options.maxAssetsPerClip)throw new Error('Paket kebutuhan melebihi batas aset per klip. Naikkan batas atau tinjau paket di Cutout sebelum generate.')
-    plans.set(clips[i].id,state.plan)
+    let plan=state.plan
+    if(getBundle(input.projectId).project.styleId==='cutout-facts'){
+      const words=getBundle(input.projectId).assets.find(a=>a.id===clips[i].audioAssetId)?.meta.words
+      plan={...plan,director:await validateDirectorWithRepair({projectId:input.projectId,clipId:clips[i].id,jobId:ctx.jobId,raw:plan.director,items:plan.items,durationMs:clips[i].durationMs,hasTiming:!!words?.length,signal:ctx.signal,codex:input.codex,progress:message=>ctx.progress(.13,message)})}
+      await guard()
+    }
+    plans.set(clips[i].id,plan)
+    }catch(error){ctx.signal.throwIfAborted();await guard();const reason=clips[i].title+': '+(error as Error).message;blocked.push({clipId:clips[i].id,reason});saveProductionCheck(input.projectId,clips[i].id,'planning','blocked',reason);ctx.progress(.14,'blocked · '+clips[i].title+'; melanjutkan klip lain.')}
   }
   const missing=[...plans.values()].flatMap(plan=>plan.items.filter(item=>!generatedForItem(getBundle(input.projectId).assets,plan,item.id)).map(item=>({plan,item})))
   const total=[...plans.values()].reduce((n,p)=>n+p.items.length,0)
+  if(!options.enabled&&missing.length)throw new Error(`${missing.length} aset belum tersedia. Generate aset dimatikan; selesaikan kebutuhan di Cutout atau aktifkan Generate aset. Gambar selesai tetap dipakai.`)
   ctx.progress(.15,`Memakai ${total-missing.length} aset tersimpan; ${missing.length} kebutuhan belum selesai.`)
-  if(missing.length>options.maxNewAssets)throw new Error(`Perlu ${missing.length} gambar baru, melebihi batas proses ${options.maxNewAssets}. Kebutuhan sudah disimpan di Cutout; naikkan batas proses atau pilih satu klip. Belum ada gambar baru dikirim.`)
+  const backgroundKeys=new Set<string>()
+  const submissions=missing.filter(({plan,item})=>{const key=backgroundReuseKey(plan.clipId,item);if(!key)return true;if(reusableCutoutBackground(plan.clipId,item)||backgroundKeys.has(key))return false;backgroundKeys.add(key);return true}).length
+  if(submissions>options.maxNewAssets)throw new Error(`Perlu ${submissions} gambar baru, melebihi batas proses ${options.maxNewAssets}. Kebutuhan sudah disimpan di Cutout; naikkan batas proses atau pilih satu klip. Belum ada gambar baru dikirim.`)
   if(missing.length){const status=await cutoutProviderStatus(options.provider);if(!status.ready)throw new Error(status.message)}
   for(let i=0;i<missing.length;i++){
     ctx.signal.throwIfAborted();await guard();const {plan,item}=missing[i]
@@ -56,7 +71,7 @@ export async function prepareProductionAssets(input:AutoEditInput,options:Cutout
     await waitChild(generateCutoutAsset({clipId:plan.clipId,planId:plan.id,itemId:item.id,provider:options.provider,format:options.format}).id,ctx.signal)
     await guard()
   }
-  return plans
+  return Object.assign(plans,{blocked})
 }
 
 /** Up to 256 images fit eight contact sheets. Cell coordinates explicitly map pixels to asset IDs. */
