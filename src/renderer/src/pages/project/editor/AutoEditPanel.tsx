@@ -21,7 +21,7 @@ const DEFAULT_INSTRUCTION = 'Sutradarai mengikuti pola video referensi: framing 
 
 export function AutoEditPanel({ clip }: { clip: Clip | null }) {
   const { project, clips, jobs, savedAt, saveState } = useProject()
-  const [scope, setScope] = useState<'clip' | 'project'>(() => project && isCutoutReference(project) ? 'project' : 'clip')
+  const [scope, setScope] = useState<'clip' | 'project'>('clip')
   const [refineComposition,setRefineComposition]=useState(false)
   const [instruction, setInstruction] = useState(() => project && isCutoutReference(project) ? CUTOUT_AUTO_EDIT_INSTRUCTION : DEFAULT_INSTRUCTION)
   const [production,setProduction]=useState<CutoutProductionOptions>(()=>({...DEFAULT_CUTOUT_PRODUCTION,...readCutoutGenerationPreferences(),enabled:project?.styleId==='cutout-facts'}))
@@ -77,6 +77,7 @@ export function AutoEditPanel({ clip }: { clip: Clip | null }) {
     setBusy(true)
     setError(null)
     try {
+      if(!undo&&!resume&&scope==='clip'&&!clip)throw new Error('Pilih klip di timeline sebelum menjalankan edit otomatis.')
       await prepare()
       if (undo) {
         const context = await window.api.editorAutomation.context(project.id)
@@ -136,6 +137,8 @@ export function AutoEditPanel({ clip }: { clip: Clip | null }) {
         {clip?.cutout?.specialVideo&&<p className="text-xs text-ok-ink">Terpasang: {clip.cutout.specialVideo.action} · {clip.cutout.specialVideo.speed.toFixed(2)}×</p>}
       </>}
     </section>
+    <p className="text-xs font-semibold" data-autoedit-scope>{scope==='clip'?'Cakupan: klip terpilih':'Cakupan: seluruh proyek'}</p>
+    {scope==='clip'&&!clip&&<p role="status" className="text-xs text-muted">Pilih klip di timeline untuk menjalankan edit otomatis. Cakupan tidak dialihkan ke seluruh proyek.</p>}
     <label className="flex flex-col gap-1.5 text-[13px]">Cakupan edit<select aria-label="Cakupan edit otomatis" className={inputCls} value={scope} disabled={busy || running} onChange={e => setScope(e.target.value as 'clip' | 'project')}><option value="clip">Klip terpilih{clip ? ` · ${clip.title}` : ''}</option><option value="project">Seluruh proyek</option></select></label>
     <p className="text-xs leading-relaxed text-muted">{scope === 'clip' ? 'Klip terpilih: gerak Cutout, pose, transisi, dan durasi adegan. Pilih Seluruh proyek untuk mengatur SFX, caption, label, dan musik.' : 'Seluruh proyek: gerak semua adegan, SFX, caption, label, dan volume musik dapat disesuaikan.'}</p>
     {isCutoutReference(project) && <div className="rounded-xl border border-line p-3 text-xs leading-relaxed" data-cutout-coverage><strong>Komposisi Cutout: {coverage.ready}/{coverage.total} klip</strong><p className="mt-1 text-muted">{scope === 'clip' ? 'Proses ini hanya mengubah satu klip. Klip lain dan caption proyek tidak ikut diperbaiki.' : 'Seluruh proyek diproses. Gambar utuh tetap membutuhkan aset terpisah untuk aksi dan pergantian pose.'} Kepadatan keyframe bukan ukuran kemiripan referensi. Narasi yang perlu ditulis ulang diselesaikan di tahap Naskah dan Suara sebelum produksi aset.</p></div>}
