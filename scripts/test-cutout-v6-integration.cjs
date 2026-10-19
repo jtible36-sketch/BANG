@@ -7,7 +7,7 @@ const modules={
  './providers/codex':`export const validateCodexSelection=async options=>{if(options.effort==='invalid')throw Error('Effort tidak didukung');return options};export const generatePNG=options=>globalThis.__assetGenerate(options);`,
  './providers/flow-mcp':`export class FlowResponseError extends Error{};export const requireFlowReady=async()=>{if(globalThis.__notReady)throw Error('provider offline')};export const readFlowStatus=async()=>({available:true,signedIn:true,inProject:true});export const cancelFlowRemote=async()=>{};export const flowOutputPath=p=>p;export const flowOwnerStatus=async()=>({jobs:[globalThis.__remote]});export const flowCall=async(method,args)=>{globalThis.__flowCalls.push({method,args});if(method==='generate'){if(globalThis.__flowCalls.filter(c=>c.method==='generate').length===globalThis.__failAt)throw new FlowResponseError('fixture rejected');globalThis.__remote={id:'remote-'+globalThis.__flowCalls.length,status:'done',files:[globalThis.__flowImage],project:args.project};if(globalThis.__uncertain)throw Error('lost connection');return {jobs:[globalThis.__remote]}}return {jobs:[globalThis.__remote]}};`,
  './events':`export const emit={job:()=>{},asset:()=>{},clip:()=>{},character:()=>{},editorAutomation:()=>{}};`,
- './services/higgsfield':`export const cancelRequest=async()=>{};`
+ './services/higgsfield':`export const cancelRequest=async()=>{};export const uploadFile=async()=>{throw Error('Paid provider forbidden')};export const waitForResult=uploadFile;export const submit=uploadFile;export const estimate=uploadFile;`
 }
 async function main(){
  const outfile=path.join(scratch,'suite.cjs')

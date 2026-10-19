@@ -1,3 +1,5 @@
+import {previewCutoutClip,assertFinalCutoutPreviewReady} from '../src/main/cutout-preview'
+import {startExport} from '../src/main/exporter'
 import {insertJob} from '../src/main/repo'
 import {runJob,cancelAbandonedCutoutJobs,isActive} from '../src/main/jobs'
 import {resumeJobs} from '../src/main/generation'
@@ -35,6 +37,11 @@ app.whenReady().then(async()=>{
   const b=make(),c=b.clips[0];seed(b.project.id,c.id);const old=insertJob({projectId:b.project.id,clipId:c.id,kind:'auto-edit',provider:'local'});getDb().prepare("UPDATE jobs SET status='running' WHERE id=?").run(old.id);resumeJobs();assert.equal(getJob(old.id)!.status,'canceled');assert.match(getJob(old.id)!.message!,/sesi sebelumnya/);
   const abandoned=insertJob({projectId:b.project.id,kind:'auto-edit',provider:'local'});getDb().prepare("UPDATE jobs SET status='running' WHERE id=?").run(abandoned.id);const next=startCodexAutoEdit({projectId:b.project.id,clipId:c.id,instruction:'Local retry'});assert.equal(getJob(abandoned.id)!.status,'canceled');await done(next.id);
   let finish!:()=>void;const live=insertJob({projectId:b.project.id,kind:'auto-edit',provider:'local'});runJob(live,'automation',async()=>{await new Promise<void>(r=>finish=r)});await new Promise(r=>setTimeout(r,30));assert(isActive(live.id));assert.deepEqual(cancelAbandonedCutoutJobs(b.project.id),[]);assert.throws(()=>startCodexAutoEdit({projectId:b.project.id,instruction:'Do not overlap'}),/masih berjalan/);finish();assert.equal((await done(live.id)).status,'done')
+ })
+ await test('T4 preview persists kind preview, shows missing-item placeholders, creates no jobs or done outcomes, and final export rejects placeholders',()=>{
+  const b=make(),c=b.clips[0];seed(b.project.id,c.id,'hammer');const before=getBundle(b.project.id),preview=previewCutoutClip(b.project.id,c.id);assert.equal(preview.kind,'preview');assert(preview.scene);assert(preview.placeholders.some(p=>p.itemId==='hammer'));assert.equal((getDb().prepare('SELECT kind FROM cutout_clip_previews WHERE clip_id=?').get(c.id) as any).kind,'preview');assert.equal(readClipOutcomes(b.project.id).length,0);assert.deepEqual(getBundle(b.project.id).clips,before.clips);assert.equal(getBundle(b.project.id).jobs.length,before.jobs.length);assert.throws(()=>assertFinalCutoutPreviewReady(getBundle(b.project.id)),/berplaceholder/);assert.throws(()=>startExport(b.project.id,{fps:30,width:720,height:1280} as any),/berplaceholder/);assert.equal(getBundle(b.project.id).jobs.length,before.jobs.length);
+  const complete=make(),cc=complete.clips[0];seed(complete.project.id,cc.id);const p=previewCutoutClip(complete.project.id,cc.id);assert.equal(p.placeholders.length,0);assert(p.scene);assert.equal(readClipOutcomes(complete.project.id).length,0);assert.equal(getBundle(complete.project.id).clips[0].cutout,null);
+  const empty=make(),ep=previewCutoutClip(empty.project.id,empty.clips[0].id);assert(ep.scene);assert(ep.placeholders.length>=2);assert.equal(getBundle(empty.project.id).assets.length,0);assert.equal(getBundle(empty.project.id).jobs.length,0)
  })
  writeFileSync(join(out,'result.json'),JSON.stringify({status:'passed',checks,paidCalls:0,actualSQLite:true,liveUserDatabaseTouched:false},null,2));closeDb();app.quit()
 }).catch(e=>{console.error(e);closeDb();app.exit(1)})
