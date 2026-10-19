@@ -1,4 +1,5 @@
 import { CUTOUT_FACT_PRODUCTION_RULES } from './cutout-direction-spec'
+import { HARDCUT_DIRECTION, HARDCUT_STYLE_ID } from './hardcut-animation'
 export { CUTOUT_FACT_PRODUCTION_RULES } from './cutout-direction-spec'
 /** Photographic explainer direction derived from the reviewed short-video references. */
 export const CUTOUT_FACT_STYLE_ID = 'cutout-facts'
@@ -32,6 +33,7 @@ export const CUTOUT_FACT_DIRECTION = [
 ].join('\n\n')
 
 export function cutoutReferenceDirection(styleId: string): string {
+  if (styleId === HARDCUT_STYLE_ID) return HARDCUT_DIRECTION
   return styleId === CUTOUT_FACT_STYLE_ID ? CUTOUT_FACT_DIRECTION : ''
 }
 

@@ -1,9 +1,19 @@
 import type { MasterPromptContext } from './master-prompts'
 import { CUTOUT_FACT_PRODUCTION_RULES } from './cutout-direction-spec'
+import { HARDCUT_DIRECTION, HARDCUT_STYLE_ID } from './hardcut-animation'
 
 /** This is a narration section, not a quota of visual shots or generated PNGs. */
 export function isCutoutReference(context: MasterPromptContext): boolean {
-  return context.masterPrompt ? context.masterPrompt.id === 'builtin:cutout-facts' : context.styleId === 'cutout-facts'
+  if (context.masterPrompt) {
+    return context.masterPrompt.id === 'builtin:cutout-facts' || context.masterPrompt.id === 'builtin:hardcut-animation'
+  }
+  return context.styleId === 'cutout-facts' || context.styleId === HARDCUT_STYLE_ID
+}
+
+/** True only for the Hardcut Animation preset (Dafiology-style). */
+export function isHardcutAnimation(context: MasterPromptContext): boolean {
+  if (context.masterPrompt) return context.masterPrompt.id === 'builtin:hardcut-animation'
+  return context.styleId === HARDCUT_STYLE_ID
 }
 
 export function cutoutNarrativeSections(seconds: number): number {
@@ -20,6 +30,12 @@ export const CUTOUT_NARRATIVE_PROTOCOL = [
 
 export function cutoutRuntimeStage(context: MasterPromptContext, stage: string): string {
   if (!isCutoutReference(context)) return ''
+  if (isHardcutAnimation(context)) {
+    const hardcut = 'CURRENT HARDCUT ANIMATION DIRECTION (Dafiology-style): these rules define this preset. ' +
+      'Apply only to the requested stage; image tasks produce one requested asset, not captions or animation.\n' + HARDCUT_DIRECTION
+    if (stage === 'script' || stage === 'visual' || stage === 'video' || stage === 'voice') return hardcut
+    return ''
+  }
   const current = 'CURRENT CUTOUT V4 DIRECTION: these rules supersede older built-in directing defaults. Apply only to the requested stage; image tasks produce one requested asset, not captions or animation. A narration section may contain several 2–4 second visual shots. Preserve actual voice timing and do not force equal sentence lengths.\n' + CUTOUT_FACT_PRODUCTION_RULES
   if (stage === 'script') return CUTOUT_NARRATIVE_PROTOCOL + '\n\n' + current
   if (stage === 'visual' || stage === 'video') return current

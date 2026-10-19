@@ -6,6 +6,7 @@ import { HUASHU_STYLE_ID, HUASHU_STYLE_PROMPT } from './huashu-motion'
 import { HUASHU_ART_STYLES } from './huashu-catalog'
 import { BANG_GALLERY_STYLES } from './bang-gallery'
 import { CUTOUT_FACT_CHARACTER, CUTOUT_FACT_NAME, CUTOUT_FACT_STYLE, CUTOUT_FACT_STYLE_ID } from './cutout-facts'
+import { HARDCUT_CHARACTER, HARDCUT_NAME, HARDCUT_STYLE, HARDCUT_STYLE_ID } from './hardcut-animation'
 
 export type StyleCategory = '2d' | '3d' | 'realistis'
 
@@ -67,6 +68,15 @@ export const VISUAL_STYLES: VisualStyle[] = [
     motionHint: 'Satu aksi utama per shot; pose dan keyframe mengikuti rekaman narasi. Gunakan mask saat tertutup dan IK bila bagian tubuh terpisah siap; tinjau caption serta SFX sebelum ekspor.',
     palette: ['#479AD4', '#D7B66C', '#59654B', '#EBB5AE', '#55D76A'],
     prompt: CUTOUT_FACT_STYLE, characterHint: CUTOUT_FACT_CHARACTER
+  },
+  {
+    id: HARDCUT_STYLE_ID, name: HARDCUT_NAME, category: 'realistis',
+    niche: 'Sejarah benda sehari-hari ala Dafiology: hook 3 detik, kronologi hard-cut, overlay tahun besar',
+    swatch: '#E8A33D', ink: '#1F1D1A', skillIds: ['animasi-cutout'], preview: HARDCUT_STYLE_ID,
+    galleryGroup: 'Fotografi', summary: 'Preset gaya Dafiology: scene AI sinematik ±4 detik, hard cut sinkron narasi, overlay tahun/nama besar, karaoke caption hijau.',
+    motionHint: 'Satu aksi per shot; pola gerak hanya pose-swap, slide-linear, hold, prop-reaction, camera-push. Selalu hard cut antar shot.',
+    palette: ['#E8A33D', '#2AA5A0', '#1F1D1A', '#F5EFE0', '#55D76A'],
+    prompt: HARDCUT_STYLE, characterHint: HARDCUT_CHARACTER
   },
   {
     id: 'map-animation', name: 'Map Animation', category: '3d',

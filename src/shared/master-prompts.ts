@@ -6,6 +6,7 @@ import { STICKMAN_DURATION_OPTIONS_SEC, STICKMAN_IMAGE_DIRECTION, STICKMAN_MASTE
 import { MAP_DEFAULT_SCENE_COUNT, MAP_DURATION_OPTIONS_SEC, MAP_MASTER_SOURCE_TEXT, MAP_RESEARCH_DIRECTION, MAP_SCRIPT_DIRECTION, MAP_STYLE_LOCK, MAP_SUBJECT_NICHES, MAP_THUMBNAIL_DIRECTION, MAP_VIDEO_DIRECTION, MAP_VISUAL_DIRECTION, MAP_VOICE_DIRECTION, LEGACY_MAP_MASTER_SOURCE_TEXT, LEGACY_MAP_STYLE_LOCK, isLegacyMapProfile, mapFillDirection, mapStyleLock, type MapFillMode, type MapTargetColor } from './map-animation'
 import { huashuStageDirection } from './huashu-motion'
 import { CUTOUT_FACT_NAME, CUTOUT_FACT_NICHES, CUTOUT_FACT_SOURCE, CUTOUT_FACT_STAGES, CUTOUT_FACT_STYLE_ID } from './cutout-facts'
+import { HARDCUT_NAME, HARDCUT_NICHES, HARDCUT_SOURCE, HARDCUT_STAGES, HARDCUT_STYLE_ID } from './hardcut-animation'
 
 export type MasterPromptStage = 'research' | 'script' | 'visual' | 'video' | 'thumbnail' | 'voice'
 export const MASTER_PROMPT_STAGES: MasterPromptStage[] = ['research', 'script', 'visual', 'video', 'thumbnail', 'voice']
@@ -75,6 +76,15 @@ export const builtInMasterPrompts: MasterPromptProfile[] = [
     timing: { wordsPerSecond: 2.9, beatSeconds: 6, sourceVideoSeconds: 4 },
     videoMode: 'scene', lockedCamera: false,
     subjectNiches: [...CUTOUT_FACT_NICHES], durationOptionsSec: [30, 45, 60, 90]
+  },
+  {
+    id: 'builtin:hardcut-animation', name: HARDCUT_NAME,
+    description: 'Gaya Dafiology: scene AI sinematik ±4 detik, hard cut sinkron narasi, hook 3 detik, overlay tahun/nama besar, karaoke caption hijau.',
+    version: 1, baseProfile: 'legacy', sourceText: HARDCUT_SOURCE,
+    stages: { ...HARDCUT_STAGES },
+    timing: { wordsPerSecond: 2.4, beatSeconds: 4, sourceVideoSeconds: 4 },
+    videoMode: 'scene', lockedCamera: false,
+    subjectNiches: [...HARDCUT_NICHES], durationOptionsSec: [30, 45, 60, 90]
   },
   {
     id: 'builtin:map-animation', name: 'Map Animation · Territory Highlight',
@@ -185,6 +195,7 @@ export function resolveMasterPrompt(context: MasterPromptContext): MasterPromptP
   if (context.masterPrompt) return validateMasterPrompt(context.masterPrompt)
   const id = context.styleId === 'map-animation' ? 'builtin:map-animation'
     : context.styleId === CUTOUT_FACT_STYLE_ID ? 'builtin:cutout-facts'
+    : context.styleId === HARDCUT_STYLE_ID ? 'builtin:hardcut-animation'
     : isHealthDialogueStyle(context.styleId) ? 'builtin:health-dialogue'
     : context.styleId === 'stickman' ? 'builtin:stickman'
     : isVoxStyle(context.styleId ?? '') ? 'builtin:vox'
