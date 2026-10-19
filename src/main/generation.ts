@@ -1,3 +1,4 @@
+import {cancelAbandonedCutoutJobs,isActive} from './jobs'
 import { randomUUID } from 'node:crypto'
 import { mkdirSync, unlinkSync, writeFileSync } from 'node:fs'
 import { dirname } from 'node:path'
@@ -492,6 +493,7 @@ export function generateMissingTts(projectId: string): Job[] {
 export function resumeJobs(): void {
   const flowProjects = new Set<string>()
   for (const row of unfinishedJobs()) {
+    if(getProject(String(row.project_id)).styleId==='cutout-facts'&&row.provider!=='flow-mcp'&&['auto-edit','cutout-batch','cutout-plan','cutout-asset'].includes(String(row.kind))){if(!isActive(String(row.id)))cancelAbandonedCutoutJobs(String(row.project_id),[String(row.kind)]);continue}
     if (row.provider === 'flow-mcp') {
       const flowPayload = JSON.parse(String(row.payload_json || '{}')) as { submissionStarted?: boolean }
       const submitted = !!row.remote_id || flowPayload.submissionStarted === true

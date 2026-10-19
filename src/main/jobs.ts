@@ -1,6 +1,6 @@
 import type { Job } from '@shared/types'
 import { emit } from './events'
-import { getJobRaw, updateJob } from './repo'
+import { getBundle, getJobRaw, updateJob } from './repo'
 import { cancelRequest } from './services/higgsfield'
 
 export type QueueName = 'automation' | 'higgsfield' | 'codex' | 'tts' | 'whisper' | 'export' | 'flow'
@@ -103,6 +103,16 @@ export async function cancelJob(id: string): Promise<void> {
   if (raw.remote_id && raw.provider === 'higgsfield') await cancelRequest(raw.remote_id)
 }
 
+/** Controllers include queued workers. Only genuinely ownerless Cutout jobs can be recovered. */
+export function cancelAbandonedCutoutJobs(projectId:string,kinds=['auto-edit','cutout-batch']):string[]{
+ const b=getBundle(projectId);if(b.project.styleId!=='cutout-facts')return []
+ const recovered:string[]=[]
+ for(const j of b.jobs.filter(j=>kinds.includes(j.kind)&&['queued','running'].includes(j.status))){
+  if(controllers.has(j.id)||j.kind==='cutout-asset'&&getJobRaw(j.id)?.provider==='flow-mcp')continue
+  emit.job(updateJob(j.id,{status:'canceled',error:null,message:'Worker sesi sebelumnya tidak aktif. Proses lama dibatalkan; aset selesai tetap tersimpan. Lanjutkan hanya klip atau item yang belum selesai.'}));recovered.push(j.id);console.info('[cutout job recovery]',j.id,'canceled: no live worker')
+ }
+ return recovered
+}
 export function isActive(id: string): boolean {
   return controllers.has(id)
 }

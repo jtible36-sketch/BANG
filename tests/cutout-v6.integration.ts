@@ -1,3 +1,6 @@
+import {insertJob} from '../src/main/repo'
+import {runJob,cancelAbandonedCutoutJobs,isActive} from '../src/main/jobs'
+import {resumeJobs} from '../src/main/generation'
 import {createHash} from 'node:crypto'
 import {readFileSync} from 'node:fs'
 import {cutoutOrphans,availableCutoutAssets} from '../src/shared/cutout-orphans'
@@ -27,6 +30,11 @@ app.whenReady().then(async()=>{
  const report=orphanAssetReport(b.project.id);assert.equal(report.orphanAssetCount,10);assert.deepEqual(report.groups.map(g=>g.count).sort(),[4,6]);assert.equal(cutoutAssetState(c.id).assets.length,1);assert.equal(studioReport(b.project.id)[0].status,'needs-assets');assert.equal(availableCutoutAssets(getBundle(b.project.id)).length,1);
  assert.throws(()=>linkOrphanAsset(b.project.id,orphanIds[0],c.id,false),/konfirmasikan/);assert.throws(()=>linkOrphanAsset(b.project.id,orphanIds[0],'foreign',true),/tujuan/);const linked=linkOrphanAsset(b.project.id,orphanIds[0],c.id,true);assert.equal(linked.clipId,c.id);assert.equal((linked.meta.cutoutAsset as any).planId,plan.id);assert.equal((linked.meta.cutoutAsset as any).review,'needs-review');assert.throws(()=>linkOrphanAsset(b.project.id,orphanIds[1],c.id,true),/sudah memiliki/);
  assert.throws(()=>archiveOrphanAsset(b.project.id,orphanIds[1],false),/konfirmasikan/);archiveOrphanAsset(b.project.id,orphanIds[1],true);assert.equal(orphanAssetReport(b.project.id).orphanAssetCount,8);assert.equal(orphanAssetReport(b.project.id).archivedCount,1);assert.equal(getBundle(b.project.id).assets.length,11);assert.equal(createHash('sha256').update(readFileSync(assetAbsPath(b.project.id,file.localPath))).digest('hex'),hash);assert.equal(studioReport(b.project.id)[0].status,'ready');const j=await done(startCodexAutoEdit({projectId:b.project.id,clipId:c.id,instruction:'Fixture only'}).id);assert.equal(j.status,'done');assert(getBundle(b.project.id).clips[0].cutout)
+ })
+ await test('T3 startup cancels ownerless Cutout work and run recovers stale gate while live worker still blocks',async()=>{
+  const b=make(),c=b.clips[0];seed(b.project.id,c.id);const old=insertJob({projectId:b.project.id,clipId:c.id,kind:'auto-edit',provider:'local'});getDb().prepare("UPDATE jobs SET status='running' WHERE id=?").run(old.id);resumeJobs();assert.equal(getJob(old.id)!.status,'canceled');assert.match(getJob(old.id)!.message!,/sesi sebelumnya/);
+  const abandoned=insertJob({projectId:b.project.id,kind:'auto-edit',provider:'local'});getDb().prepare("UPDATE jobs SET status='running' WHERE id=?").run(abandoned.id);const next=startCodexAutoEdit({projectId:b.project.id,clipId:c.id,instruction:'Local retry'});assert.equal(getJob(abandoned.id)!.status,'canceled');await done(next.id);
+  let finish!:()=>void;const live=insertJob({projectId:b.project.id,kind:'auto-edit',provider:'local'});runJob(live,'automation',async()=>{await new Promise<void>(r=>finish=r)});await new Promise(r=>setTimeout(r,30));assert(isActive(live.id));assert.deepEqual(cancelAbandonedCutoutJobs(b.project.id),[]);assert.throws(()=>startCodexAutoEdit({projectId:b.project.id,instruction:'Do not overlap'}),/masih berjalan/);finish();assert.equal((await done(live.id)).status,'done')
  })
  writeFileSync(join(out,'result.json'),JSON.stringify({status:'passed',checks,paidCalls:0,actualSQLite:true,liveUserDatabaseTouched:false},null,2));closeDb();app.quit()
 }).catch(e=>{console.error(e);closeDb();app.exit(1)})

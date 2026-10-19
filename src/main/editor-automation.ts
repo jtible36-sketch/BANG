@@ -34,7 +34,7 @@ import { autoSyncEnabled, syncedVoiceDuration } from '@shared/voiceover'
 import { getDb } from './db'
 import { getBundle, getJobRaw, insertJob, saveSnapshot } from './repo'
 import { emit } from './events'
-import { runJob } from './jobs'
+import { runJob, cancelAbandonedCutoutJobs } from './jobs'
 import { generateCodexJson } from './codex-text'
 import { codexConnectionStatus, requireCodexConnection } from './codex-connections'
 import { readManagedImageBytes } from './media-import'
@@ -235,6 +235,7 @@ export function startCodexAutoEdit(input: AutoEditInput): Job {
   input={...input,codex:normalizeCodexEdit(input?.codex),specialClips:normalizeSpecialClips(input?.specialClips)}
   const production=normalizeCutoutProduction(input?.production)
   if (!input || typeof input.projectId !== 'string' || typeof input.instruction !== 'string' || !input.instruction.trim() || input.instruction.length > 8000) throw new Error('Tulis arahan edit antara 1–8000 karakter.')
+  if(getBundle(input.projectId).project.styleId==='cutout-facts')cancelAbandonedCutoutJobs(input.projectId)
   if(getBundle(input.projectId).project.styleId==='cutout-facts'&&input.productionStrategy!=='agent'&&!input.specialClips?.enabled){
     const b=getBundle(input.projectId);if(b.jobs.some(j=>['auto-edit','cutout-batch'].includes(j.kind)&&['running','queued'].includes(j.status)))throw Error('Edit otomatis masih berjalan.')
     const context=getEditingContext(input.projectId);checkedBundle(input.projectId,context.revision,true)
