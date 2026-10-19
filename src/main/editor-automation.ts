@@ -1,3 +1,4 @@
+import {availableCutoutAssets} from '@shared/cutout-orphans'
 import {validatePngImpactScene} from '@shared/cutout-png-impact'
 import {validateComedyScene} from '@shared/comedy-jolt'
 import {loadComedyProfile} from './cutout-studio'
@@ -138,7 +139,7 @@ export function getEditingContext(projectId: string) {
   }
 }
 function prepare(b: ProjectBundle, plan: EditorEditPlan, timingScope?:Set<string>): ProjectSnapshot {
-  const next = snapshot(b), assets = new Map(b.assets.map(a => [a.id, a])), changes = new Map(plan.clips.map(c => [c.clipId, c]))
+  const next = snapshot(b), assets = new Map(availableCutoutAssets(b).map(a => [a.id, a])), changes = new Map(plan.clips.map(c => [c.clipId, c]))
   if (autoSyncEnabled(b.project)) for (const clip of b.clips.filter(c=>!timingScope||timingScope.has(c.id))) {
     const actual = syncedVoiceDuration(clip, b.assets.find(a => a.id === clip.audioAssetId))
     if (actual != null && actual !== clip.durationMs) throw new Error('Timing narasi tersimpan belum sinkron. Buka editor dan simpan sinkronisasi suara sebelum edit otomatis.')

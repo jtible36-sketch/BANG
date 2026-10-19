@@ -1,3 +1,4 @@
+import {orphanAssetReport,linkOrphanAsset,archiveOrphanAsset} from './cutout-orphans'
 import {studioReport,saveSceneBrief,approveAssetCredits,upgradeStudioPlan,readClipOutcomes,approvedBackgroundCandidates,loadComedyProfile,studioJobHistory,reviewStudioAsset} from './cutout-studio'
 import {productionReadiness,recordAssetLicense} from './cutout-v5'
 import { generateVisualCutoutBatch } from './cutout-visual'
@@ -99,6 +100,9 @@ export function registerIpc(): void {
   handle('cutoutAssets:status', cutoutProviderStatus)
   handle('cutoutAssets:generate', generateCutoutAsset)
   handle('cutoutAssets:recover', recoverCutoutAssets)
+  handle('cutoutStudio:orphans',orphanAssetReport)
+  handle('cutoutStudio:linkOrphan',linkOrphanAsset)
+  handle('cutoutStudio:archiveOrphan',archiveOrphanAsset)
   handle('cutoutStudio:report',studioReport)
   handle('cutoutStudio:saveBrief',saveSceneBrief)
   handle('cutoutStudio:approveCredits',approveAssetCredits)

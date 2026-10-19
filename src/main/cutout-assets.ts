@@ -43,7 +43,7 @@ function readPlan(clipId: string): CutoutAssetPlan | null { table(); const row=g
 function persistPlan(plan: CutoutAssetPlan): void { table();getDb().prepare('INSERT OR REPLACE INTO cutout_asset_plans (clip_id,plan_json) VALUES (?,?)').run(plan.clipId,JSON.stringify(plan)) }
 export function cutoutAssetState(clipId: string): CutoutAssetState {
   const c=getClip(clipId),b=getBundle(c.projectId),plan=readPlan(clipId);const history=(getDb().prepare("SELECT id FROM jobs WHERE project_id=? AND clip_id=? AND kind IN ('cutout-plan','cutout-asset') ORDER BY created_at DESC LIMIT 1000").all(c.projectId,clipId) as {id:string}[]).map(r=>getJob(r.id)!).filter(Boolean)
-  return { plan, stale: !!plan && plan.sourceHash!==sourceHash(clipId), assets: b.assets.filter(a=>a.clipId===clipId&&!!a.meta.cutoutAsset),
+  return { plan, stale: !!plan && plan.sourceHash!==sourceHash(clipId), assets: b.assets.filter(a=>a.clipId===clipId&&!!a.meta.cutoutAsset&&(b.project.styleId!=='cutout-facts'||!a.meta.cutoutOrphanArchive)),
     jobs:history.filter(j=>j.clipId===clipId&&['cutout-plan','cutout-asset'].includes(j.kind)).map(job=>{ const raw=getJobRaw(job.id),payload=JSON.parse(String(raw?.payload_json||'{}'));return {job,itemId:payload.item?.id??null} }) }
 }
 export function saveCutoutAssetPlan(clipId: string, items: unknown): CutoutAssetPlan {
